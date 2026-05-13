@@ -57,6 +57,15 @@ if it's a Hello World — then iterate on a real, indexed domain.
    change is a numbered migration in `supabase/migrations/`, never a direct
    dashboard edit, and types are regenerated immediately.
 
+7. **Proactive tool use.** Agents, skills, commands, and hooks exist to be used
+   automatically — never wait for the user to invoke them. When the task matches
+   a tool's domain, use it. Examples:
+   - Writing animation → apply framer-motion-patterns skill + animation-architect review
+   - Touching Supabase → supabase-nextjs-integration skill + supabase-architect agent
+   - New public page → seo-strategist + OG image + generateMetadata automatically
+   - Writing copy → content-writer agent
+   - Importing components → shadcn-component-import skill pipeline
+
 5. **Never commit secrets.** `.env.local` is gitignored. The pre-commit hook
    blocks commits containing `sb_secret_`, `SUPABASE_SECRET_KEY=`, API keys.
 
