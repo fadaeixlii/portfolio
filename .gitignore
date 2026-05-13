@@ -30,12 +30,31 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# env files
+.env*.local
+!.env.local.example
 
 # vercel
 .vercel
 
+# cloudflare / opennext
+.open-next
+wrangler.toml.bak
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# content staging (gitignored except .gitkeep)
+_content-inbox/*
+!_content-inbox/.gitkeep
+_drafts/*
+!_drafts/.gitkeep
+
+# claude code
+.claude/.last-typecheck
+.claude/settings.local.json
+
+# planning docs (remove after Phase 0)
+compass_artifact_*.md
+portfolio-claude-code-kickoff.md
