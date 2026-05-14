@@ -1,0 +1,12 @@
+import { generateOgImage, ogSize, ogContentType } from "@/lib/og/generate";
+
+export const alt = "About — Mohammad Fadaei";
+export const size = ogSize;
+export const contentType = ogContentType;
+
+export default function Image() {
+  return generateOgImage({
+    title: "About",
+    subtitle: "Six years shipping React applications to production.",
+  });
+}
