@@ -35,7 +35,24 @@ export function ProjectCard({ project }: { project: Project }) {
               </span>
             ))}
           </div>
-          <span className="text-xs text-accent">{project.role}</span>
+          <span className="inline-flex items-center gap-1 text-xs text-accent transition-colors group-hover:text-foreground">
+            Read case study
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 16 16"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M6 3l5 5-5 5"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
         </div>
       </Link>
     </SpotlightCard>

@@ -1,11 +1,20 @@
 import type { MetadataRoute } from "next";
+import { getAllCaseStudySlugs } from "@/lib/mdx/case-studies";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://fadaeixlii.com";
 
+  const caseStudyEntries = getAllCaseStudySlugs().map((slug) => ({
+    url: `${baseUrl}/work/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.9,
+  }));
+
   return [
     { url: baseUrl, lastModified: new Date(), changeFrequency: "monthly", priority: 1 },
     { url: `${baseUrl}/work`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    ...caseStudyEntries,
     { url: `${baseUrl}/about`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
     { url: `${baseUrl}/playground`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },

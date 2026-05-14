@@ -1,0 +1,44 @@
+---
+title: "Jeofferte"
+slug: "jeofferte"
+tagline: "E-commerce offer and quotation management system for Dutch businesses"
+role: "Full-Stack Developer"
+year: 2023
+status: "published"
+tech: ["React", "NestJS", "TypeScript", "PostgreSQL"]
+featured: true
+sort_order: 3
+hero_image: "/images/projects/jeofferte/hero.avif"
+---
+
+## The Problem
+
+Small and medium Dutch businesses were managing their quotation process across spreadsheets, email threads, and disconnected invoicing tools. A single quote might start as an Excel file, get emailed back and forth with revisions tracked in the subject line, and eventually be manually re-entered into an accounting system. The error rate was high, the process was slow, and there was no visibility into which quotes were pending, accepted, or expired.
+
+The businesses we spoke to had tried generic CRM tools, but they were either too complex (Salesforce-scale enterprise software) or too simple (basic form builders that could not handle line items, tax calculations, or multi-currency pricing). They needed something purpose-built for the Dutch market — with correct BTW (VAT) handling, KvK integration, and Dutch-language templates.
+
+## The Approach
+
+The architecture needed to support a multi-step workflow: create quote → send to client → track status → convert to invoice → record payment. Each step had different access requirements and validation rules. A quote in draft mode is editable by anyone on the team. A sent quote is read-only. An accepted quote can be converted to an invoice but not modified.
+
+I chose NestJS for the backend because its module system mapped naturally to these domain boundaries. Each workflow stage was a module with its own validation, guards, and event handlers. React handled the frontend with a focus on the quote builder — the most interaction-heavy screen, where users needed to add line items, apply discounts, preview the PDF, and send in a single flow.
+
+PostgreSQL was chosen for its transactional guarantees. Converting a quote to an invoice involved multiple table updates that had to succeed or fail atomically. The BTW calculation rules alone required careful handling — different rates for different product categories, reverse-charge rules for cross-border EU sales, and the Dutch small-business exemption (kleineondernemersregeling).
+
+## The Solution
+
+The core of the system was the **quote builder**. Users created quotes by selecting a client (auto-filled from KvK registry data), adding line items with descriptions, quantities, and unit prices, and applying optional discounts. The builder calculated subtotals, BTW per rate category, and grand totals in real time. A live preview showed the final PDF layout as users edited.
+
+The **client portal** was a separate, unauthenticated view where clients could review a quote, ask questions through a threaded comment system, and accept or decline. Acceptance triggered an automatic status update and optional invoice generation. The portal link was a signed URL with an expiration, so no client account was needed.
+
+The **workflow engine** managed state transitions. Each quote had a status: `draft → sent → viewed → accepted/declined → invoiced → paid`. Transitions triggered side effects: sending an email on `sent`, recording a timestamp on `viewed`, generating a PDF on `invoiced`. NestJS event emitters kept these decoupled — the status module did not know about the email module.
+
+The PDF generation used a template system built on React-pdf. Templates were React components that received the quote data as props and rendered a print-ready document. Businesses could customize their logo, colors, and footer text. The same template rendered the live preview in the builder and the final downloadable PDF.
+
+## Impact
+
+The platform processed over **2,000 quotes** in its first year of operation. Businesses reported a **60% reduction in quote-to-acceptance time** — from an average of 5 days with the email workflow to under 2 days with the client portal. The automated BTW calculations eliminated the tax errors that had previously required manual correction in roughly 1 in 10 quotes.
+
+## Reflections
+
+The biggest challenge was not technical — it was understanding Dutch tax law well enough to implement it correctly. The BTW rules have edge cases that even accountants debate. I spent more time reading belastingdienst.nl documentation than writing code for the tax module. The lesson: in fintech-adjacent products, domain knowledge is the bottleneck, not engineering complexity. Building the quote builder took a week. Getting the tax calculations audit-ready took three.
