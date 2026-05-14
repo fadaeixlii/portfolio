@@ -1,0 +1,65 @@
+[
+  {
+    "slug": "aim2balance",
+    "title": "Aim2Balance",
+    "tagline": "AI-integrated health and wellness platform forked from LibreChat",
+    "description": "Forked and customized LibreChat into a specialized health platform. Built custom AI agents, integrated wellness tracking, and shipped a production-grade product for real users.",
+    "role": "Lead Developer",
+    "year": 2024,
+    "tech": ["Next.js", "TypeScript", "Node.js", "MongoDB", "AI/LLM"],
+    "featured": true,
+    "status": "published",
+    "links": {
+      "live": "",
+      "github": "",
+      "caseStudy": "/work/aim2balance"
+    },
+    "image": "/images/projects/aim2balance.avif",
+    "metrics": [
+      { "label": "Users", "value": "—" },
+      { "label": "Uptime", "value": "—" }
+    ]
+  },
+  {
+    "slug": "roofcast",
+    "title": "RoofCast",
+    "tagline": "Real estate analytics and forecasting tool",
+    "description": "Built a data-driven real estate platform providing property analytics, market forecasting, and investment insights for the Dutch housing market.",
+    "role": "Full-Stack Developer",
+    "year": 2024,
+    "tech": ["React", "TypeScript", "Node.js", "PostgreSQL", "Python"],
+    "featured": true,
+    "status": "published",
+    "links": {
+      "live": "",
+      "github": "",
+      "caseStudy": "/work/roofcast"
+    },
+    "image": "/images/projects/roofcast.avif",
+    "metrics": [
+      { "label": "Data points", "value": "—" },
+      { "label": "Accuracy", "value": "—" }
+    ]
+  },
+  {
+    "slug": "jeofferte",
+    "title": "Jeofferte",
+    "tagline": "E-commerce offer and quotation management system",
+    "description": "Designed and built an offer management platform for Dutch businesses, handling quotes, invoices, and client communications in one workflow.",
+    "role": "Full-Stack Developer",
+    "year": 2023,
+    "tech": ["React", "NestJS", "TypeScript", "PostgreSQL"],
+    "featured": true,
+    "status": "published",
+    "links": {
+      "live": "",
+      "github": "",
+      "caseStudy": "/work/jeofferte"
+    },
+    "image": "/images/projects/jeofferte.avif",
+    "metrics": [
+      { "label": "Businesses", "value": "—" },
+      { "label": "Quotes processed", "value": "—" }
+    ]
+  }
+]

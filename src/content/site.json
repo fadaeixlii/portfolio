@@ -1,0 +1,43 @@
+{
+  "name": "Mohammad Fadaei",
+  "shortName": "fadaeixlii",
+  "role": "Senior Full-Stack Developer",
+  "tagline": "I build web applications that handle real users and real money.",
+  "bio": "Six years shipping React applications to production. I've led teams, debugged memory leaks at 3am, and refactored codebases that outlived their original authors.",
+  "location": "Netherlands",
+  "email": "mohammad@fadaeixlii.com",
+  "siteUrl": "https://fadaeixlii.com",
+  "social": {
+    "github": "https://github.com/fadaeixlii",
+    "linkedin": "https://linkedin.com/in/fadaeixlii",
+    "twitter": "",
+    "telegram": ""
+  },
+  "hero": {
+    "headline": "I build web applications that handle real users and real money.",
+    "subtitle": "Full-stack developer. React, Next.js, TypeScript. Based in the Netherlands.",
+    "cta": { "label": "Get in touch", "href": "/contact" }
+  },
+  "about": {
+    "intro": "Six years shipping React applications to production. I've led teams, debugged memory leaks at 3am, and refactored codebases that outlived their original authors.",
+    "paragraphs": [
+      "I specialize in building full-stack applications with React, Next.js, TypeScript, and Node.js. My work spans from trading platforms and AI-integrated products to real estate tools and e-commerce systems.",
+      "I care about performance, accessibility, and code that other developers can maintain. I've worked across blockchain (Solidity), backend (NestJS, Express), and frontend — but React is where I do my best work.",
+      "Currently based in the Netherlands, available for freelance projects and consulting engagements."
+    ]
+  },
+  "stats": [
+    { "value": "6+", "label": "Years" },
+    { "value": "10+", "label": "Projects" },
+    { "value": "5", "label": "Domains" }
+  ],
+  "availability": {
+    "status": "available",
+    "message": "Available for freelance"
+  },
+  "contact": {
+    "heading": "Get in touch",
+    "description": "Have a project in mind? Send me a message and I'll get back to you within 48 hours.",
+    "responseTime": "48 hours"
+  }
+}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FadeIn } from "@/components/shared/FadeIn";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -9,21 +10,26 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   return (
-    <section className="flex flex-1 flex-col items-center justify-center px-6 py-16">
-      <div className="flex flex-col items-center gap-6 text-center">
-        <div className="flex items-center gap-3">
-          <div className="h-2 w-2 rounded-full bg-accent" />
-          <span className="text-xs tracking-widest text-muted-foreground uppercase">
-            Coming Soon
-          </span>
+    <section className="mx-auto w-full max-w-3xl px-6 py-16">
+      <FadeIn>
+        <div className="flex flex-col gap-12">
+          <div className="flex flex-col gap-4">
+            <h1 className="font-serif text-4xl font-normal tracking-tight">
+              Blog
+            </h1>
+            <p className="text-lg text-muted-foreground">
+              Articles on React, TypeScript, and web architecture.
+            </p>
+          </div>
+
+          <div className="flex flex-col items-center gap-4 py-16 text-center">
+            <div className="h-2 w-2 rounded-full bg-accent" />
+            <p className="text-muted-foreground">
+              First articles are in the works. Check back soon.
+            </p>
+          </div>
         </div>
-        <h1 className="font-serif text-4xl font-normal tracking-tight">
-          Blog
-        </h1>
-        <p className="max-w-md text-lg text-muted-foreground">
-          Articles on React, TypeScript, and web architecture. Coming soon.
-        </p>
-      </div>
+      </FadeIn>
     </section>
   );
 }

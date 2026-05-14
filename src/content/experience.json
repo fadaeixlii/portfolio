@@ -1,0 +1,26 @@
+[
+  {
+    "company": "— (Update with real company)",
+    "role": "Senior Full-Stack Developer",
+    "period": "2022 – Present",
+    "location": "Netherlands",
+    "description": "Leading development of web applications using React, Next.js, and TypeScript. Architecting scalable systems and mentoring junior developers.",
+    "tech": ["React", "Next.js", "TypeScript", "Node.js"]
+  },
+  {
+    "company": "— (Update with real company)",
+    "role": "Full-Stack Developer",
+    "period": "2020 – 2022",
+    "location": "Remote",
+    "description": "Built and maintained production applications across multiple domains including e-commerce, real estate, and blockchain.",
+    "tech": ["React", "NestJS", "Solidity", "PostgreSQL"]
+  },
+  {
+    "company": "— (Update with real company)",
+    "role": "Frontend Developer",
+    "period": "2018 – 2020",
+    "location": "Remote",
+    "description": "Developed responsive web interfaces and single-page applications. Transitioned from JavaScript to TypeScript across the team's codebase.",
+    "tech": ["React", "JavaScript", "TypeScript", "CSS"]
+  }
+]

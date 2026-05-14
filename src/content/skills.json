@@ -1,0 +1,24 @@
+{
+  "categories": [
+    {
+      "name": "Frontend",
+      "skills": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Motion/Framer"]
+    },
+    {
+      "name": "Backend",
+      "skills": ["Node.js", "NestJS", "Express", "REST APIs", "GraphQL"]
+    },
+    {
+      "name": "Database",
+      "skills": ["PostgreSQL", "MongoDB", "Supabase", "Redis"]
+    },
+    {
+      "name": "Blockchain",
+      "skills": ["Solidity", "Ethers.js", "Web3", "Smart Contracts"]
+    },
+    {
+      "name": "Tools & DevOps",
+      "skills": ["Git", "Docker", "CI/CD", "Cloudflare", "Linux"]
+    }
+  ]
+}

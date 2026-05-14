@@ -21,7 +21,7 @@ if it's a Hello World — then iterate on a real, indexed domain.
 - Supabase: @supabase/supabase-js + @supabase/ssr (NEVER auth-helpers-nextjs)
 - shadcn/ui v4 + selective Magic UI / Aceternity UI components
 - React Hook Form v7 + Zod v4
-- Geist Sans + Geist Mono + Fraunces (editorial serif, variable)
+- Geist Sans + Geist Mono + Deltha (display serif, local font)
 - Hosting: Cloudflare Pages via @opennextjs/cloudflare
 - Package manager: pnpm (NEVER npm or yarn — fail loudly if you see either)
 
