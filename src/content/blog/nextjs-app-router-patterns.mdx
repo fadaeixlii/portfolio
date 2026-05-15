@@ -1,0 +1,149 @@
+---
+title: "Next.js App Router Patterns That Actually Scale"
+slug: "nextjs-app-router-patterns"
+excerpt: "Route groups, parallel data fetching, streaming with Suspense, and metadata generation — patterns I've validated in production."
+date: "2026-04-28"
+tags: ["Next.js", "App Router", "Performance"]
+status: "published"
+reading_time: 9
+---
+
+## The App Router Changed the Game
+
+The Pages Router was simple. One file, one route, `getServerSideProps` at the top, component at the bottom. The App Router replaced that simplicity with a more powerful model — layouts, loading states, error boundaries, server components, and parallel routes — but the upgrade path isn't obvious.
+
+After building several production applications on the App Router, these are the patterns I've settled on. They're not theoretical — they come from shipping code that handles real traffic.
+
+## Route Groups for Layout Isolation
+
+Route groups — folders wrapped in parentheses like `(public)` or `(admin)` — don't affect the URL. Their purpose is layout isolation.
+
+```
+app/
+  (public)/
+    layout.tsx     ← marketing header + footer
+    page.tsx       ← home
+    about/page.tsx
+    work/page.tsx
+  (admin)/admin/
+    layout.tsx     ← sidebar + auth guard
+    page.tsx       ← dashboard
+    messages/page.tsx
+```
+
+The public pages share a marketing layout with navigation and footer. The admin pages share a dashboard layout with sidebar navigation and authentication checks. Neither layout leaks into the other.
+
+The key insight: route groups are an **architectural tool**, not a naming convention. Use them to separate layouts that serve different audiences. In this portfolio, the `(public)` group handles all visitor-facing pages, and the `(admin)` group will handle content management. The URL for admin is still `/admin/messages`, not `/(admin)/admin/messages`.
+
+## Parallel Data Fetching
+
+The biggest performance win in the App Router is parallel data fetching. In the Pages Router, `getServerSideProps` ran one waterfall. In the App Router, you can fetch in parallel across layouts and pages.
+
+```tsx
+// layout.tsx fetches nav data
+export default async function Layout({ children }) {
+  const nav = await getNavigation(); // starts immediately
+  return <Nav items={nav}>{children}</Nav>;
+}
+
+// page.tsx fetches page data
+export default async function Page() {
+  const [posts, featured] = await Promise.all([
+    getAllPosts(),
+    getFeaturedPost(),
+  ]);
+  return <BlogListing posts={posts} featured={featured} />;
+}
+```
+
+The layout fetch and the page fetch start simultaneously. Within the page, `Promise.all` parallelizes the two queries. The total time is the maximum of all fetches, not the sum.
+
+The rule: never `await` sequentially unless the second fetch depends on the first. If you're fetching a user profile and then their posts, and the posts query doesn't need the profile ID, fetch them in parallel. If the posts query uses the profile's preferences to filter, then sequence them.
+
+## Streaming with Suspense
+
+For pages with slow data sources, Suspense boundaries let you stream partial content while the slow parts load:
+
+```tsx
+export default async function Page() {
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      <FastMetrics /> {/* renders immediately */}
+      <Suspense fallback={<ChartSkeleton />}>
+        <SlowChart /> {/* streams when ready */}
+      </Suspense>
+    </div>
+  );
+}
+```
+
+The browser receives the heading and fast metrics immediately. When `SlowChart` finishes its data fetch, Next.js streams the HTML into the page, replacing the skeleton. No client-side fetch, no loading spinner managed in state — the streaming happens at the HTML level.
+
+Where this matters most: pages that combine cached data (fast) with real-time data (slow). Show the cached parts instantly, stream the fresh parts as they arrive. The perceived performance improvement is dramatic even when the total load time is unchanged.
+
+## Metadata That Scales
+
+The `generateMetadata` function is async and has access to the route params. This means metadata can be data-driven:
+
+```tsx
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
+  if (!post) return {};
+
+  return {
+    title: `${post.frontmatter.title} — Mohammad Fadaei`,
+    description: post.frontmatter.excerpt,
+    openGraph: {
+      type: "article",
+      title: post.frontmatter.title,
+      description: post.frontmatter.excerpt,
+    },
+  };
+}
+```
+
+The pattern I follow: every public page exports `generateMetadata`. Static pages use a plain `metadata` export. Dynamic pages use `generateMetadata` to pull from the content source. Title is under 60 characters, description under 155. Every page has a canonical URL.
+
+Combined with `opengraph-image.tsx` files (Next.js generates OG images at build time using `ImageResponse`), this means every page has correct social sharing cards without any manual work.
+
+## `generateStaticParams` for Static Generation
+
+For content-driven dynamic routes, `generateStaticParams` pre-renders all known paths at build time:
+
+```tsx
+export function generateStaticParams() {
+  return getAllBlogSlugs().map((slug) => ({ slug }));
+}
+```
+
+This is critical for edge hosting (like Cloudflare Pages). Without it, each page request would trigger a server-side render. With it, the pages are static HTML files served from the CDN — sub-50ms response times globally.
+
+The trade-off: adding new content requires a rebuild and redeploy. For a portfolio with a few dozen pages updated weekly, this is the right trade-off. For a platform with thousands of user-generated pages updated every second, it's not.
+
+## Error Boundaries and Not-Found
+
+The App Router gives you per-route error handling through `error.tsx` and `not-found.tsx` files:
+
+```
+app/
+  (public)/
+    blog/
+      [slug]/
+        page.tsx
+        not-found.tsx  ← shown for invalid slugs
+      error.tsx        ← shown if blog listing crashes
+    not-found.tsx      ← shown for unknown public routes
+  error.tsx            ← global fallback
+```
+
+The important detail: `error.tsx` must be a client component (it uses `useEffect` to log errors and a `reset` function to retry). But `not-found.tsx` can be a server component — it's just a static page.
+
+I always add a `not-found.tsx` to dynamic routes. A visitor who hits `/blog/typo-in-slug` should see a helpful "post not found" page, not a generic 404. The server component calls `notFound()` from `next/navigation`, and Next.js renders the nearest `not-found.tsx` up the tree.
+
+## The Architecture Principle
+
+The pattern behind all these patterns is the same: **push decisions to the right layer**. Data fetching happens on the server, as close to the data source as possible. Interactivity happens on the client, as close to the user interaction as possible. Layout concerns happen in layout files, not in page components. Error handling happens in error boundaries, not in try-catch blocks inside components.
+
+The App Router gives you the tools to express this cleanly. The patterns above are how I use them.

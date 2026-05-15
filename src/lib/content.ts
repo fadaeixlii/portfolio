@@ -27,4 +27,12 @@ export {
   getAllCaseStudies,
   getAdjacentCaseStudies,
 } from "./mdx/case-studies";
-export type { CaseStudyFrontmatter } from "./mdx/types";
+
+export {
+  getBlogPost,
+  getAllBlogSlugs,
+  getAllBlogPosts,
+  getAdjacentBlogPosts,
+} from "./mdx/blog";
+
+export type { CaseStudyFrontmatter, BlogPostFrontmatter } from "./mdx/types";

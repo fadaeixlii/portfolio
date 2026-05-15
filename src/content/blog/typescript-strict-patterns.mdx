@@ -1,0 +1,137 @@
+---
+title: "TypeScript Patterns I Use in Every Project"
+slug: "typescript-strict-patterns"
+excerpt: "Discriminated unions, branded types, const assertions, and satisfies — the patterns that make strict mode feel like a feature, not a constraint."
+date: "2026-05-05"
+tags: ["TypeScript", "Patterns", "DX"]
+status: "published"
+reading_time: 7
+---
+
+## Strict Mode Is Non-Negotiable
+
+Every project I start has `strict: true` in `tsconfig.json`. This isn't heroic — it's the only configuration where TypeScript actually does its job. Without strict mode, you're writing JavaScript with extra syntax. With it, the compiler catches entire categories of bugs at build time.
+
+The patterns below are the ones I reach for repeatedly. They're not clever — they're practical. Each one solves a specific problem I've hit in production.
+
+## Discriminated Unions for State
+
+The most useful pattern in TypeScript. Instead of a flat object with optional fields and a `status` string, model each state as a distinct type:
+
+```typescript
+type AsyncState<T> =
+  | { status: "idle" }
+  | { status: "loading" }
+  | { status: "success"; data: T }
+  | { status: "error"; error: Error };
+```
+
+When you switch on `status`, TypeScript narrows the type automatically. Inside the `"success"` branch, `data` exists. Inside `"error"`, `error` exists. You can't accidentally access `data` in the loading state because it literally doesn't exist on that type.
+
+This replaces the common pattern of `{ data: T | null; error: Error | null; isLoading: boolean }` which allows impossible states like `{ data: someValue, error: someError, isLoading: true }`. Discriminated unions make impossible states unrepresentable.
+
+## Branded Types for Domain Safety
+
+TypeScript's type system is structural — a `string` is a `string`, regardless of what it represents. This means a `userId` and an `orderId` are interchangeable, which is a bug waiting to happen.
+
+Branded types add a phantom property that prevents accidental mixing:
+
+```typescript
+type UserId = string & { readonly __brand: "UserId" };
+type OrderId = string & { readonly __brand: "OrderId" };
+
+function createUserId(id: string): UserId {
+  return id as UserId;
+}
+
+function getOrder(orderId: OrderId) { /* ... */ }
+
+const userId = createUserId("usr_123");
+getOrder(userId); // Type error — UserId is not assignable to OrderId
+```
+
+The `__brand` property never exists at runtime. It's a compile-time-only guard. I use this for any ID type, API keys, validated email addresses, and sanitized HTML strings. The runtime cost is zero; the safety gain is significant.
+
+## `satisfies` for Validated Literals
+
+The `satisfies` operator (TypeScript 4.9+) checks that a value matches a type without widening it. This is perfect for configuration objects where you want both type safety and literal inference:
+
+```typescript
+const routes = {
+  home: "/",
+  about: "/about",
+  work: "/work",
+  blog: "/blog",
+} satisfies Record<string, string>;
+
+// routes.home is typed as "/" (literal), not string
+// But TypeScript verified every value is a string
+```
+
+Without `satisfies`, you'd use `as const` (loses the type check) or a type annotation (loses the literal types). `satisfies` gives you both.
+
+I use this everywhere: route maps, color tokens, feature flags, environment variable schemas. Anywhere you want the compiler to verify structure while preserving the specific values.
+
+## `const` Assertions for Immutable Data
+
+`as const` makes TypeScript infer the narrowest possible type and marks everything as `readonly`:
+
+```typescript
+const ROLES = ["admin", "editor", "viewer"] as const;
+type Role = (typeof ROLES)[number]; // "admin" | "editor" | "viewer"
+```
+
+This derives the union type from the array, so you never have to keep them in sync manually. Add a new role to the array, and the union type updates automatically.
+
+Combined with `satisfies`:
+
+```typescript
+const STATUS_CONFIG = {
+  active: { label: "Active", color: "green" },
+  inactive: { label: "Inactive", color: "gray" },
+  suspended: { label: "Suspended", color: "red" },
+} as const satisfies Record<string, { label: string; color: string }>;
+```
+
+You get immutability, literal types, AND type validation in one expression.
+
+## Exhaustive Switches with `never`
+
+When switching on a discriminated union, add a default case that assigns to `never`:
+
+```typescript
+function handleState(state: AsyncState<User>) {
+  switch (state.status) {
+    case "idle": return null;
+    case "loading": return <Spinner />;
+    case "success": return <Profile user={state.data} />;
+    case "error": return <ErrorMessage error={state.error} />;
+    default: {
+      const _exhaustive: never = state;
+      return _exhaustive;
+    }
+  }
+}
+```
+
+If someone adds a new status variant to the union type, this function will fail to compile until it handles the new case. The `never` assignment is the mechanism — if all cases are handled, the default branch is unreachable and `state` narrows to `never`. If a case is missing, `state` still has a non-`never` type, and the assignment fails.
+
+## Generic Constraints That Actually Help
+
+Most generic functions I see are over-generic. They accept `T` without constraints, which means the function body can't do anything useful with `T`. Constrain generics to the minimum shape you need:
+
+```typescript
+function getDisplayName<T extends { name: string; nickname?: string }>(
+  entity: T
+): string {
+  return entity.nickname ?? entity.name;
+}
+```
+
+The function works with any object that has at least `name` and optionally `nickname`. It doesn't care about other properties. The constraint communicates intent — this function needs a name-like thing, nothing more.
+
+## The Compound Effect
+
+None of these patterns are individually groundbreaking. The value is in combining them consistently. A codebase where every state is a discriminated union, every ID is branded, every config uses `satisfies`, and every switch is exhaustive — that codebase has dramatically fewer runtime bugs. The type system catches them at compile time, and the developer experience is better because the editor knows exactly what's possible at every point in the code.
+
+Strict mode isn't a constraint. It's a feature. These patterns make it feel that way.

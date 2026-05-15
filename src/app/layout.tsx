@@ -28,6 +28,11 @@ export const metadata: Metadata = {
   description:
     "Senior full-stack developer building web applications with React, Next.js, and TypeScript. Based in the Netherlands.",
   metadataBase: new URL("https://fadaeixlii.com"),
+  alternates: {
+    types: {
+      "application/rss+xml": "https://fadaeixlii.com/feed.xml",
+    },
+  },
 };
 
 export default function RootLayout({

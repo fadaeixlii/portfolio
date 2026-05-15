@@ -10,3 +10,13 @@ export interface CaseStudyFrontmatter {
   sort_order: number;
   hero_image: string;
 }
+
+export interface BlogPostFrontmatter {
+  title: string;
+  slug: string;
+  excerpt: string;
+  date: string;
+  tags: string[];
+  status: "draft" | "published";
+  reading_time: number;
+}

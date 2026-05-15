@@ -1,0 +1,86 @@
+---
+title: "The Mental Model for React Server Components"
+slug: "react-server-components-mental-model"
+excerpt: "Server Components aren't about performance. They're about where your code runs — and once that clicks, everything else follows."
+date: "2026-05-10"
+tags: ["React", "Server Components", "Architecture"]
+status: "published"
+reading_time: 8
+---
+
+## The Wrong Starting Point
+
+Most explanations of React Server Components start with performance. They tell you Server Components are faster because they don't ship JavaScript to the client. That's true, but it's the wrong frame. It makes you think of RSC as an optimization — something you reach for when you need speed. In reality, RSC is a new default that changes how you structure applications.
+
+The better starting point: **where does this code need to run?**
+
+If a component reads from a database, it runs on the server. If it responds to a click, it runs on the client. If it just renders markup from props, it can run anywhere — and "anywhere" defaults to the server in the App Router.
+
+## The Boundary Is a Contract
+
+The `"use client"` directive isn't a performance hint. It's a contract. Everything below that directive — the component and its imports — ships to the browser. Everything above stays on the server.
+
+This means the boundary isn't just about one component. It's about the entire import tree rooted at that component. Import a 200KB charting library inside a client component, and that library ships to the browser. Import it in a server component, and it stays on the server.
+
+The practical rule: push `"use client"` as far down the tree as possible. Don't mark a page-level component as client just because it has one interactive button. Extract the button into its own client component and keep the rest on the server.
+
+## Composition Over Configuration
+
+The pattern that makes RSC click is **passing server content as children to client components**.
+
+```tsx
+// ServerLayout.tsx — runs on server, no "use client"
+import { InteractiveShell } from "./InteractiveShell";
+
+export function ServerLayout() {
+  const data = await db.query("SELECT * FROM posts");
+  return (
+    <InteractiveShell>
+      {data.map(post => <PostCard key={post.id} post={post} />)}
+    </InteractiveShell>
+  );
+}
+```
+
+```tsx
+// InteractiveShell.tsx
+"use client";
+export function InteractiveShell({ children }) {
+  const [isOpen, setIsOpen] = useState(true);
+  return isOpen ? <div>{children}</div> : null;
+}
+```
+
+The `InteractiveShell` is a client component with state. But the `PostCard` components passed as children are server-rendered. The client component receives them as opaque React elements — it doesn't re-render them, just places them in the DOM. The data fetching stays on the server. The interactivity stays on the client. Neither knows about the other.
+
+This is the core pattern. Once you internalize it, you stop thinking about RSC as a feature and start thinking about it as the way React components compose across environments.
+
+## When Client Components Are Correct
+
+Not everything belongs on the server. Client components are the right choice when you need:
+
+- **State** — `useState`, `useReducer`, or any state management
+- **Effects** — `useEffect`, subscriptions, timers
+- **Browser APIs** — `window`, `document`, `navigator`, `IntersectionObserver`
+- **Event handlers** — `onClick`, `onChange`, `onSubmit`
+- **Third-party client libraries** — most animation libraries, form libraries with controlled inputs
+
+The mistake I see most often is wrapping entire pages in `"use client"` because one child needs interactivity. This defeats the purpose. Instead, extract the interactive piece into its own component and let the rest of the page stay on the server.
+
+## The Mental Checklist
+
+Before adding `"use client"` to a file, run through this:
+
+1. Does this component use hooks? → Client
+2. Does this component use browser APIs? → Client
+3. Does this component handle user events? → Client
+4. Does this component just render props/children? → Server
+5. Does this component fetch data? → Server (or a Server Action)
+
+If only one part of a component is interactive, split it. The server part renders the layout and data. The client part handles the interaction. Connect them through props or children.
+
+## What Changed for Me
+
+Before RSC, I thought about components as either "smart" (data-fetching containers) or "dumb" (presentational). RSC replaces that with a more useful split: server components handle data and rendering, client components handle interaction. The data doesn't flow through context or global state — it flows through the component tree at render time, on the server, and arrives at the client fully formed.
+
+This portfolio site is built entirely on this model. The case study pages are server components that read MDX from disk and render it. The hero animation is a client component that responds to mouse movement. The contact form is a client component that calls a Server Action. Each component runs exactly where it needs to — and nowhere else.
