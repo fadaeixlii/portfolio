@@ -18,7 +18,7 @@ export function Footer() {
 
   return (
     <footer aria-label="Site footer" className="border-t border-border">
-      <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 px-6 py-8 sm:flex-row sm:justify-between">
+      <div className="mx-auto flex max-w-5xl flex-col items-center gap-3 px-4 py-6 sm:gap-4 sm:px-6 sm:py-8 sm:flex-row sm:justify-between">
         <p className="text-sm text-muted-foreground">
           &copy; {new Date().getFullYear()} {site.name}
         </p>

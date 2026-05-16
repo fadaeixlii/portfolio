@@ -47,7 +47,7 @@ export default async function BlogPostPage({ params }: Props) {
   const adjacent = await getAdjacentBlogPosts(slug);
 
   return (
-    <article className="mx-auto w-full max-w-3xl px-6 py-16">
+    <article className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6 sm:py-16">
       <FadeIn>
         <BlogPostHeader frontmatter={frontmatter} />
       </FadeIn>

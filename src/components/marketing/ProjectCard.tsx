@@ -7,7 +7,7 @@ export function ProjectCard({ project }: { project: Project }) {
     <SpotlightCard>
       <Link
         href={project.links.caseStudy || `/work/${project.slug}`}
-        className="group flex flex-col gap-4 p-6"
+        className="group flex flex-col gap-3 p-4 sm:gap-4 sm:p-6"
       >
         <div className="flex items-baseline justify-between gap-4">
           <h3 className="font-serif text-xl font-normal tracking-tight transition-colors group-hover:text-accent">

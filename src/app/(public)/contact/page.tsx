@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <section className="flex flex-1 flex-col items-center px-6 py-16">
+    <section className="flex flex-1 flex-col items-center px-4 py-10 sm:px-6 sm:py-16">
       <FadeIn>
         <div className="flex w-full max-w-2xl flex-col items-center gap-8">
           <div className="flex flex-col items-center gap-4 text-center">

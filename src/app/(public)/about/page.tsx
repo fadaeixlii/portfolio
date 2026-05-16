@@ -11,19 +11,20 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <section className="mx-auto w-full max-w-3xl px-6 py-16">
-      <div className="flex flex-col gap-16">
+    <section className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6 sm:py-16">
+      <div className="flex flex-col gap-10 sm:gap-16">
         {/* Intro with profile image */}
         <FadeIn>
           <div className="flex flex-col gap-8">
             <div className="flex flex-col items-start gap-8 sm:flex-row">
-              <div className="relative shrink-0 overflow-hidden rounded-lg border border-border">
+              <div className="relative mx-auto w-40 shrink-0 overflow-hidden rounded-lg border border-border sm:mx-0 sm:w-56 md:w-70">
                 <Image
                   src="/images/profile-dark.png"
                   alt="Mohammad M Khani — pixel art illustration"
                   width={280}
                   height={280}
-                  className="hidden object-cover dark:block"
+                  className="hidden w-full object-cover dark:block"
+                  style={{ height: "auto" }}
                   priority
                 />
                 <Image
@@ -31,7 +32,8 @@ export default function AboutPage() {
                   alt="Mohammad M Khani — pixel art illustration"
                   width={280}
                   height={280}
-                  className="block object-cover dark:hidden"
+                  className="block w-full object-cover dark:hidden"
+                  style={{ height: "auto" }}
                   priority
                 />
               </div>
@@ -54,9 +56,9 @@ export default function AboutPage() {
 
         {/* Experience */}
         <FadeIn delay={0.1}>
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-6 sm:gap-8">
             <h2 className="text-2xl font-medium tracking-tight">Experience</h2>
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-6 sm:gap-8">
               {experience.map((job, i) => (
                 <div
                   key={i}

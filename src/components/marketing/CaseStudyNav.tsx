@@ -11,7 +11,7 @@ export function CaseStudyNav({ prev, next }: CaseStudyNavProps) {
 
   return (
     <nav
-      className="mt-16 flex items-stretch border-t border-border pt-8"
+      className="mt-10 flex items-stretch border-t border-border pt-6 sm:mt-16 sm:pt-8"
       aria-label="Case study navigation"
     >
       <div className="flex-1">

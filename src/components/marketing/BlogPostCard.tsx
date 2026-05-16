@@ -17,7 +17,7 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group flex flex-col gap-3 rounded-lg border border-border bg-card p-6 transition-colors hover:border-accent/30"
+      className="group flex flex-col gap-3 rounded-lg border border-border bg-card p-4 transition-colors hover:border-accent/30 sm:p-6"
     >
       <div className="flex items-center gap-3 text-sm text-muted-foreground">
         <time dateTime={post.date}>{formatDate(post.date)}</time>

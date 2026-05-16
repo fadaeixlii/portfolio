@@ -36,7 +36,7 @@ export default function HomePage() {
   return (
     <>
       {/* ── Hero ── */}
-      <section className="relative flex min-h-[85vh] flex-col justify-center overflow-hidden px-6">
+      <section className="relative flex min-h-[70vh] flex-col justify-center overflow-hidden px-4 sm:min-h-[85vh] sm:px-6">
         <HeroScene />
         <div className="relative mx-auto w-full max-w-5xl">
           <HeroAnimation>
@@ -55,7 +55,7 @@ export default function HomePage() {
 
             {/* Name */}
             <HeroItem>
-              <h1 className="font-serif text-5xl font-normal tracking-tight sm:text-6xl lg:text-8xl">
+              <h1 className="font-serif text-4xl font-normal tracking-tight sm:text-5xl md:text-6xl lg:text-8xl">
                 {site.name.split(" ")[0]}
                 <br />
                 <span className="text-accent">
@@ -144,25 +144,27 @@ export default function HomePage() {
       </section>
 
       {/* ── About ── */}
-      <section className="border-t border-border px-6 py-24">
+      <section className="border-t border-border px-4 py-12 sm:px-6 sm:py-24">
         <FadeIn>
           <div className="mx-auto w-full max-w-5xl">
-            <div className="flex flex-col gap-12 md:flex-row md:items-start md:gap-16">
+            <div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-16">
               {/* Profile image — theme-aware */}
-              <div className="relative shrink-0 overflow-hidden rounded-lg border border-border">
+              <div className="relative mx-auto w-48 shrink-0 overflow-hidden rounded-lg border border-border sm:w-64 md:mx-0 md:w-80">
                 <Image
                   src="/images/profile-dark.png"
                   alt="Mohammad M Khani — pixel art illustration"
                   width={320}
                   height={320}
-                  className="hidden object-cover dark:block"
+                  className="hidden w-full object-cover dark:block"
+                  style={{ height: "auto" }}
                 />
                 <Image
                   src="/images/profile-light.png"
                   alt="Mohammad M Khani — pixel art illustration"
                   width={320}
                   height={320}
-                  className="block object-cover dark:hidden"
+                  className="block w-full object-cover dark:hidden"
+                  style={{ height: "auto" }}
                 />
               </div>
 
@@ -174,7 +176,7 @@ export default function HomePage() {
                   {site.about.intro}
                 </p>
 
-                <div className="mt-4 grid max-w-sm grid-cols-3 gap-8">
+                <div className="mt-4 grid max-w-sm grid-cols-3 gap-4 sm:gap-8">
                   {site.stats.map((stat) => {
                     const { target, suffix } = parseStat(stat.value);
                     return (
@@ -213,7 +215,7 @@ export default function HomePage() {
 
       {/* ── Selected Work ── */}
       {featured.length > 0 && (
-        <section className="border-t border-border px-6 py-24">
+        <section className="border-t border-border px-4 py-12 sm:px-6 sm:py-24">
           <FadeIn>
             <div className="mx-auto w-full max-w-5xl">
               <div className="mb-12 flex items-baseline justify-between">
@@ -238,7 +240,7 @@ export default function HomePage() {
       )}
 
       {/* ── Tech Stack ── */}
-      <section className="border-t border-border px-6 py-24">
+      <section className="border-t border-border px-4 py-12 sm:px-6 sm:py-24">
         <FadeIn>
           <div className="mx-auto w-full max-w-5xl">
             <h2 className="mb-12 font-serif text-3xl font-normal tracking-tight">
@@ -268,7 +270,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Contact CTA ── */}
-      <section className="border-t border-border px-6 py-24">
+      <section className="border-t border-border px-4 py-12 sm:px-6 sm:py-24">
         <FadeIn>
           <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-6 text-center">
             <h2 className="font-serif text-3xl font-normal tracking-tight">
