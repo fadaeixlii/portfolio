@@ -19,11 +19,19 @@ export default function AboutPage() {
             <div className="flex flex-col items-start gap-8 sm:flex-row">
               <div className="relative shrink-0 overflow-hidden rounded-lg border border-border">
                 <Image
-                  src="/images/profile.png"
+                  src="/images/profile-dark.png"
                   alt="Mohammad M Khani — pixel art illustration"
                   width={280}
                   height={280}
-                  className="object-cover"
+                  className="hidden object-cover dark:block"
+                  priority
+                />
+                <Image
+                  src="/images/profile-light.png"
+                  alt="Mohammad M Khani — pixel art illustration"
+                  width={280}
+                  height={280}
+                  className="block object-cover dark:hidden"
                   priority
                 />
               </div>

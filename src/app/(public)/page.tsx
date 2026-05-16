@@ -148,14 +148,21 @@ export default function HomePage() {
         <FadeIn>
           <div className="mx-auto w-full max-w-5xl">
             <div className="flex flex-col gap-12 md:flex-row md:items-start md:gap-16">
-              {/* Profile image */}
+              {/* Profile image — theme-aware */}
               <div className="relative shrink-0 overflow-hidden rounded-lg border border-border">
                 <Image
-                  src="/images/profile.png"
+                  src="/images/profile-dark.png"
                   alt="Mohammad M Khani — pixel art illustration"
                   width={320}
                   height={320}
-                  className="object-cover"
+                  className="hidden object-cover dark:block"
+                />
+                <Image
+                  src="/images/profile-light.png"
+                  alt="Mohammad M Khani — pixel art illustration"
+                  width={320}
+                  height={320}
+                  className="block object-cover dark:hidden"
                 />
               </div>
 
