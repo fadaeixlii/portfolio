@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const { frontmatter } = result;
   return {
-    title: `${frontmatter.title} — Mohammad Fadaei`,
+    title: `${frontmatter.title} — Mohammad M Khani`,
     description: frontmatter.excerpt,
     alternates: { canonical: `https://fadaeixlii.com/blog/${slug}` },
     openGraph: {
@@ -65,7 +65,7 @@ export default async function BlogPostPage({ params }: Props) {
             headline: frontmatter.title,
             description: frontmatter.excerpt,
             datePublished: frontmatter.date,
-            author: { "@type": "Person", name: "Mohammad Fadaei" },
+            author: { "@type": "Person", name: "Mohammad M Khani" },
             url: `https://fadaeixlii.com/blog/${slug}`,
             keywords: frontmatter.tags.join(", "),
           }),

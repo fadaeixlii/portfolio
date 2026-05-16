@@ -2,10 +2,10 @@
 
 import { useEffect, useRef } from "react";
 
-// Ochre accent in RGB (approximation of oklch(0.68 0.09 65))
-const AR = 196;
-const AG = 160;
-const AB = 100;
+// Deep orange accent in RGB (approximation of oklch(0.65 0.18 50))
+const AR = 220;
+const AG = 130;
+const AB = 40;
 
 interface Projected {
   x: number;

@@ -1,7 +1,7 @@
 import { generateOgImage, ogSize, ogContentType } from "@/lib/og/generate";
 import { getCaseStudy } from "@/lib/mdx/case-studies";
 
-export const alt = "Case Study — Mohammad Fadaei";
+export const alt = "Case Study — Mohammad M Khani";
 export const size = ogSize;
 export const contentType = ogContentType;
 

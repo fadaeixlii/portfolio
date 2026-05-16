@@ -4,7 +4,7 @@ import { BlogPostCard } from "@/components/marketing/BlogPostCard";
 import { FadeIn } from "@/components/shared/FadeIn";
 
 export const metadata: Metadata = {
-  title: "Blog — Mohammad Fadaei",
+  title: "Blog — Mohammad M Khani",
   description:
     "Articles on React, TypeScript, Next.js, and web architecture. Patterns and lessons from six years of full-stack development.",
   alternates: { canonical: "https://fadaeixlii.com/blog" },

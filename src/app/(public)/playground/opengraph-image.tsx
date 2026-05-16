@@ -1,6 +1,6 @@
 import { generateOgImage, ogSize, ogContentType } from "@/lib/og/generate";
 
-export const alt = "Playground — Mohammad Fadaei";
+export const alt = "Playground — Mohammad M Khani";
 export const size = ogSize;
 export const contentType = ogContentType;
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { HeroAnimation, HeroItem } from "@/components/marketing/HeroAnimation";
 import { HeroScene } from "@/components/marketing/HeroScene";
@@ -146,44 +147,59 @@ export default function HomePage() {
       <section className="border-t border-border px-6 py-24">
         <FadeIn>
           <div className="mx-auto w-full max-w-5xl">
-            <h2 className="mb-8 font-serif text-3xl font-normal tracking-tight">
-              about
-            </h2>
-            <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              {site.about.intro}
-            </p>
+            <div className="flex flex-col gap-12 md:flex-row md:items-start md:gap-16">
+              {/* Profile image */}
+              <div className="relative shrink-0 overflow-hidden rounded-lg border border-border">
+                <Image
+                  src="/images/profile.png"
+                  alt="Mohammad M Khani — pixel art illustration"
+                  width={320}
+                  height={320}
+                  className="object-cover"
+                />
+              </div>
 
-            <div className="mt-12 grid max-w-sm grid-cols-3 gap-8">
-              {site.stats.map((stat) => {
-                const { target, suffix } = parseStat(stat.value);
-                return (
-                  <div key={stat.label} className="flex flex-col gap-1">
-                    <span className="font-serif text-3xl font-normal text-foreground">
-                      <CountUp target={target} suffix={suffix} />
-                    </span>
-                    <span className="text-xs uppercase tracking-widest text-muted-foreground">
-                      {stat.label}
-                    </span>
-                  </div>
-                );
-              })}
+              <div className="flex flex-col gap-6">
+                <h2 className="font-serif text-3xl font-normal tracking-tight">
+                  about
+                </h2>
+                <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
+                  {site.about.intro}
+                </p>
+
+                <div className="mt-4 grid max-w-sm grid-cols-3 gap-8">
+                  {site.stats.map((stat) => {
+                    const { target, suffix } = parseStat(stat.value);
+                    return (
+                      <div key={stat.label} className="flex flex-col gap-1">
+                        <span className="font-serif text-3xl font-normal text-foreground">
+                          <CountUp target={target} suffix={suffix} />
+                        </span>
+                        <span className="text-xs uppercase tracking-widest text-muted-foreground">
+                          {stat.label}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <Link
+                  href="/about"
+                  className="mt-2 inline-flex items-center gap-1.5 text-sm text-accent transition-colors hover:text-foreground"
+                >
+                  More about me
+                  <svg
+                    className="size-3.5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
             </div>
-
-            <Link
-              href="/about"
-              className="mt-8 inline-flex items-center gap-1.5 text-sm text-accent transition-colors hover:text-foreground"
-            >
-              More about me
-              <svg
-                className="size-3.5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </Link>
           </div>
         </FadeIn>
       </section>

@@ -19,7 +19,7 @@ export async function generateOgImage({ title, subtitle }: OgParams) {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          backgroundColor: "#1a1917",
+          backgroundColor: "#111010",
         }}
       >
         {/* Accent line */}
@@ -28,7 +28,7 @@ export async function generateOgImage({ title, subtitle }: OgParams) {
             width: "64px",
             height: "4px",
             borderRadius: "2px",
-            backgroundColor: "#b89a60",
+            backgroundColor: "#dc8228",
             marginBottom: "40px",
           }}
         />
@@ -52,7 +52,7 @@ export async function generateOgImage({ title, subtitle }: OgParams) {
           <div
             style={{
               fontSize: 24,
-              color: "#918e88",
+              color: "#7a7670",
               lineHeight: 1.5,
             }}
           >
@@ -76,13 +76,13 @@ export async function generateOgImage({ title, subtitle }: OgParams) {
               width: "8px",
               height: "8px",
               borderRadius: "50%",
-              backgroundColor: "#b89a60",
+              backgroundColor: "#dc8228",
             }}
           />
           <div
             style={{
               fontSize: 18,
-              color: "#918e88",
+              color: "#7a7670",
             }}
           >
             fadaeixlii.com

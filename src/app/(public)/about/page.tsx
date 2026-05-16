@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { site, skills, experience } from "@/lib/content";
 import { FadeIn } from "@/components/shared/FadeIn";
 
@@ -12,15 +13,29 @@ export default function AboutPage() {
   return (
     <section className="mx-auto w-full max-w-3xl px-6 py-16">
       <div className="flex flex-col gap-16">
-        {/* Intro */}
+        {/* Intro with profile image */}
         <FadeIn>
-          <div className="flex flex-col gap-6">
-            <h1 className="font-serif text-4xl font-normal tracking-tight">
-              About
-            </h1>
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              {site.about.intro}
-            </p>
+          <div className="flex flex-col gap-8">
+            <div className="flex flex-col items-start gap-8 sm:flex-row">
+              <div className="relative shrink-0 overflow-hidden rounded-lg border border-border">
+                <Image
+                  src="/images/profile.png"
+                  alt="Mohammad M Khani — pixel art illustration"
+                  width={280}
+                  height={280}
+                  className="object-cover"
+                  priority
+                />
+              </div>
+              <div className="flex flex-col gap-4">
+                <h1 className="font-serif text-4xl font-normal tracking-tight">
+                  About
+                </h1>
+                <p className="text-lg leading-relaxed text-muted-foreground">
+                  {site.about.intro}
+                </p>
+              </div>
+            </div>
             {site.about.paragraphs.map((p, i) => (
               <p key={i} className="leading-relaxed text-muted-foreground">
                 {p}

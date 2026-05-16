@@ -22,7 +22,7 @@ const deltha = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "Mohammad Fadaei — Full-Stack Developer",
+    default: "Mohammad M Khani — Full-Stack Developer",
     template: "%s | fadaeixlii.com",
   },
   description:
