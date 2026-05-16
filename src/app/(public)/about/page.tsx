@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { site, skills, experience } from "@/lib/content";
 import { FadeIn } from "@/components/shared/FadeIn";
+import { SectionLabel } from "@/components/shared/SectionLabel";
+import { ExperienceTimeline } from "@/components/marketing/ExperienceTimeline";
 
 export const metadata: Metadata = {
   title: "About",
@@ -11,8 +13,8 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <section className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6 sm:py-16">
-      <div className="flex flex-col gap-10 sm:gap-16">
+    <section className="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 sm:py-16 md:px-12 lg:px-16">
+      <div className="flex flex-col gap-12 sm:gap-20">
         {/* Intro with profile image */}
         <FadeIn>
           <div className="flex flex-col gap-8">
@@ -38,8 +40,8 @@ export default function AboutPage() {
                 />
               </div>
               <div className="flex flex-col gap-4">
-                <h1 className="font-serif text-4xl font-normal tracking-tight">
-                  About
+                <h1 className="font-serif text-4xl font-normal tracking-tight sm:text-5xl">
+                  about
                 </h1>
                 <p className="text-lg leading-relaxed text-muted-foreground">
                   {site.about.intro}
@@ -56,45 +58,19 @@ export default function AboutPage() {
 
         {/* Experience */}
         <FadeIn delay={0.1}>
-          <div className="flex flex-col gap-6 sm:gap-8">
-            <h2 className="text-2xl font-medium tracking-tight">Experience</h2>
-            <div className="flex flex-col gap-6 sm:gap-8">
-              {experience.map((job, i) => (
-                <div
-                  key={i}
-                  className="flex flex-col gap-2 border-l-2 border-accent/30 pl-6"
-                >
-                  <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-                    <h3 className="font-medium">{job.role}</h3>
-                    <span className="text-sm text-muted-foreground">
-                      {job.period}
-                    </span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    {job.company} · {job.location}
-                  </p>
-                  <p className="leading-relaxed text-muted-foreground">
-                    {job.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 pt-1">
-                    {job.tech.map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-sm bg-muted px-2 py-0.5 text-xs text-muted-foreground"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="flex flex-col gap-8">
+            <SectionLabel index="I" label="experience" />
+            <h2 className="text-2xl font-medium tracking-tight">
+              Experience
+            </h2>
+            <ExperienceTimeline entries={experience} />
           </div>
         </FadeIn>
 
         {/* Skills */}
         <FadeIn delay={0.15}>
           <div className="flex flex-col gap-8">
+            <SectionLabel index="II" label="skills" />
             <h2 className="text-2xl font-medium tracking-tight">Skills</h2>
             <div className="grid gap-8 sm:grid-cols-2">
               {skills.categories.map((cat) => (

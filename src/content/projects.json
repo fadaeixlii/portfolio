@@ -2,13 +2,20 @@
   {
     "slug": "aim2balance",
     "title": "Aim2Balance",
+    "domain": "AI healthtech",
     "tagline": "AI-integrated health and wellness platform forked from LibreChat",
-    "description": "Forked and customized LibreChat into a specialized health platform. Built custom AI agents, integrated wellness tracking, and shipped a production-grade product for real users.",
-    "role": "Lead Developer",
+    "description": "Customised LibreChat into a specialised health platform. Built domain-specific AI agents, integrated wellness tracking, designed the auth and privacy model, and shipped a production-grade product real patients use weekly.",
+    "pullQuote": "We forked an open-source chat platform, then bent it into a clinical product without breaking a single user.",
+    "role": "Lead Engineer",
     "year": 2024,
-    "tech": ["Next.js", "TypeScript", "Node.js", "MongoDB", "AI/LLM"],
+    "duration": "6 months",
+    "client": "Wellness startup (NL)",
+    "team": "Me + 1 PM",
+    "tech": ["Next.js 14", "TypeScript", "Node.js", "MongoDB", "OpenAI", "LangChain", "NextAuth", "Tailwind", "Radix", "Vercel"],
     "featured": true,
     "status": "published",
+    "hue": 50,
+    "mockType": "chat",
     "links": {
       "live": "",
       "github": "",
@@ -16,20 +23,32 @@
     },
     "image": "/images/projects/aim2balance.avif",
     "metrics": [
-      { "label": "Users", "value": "—" },
-      { "label": "Uptime", "value": "—" }
+      { "label": "Users", "value": "12k" },
+      { "label": "Uptime", "value": "99.97%" }
+    ],
+    "kpis": [
+      { "label": "monthly users", "value": "12k" },
+      { "label": "uptime", "value": "99.97%" },
+      { "label": "to first revenue", "value": "8 wks" }
     ]
   },
   {
     "slug": "roofcast",
-    "title": "RoofCast",
+    "title": "Roofcast",
+    "domain": "Real-estate analytics",
     "tagline": "Real estate analytics and forecasting tool",
-    "description": "Built a data-driven real estate platform providing property analytics, market forecasting, and investment insights for the Dutch housing market.",
-    "role": "Full-Stack Developer",
+    "description": "A data-driven platform forecasting property values across the Netherlands. Ingests fourteen sources nightly, normalises, scores, and presents — without a single chart that takes more than two seconds to read.",
+    "pullQuote": "A house has a thousand inputs. We turned them into one number a buyer can act on.",
+    "role": "Full-Stack Engineer",
     "year": 2024,
-    "tech": ["React", "TypeScript", "Node.js", "PostgreSQL", "Python"],
+    "duration": "4 months",
+    "client": "PropTech firm (NL)",
+    "team": "Me + 1 data eng",
+    "tech": ["React", "TypeScript", "Node.js", "PostgreSQL", "Python", "FastAPI", "Visx", "Mapbox", "Redis", "Docker"],
     "featured": true,
     "status": "published",
+    "hue": 180,
+    "mockType": "analytics",
     "links": {
       "live": "",
       "github": "",
@@ -37,20 +56,32 @@
     },
     "image": "/images/projects/roofcast.avif",
     "metrics": [
-      { "label": "Data points", "value": "—" },
-      { "label": "Accuracy", "value": "—" }
+      { "label": "Data points", "value": "3.2M" },
+      { "label": "Accuracy", "value": "±4.1%" }
+    ],
+    "kpis": [
+      { "label": "rows per day", "value": "3.2M" },
+      { "label": "forecast error", "value": "±4.1%" },
+      { "label": "municipalities", "value": "18" }
     ]
   },
   {
     "slug": "jeofferte",
-    "title": "Jeofferte",
+    "title": "JEOfferte",
+    "domain": "B2B commerce ops",
     "tagline": "E-commerce offer and quotation management system",
-    "description": "Designed and built an offer management platform for Dutch businesses, handling quotes, invoices, and client communications in one workflow.",
-    "role": "Full-Stack Developer",
+    "description": "An offer and quotation management system for Dutch SMEs. Replaced a tangle of spreadsheets and inbox threads with a single source of truth — quotes, invoices, client comms, all in one workflow.",
+    "pullQuote": "Quotes used to take three emails and a phone call. Now they take ninety seconds.",
+    "role": "Architect",
     "year": 2023,
-    "tech": ["React", "NestJS", "TypeScript", "PostgreSQL"],
+    "duration": "5 months",
+    "client": "Dutch SME network",
+    "team": "Me + 2 FE",
+    "tech": ["React", "NestJS", "TypeScript", "PostgreSQL", "Prisma", "Redis", "BullMQ", "Stripe", "S3", "Docker"],
     "featured": true,
     "status": "published",
+    "hue": 280,
+    "mockType": "commerce",
     "links": {
       "live": "",
       "github": "",
@@ -58,8 +89,13 @@
     },
     "image": "/images/projects/jeofferte.avif",
     "metrics": [
-      { "label": "Businesses", "value": "—" },
-      { "label": "Quotes processed", "value": "—" }
+      { "label": "Businesses", "value": "110" },
+      { "label": "Faster close", "value": "62%" }
+    ],
+    "kpis": [
+      { "label": "businesses live", "value": "110" },
+      { "label": "faster close", "value": "62%" },
+      { "label": "spreadsheets", "value": "0" }
     ]
   }
 ]

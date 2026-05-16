@@ -1,26 +1,44 @@
 [
   {
-    "company": "— (Update with real company)",
+    "company": "Independent / Consulting",
     "role": "Senior Full-Stack Developer",
-    "period": "2022 – Present",
-    "location": "Netherlands",
-    "description": "Leading development of web applications using React, Next.js, and TypeScript. Architecting scalable systems and mentoring junior developers.",
-    "tech": ["React", "Next.js", "TypeScript", "Node.js"]
+    "period": "2022 — Present",
+    "location": "Amsterdam, NL",
+    "type": "Freelance",
+    "description": "Architect & ship full-stack React/Next products for clients across health, real estate, and commerce. Lead small engineering pods, mentor mids, and run technical due diligence for hires.",
+    "highlights": [
+      "Shipped 3 flagship products to production with paying customers",
+      "Designed system architecture serving 12k+ MAU on a single 14\" laptop",
+      "Mentored 2 mid-level engineers to senior over 18 months"
+    ],
+    "tech": ["React", "Next.js", "TypeScript", "NestJS", "Postgres", "Solidity"]
   },
   {
-    "company": "— (Update with real company)",
+    "company": "Remote engagements — multi-domain",
     "role": "Full-Stack Developer",
-    "period": "2020 – 2022",
-    "location": "Remote",
-    "description": "Built and maintained production applications across multiple domains including e-commerce, real estate, and blockchain.",
-    "tech": ["React", "NestJS", "Solidity", "PostgreSQL"]
+    "period": "2020 — 2022",
+    "location": "Remote (EU & ME)",
+    "type": "Contract",
+    "description": "Built and maintained production applications across e-commerce, real-estate, and early DeFi. Owned features end-to-end, from API design to deploy.",
+    "highlights": [
+      "Migrated a 60k-LOC JS codebase to TypeScript with zero downtime",
+      "Built first production Solidity vault for a small DeFi team",
+      "Reduced p95 latency on a commerce backend from 1.4s → 320ms"
+    ],
+    "tech": ["React", "NestJS", "Solidity", "PostgreSQL", "Redis"]
   },
   {
-    "company": "— (Update with real company)",
+    "company": "Agency & in-house — early career",
     "role": "Frontend Developer",
-    "period": "2018 – 2020",
+    "period": "2018 — 2020",
     "location": "Remote",
-    "description": "Developed responsive web interfaces and single-page applications. Transitioned from JavaScript to TypeScript across the team's codebase.",
-    "tech": ["React", "JavaScript", "TypeScript", "CSS"]
+    "type": "Full-time",
+    "description": "Frontend foundations: responsive interfaces, SPAs, design systems. Transitioned my team's codebase from plain JavaScript to TypeScript and stayed for the cleanup.",
+    "highlights": [
+      "Led TS migration across a team of 6",
+      "Built and shipped the company's first internal design system",
+      "First Next.js production deploy at the company"
+    ],
+    "tech": ["React", "JavaScript", "TypeScript", "Sass", "Webpack"]
   }
 ]

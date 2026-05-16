@@ -14,7 +14,7 @@ export default function WorkPage() {
   const published = projects.filter((p) => p.status === "published");
 
   return (
-    <section className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6 sm:py-16">
+    <section className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-16 md:px-12 lg:px-16">
       <div className="flex flex-col gap-8 sm:gap-12">
         <FadeIn>
           <div className="flex flex-col gap-4">

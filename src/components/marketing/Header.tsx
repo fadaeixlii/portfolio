@@ -34,7 +34,7 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-border/50 bg-background/80 backdrop-blur-sm">
       <nav
         aria-label="Main navigation"
-        className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4 sm:h-16 sm:px-6"
+        className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:h-16 sm:px-6 md:px-12 lg:px-16"
       >
         <Link
           href="/"

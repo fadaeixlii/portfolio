@@ -23,8 +23,10 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-emerald: var(--emerald);
 
   /* Sidebar (shadcn) */
   --color-sidebar: var(--sidebar);
@@ -52,6 +54,10 @@
   /* Animations */
   --animate-orb-1: orb-float-1 20s ease-in-out infinite;
   --animate-orb-2: orb-float-2 25s ease-in-out infinite;
+  --animate-marquee: marquee 60s linear infinite;
+  --animate-fade-up: fadeUp 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  --animate-pulse-soft: pulse-soft 2s ease-in-out infinite;
+  --animate-blink: blink 1s steps(2, start) infinite;
 
   /* Radii: 4 / 8 / 16 / full — never 12 or arbitrary */
   --radius-sm: 4px;
@@ -68,6 +74,8 @@
   /* Core palette */
   --background: oklch(0.94 0.015 75);    /* bone */
   --foreground: oklch(0.22 0.005 75);    /* charcoal */
+  --border-strong: oklch(0.72 0.012 75); /* emphasized borders */
+  --emerald: oklch(0.72 0.17 158);       /* availability dot */
 
   /* Card / Popover */
   --card: oklch(0.96 0.012 75);          /* slightly lighter bone */
@@ -124,6 +132,8 @@
 .dark {
   --background: oklch(0.08 0.003 50);     /* near-black warm */
   --foreground: oklch(0.92 0.012 75);     /* warm off-white */
+  --border-strong: oklch(0.28 0.008 50); /* emphasized borders */
+  --emerald: oklch(0.72 0.17 158);       /* availability dot */
 
   --card: oklch(0.12 0.004 50);
   --card-foreground: oklch(0.92 0.012 75);
@@ -215,4 +225,37 @@
   0%, 100% { transform: translate(0, 0) scale(1); }
   33% { transform: translate(25px, -25px) scale(0.95); }
   66% { transform: translate(-20px, 15px) scale(1.05); }
+}
+
+/* ─── Editorial Keyframes ─── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ─── Editorial Utilities ─── */
+@layer utilities {
+  .field {
+    background-image: radial-gradient(circle, oklch(0.40 0.005 75 / 0.3) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .dark .field {
+    background-image: radial-gradient(circle, oklch(0.30 0.005 50 / 0.4) 1px, transparent 1px);
+  }
 }

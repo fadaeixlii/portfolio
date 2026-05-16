@@ -46,7 +46,7 @@ export default async function CaseStudyPage({ params }: Props) {
   const adjacent = await getAdjacentCaseStudies(slug);
 
   return (
-    <article className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6 sm:py-16">
+    <article className="mx-auto w-full max-w-4xl px-4 py-10 sm:px-6 sm:py-16 md:px-12 lg:px-16">
       <FadeIn>
         <CaseStudyHero frontmatter={frontmatter} />
       </FadeIn>

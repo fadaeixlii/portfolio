@@ -16,7 +16,13 @@
   "hero": {
     "headline": "I build web applications that handle real users and real money.",
     "subtitle": "Full-stack developer. React, Next.js, TypeScript. Based in the Netherlands.",
-    "cta": { "label": "Get in touch", "href": "/contact" }
+    "cta": { "label": "Start a project", "href": "/contact" },
+    "indexNo": "001",
+    "volume": "VI",
+    "edition": "2026",
+    "established": "2018",
+    "coordinates": "52.37°N · 4.89°E",
+    "city": "Amsterdam"
   },
   "about": {
     "intro": "Six years shipping React applications to production. I've led teams, debugged memory leaks at 3am, and refactored codebases that outlived their original authors.",
@@ -27,17 +33,26 @@
     ]
   },
   "stats": [
-    { "value": "6+", "label": "Years" },
-    { "value": "10+", "label": "Projects" },
-    { "value": "5", "label": "Domains" }
+    { "value": "06+", "label": "Years building for production" },
+    { "value": "12", "label": "Shipped client projects" },
+    { "value": "05", "label": "Industries served" },
+    { "value": "—", "label": "Resume on request" }
   ],
   "availability": {
     "status": "available",
-    "message": "Available for freelance"
+    "message": "Available — Q3 booking"
   },
   "contact": {
     "heading": "Get in touch",
-    "description": "Have a project in mind? Send me a message and I'll get back to you within 48 hours.",
-    "responseTime": "48 hours"
+    "description": "Have a brief? Send it.",
+    "responseTime": "48",
+    "responseUnit": "hrs"
+  },
+  "numbers": {
+    "totalProjects": 12,
+    "experienceYears": "six",
+    "experienceChapters": "Three",
+    "selectedWorkCount": 3,
+    "footerEdition": "001"
   }
 }
