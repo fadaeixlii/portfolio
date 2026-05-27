@@ -4,7 +4,7 @@
     "title": "Aim2Balance",
     "domain": "AI platform",
     "tagline": "EU-hosted AI chat platform with EUR billing and cross-provider token tracking",
-    "description": "Co-founded and built an AI chat platform forked from LibreChat, hosted in the EU. Engineered EUR-based billing with Stripe wallets, a Chrome extension tracking token consumption across ChatGPT, Claude, and Gemini, and cross-platform mobile apps via Capacitor.",
+    "description": "Co-founded and built an AI chat platform forked from LibreChat, hosted in the EU for GDPR compliance. Engineered EUR-based billing with Stripe wallets processing 10,000+ daily sessions, a Chrome extension tracking token consumption across ChatGPT, Claude, and Gemini, and cross-platform mobile apps via Capacitor.",
     "pullQuote": "We forked an open-source chat platform into an EU-hosted product handling 10,000 sessions a day.",
     "role": "Co-Founder & Lead Engineer",
     "year": 2025,
@@ -24,12 +24,12 @@
     "image": "/images/projects/aim2balance.avif",
     "metrics": [
       { "label": "Daily sessions", "value": "10k+" },
-      { "label": "Billing", "value": "EUR" }
+      { "label": "Billing", "value": "EUR-based" }
     ],
     "kpis": [
       { "label": "daily sessions", "value": "10k+" },
-      { "label": "billing currency", "value": "EUR" },
-      { "label": "platforms", "value": "Web + Mobile" }
+      { "label": "billing", "value": "EUR / Stripe" },
+      { "label": "platforms", "value": "Web + iOS + Android" }
     ]
   },
   {
@@ -37,7 +37,7 @@
     "title": "Roofcast",
     "domain": "Web3 prediction market",
     "tagline": "Decentralized prediction market for real estate on Polygon",
-    "description": "A Web3 DApp built on Polygon using Gnosis Conditional Tokens for real estate prediction markets. Users stake on property value outcomes with on-chain settlement. Integrated wallet connections, token creation, and real-time market data.",
+    "description": "A Web3 DApp built on Polygon using Gnosis Conditional Tokens for real estate prediction markets. Users stake on property value outcomes with fully on-chain settlement. Integrated WalletConnect, token creation, and real-time market data feeds.",
     "pullQuote": "On-chain prediction markets where real money settles on real estate outcomes.",
     "role": "Tech Lead",
     "year": 2025,
@@ -62,15 +62,15 @@
     "kpis": [
       { "label": "blockchain", "value": "Polygon" },
       { "label": "settlement", "value": "on-chain" },
-      { "label": "framework", "value": "Gnosis CT" }
+      { "label": "smart contracts", "value": "Gnosis CT" }
     ]
   },
   {
     "slug": "jeofferte",
     "title": "JEOfferte",
     "domain": "B2B commerce",
-    "tagline": "Quotation management platform for Dutch SMEs",
-    "description": "A quotation and offer management system replacing spreadsheets and email chains for 110+ Dutch SMEs. Single source of truth for quotes, invoices, and client communications — closing deals 62% faster.",
+    "tagline": "Quotation management platform replacing spreadsheets for Dutch SMEs",
+    "description": "A quotation and offer management system that replaced scattered spreadsheets and email chains for 110+ Dutch SMEs. Single source of truth for quotes, invoices, and client communications — with automated workflows that close deals 62% faster than the manual process.",
     "pullQuote": "Quotes used to take three emails and a phone call. Now they take ninety seconds.",
     "role": "Tech Lead & Architect",
     "year": 2025,
@@ -95,15 +95,15 @@
     "kpis": [
       { "label": "businesses live", "value": "110+" },
       { "label": "faster close", "value": "62%" },
-      { "label": "spreadsheets replaced", "value": "all" }
+      { "label": "spreadsheets killed", "value": "all of them" }
     ]
   },
   {
     "slug": "meshi",
     "title": "Meshi",
     "domain": "Food-tech",
-    "tagline": "Geo-based food matching platform connecting users with nearby providers",
-    "description": "A food-tech platform with a geo-based matching engine connecting users to nearby food providers. Built location-aware search, real-time availability, and a streamlined ordering flow. Part of the Zoof-it product suite.",
+    "tagline": "Geo-based food platform connecting users with nearby providers in real time",
+    "description": "A food-tech platform with a geo-based matching engine that connects users to nearby food providers. Built location-aware search with PostGIS, real-time availability tracking, and a streamlined ordering flow. Modernized the entire UI from legacy code to a React component system.",
     "pullQuote": "Matching hungry users with the closest kitchen — in under two seconds.",
     "role": "Tech Lead",
     "year": 2025,
@@ -123,24 +123,24 @@
     "image": "",
     "metrics": [
       { "label": "Matching", "value": "<2s" },
-      { "label": "Coverage", "value": "NL" }
+      { "label": "Coverage", "value": "Netherlands" }
     ],
     "kpis": [
       { "label": "match time", "value": "<2s" },
       { "label": "coverage", "value": "Netherlands" },
-      { "label": "UI modernization", "value": "complete" }
+      { "label": "UI rewrite", "value": "complete" }
     ]
   },
   {
     "slug": "intex-exchange",
     "title": "Intex Exchange",
     "domain": "Crypto exchange",
-    "tagline": "Real-time cryptocurrency trading platform with WebSocket data feeds",
-    "description": "A crypto exchange with real-time trading interfaces, WebSocket price feeds, and order book visualization. Built a shared component library that cut development cycles from 8 to 5 days and a CRUD table abstraction improving feature delivery by 50%.",
+    "tagline": "Real-time cryptocurrency trading platform with live WebSocket feeds",
+    "description": "A cryptocurrency exchange with real-time trading interfaces, WebSocket price feeds, and order book visualization. Built a shared component library that cut development cycles from 8 to 5 days and a CRUD table abstraction that improved feature delivery speed by 50%.",
     "pullQuote": "Real-time trading where milliseconds matter — and the component library that made it sustainable.",
     "role": "Senior Front-end Developer",
     "year": 2023,
-    "duration": "12 months",
+    "duration": "18 months",
     "client": "Intex",
     "team": "3 front-end engineers",
     "tech": ["React", "TypeScript", "Redux", "Socket.io", "Web3.js", "Ethers.js"],
@@ -156,20 +156,20 @@
     "image": "",
     "metrics": [
       { "label": "Dev cycle", "value": "8→5 days" },
-      { "label": "CRUD speed", "value": "+50%" }
+      { "label": "Feature speed", "value": "+50%" }
     ],
     "kpis": [
-      { "label": "dev cycle reduction", "value": "8→5 days" },
+      { "label": "dev cycle", "value": "8→5 days" },
       { "label": "feature delivery", "value": "+50%" },
-      { "label": "architecture", "value": "headless" }
+      { "label": "data feeds", "value": "real-time" }
     ]
   },
   {
     "slug": "exmodules",
     "title": "Exmodules",
     "domain": "Web3 real estate",
-    "tagline": "Web3 real estate DApp with tokenized property ownership",
-    "description": "A Web3 real estate platform enabling tokenized property ownership and marketplace features. Built token creation flows, property listing interfaces, and wallet integration for on-chain real estate transactions.",
+    "tagline": "Tokenized real estate DApp with marketplace and wallet integration",
+    "description": "A Web3 real estate platform enabling tokenized property ownership and on-chain marketplace features. Built token creation flows, property listing interfaces, wallet integration, and a headless component architecture that enabled white-label deployment across multiple clients.",
     "pullQuote": "Tokenizing real estate — turning bricks and mortar into tradeable on-chain assets.",
     "role": "Senior Front-end Developer",
     "year": 2024,
@@ -188,13 +188,79 @@
     },
     "image": "",
     "metrics": [
-      { "label": "Platform", "value": "Web3" },
-      { "label": "White-label", "value": "Yes" }
+      { "label": "Architecture", "value": "Headless" },
+      { "label": "Deployment", "value": "White-label" }
     ],
     "kpis": [
-      { "label": "platform", "value": "Web3" },
-      { "label": "white-label", "value": "enabled" },
-      { "label": "token types", "value": "property NFTs" }
+      { "label": "architecture", "value": "headless" },
+      { "label": "deployment", "value": "white-label" },
+      { "label": "tokens", "value": "property NFTs" }
+    ]
+  },
+  {
+    "slug": "panikar-assessment",
+    "title": "Panikar Assessment",
+    "domain": "Ed-tech",
+    "tagline": "Personality assessment platform serving 5,000+ users for career guidance",
+    "description": "A personality assessment tool for career guidance that scaled to 5,000+ active users. Built the interactive test interface, results visualization, and admin dashboard. Optimized Webpack bundles reducing load times by 10–15% and built an internal design system adopted across the team.",
+    "pullQuote": "Five thousand people used this tool to figure out what they're good at. The code had to be as reliable as the psychology.",
+    "role": "Front-end Developer",
+    "year": 2021,
+    "duration": "12 months",
+    "client": "Panikar Academy",
+    "team": "2 developers",
+    "tech": ["React", "TypeScript", "JavaScript", "Webpack", "Sass", "REST APIs"],
+    "featured": false,
+    "status": "published",
+    "hue": 340,
+    "mockType": "analytics",
+    "links": {
+      "live": "",
+      "github": "",
+      "caseStudy": ""
+    },
+    "image": "",
+    "metrics": [
+      { "label": "Users", "value": "5,000+" },
+      { "label": "Load time", "value": "-15%" }
+    ],
+    "kpis": [
+      { "label": "active users", "value": "5,000+" },
+      { "label": "load time reduction", "value": "10–15%" },
+      { "label": "design system", "value": "shipped" }
+    ]
+  },
+  {
+    "slug": "3gaam",
+    "title": "3gaam",
+    "domain": "Ed-tech / AI",
+    "tagline": "AI-driven student resource platform with interactive learning tools",
+    "description": "An AI-driven student resource platform with interactive learning interfaces and GraphQL-powered content delivery. Fixed critical API performance issues and led the company's first production TypeScript migration.",
+    "pullQuote": "The platform where students found answers — and where I learned to ship TypeScript to production.",
+    "role": "Front-end Developer",
+    "year": 2020,
+    "duration": "10 months",
+    "client": "3gaam",
+    "team": "3 developers",
+    "tech": ["React", "JavaScript", "TypeScript", "GraphQL", "Sass"],
+    "featured": false,
+    "status": "published",
+    "hue": 90,
+    "mockType": "chat",
+    "links": {
+      "live": "",
+      "github": "",
+      "caseStudy": ""
+    },
+    "image": "",
+    "metrics": [
+      { "label": "API", "value": "GraphQL" },
+      { "label": "Migration", "value": "JS→TS" }
+    ],
+    "kpis": [
+      { "label": "api layer", "value": "GraphQL" },
+      { "label": "migration", "value": "JS → TypeScript" },
+      { "label": "AI features", "value": "student resources" }
     ]
   }
 ]

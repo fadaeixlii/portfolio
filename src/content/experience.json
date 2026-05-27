@@ -5,11 +5,11 @@
     "period": "2025 — Present",
     "location": "Germany, Remote",
     "type": "Co-Founder",
-    "description": "Co-founded an EU-hosted AI chat platform forked from LibreChat. Engineered EUR-based billing with Stripe wallets, built a Chrome extension tracking token consumption across ChatGPT, Claude, and Gemini, and shipped cross-platform mobile apps via Capacitor.",
+    "description": "Co-founded an EU-hosted AI chat platform forked from LibreChat. Built the entire billing pipeline with Stripe wallets handling 10,000+ daily sessions, a Chrome extension that tracks token consumption across ChatGPT, Claude, and Gemini, and shipped cross-platform mobile apps via Capacitor.",
     "highlights": [
-      "Billing pipeline handling 10,000+ daily sessions with Stripe integration",
-      "Chrome extension monitoring token usage across major AI providers",
-      "Cross-platform mobile apps shipped via Capacitor for iOS and Android"
+      "EUR-based billing pipeline processing 10,000+ daily sessions via Stripe",
+      "Chrome extension tracking real-time token usage across ChatGPT, Claude, and Gemini",
+      "Cross-platform mobile apps for iOS and Android shipped with Capacitor"
     ],
     "tech": ["Next.js", "TypeScript", "Node.js", "MongoDB", "LiteLLM", "Stripe", "Capacitor"]
   },
@@ -19,40 +19,68 @@
     "period": "2025 — 2026",
     "location": "Netherlands, Remote",
     "type": "Full-time",
-    "description": "Led a 3-person engineering team building three products simultaneously — Jeofferte (B2B quotation platform), Meshi (food-tech with geo-based matching), and Roofcast (Web3 prediction market on Polygon). Owned architecture, code review, and deployment across all three.",
+    "description": "Led a 3-person engineering team shipping three products simultaneously — Jeofferte (B2B quotation platform for 110+ Dutch SMEs), Meshi (food-tech with geo-based matching), and Roofcast (Web3 prediction market on Polygon). Owned architecture decisions, code review, and deployment pipelines across all three.",
     "highlights": [
-      "Roofcast Web3 DApp on Polygon with Gnosis Conditional Tokens for prediction markets",
-      "Geo-based matching engine for Meshi connecting users with nearby food providers",
-      "Jeofferte quotation system serving 110+ Dutch SMEs with 62% faster close times"
+      "Roofcast: Web3 DApp on Polygon with Gnosis Conditional Tokens for prediction markets",
+      "Meshi: geo-based matching engine connecting users with nearby food providers",
+      "Jeofferte: quotation system closing deals 62% faster for 110+ Dutch SMEs"
     ],
     "tech": ["React", "NestJS", "TypeScript", "Solidity", "PostgreSQL", "Polygon", "Stripe"]
   },
   {
-    "company": "Exmodules + Intex Exchange",
+    "company": "Exmodules",
     "role": "Senior Front-end Developer",
-    "period": "2022 — 2025",
+    "period": "2024 — 2025",
     "location": "Remote",
     "type": "Contract",
-    "description": "Built a crypto exchange trading interface with real-time WebSocket data and a Web3 real estate DApp with token creation and marketplace features. Developed a shared component library that reduced development cycles from 8 to 5 days.",
+    "description": "Built a Web3 real estate DApp with tokenized property ownership, marketplace features, and wallet integration. Developed a headless component architecture enabling white-label deployment across multiple clients.",
     "highlights": [
-      "Component library cutting development cycles from 8 to 5 days",
-      "CRUD table abstraction improving feature delivery by 50%",
-      "Headless architecture enabling white-label deployment for multiple clients"
+      "Token creation flows and property listing interfaces for on-chain real estate",
+      "Headless architecture enabling white-label deployment for multiple clients",
+      "CRUD table abstraction improving feature delivery by 50%"
     ],
-    "tech": ["React", "TypeScript", "Web3.js", "Ethers.js", "Redux", "Socket.io"]
+    "tech": ["React", "TypeScript", "Web3.js", "Ethers.js", "Redux", "Node.js"]
   },
   {
-    "company": "Panikar Academy + 3gaam",
+    "company": "Intex Exchange",
+    "role": "Senior Front-end Developer",
+    "period": "2022 — 2024",
+    "location": "Remote",
+    "type": "Contract",
+    "description": "Built real-time cryptocurrency trading interfaces with WebSocket price feeds and order book visualization. Created a shared component library that cut development cycles from 8 to 5 days across the engineering team.",
+    "highlights": [
+      "Shared component library reducing development cycles from 8 to 5 days",
+      "Real-time trading UI with WebSocket price feeds and order book rendering",
+      "Socket.io integration for live market data with sub-second latency"
+    ],
+    "tech": ["React", "TypeScript", "Redux", "Socket.io", "Web3.js", "Ethers.js"]
+  },
+  {
+    "company": "Panikar Academy",
     "role": "Front-end Developer",
-    "period": "2019 — 2022",
+    "period": "2020 — 2022",
     "location": "Remote",
     "type": "Full-time",
-    "description": "Built SPAs and design systems for ed-tech platforms. Developed a personality assessment tool serving 5,000+ users and contributed to an AI-driven student resource platform with GraphQL integration.",
+    "description": "Built SPAs and a design system for an ed-tech platform. Developed a personality assessment tool that scaled to 5,000+ active users and optimized Webpack bundles to reduce load times by 10–15%.",
     "highlights": [
       "Personality assessment platform scaled to 5,000+ active users",
       "Webpack bundle optimization reducing load times by 10–15%",
-      "GraphQL API bug fixes and performance improvements for student resources"
+      "Internal design system adopted across the engineering team"
     ],
-    "tech": ["React", "JavaScript", "TypeScript", "GraphQL", "Webpack", "Sass"]
+    "tech": ["React", "TypeScript", "JavaScript", "Webpack", "Sass"]
+  },
+  {
+    "company": "3gaam",
+    "role": "Front-end Developer",
+    "period": "2019 — 2020",
+    "location": "Remote",
+    "type": "Full-time",
+    "description": "Contributed to an AI-driven student resource platform with GraphQL integration. Built interactive learning interfaces and resolved API performance issues that improved page load reliability.",
+    "highlights": [
+      "AI-driven student resource platform with interactive learning interfaces",
+      "GraphQL API bug fixes and query performance improvements",
+      "First production TypeScript migration at the company"
+    ],
+    "tech": ["React", "JavaScript", "TypeScript", "GraphQL", "Sass"]
   }
 ]
