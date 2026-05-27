@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState, useTransition, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { contactFormSchema, type ContactFormData } from "@/lib/validation/contact";
@@ -17,6 +17,7 @@ import { cn } from "@/lib/utils";
 export function ContactForm() {
   const [isPending, startTransition] = useTransition();
   const [result, setResult] = useState<ContactFormResult | null>(null);
+  const mountTime = useRef(Date.now());
 
   const {
     register,
@@ -29,7 +30,10 @@ export function ContactForm() {
 
   function onSubmit(data: ContactFormData) {
     startTransition(async () => {
-      const res = await submitContactForm(data);
+      const res = await submitContactForm({
+        ...data,
+        _t: mountTime.current,
+      });
       setResult(res);
       if (res.success) reset();
     });
@@ -107,6 +111,17 @@ export function ContactForm() {
             {errors.message.message}
           </p>
         )}
+      </div>
+
+      {/* Honeypot — hidden from real users, bots auto-fill it */}
+      <div className="sr-only" aria-hidden="true">
+        <Label htmlFor="company">Company</Label>
+        <Input
+          id="company"
+          tabIndex={-1}
+          autoComplete="off"
+          {...register("company")}
+        />
       </div>
 
       <Button type="submit" disabled={isPending} className={cn(isPending && "opacity-70")}>

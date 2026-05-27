@@ -6,13 +6,13 @@ interface PhoneFrameProps {
 export function PhoneFrame({ hue = 50, children }: PhoneFrameProps) {
   return (
     <div
-      className="w-full overflow-hidden rounded-[28px] border border-border-strong bg-card p-1.5"
+      className="w-full overflow-hidden rounded-2xl border border-border-strong bg-card p-1.5"
       style={{
         boxShadow: "0 30px 60px -20px rgba(0,0,0,0.7)",
       }}
     >
       <div
-        className="relative overflow-hidden rounded-[22px] aspect-9/19"
+        className="relative overflow-hidden rounded-lg aspect-9/19"
         style={{ background: `oklch(0.10 0.004 ${hue})` }}
       >
         {/* Notch */}

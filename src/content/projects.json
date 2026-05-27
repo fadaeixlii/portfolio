@@ -2,49 +2,49 @@
   {
     "slug": "aim2balance",
     "title": "Aim2Balance",
-    "domain": "AI healthtech",
-    "tagline": "AI-integrated health and wellness platform forked from LibreChat",
-    "description": "Customised LibreChat into a specialised health platform. Built domain-specific AI agents, integrated wellness tracking, designed the auth and privacy model, and shipped a production-grade product real patients use weekly.",
-    "pullQuote": "We forked an open-source chat platform, then bent it into a clinical product without breaking a single user.",
-    "role": "Lead Engineer",
-    "year": 2024,
-    "duration": "6 months",
-    "client": "Wellness startup (NL)",
-    "team": "Me + 1 PM",
-    "tech": ["Next.js 14", "TypeScript", "Node.js", "MongoDB", "OpenAI", "LangChain", "NextAuth", "Tailwind", "Radix", "Vercel"],
+    "domain": "AI platform",
+    "tagline": "EU-hosted AI chat platform with EUR billing and cross-provider token tracking",
+    "description": "Co-founded and built an AI chat platform forked from LibreChat, hosted in the EU. Engineered EUR-based billing with Stripe wallets, a Chrome extension tracking token consumption across ChatGPT, Claude, and Gemini, and cross-platform mobile apps via Capacitor.",
+    "pullQuote": "We forked an open-source chat platform into an EU-hosted product handling 10,000 sessions a day.",
+    "role": "Co-Founder & Lead Engineer",
+    "year": 2025,
+    "duration": "Ongoing",
+    "client": "Own venture",
+    "team": "Co-founded, 2-person core",
+    "tech": ["Next.js", "TypeScript", "Node.js", "MongoDB", "LiteLLM", "Stripe", "Capacitor", "Chrome Extensions"],
     "featured": true,
     "status": "published",
     "hue": 50,
     "mockType": "chat",
     "links": {
-      "live": "",
+      "live": "https://aim2balance.ai",
       "github": "",
       "caseStudy": "/work/aim2balance"
     },
     "image": "/images/projects/aim2balance.avif",
     "metrics": [
-      { "label": "Users", "value": "12k" },
-      { "label": "Uptime", "value": "99.97%" }
+      { "label": "Daily sessions", "value": "10k+" },
+      { "label": "Billing", "value": "EUR" }
     ],
     "kpis": [
-      { "label": "monthly users", "value": "12k" },
-      { "label": "uptime", "value": "99.97%" },
-      { "label": "to first revenue", "value": "8 wks" }
+      { "label": "daily sessions", "value": "10k+" },
+      { "label": "billing currency", "value": "EUR" },
+      { "label": "platforms", "value": "Web + Mobile" }
     ]
   },
   {
     "slug": "roofcast",
     "title": "Roofcast",
-    "domain": "Real-estate analytics",
-    "tagline": "Real estate analytics and forecasting tool",
-    "description": "A data-driven platform forecasting property values across the Netherlands. Ingests fourteen sources nightly, normalises, scores, and presents — without a single chart that takes more than two seconds to read.",
-    "pullQuote": "A house has a thousand inputs. We turned them into one number a buyer can act on.",
-    "role": "Full-Stack Engineer",
-    "year": 2024,
+    "domain": "Web3 prediction market",
+    "tagline": "Decentralized prediction market for real estate on Polygon",
+    "description": "A Web3 DApp built on Polygon using Gnosis Conditional Tokens for real estate prediction markets. Users stake on property value outcomes with on-chain settlement. Integrated wallet connections, token creation, and real-time market data.",
+    "pullQuote": "On-chain prediction markets where real money settles on real estate outcomes.",
+    "role": "Tech Lead",
+    "year": 2025,
     "duration": "4 months",
-    "client": "PropTech firm (NL)",
-    "team": "Me + 1 data eng",
-    "tech": ["React", "TypeScript", "Node.js", "PostgreSQL", "Python", "FastAPI", "Visx", "Mapbox", "Redis", "Docker"],
+    "client": "Zoof-it",
+    "team": "Led 3-person team",
+    "tech": ["React", "TypeScript", "Solidity", "Polygon", "Gnosis Conditional Tokens", "Ethers.js", "NestJS", "PostgreSQL"],
     "featured": true,
     "status": "published",
     "hue": 180,
@@ -56,28 +56,28 @@
     },
     "image": "/images/projects/roofcast.avif",
     "metrics": [
-      { "label": "Data points", "value": "3.2M" },
-      { "label": "Accuracy", "value": "±4.1%" }
+      { "label": "Chain", "value": "Polygon" },
+      { "label": "Settlement", "value": "On-chain" }
     ],
     "kpis": [
-      { "label": "rows per day", "value": "3.2M" },
-      { "label": "forecast error", "value": "±4.1%" },
-      { "label": "municipalities", "value": "18" }
+      { "label": "blockchain", "value": "Polygon" },
+      { "label": "settlement", "value": "on-chain" },
+      { "label": "framework", "value": "Gnosis CT" }
     ]
   },
   {
     "slug": "jeofferte",
     "title": "JEOfferte",
-    "domain": "B2B commerce ops",
-    "tagline": "E-commerce offer and quotation management system",
-    "description": "An offer and quotation management system for Dutch SMEs. Replaced a tangle of spreadsheets and inbox threads with a single source of truth — quotes, invoices, client comms, all in one workflow.",
+    "domain": "B2B commerce",
+    "tagline": "Quotation management platform for Dutch SMEs",
+    "description": "A quotation and offer management system replacing spreadsheets and email chains for 110+ Dutch SMEs. Single source of truth for quotes, invoices, and client communications — closing deals 62% faster.",
     "pullQuote": "Quotes used to take three emails and a phone call. Now they take ninety seconds.",
-    "role": "Architect",
-    "year": 2023,
+    "role": "Tech Lead & Architect",
+    "year": 2025,
     "duration": "5 months",
-    "client": "Dutch SME network",
-    "team": "Me + 2 FE",
-    "tech": ["React", "NestJS", "TypeScript", "PostgreSQL", "Prisma", "Redis", "BullMQ", "Stripe", "S3", "Docker"],
+    "client": "Zoof-it",
+    "team": "Led 3-person team",
+    "tech": ["React", "NestJS", "TypeScript", "PostgreSQL", "Prisma", "Redis", "BullMQ", "Stripe"],
     "featured": true,
     "status": "published",
     "hue": 280,
@@ -89,13 +89,112 @@
     },
     "image": "/images/projects/jeofferte.avif",
     "metrics": [
-      { "label": "Businesses", "value": "110" },
+      { "label": "Businesses", "value": "110+" },
       { "label": "Faster close", "value": "62%" }
     ],
     "kpis": [
-      { "label": "businesses live", "value": "110" },
+      { "label": "businesses live", "value": "110+" },
       { "label": "faster close", "value": "62%" },
-      { "label": "spreadsheets", "value": "0" }
+      { "label": "spreadsheets replaced", "value": "all" }
+    ]
+  },
+  {
+    "slug": "meshi",
+    "title": "Meshi",
+    "domain": "Food-tech",
+    "tagline": "Geo-based food matching platform connecting users with nearby providers",
+    "description": "A food-tech platform with a geo-based matching engine connecting users to nearby food providers. Built location-aware search, real-time availability, and a streamlined ordering flow. Part of the Zoof-it product suite.",
+    "pullQuote": "Matching hungry users with the closest kitchen — in under two seconds.",
+    "role": "Tech Lead",
+    "year": 2025,
+    "duration": "3 months",
+    "client": "Zoof-it",
+    "team": "Led 3-person team",
+    "tech": ["React", "NestJS", "TypeScript", "PostgreSQL", "PostGIS", "Redis"],
+    "featured": false,
+    "status": "published",
+    "hue": 120,
+    "mockType": "commerce",
+    "links": {
+      "live": "",
+      "github": "",
+      "caseStudy": ""
+    },
+    "image": "",
+    "metrics": [
+      { "label": "Matching", "value": "<2s" },
+      { "label": "Coverage", "value": "NL" }
+    ],
+    "kpis": [
+      { "label": "match time", "value": "<2s" },
+      { "label": "coverage", "value": "Netherlands" },
+      { "label": "UI modernization", "value": "complete" }
+    ]
+  },
+  {
+    "slug": "intex-exchange",
+    "title": "Intex Exchange",
+    "domain": "Crypto exchange",
+    "tagline": "Real-time cryptocurrency trading platform with WebSocket data feeds",
+    "description": "A crypto exchange with real-time trading interfaces, WebSocket price feeds, and order book visualization. Built a shared component library that cut development cycles from 8 to 5 days and a CRUD table abstraction improving feature delivery by 50%.",
+    "pullQuote": "Real-time trading where milliseconds matter — and the component library that made it sustainable.",
+    "role": "Senior Front-end Developer",
+    "year": 2023,
+    "duration": "12 months",
+    "client": "Intex",
+    "team": "3 front-end engineers",
+    "tech": ["React", "TypeScript", "Redux", "Socket.io", "Web3.js", "Ethers.js"],
+    "featured": false,
+    "status": "published",
+    "hue": 30,
+    "mockType": "analytics",
+    "links": {
+      "live": "",
+      "github": "",
+      "caseStudy": ""
+    },
+    "image": "",
+    "metrics": [
+      { "label": "Dev cycle", "value": "8→5 days" },
+      { "label": "CRUD speed", "value": "+50%" }
+    ],
+    "kpis": [
+      { "label": "dev cycle reduction", "value": "8→5 days" },
+      { "label": "feature delivery", "value": "+50%" },
+      { "label": "architecture", "value": "headless" }
+    ]
+  },
+  {
+    "slug": "exmodules",
+    "title": "Exmodules",
+    "domain": "Web3 real estate",
+    "tagline": "Web3 real estate DApp with tokenized property ownership",
+    "description": "A Web3 real estate platform enabling tokenized property ownership and marketplace features. Built token creation flows, property listing interfaces, and wallet integration for on-chain real estate transactions.",
+    "pullQuote": "Tokenizing real estate — turning bricks and mortar into tradeable on-chain assets.",
+    "role": "Senior Front-end Developer",
+    "year": 2024,
+    "duration": "8 months",
+    "client": "Exmodules",
+    "team": "2 front-end engineers",
+    "tech": ["React", "TypeScript", "Web3.js", "Ethers.js", "Redux", "Node.js"],
+    "featured": false,
+    "status": "published",
+    "hue": 200,
+    "mockType": "analytics",
+    "links": {
+      "live": "",
+      "github": "",
+      "caseStudy": ""
+    },
+    "image": "",
+    "metrics": [
+      { "label": "Platform", "value": "Web3" },
+      { "label": "White-label", "value": "Yes" }
+    ],
+    "kpis": [
+      { "label": "platform", "value": "Web3" },
+      { "label": "white-label", "value": "enabled" },
+      { "label": "token types", "value": "property NFTs" }
     ]
   }
 ]

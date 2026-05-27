@@ -86,7 +86,7 @@ export function ExperienceTimeline({ entries }: ExperienceTimelineProps) {
                     )}
 
                     {/* Tech tags */}
-                    <div className="mt-4.5 flex flex-wrap gap-1.5">
+                    <div className="mt-4 flex flex-wrap gap-1.5">
                       {job.tech.map((t) => (
                         <span
                           key={t}
@@ -104,15 +104,7 @@ export function ExperienceTimeline({ entries }: ExperienceTimelineProps) {
         })}
       </ol>
 
-      {/* Resume link */}
-      <div className="mt-16 pl-12">
-        <a
-          href="#"
-          className="inline-flex items-center gap-2 text-sm lowercase text-accent transition-colors hover:text-foreground"
-        >
-          download full résumé (pdf) <span>→</span>
-        </a>
-      </div>
+      {/* Resume link — hidden until PDF is available */}
     </div>
   );
 }

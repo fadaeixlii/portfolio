@@ -65,8 +65,8 @@ export default function HomePage() {
                   </div>
                   <div className="flex items-center gap-2 font-mono text-xs">
                     <span className="relative flex h-2 w-2">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                      <span className="absolute inline-flex h-full w-full rounded-full bg-emerald opacity-75 motion-safe:animate-ping" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald" />
                     </span>
                     {site.availability.message}
                   </div>
@@ -103,11 +103,9 @@ export default function HomePage() {
                 <HeroItem>
                   <h1 className="font-serif font-normal tracking-[-0.03em] leading-[0.95] text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
                     Mohammad
-                  </h1>
-                </HeroItem>
-                <HeroItem>
-                  <h1 className="mt-1 pl-0 font-serif font-normal italic tracking-[-0.03em] leading-[0.95] text-accent text-5xl sm:text-6xl sm:pl-8 md:text-7xl md:pl-12 lg:text-8xl lg:pl-16 xl:text-9xl">
-                    M. Khani
+                    <span className="mt-1 block pl-0 italic text-accent sm:pl-8 md:pl-12 lg:pl-16">
+                      M. Khani
+                    </span>
                   </h1>
                 </HeroItem>
               </HeroAnimation>
@@ -170,7 +168,7 @@ export default function HomePage() {
             <div className="mx-auto w-full max-w-7xl">
               {/* Section header */}
               <div className="mb-14 grid gap-6 sm:grid-cols-[200px_1fr] sm:gap-16">
-                <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
+                <div aria-hidden="true" className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
                   § I — Selected
                 </div>
                 <div>
@@ -221,7 +219,7 @@ export default function HomePage() {
           <div className="mx-auto w-full max-w-7xl">
             {/* Section header */}
             <div className="mb-16 grid gap-6 sm:grid-cols-[200px_1fr] sm:gap-16">
-              <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
+              <div aria-hidden="true" className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
                 § II — Experience
               </div>
               <div>
@@ -253,7 +251,7 @@ export default function HomePage() {
         <FadeIn>
           <div className="mx-auto w-full max-w-7xl">
             <div className="grid gap-8 sm:grid-cols-[200px_1fr_1fr] sm:gap-16">
-              <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
+              <div aria-hidden="true" className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
                 § III — About
               </div>
               <p className="font-serif text-xl leading-[1.35] tracking-[-0.005em] sm:text-[22px]">
@@ -291,7 +289,7 @@ export default function HomePage() {
         <FadeIn>
           <div className="mx-auto w-full max-w-7xl">
             <div className="grid items-end gap-8 sm:grid-cols-[200px_1fr_240px] sm:gap-16">
-              <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
+              <div aria-hidden="true" className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
                 § IV — Contact
               </div>
               <h2 className="font-serif text-3xl font-normal lowercase tracking-tight sm:text-4xl md:text-[56px] md:leading-[1.05]">
@@ -325,7 +323,7 @@ export default function HomePage() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm lowercase transition-colors hover:text-accent"
                 >
-                  github <span className="text-muted-foreground">↗</span>
+                  github <span aria-hidden="true" className="text-muted-foreground">↗</span>
                 </a>
               )}
               {site.social.linkedin && (
@@ -335,7 +333,7 @@ export default function HomePage() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm lowercase transition-colors hover:text-accent"
                 >
-                  linkedin <span className="text-muted-foreground">↗</span>
+                  linkedin <span aria-hidden="true" className="text-muted-foreground">↗</span>
                 </a>
               )}
             </div>

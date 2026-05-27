@@ -92,7 +92,7 @@ function AnalyticsDesktop({ hue }: { hue: number }) {
         {["€ 482k", "+18%", "12.3k"].map((n, i) => (
           <div key={i} className="rounded-lg p-2.5" style={{ background: card }}>
             <Bar w="50px" bg={line} />
-            <div className="mt-2 font-serif text-lg leading-none" style={{ color: i === 0 ? accent : "var(--fg)" }}>
+            <div className="mt-2 font-serif text-lg leading-none" style={{ color: i === 0 ? accent : "var(--color-foreground)" }}>
               {n}
             </div>
           </div>
@@ -141,7 +141,7 @@ function CommerceDesktop({ hue }: { hue: number }) {
           {["draft", "sent", "won"].map((s, i) => (
             <div key={s} className="flex-1 rounded-lg p-2.5" style={{ background: card }}>
               <Bar w="30px" bg={i === 2 ? accent : line} />
-              <div className="mt-1.5 font-serif text-lg leading-none" style={{ color: i === 2 ? accent : "var(--fg)" }}>
+              <div className="mt-1.5 font-serif text-lg leading-none" style={{ color: i === 2 ? accent : "var(--color-foreground)" }}>
                 {[24, 18, 9][i]}
               </div>
             </div>

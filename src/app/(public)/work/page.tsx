@@ -22,7 +22,7 @@ export default function WorkPage() {
               Work
             </h1>
             <p className="text-lg text-muted-foreground">
-              Selected projects and case studies from six years of full-stack
+              Selected projects and case studies from seven years of full-stack
               development.
             </p>
           </div>

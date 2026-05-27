@@ -2,23 +2,27 @@
   "categories": [
     {
       "name": "Frontend",
-      "skills": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Motion/Framer"]
+      "skills": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Motion/Framer", "Zustand", "React Query"]
     },
     {
       "name": "Backend",
-      "skills": ["Node.js", "NestJS", "Express", "REST APIs", "GraphQL"]
+      "skills": ["Node.js", "NestJS", "Express", "REST APIs", "GraphQL", "Python"]
     },
     {
       "name": "Database",
       "skills": ["PostgreSQL", "MongoDB", "Supabase", "Redis"]
     },
     {
+      "name": "AI & LLM",
+      "skills": ["LiteLLM", "RAG", "Prompt Engineering", "OpenAI API", "LangChain"]
+    },
+    {
       "name": "Blockchain",
-      "skills": ["Solidity", "Ethers.js", "Web3", "Smart Contracts"]
+      "skills": ["Solidity", "Ethers.js", "Web3.js", "Hardhat", "Foundry", "Viem", "Wagmi", "WalletConnect"]
     },
     {
       "name": "Tools & DevOps",
-      "skills": ["Git", "Docker", "CI/CD", "Cloudflare", "Linux"]
+      "skills": ["Git", "Docker", "Turborepo", "GitHub Actions", "AWS S3", "Cloudflare", "Sentry", "Linux"]
     }
   ]
 }

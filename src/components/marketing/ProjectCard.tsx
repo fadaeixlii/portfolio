@@ -14,16 +14,8 @@ interface ProjectCardProps {
 export function ProjectCard({ project, index = 0, total = 3 }: ProjectCardProps) {
   const href = project.links.caseStudy || `/work/${project.slug}`;
   const padIndex = `${String(index + 1).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
-  const mockType = (project as Record<string, unknown>).mockType as
-    | "chat" | "analytics" | "commerce" | undefined;
-  const hue = ((project as Record<string, unknown>).hue as number) ?? 50;
-  const pullQuote = (project as Record<string, unknown>).pullQuote as string | undefined;
-  const duration = (project as Record<string, unknown>).duration as string | undefined;
-  const client = (project as Record<string, unknown>).client as string | undefined;
-  const team = (project as Record<string, unknown>).team as string | undefined;
-  const domain = (project as Record<string, unknown>).domain as string | undefined;
-  const kpis = (project as Record<string, unknown>).kpis as
-    | Array<{ label: string; value: string }> | undefined;
+  const { hue = 50, pullQuote, duration, client, team, domain, kpis } = project;
+  const mockType = project.mockType as "chat" | "analytics" | "commerce";
 
   return (
     <SpotlightCard className="overflow-hidden rounded-2xl">
@@ -129,6 +121,7 @@ export function ProjectCard({ project, index = 0, total = 3 }: ProjectCardProps)
         {/* Right — device mockups */}
         {mockType && (
           <div
+            aria-hidden="true"
             className="hidden border-l border-border p-6 lg:block"
             style={{
               background: `radial-gradient(ellipse at 30% 20%, oklch(0.65 0.18 ${hue} / 0.08), transparent 60%), oklch(0.12 0.005 ${hue})`,

@@ -3,8 +3,8 @@
   "shortName": "fadaeixlii",
   "role": "Senior Full-Stack Developer",
   "tagline": "I build web applications that handle real users and real money.",
-  "bio": "Six years shipping React applications to production. I've led teams, debugged memory leaks at 3am, and refactored codebases that outlived their original authors.",
-  "location": "Netherlands",
+  "bio": "Seven years shipping React, Next.js, and Node.js applications to production. Co-founded an EU-hosted AI platform, led Web3 DApp development on Polygon, and architected billing pipelines handling 10,000+ daily sessions.",
+  "location": "Greece",
   "email": "mohammad4252@gmail.com",
   "siteUrl": "https://fadaeixlii.com",
   "social": {
@@ -15,27 +15,27 @@
   },
   "hero": {
     "headline": "I build web applications that handle real users and real money.",
-    "subtitle": "Full-stack developer. React, Next.js, TypeScript. Based in the Netherlands.",
+    "subtitle": "Full-stack developer & AI co-founder. React, Next.js, TypeScript, Solidity. Based in Greece.",
     "cta": { "label": "Start a project", "href": "/contact" },
     "indexNo": "001",
-    "volume": "VI",
+    "volume": "VII",
     "edition": "2026",
-    "established": "2018",
-    "coordinates": "52.37°N · 4.89°E",
-    "city": "Amsterdam"
+    "established": "2019",
+    "coordinates": "37.97°N · 23.73°E",
+    "city": "Athens"
   },
   "about": {
-    "intro": "Six years shipping React applications to production. I've led teams, debugged memory leaks at 3am, and refactored codebases that outlived their original authors.",
+    "intro": "Seven years shipping full-stack applications to production — from AI chat platforms and crypto exchanges to Web3 prediction markets and food-tech. I've co-founded a company, led engineering teams, and written Solidity contracts that settle real money on-chain.",
     "paragraphs": [
-      "I specialize in building full-stack applications with React, Next.js, TypeScript, and Node.js. My work spans from trading platforms and AI-integrated products to real estate tools and e-commerce systems.",
-      "I care about performance, accessibility, and code that other developers can maintain. I've worked across blockchain (Solidity), backend (NestJS, Express), and frontend — but React is where I do my best work.",
-      "Currently based in the Netherlands, available for freelance projects and consulting engagements."
+      "I specialize in building full-stack applications with React, Next.js, TypeScript, and Node.js. My work spans AI-integrated products (LiteLLM, RAG), Web3 DApps (Solidity on Polygon), crypto exchanges, real estate platforms, and food-tech systems.",
+      "I co-founded aim2balance.ai — an EU-hosted AI platform with EUR-based billing, Stripe wallets, and a Chrome extension tracking token consumption across ChatGPT, Claude, and Gemini. Before that, I led a 3-person team building three products simultaneously at Zoof-it.",
+      "Currently based in Greece, available for freelance projects and consulting engagements."
     ]
   },
   "stats": [
-    { "value": "06+", "label": "Years building for production" },
-    { "value": "12", "label": "Shipped client projects" },
-    { "value": "05", "label": "Industries served" },
+    { "value": "07+", "label": "Years building for production" },
+    { "value": "06", "label": "Shipped products in portfolio" },
+    { "value": "06", "label": "Industries served" },
     { "value": "—", "label": "Resume on request" }
   ],
   "availability": {
@@ -49,9 +49,9 @@
     "responseUnit": "hrs"
   },
   "numbers": {
-    "totalProjects": 12,
-    "experienceYears": "six",
-    "experienceChapters": "Three",
+    "totalProjects": 6,
+    "experienceYears": "seven",
+    "experienceChapters": "Four",
     "selectedWorkCount": 3,
     "footerEdition": "001"
   }

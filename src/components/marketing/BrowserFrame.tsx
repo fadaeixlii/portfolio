@@ -14,13 +14,14 @@ export function BrowserFrame({ url = "fadaeixlii.com", hue = 50, children }: Bro
       }}
     >
       {/* Chrome bar */}
-      <div className="flex items-center gap-2 border-b border-border bg-card px-3.5 py-2.5">
+      <div className="flex items-center gap-2 border-b border-border bg-card px-4 py-2">
+        {/* intentional: macOS traffic-light replica — hardcoded hex is correct */}
         <div className="flex gap-1.5">
           <span className="size-2.5 rounded-full" style={{ background: "#ff5f57", opacity: 0.85 }} />
           <span className="size-2.5 rounded-full" style={{ background: "#febc2e", opacity: 0.85 }} />
           <span className="size-2.5 rounded-full" style={{ background: "#28c840", opacity: 0.85 }} />
         </div>
-        <div className="ml-3.5 flex flex-1 items-center gap-2 rounded-md bg-muted px-3 py-1">
+        <div className="ml-4 flex flex-1 items-center gap-2 rounded-md bg-muted px-3 py-1">
           <span className="text-accent">●</span>
           <span className="font-mono text-[11px] text-muted-foreground">{url}</span>
         </div>

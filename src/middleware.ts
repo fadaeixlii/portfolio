@@ -25,7 +25,26 @@ export async function middleware(request: NextRequest) {
     }
   );
 
-  await supabase.auth.getUser();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  // Protect admin routes — redirect to login if not authenticated admin
+  if (request.nextUrl.pathname.startsWith("/admin")) {
+    if (!user) {
+      const loginUrl = new URL("/auth/login", request.url);
+      loginUrl.searchParams.set("returnTo", request.nextUrl.pathname);
+      return NextResponse.redirect(loginUrl);
+    }
+
+    const isAdmin = user.app_metadata?.role === "admin";
+    if (!isAdmin) {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
+  }
+
+  // Redirect authenticated admin away from login page
+  if (request.nextUrl.pathname === "/auth/login" && user?.app_metadata?.role === "admin") {
+    return NextResponse.redirect(new URL("/admin/messages", request.url));
+  }
 
   return response;
 }

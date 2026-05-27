@@ -1,44 +1,58 @@
 [
   {
-    "company": "Independent / Consulting",
-    "role": "Senior Full-Stack Developer",
-    "period": "2022 — Present",
-    "location": "Amsterdam, NL",
-    "type": "Freelance",
-    "description": "Architect & ship full-stack React/Next products for clients across health, real estate, and commerce. Lead small engineering pods, mentor mids, and run technical due diligence for hires.",
+    "company": "aim2balance.ai",
+    "role": "Co-Founder & Full-Stack Developer",
+    "period": "2025 — Present",
+    "location": "Germany, Remote",
+    "type": "Co-Founder",
+    "description": "Co-founded an EU-hosted AI chat platform forked from LibreChat. Engineered EUR-based billing with Stripe wallets, built a Chrome extension tracking token consumption across ChatGPT, Claude, and Gemini, and shipped cross-platform mobile apps via Capacitor.",
     "highlights": [
-      "Shipped 3 flagship products to production with paying customers",
-      "Designed system architecture serving 12k+ MAU on a single 14\" laptop",
-      "Mentored 2 mid-level engineers to senior over 18 months"
+      "Billing pipeline handling 10,000+ daily sessions with Stripe integration",
+      "Chrome extension monitoring token usage across major AI providers",
+      "Cross-platform mobile apps shipped via Capacitor for iOS and Android"
     ],
-    "tech": ["React", "Next.js", "TypeScript", "NestJS", "Postgres", "Solidity"]
+    "tech": ["Next.js", "TypeScript", "Node.js", "MongoDB", "LiteLLM", "Stripe", "Capacitor"]
   },
   {
-    "company": "Remote engagements — multi-domain",
-    "role": "Full-Stack Developer",
-    "period": "2020 — 2022",
-    "location": "Remote (EU & ME)",
+    "company": "Zoof-it",
+    "role": "Tech Lead & Full-Stack Developer",
+    "period": "2025 — 2026",
+    "location": "Netherlands, Remote",
+    "type": "Full-time",
+    "description": "Led a 3-person engineering team building three products simultaneously — Jeofferte (B2B quotation platform), Meshi (food-tech with geo-based matching), and Roofcast (Web3 prediction market on Polygon). Owned architecture, code review, and deployment across all three.",
+    "highlights": [
+      "Roofcast Web3 DApp on Polygon with Gnosis Conditional Tokens for prediction markets",
+      "Geo-based matching engine for Meshi connecting users with nearby food providers",
+      "Jeofferte quotation system serving 110+ Dutch SMEs with 62% faster close times"
+    ],
+    "tech": ["React", "NestJS", "TypeScript", "Solidity", "PostgreSQL", "Polygon", "Stripe"]
+  },
+  {
+    "company": "Exmodules + Intex Exchange",
+    "role": "Senior Front-end Developer",
+    "period": "2022 — 2025",
+    "location": "Remote",
     "type": "Contract",
-    "description": "Built and maintained production applications across e-commerce, real-estate, and early DeFi. Owned features end-to-end, from API design to deploy.",
+    "description": "Built a crypto exchange trading interface with real-time WebSocket data and a Web3 real estate DApp with token creation and marketplace features. Developed a shared component library that reduced development cycles from 8 to 5 days.",
     "highlights": [
-      "Migrated a 60k-LOC JS codebase to TypeScript with zero downtime",
-      "Built first production Solidity vault for a small DeFi team",
-      "Reduced p95 latency on a commerce backend from 1.4s → 320ms"
+      "Component library cutting development cycles from 8 to 5 days",
+      "CRUD table abstraction improving feature delivery by 50%",
+      "Headless architecture enabling white-label deployment for multiple clients"
     ],
-    "tech": ["React", "NestJS", "Solidity", "PostgreSQL", "Redis"]
+    "tech": ["React", "TypeScript", "Web3.js", "Ethers.js", "Redux", "Socket.io"]
   },
   {
-    "company": "Agency & in-house — early career",
-    "role": "Frontend Developer",
-    "period": "2018 — 2020",
+    "company": "Panikar Academy + 3gaam",
+    "role": "Front-end Developer",
+    "period": "2019 — 2022",
     "location": "Remote",
     "type": "Full-time",
-    "description": "Frontend foundations: responsive interfaces, SPAs, design systems. Transitioned my team's codebase from plain JavaScript to TypeScript and stayed for the cleanup.",
+    "description": "Built SPAs and design systems for ed-tech platforms. Developed a personality assessment tool serving 5,000+ users and contributed to an AI-driven student resource platform with GraphQL integration.",
     "highlights": [
-      "Led TS migration across a team of 6",
-      "Built and shipped the company's first internal design system",
-      "First Next.js production deploy at the company"
+      "Personality assessment platform scaled to 5,000+ active users",
+      "Webpack bundle optimization reducing load times by 10–15%",
+      "GraphQL API bug fixes and performance improvements for student resources"
     ],
-    "tech": ["React", "JavaScript", "TypeScript", "Sass", "Webpack"]
+    "tech": ["React", "JavaScript", "TypeScript", "GraphQL", "Webpack", "Sass"]
   }
 ]

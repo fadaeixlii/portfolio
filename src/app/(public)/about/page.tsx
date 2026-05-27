@@ -72,7 +72,7 @@ export default function AboutPage() {
           <div className="flex flex-col gap-8">
             <SectionLabel index="II" label="skills" />
             <h2 className="text-2xl font-medium tracking-tight">Skills</h2>
-            <div className="grid gap-8 sm:grid-cols-2">
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {skills.categories.map((cat) => (
                 <div key={cat.name} className="flex flex-col gap-3">
                   <h3 className="text-sm font-medium uppercase tracking-widest text-accent">
