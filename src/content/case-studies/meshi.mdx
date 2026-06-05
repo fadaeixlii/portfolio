@@ -1,0 +1,48 @@
+---
+title: "Meshi"
+slug: "meshi"
+tagline: "Geo-based food platform connecting users with nearby providers in real time"
+role: "Tech Lead"
+year: 2025
+status: "published"
+tech: ["React", "NestJS", "TypeScript", "PostgreSQL", "PostGIS", "Redis"]
+featured: false
+sort_order: 4
+hero_image: "/images/projects/meshi/landing.png"
+---
+
+## The Problem
+
+Food delivery in the Netherlands is dominated by a few large platforms that charge restaurants steep commissions — often 25–30% per order. Smaller restaurants and local food providers get squeezed on margins or priced out entirely. Customers, meanwhile, see the same chain restaurants everywhere and lose access to the local places that make a neighborhood worth living in.
+
+Meshi set out to build a fairer alternative: a platform where restaurants keep more of what they earn, and customers can discover nearby food providers they'd never find on the big platforms. The twist was a social mission — a portion of every commission goes to SOS Children's Villages.
+
+## The Approach
+
+The core technical challenge was geo-based matching. When a user opens the app, the platform needs to instantly show restaurants within delivery range, sorted by proximity and availability. On the big platforms, this is solved with massive infrastructure and pre-computed indexes. We needed the same speed on a fraction of the budget.
+
+I chose PostgreSQL with PostGIS for the spatial queries. PostGIS can compute distances, filter by radius, and sort by proximity in a single indexed query — no external service needed. Combined with Redis for caching frequently-accessed restaurant data (menus, availability status), the matching runs in under two seconds even on cold starts.
+
+The frontend was a full React rewrite. The previous version was built on older patterns that made it difficult to add features. I modernized the entire UI to a component-based architecture with proper state management, responsive design, and a mobile-first approach — critical because most food ordering happens on phones.
+
+NestJS handled the backend with Zod validation across the full stack. The API serves both the web app and the native mobile apps (iOS and Android, available on App Store and Google Play).
+
+## The Solution
+
+The **location-first flow** is the core UX decision. On mobile, the first thing users see is a location prompt — find my location or enter an address manually. Everything else follows from that: which restaurants are nearby, what's available now, estimated delivery times. This is different from platforms that show a generic homepage and ask for location later.
+
+The **restaurant discovery** page shows nearby providers with real-time availability. Each restaurant card displays the menu, estimated delivery time, minimum order amount, and distance. The geo-query uses PostGIS `ST_DWithin` with a configurable radius per restaurant (some deliver further than others).
+
+The **ordering flow** was designed for speed: select items, customize if needed, choose delivery or pickup, pay. The checkout uses Stripe for secure payments. Order status updates are pushed in real time so customers know exactly when their food is being prepared and when it's on the way.
+
+The **restaurant onboarding** system lets new providers sign up, upload their menu, set their delivery area on a map, and start receiving orders. The admin dashboard shows order history, revenue, and customer reviews.
+
+The **mobile apps** on iOS and Android provide push notifications for order updates and a native ordering experience. They share the same API as the web app, so all features stay in sync.
+
+## Impact
+
+The platform launched in the Netherlands with restaurant partners across multiple cities. The PostGIS matching engine delivers results in under 2 seconds regardless of the number of registered restaurants. The mobile-first UI rewrite improved the ordering completion rate compared to the previous version, and the native apps expanded reach to users who prefer app-based ordering.
+
+## Reflections
+
+The location-first mobile UX was the right call despite being aggressive — showing nothing until the user shares their location feels risky, but food delivery is inherently local. Showing a generic homepage with no location context would have been a wasted step. The PostGIS investment paid off immediately: spatial queries that would require a separate geolocation service are just SQL queries, which simplified the architecture and reduced costs. The main challenge was onboarding restaurants — the tech was straightforward, but convincing local businesses to try a new platform required more human effort than engineering effort.

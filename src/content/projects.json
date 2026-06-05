@@ -118,9 +118,9 @@
     "links": {
       "live": "https://meshi.nl",
       "github": "",
-      "caseStudy": ""
+      "caseStudy": "/work/meshi"
     },
-    "image": "",
+    "image": "/images/projects/meshi/landing.png",
     "metrics": [
       { "label": "Matching", "value": "<2s" },
       { "label": "Coverage", "value": "Netherlands" }
