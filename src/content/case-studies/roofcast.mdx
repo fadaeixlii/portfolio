@@ -1,11 +1,11 @@
 ---
-title: "RoofCast"
+title: "Roofcast"
 slug: "roofcast"
-tagline: "Real estate analytics and forecasting tool for the Dutch housing market"
-role: "Full-Stack Developer"
-year: 2024
+tagline: "Decentralized prediction market for real estate on Polygon"
+role: "Tech Lead"
+year: 2025
 status: "published"
-tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Python"]
+tech: ["React", "TypeScript", "Solidity", "Polygon", "Gnosis CT", "NestJS"]
 featured: true
 sort_order: 2
 hero_image: "/images/projects/roofcast/hero.avif"
@@ -13,32 +13,34 @@ hero_image: "/images/projects/roofcast/hero.avif"
 
 ## The Problem
 
-Real estate investors in the Netherlands were making decisions based on outdated quarterly reports and gut feeling. The publicly available data from the CBS and Kadaster was comprehensive but scattered across multiple APIs, published in different formats, and updated on different schedules. No single tool aggregated this data into actionable forecasts at the neighborhood level.
+Real estate markets are notoriously opaque. Investors, analysts, and even homeowners have strong opinions about where property values are heading, but there's no mechanism to put conviction behind those opinions or aggregate collective intelligence into actionable signals. Traditional forecasting relies on historical data and expert models — it doesn't capture the distributed knowledge of thousands of market participants who each see a piece of the picture.
 
-The existing tools that did attempt analytics were either too expensive for independent investors or too simplistic — showing city-level averages that masked the dramatic price differences between neighborhoods just a few kilometers apart.
+Prediction markets solve this for politics and sports. The question was: could the same mechanism work for real estate, where outcomes are slower, more nuanced, and harder to settle?
 
 ## The Approach
 
-The project required two distinct systems: a data pipeline that could ingest, normalize, and store Dutch housing data from multiple government sources, and a frontend that could visualize trends and present forecasts in a way that supported investment decisions.
+I built Roofcast as a Web3 DApp on Polygon using Gnosis Conditional Tokens — a battle-tested framework for creating and settling prediction markets on-chain. The choice of Polygon over Ethereum mainnet was driven by gas costs: prediction markets involve many small transactions (placing bets, claiming winnings), and mainnet fees would have made micro-positions uneconomical.
 
-I chose Python for the data pipeline because of its ecosystem around pandas and statistical modeling. The frontend and API were built in TypeScript with React and Node.js. PostgreSQL was the natural choice for time-series property data — its window functions and CTEs made the complex analytical queries performant without needing a specialized OLAP database.
+Gnosis Conditional Tokens provided the core market mechanics: creating conditions (e.g., "Will property prices in Amsterdam-Zuid increase by >5% in 2025?"), minting outcome tokens, and settling markets based on oracle-provided results. I built the smart contracts, the settlement logic, and the frontend that made this accessible to users who might never have interacted with a DApp before.
 
-The forecasting approach used a combination of historical price trends, demographic data, and infrastructure development plans. The model was deliberately conservative: rather than predicting exact prices, it produced confidence intervals and trend directions. Overconfident predictions in real estate are worse than no predictions at all.
+The backend runs NestJS with PostgreSQL, handling user profiles, market metadata, historical data, and the off-chain components that support the on-chain logic — like price feed aggregation and notification services.
 
 ## The Solution
 
-The data pipeline ran on a weekly schedule, pulling from three primary sources: the Kadaster (land registry transactions), CBS StatLine (demographic and economic indicators), and municipal open data portals (zoning changes, infrastructure projects). Each source had its own ingestion adapter that handled authentication, pagination, and format differences.
+The **market creation flow** lets authenticated users propose new prediction markets. Each market defines a question, a set of outcomes, a resolution date, and a resolution source (which oracle or data feed will determine the outcome). Markets go through a review process before going live to prevent spam and ensure resolvability.
 
-Raw data was normalized into a common schema: location (postal code + neighborhood), timestamp, metric type, and value. This flat structure made it possible to query across sources without complex joins. A materialized view layer pre-computed the neighborhood-level aggregates that powered the frontend dashboards.
+The **trading interface** shows live markets with current odds, volume, and time remaining. Users connect their wallet via WalletConnect, approve token spending, and place positions by purchasing outcome tokens. The UI shows real-time price movements as other participants trade — driven by WebSocket connections to the NestJS backend that monitors on-chain events.
 
-The frontend presented three views. The **map view** showed a choropleth of price trends by neighborhood, with color intensity indicating year-over-year change. The **comparison view** let users place two neighborhoods side-by-side across all available metrics. The **forecast view** displayed the statistical model's output: trend direction, confidence band, and the key factors driving the prediction.
+The **Gnosis Conditional Token integration** was the most complex piece. Each market creates a condition on-chain. When a user takes a position, the contract mints conditional tokens representing their bet. If the condition resolves in their favor, they can redeem tokens for the underlying collateral. The settlement process uses a combination of on-chain oracles and a manual resolution mechanism for markets where automated data isn't available.
 
-Performance was critical — the map view rendered thousands of data points. I used server-side aggregation to reduce the payload, sending only the data the current viewport needed. The PostgreSQL queries were optimized with partial indexes on the most common filter combinations (city + metric type + time range).
+**Wallet interaction** was designed to minimize Web3 friction. Users connect once via WalletConnect, and subsequent transactions use a session-based approval flow. The UI clearly shows gas estimates, transaction status, and provides plain-language explanations of what each on-chain action does — critical for users who understand real estate but not blockchain.
+
+The **data layer** combines on-chain state (market positions, settlements) with off-chain data (market descriptions, user profiles, historical property data). PostgreSQL stores the off-chain components, while the frontend reads on-chain state directly from Polygon via Ethers.js. A background indexer keeps the off-chain database in sync with on-chain events for fast querying.
 
 ## Impact
 
-The platform indexed **120,000+ property transactions** across the Netherlands. Neighborhood-level forecasts achieved a **directional accuracy of 78%** over six-month periods — significantly better than the city-level averages investors were previously using. The average API response time stayed under **200ms** even for complex cross-neighborhood comparisons.
+The platform demonstrated that prediction market mechanics work for real estate — a domain with longer time horizons and more complex outcomes than typical prediction markets. The Polygon deployment kept transaction costs low enough for meaningful micro-positions. The WalletConnect integration and plain-language UI reduced the Web3 barrier for real estate professionals who were new to DApps.
 
 ## Reflections
 
-The most valuable technical decision was keeping the forecasting model simple. Early prototypes used a more complex ML approach that was marginally more accurate but impossible to explain to users. Switching to a transparent statistical model with visible factors (population growth, new transit lines, housing supply) made the forecasts trustworthy rather than just accurate. Users need to understand why a prediction was made before they will act on it.
+The biggest challenge was market design, not code. Defining questions that are specific enough to be resolvable but broad enough to attract liquidity is an art. "Will Amsterdam prices go up?" is too vague. "Will the Kadaster index for Amsterdam-Zuid postal codes 1071-1079 increase by >5% YoY in Q4 2025?" is specific but might not attract enough participants. Finding the right granularity required iteration and user feedback. The technical stack — Polygon, Gnosis CT, NestJS — was solid and well-documented. The hard part was the product, not the engineering.

@@ -19,27 +19,27 @@
     "period": "2025 — 2026",
     "location": "Netherlands, Remote",
     "type": "Full-time",
-    "description": "Led a 3-person engineering team shipping three products simultaneously — Jeofferte (B2B quotation platform for 110+ Dutch SMEs), Meshi (food-tech with geo-based matching), and Roofcast (Web3 prediction market on Polygon). Owned architecture decisions, code review, and deployment pipelines across all three.",
+    "description": "Led a 3-person engineering team shipping three products simultaneously — Jeofferte (quote marketplace), Meshi (food-tech with geo-based matching), and Roofcast (Web3 prediction market on Polygon). Owned architecture decisions, code review, and deployment pipelines across all three.",
     "highlights": [
       "Roofcast: Web3 DApp on Polygon with Gnosis Conditional Tokens for prediction markets",
-      "Meshi: geo-based matching engine connecting users with nearby food providers",
-      "Jeofferte: quotation system closing deals 62% faster for 110+ Dutch SMEs"
+      "Jeofferte: quote marketplace with instant supplier matching via background pre-processing",
+      "Meshi: geo-based food matching engine with PostGIS and real-time availability"
     ],
-    "tech": ["React", "NestJS", "TypeScript", "Solidity", "PostgreSQL", "Polygon", "Stripe"]
+    "tech": ["Next.js 15", "React", "NestJS", "TypeScript", "Zustand", "React Query", "Solidity", "PostgreSQL", "PostGIS", "Zod", "MinIO", "Stripe"]
   },
   {
-    "company": "Exmodules",
+    "company": "DApp Solutions",
     "role": "Senior Front-end Developer",
     "period": "2024 — 2025",
     "location": "Remote",
     "type": "Contract",
-    "description": "Built a Web3 real estate DApp with tokenized property ownership, marketplace features, and wallet integration. Developed a headless component architecture enabling white-label deployment across multiple clients.",
+    "description": "Built a blockchain-based real estate platform enabling users to buy or rent property with cryptocurrency. Smart contracts handle the full transaction lifecycle — funds locked and released only after document verification. WalletConnect for authentication and on-chain signing.",
     "highlights": [
-      "Token creation flows and property listing interfaces for on-chain real estate",
-      "Headless architecture enabling white-label deployment for multiple clients",
-      "CRUD table abstraction improving feature delivery by 50%"
+      "Smart contracts managing full property transaction lifecycle with fund escrow",
+      "WalletConnect integration for wallet-based authentication and on-chain signing",
+      "SEO-optimized responsive frontend with Web3 wallet interaction"
     ],
-    "tech": ["React", "TypeScript", "Web3.js", "Ethers.js", "Redux", "Node.js"]
+    "tech": ["Next.js", "React", "TypeScript", "Zustand", "Tailwind CSS", "Radix UI", "Solidity", "NestJS", "PostgreSQL", "Zod", "MinIO", "WalletConnect"]
   },
   {
     "company": "Intex Exchange",
@@ -47,13 +47,13 @@
     "period": "2022 — 2024",
     "location": "Remote",
     "type": "Contract",
-    "description": "Built real-time cryptocurrency trading interfaces with WebSocket price feeds and order book visualization. Created a shared component library that cut development cycles from 8 to 5 days across the engineering team.",
+    "description": "Built real-time cryptocurrency trading interfaces with TradingView charts and WebSocket feeds. Improved load times from 4.2s to 2.9s and introduced PWA with hybrid caching. Built a shared component library that cut feature delivery from 8 to 5 days. Mentored two junior developers.",
     "highlights": [
-      "Shared component library reducing development cycles from 8 to 5 days",
-      "Real-time trading UI with WebSocket price feeds and order book rendering",
-      "Socket.io integration for live market data with sub-second latency"
+      "Platform load time optimized from 4.2s to 2.9s via bottleneck analysis",
+      "PWA with hybrid caching: cache-first for static assets, network-first for APIs",
+      "Component library cutting feature delivery from 8 to 5 days, mentored 2 juniors"
     ],
-    "tech": ["React", "TypeScript", "Redux", "Socket.io", "Web3.js", "Ethers.js"]
+    "tech": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Redux Toolkit", "MongoDB", "Firebase", "Socket.io", "TradingView Library", "i18n", "Service Worker"]
   },
   {
     "company": "Panikar Academy",

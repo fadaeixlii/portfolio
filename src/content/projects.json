@@ -67,35 +67,35 @@
   },
   {
     "slug": "jeofferte",
-    "title": "JEOfferte",
-    "domain": "B2B commerce",
-    "tagline": "Quotation management platform replacing spreadsheets for Dutch SMEs",
-    "description": "A quotation and offer management system that replaced scattered spreadsheets and email chains for 110+ Dutch SMEs. Single source of truth for quotes, invoices, and client communications — with automated workflows that close deals 62% faster than the manual process.",
-    "pullQuote": "Quotes used to take three emails and a phone call. Now they take ninety seconds.",
-    "role": "Tech Lead & Architect",
+    "title": "Jeofferte",
+    "domain": "Quote marketplace",
+    "tagline": "Dutch quote marketplace connecting customers with expert service providers",
+    "description": "A Dutch-language platform connecting customers with expert service providers. Customers request quotes without logging in, while registered suppliers purchase and respond to requests directly. Features Stripe payments, WhatsApp and email notifications, and a custom background system that pre-processes matches based on location and expertise for instant results.",
+    "pullQuote": "Customers post a request. Suppliers see it instantly. No login, no friction, no delay.",
+    "role": "Tech Lead",
     "year": 2025,
     "duration": "5 months",
     "client": "Zoof-it",
     "team": "Led 3-person team",
-    "tech": ["React", "NestJS", "TypeScript", "PostgreSQL", "Prisma", "Redis", "BullMQ", "Stripe"],
+    "tech": ["Next.js 15", "TypeScript", "React Query", "Zustand", "Tailwind CSS", "Radix UI", "NestJS", "PostgreSQL", "PostGIS", "Zod", "MinIO", "Stripe"],
     "featured": true,
     "status": "published",
     "hue": 280,
     "mockType": "commerce",
     "links": {
-      "live": "",
+      "live": "https://jeofferte.nl",
       "github": "",
       "caseStudy": "/work/jeofferte"
     },
     "image": "/images/projects/jeofferte.avif",
     "metrics": [
-      { "label": "Businesses", "value": "110+" },
-      { "label": "Faster close", "value": "62%" }
+      { "label": "Quote matching", "value": "Instant" },
+      { "label": "Auth required", "value": "None" }
     ],
     "kpis": [
-      { "label": "businesses live", "value": "110+" },
-      { "label": "faster close", "value": "62%" },
-      { "label": "spreadsheets killed", "value": "all of them" }
+      { "label": "customer auth", "value": "not required" },
+      { "label": "matching", "value": "instant / pre-processed" },
+      { "label": "notifications", "value": "WhatsApp + email" }
     ]
   },
   {
@@ -116,7 +116,7 @@
     "hue": 120,
     "mockType": "commerce",
     "links": {
-      "live": "",
+      "live": "https://meshi.nl",
       "github": "",
       "caseStudy": ""
     },
@@ -135,15 +135,15 @@
     "slug": "intex-exchange",
     "title": "Intex Exchange",
     "domain": "Crypto exchange",
-    "tagline": "Real-time cryptocurrency trading platform with live WebSocket feeds",
-    "description": "A cryptocurrency exchange with real-time trading interfaces, WebSocket price feeds, and order book visualization. Built a shared component library that cut development cycles from 8 to 5 days and a CRUD table abstraction that improved feature delivery speed by 50%.",
-    "pullQuote": "Real-time trading where milliseconds matter — and the component library that made it sustainable.",
+    "tagline": "Real-time cryptocurrency trading platform with PWA and TradingView integration",
+    "description": "A cryptocurrency exchange with real-time trading interfaces, TradingView charts, and WebSocket price feeds. Improved load times from 4.2s to 2.9s through bottleneck optimization. Introduced PWA with hybrid caching — cache-first for static assets, network-first for APIs. Built a shared component library that cut feature delivery from 8 to 5 days and mentored two junior developers.",
+    "pullQuote": "Load time down from 4.2 to 2.9 seconds. Component library cut feature delivery from 8 days to 5.",
     "role": "Senior Front-end Developer",
     "year": 2023,
     "duration": "18 months",
     "client": "Intex",
-    "team": "3 front-end engineers",
-    "tech": ["React", "TypeScript", "Redux", "Socket.io", "Web3.js", "Ethers.js"],
+    "team": "3 front-end engineers + 2 mentored juniors",
+    "tech": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Redux Toolkit", "Axios", "MongoDB", "Firebase", "Socket.io", "TradingView Library", "i18n", "Service Worker"],
     "featured": false,
     "status": "published",
     "hue": 30,
@@ -155,28 +155,28 @@
     },
     "image": "",
     "metrics": [
-      { "label": "Dev cycle", "value": "8→5 days" },
-      { "label": "Feature speed", "value": "+50%" }
+      { "label": "Load time", "value": "4.2→2.9s" },
+      { "label": "Dev cycle", "value": "8→5 days" }
     ],
     "kpis": [
-      { "label": "dev cycle", "value": "8→5 days" },
-      { "label": "feature delivery", "value": "+50%" },
-      { "label": "data feeds", "value": "real-time" }
+      { "label": "load time", "value": "4.2s → 2.9s" },
+      { "label": "dev cycle", "value": "8 → 5 days" },
+      { "label": "PWA", "value": "hybrid caching" }
     ]
   },
   {
-    "slug": "exmodules",
-    "title": "Exmodules",
+    "slug": "dapp-solutions",
+    "title": "DApp Solutions",
     "domain": "Web3 real estate",
-    "tagline": "Tokenized real estate DApp with marketplace and wallet integration",
-    "description": "A Web3 real estate platform enabling tokenized property ownership and on-chain marketplace features. Built token creation flows, property listing interfaces, wallet integration, and a headless component architecture that enabled white-label deployment across multiple clients.",
-    "pullQuote": "Tokenizing real estate — turning bricks and mortar into tradeable on-chain assets.",
+    "tagline": "Blockchain-based real estate platform for buying and renting property with crypto",
+    "description": "A decentralized platform enabling users to buy or rent property using cryptocurrency. Smart contracts handle the full transaction lifecycle — funds are securely locked and released only after document verification. Features WalletConnect authentication, on-chain signing, and a responsive SEO-optimized frontend.",
+    "pullQuote": "Smart contracts lock the funds. Documents get verified. Only then does the money move.",
     "role": "Senior Front-end Developer",
     "year": 2024,
     "duration": "8 months",
-    "client": "Exmodules",
+    "client": "DApp Solutions",
     "team": "2 front-end engineers",
-    "tech": ["React", "TypeScript", "Web3.js", "Ethers.js", "Redux", "Node.js"],
+    "tech": ["Next.js", "React", "TypeScript", "Zustand", "Tailwind CSS", "Radix UI", "Solidity", "NestJS", "PostgreSQL", "Zod", "MinIO", "WalletConnect"],
     "featured": false,
     "status": "published",
     "hue": 200,
@@ -188,13 +188,13 @@
     },
     "image": "",
     "metrics": [
-      { "label": "Architecture", "value": "Headless" },
-      { "label": "Deployment", "value": "White-label" }
+      { "label": "Settlement", "value": "On-chain" },
+      { "label": "Auth", "value": "WalletConnect" }
     ],
     "kpis": [
-      { "label": "architecture", "value": "headless" },
-      { "label": "deployment", "value": "white-label" },
-      { "label": "tokens", "value": "property NFTs" }
+      { "label": "transactions", "value": "smart contract" },
+      { "label": "auth", "value": "WalletConnect" },
+      { "label": "fund release", "value": "post-verification" }
     ]
   },
   {

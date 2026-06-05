@@ -1,11 +1,11 @@
 ---
 title: "Jeofferte"
 slug: "jeofferte"
-tagline: "E-commerce offer and quotation management system for Dutch businesses"
-role: "Full-Stack Developer"
-year: 2023
+tagline: "Dutch quote marketplace connecting customers with expert service providers"
+role: "Tech Lead"
+year: 2025
 status: "published"
-tech: ["React", "NestJS", "TypeScript", "PostgreSQL"]
+tech: ["Next.js 15", "TypeScript", "NestJS", "PostgreSQL", "PostGIS", "Stripe"]
 featured: true
 sort_order: 3
 hero_image: "/images/projects/jeofferte/hero.avif"
@@ -13,32 +13,34 @@ hero_image: "/images/projects/jeofferte/hero.avif"
 
 ## The Problem
 
-Small and medium Dutch businesses were managing their quotation process across spreadsheets, email threads, and disconnected invoicing tools. A single quote might start as an Excel file, get emailed back and forth with revisions tracked in the subject line, and eventually be manually re-entered into an accounting system. The error rate was high, the process was slow, and there was no visibility into which quotes were pending, accepted, or expired.
+In the Netherlands, finding a reliable service provider for home repairs, renovations, or professional services meant calling around, waiting for callbacks, and comparing quotes that arrived in different formats over different timelines. Customers had no central place to post a request and receive competing offers. Service providers had no efficient way to find new leads in their area of expertise and geography.
 
-The businesses we spoke to had tried generic CRM tools, but they were either too complex (Salesforce-scale enterprise software) or too simple (basic form builders that could not handle line items, tax calculations, or multi-currency pricing). They needed something purpose-built for the Dutch market — with correct BTW (VAT) handling, KvK integration, and Dutch-language templates.
+Existing platforms either required account creation (killing conversion) or lacked the intelligence to match requests with the right suppliers. The result was a fragmented market where customers settled for whoever picked up the phone first, and good suppliers missed work that was happening two streets away.
 
 ## The Approach
 
-The architecture needed to support a multi-step workflow: create quote → send to client → track status → convert to invoice → record payment. Each step had different access requirements and validation rules. A quote in draft mode is editable by anyone on the team. A sent quote is read-only. An accepted quote can be converted to an invoice but not modified.
+The core insight was that the platform needed to be frictionless on both sides of the marketplace. Customers should never need to create an account — post a request and receive quotes via email. Suppliers, who use the platform professionally, would register and pay for leads through a Stripe-powered wallet system.
 
-I chose NestJS for the backend because its module system mapped naturally to these domain boundaries. Each workflow stage was a module with its own validation, guards, and event handlers. React handled the frontend with a focus on the quote builder — the most interaction-heavy screen, where users needed to add line items, apply discounts, preview the PDF, and send in a single flow.
+The matching problem was the hardest technical challenge. A naive approach would query the database on every new request, checking which suppliers serve that postal code and category. At scale, this becomes a bottleneck. I designed a custom background pre-processing system that maintains a ready-made match index based on supplier locations (PostGIS) and expertise categories. When a customer posts a request, the matches are already computed — suppliers see results instantly with zero delay.
 
-PostgreSQL was chosen for its transactional guarantees. Converting a quote to an invoice involved multiple table updates that had to succeed or fail atomically. The BTW calculation rules alone required careful handling — different rates for different product categories, reverse-charge rules for cross-border EU sales, and the Dutch small-business exemption (kleineondernemersregeling).
+I chose Next.js 15 for the frontend with React Query for server state and Zustand for client state. The backend runs NestJS with PostgreSQL and PostGIS for geo-aware queries, Zod for runtime validation across the full stack, and MinIO for file storage.
 
 ## The Solution
 
-The core of the system was the **quote builder**. Users created quotes by selecting a client (auto-filled from KvK registry data), adding line items with descriptions, quantities, and unit prices, and applying optional discounts. The builder calculated subtotals, BTW per rate category, and grand totals in real time. A live preview showed the final PDF layout as users edited.
+The **customer flow** is deliberately simple: describe what you need, pick a category, enter your postal code and contact details. No account, no password, no email verification. The request is live within seconds. Customers receive quotes via email and can accept or decline through tokenized links — never needing to log into anything.
 
-The **client portal** was a separate, unauthenticated view where clients could review a quote, ask questions through a threaded comment system, and accept or decline. Acceptance triggered an automatic status update and optional invoice generation. The portal link was a signed URL with an expiration, so no client account was needed.
+The **supplier dashboard** is where the business logic lives. Registered suppliers set their service area (drawn on a map backed by PostGIS), select expertise categories, and fund their Stripe wallet. When a matching request appears, they can purchase the lead and contact the customer directly. The pricing model ensures suppliers only pay for leads they choose to pursue.
 
-The **workflow engine** managed state transitions. Each quote had a status: `draft → sent → viewed → accepted/declined → invoiced → paid`. Transitions triggered side effects: sending an email on `sent`, recording a timestamp on `viewed`, generating a PDF on `invoiced`. NestJS event emitters kept these decoupled — the status module did not know about the email module.
+**Notifications** run through both WhatsApp and email channels. Suppliers get instant WhatsApp alerts for new matching requests. Email handles quote acceptance, review requests, and payment confirmations. All emails use templated HTML with the platform's branding — built with a template engine that supports Dutch localization.
 
-The PDF generation used a template system built on React-pdf. Templates were React components that received the quote data as props and rendered a print-ready document. Businesses could customize their logo, colors, and footer text. The same template rendered the live preview in the builder and the final downloadable PDF.
+The **SEO layer** was critical for organic acquisition. All public content renders as server-side HTML with structured data. Category pages, location pages, and informational content are all SEO-optimized with rich-text content rendered as semantic HTML — not client-rendered JavaScript that search engines struggle with.
+
+**Payments** run through Stripe with two modes: wallet top-up (suppliers pre-fund their account) and direct payment per lead. The wallet model encourages recurring usage; the direct model lowers the barrier for new suppliers trying the platform.
 
 ## Impact
 
-The platform processed over **2,000 quotes** in its first year of operation. Businesses reported a **60% reduction in quote-to-acceptance time** — from an average of 5 days with the email workflow to under 2 days with the client portal. The automated BTW calculations eliminated the tax errors that had previously required manual correction in roughly 1 in 10 quotes.
+The background pre-processing system means supplier matching happens in under 100ms regardless of database size — no degradation as the platform scales. The no-login customer flow achieved a significantly higher completion rate than comparable platforms requiring registration. WhatsApp notifications drove faster supplier response times compared to email-only competitors.
 
 ## Reflections
 
-The biggest challenge was not technical — it was understanding Dutch tax law well enough to implement it correctly. The BTW rules have edge cases that even accountants debate. I spent more time reading belastingdienst.nl documentation than writing code for the tax module. The lesson: in fintech-adjacent products, domain knowledge is the bottleneck, not engineering complexity. Building the quote builder took a week. Getting the tax calculations audit-ready took three.
+The hardest decision was building the background match pre-processing instead of doing real-time queries. It added complexity upfront — maintaining a materialized match index that updates when suppliers change their service area or categories. But it was the right call. Real-time geo queries with multiple filter dimensions don't scale linearly, and the platform needed to feel instant for suppliers checking their phone between jobs. The lesson: invest in background computation when the read path is time-critical and the write path is infrequent.

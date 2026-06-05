@@ -1,11 +1,11 @@
 ---
 title: "Aim2Balance"
 slug: "aim2balance"
-tagline: "AI-integrated health and wellness platform forked from LibreChat"
-role: "Lead Developer"
-year: 2024
+tagline: "EU-hosted AI chat platform with EUR billing and cross-provider token tracking"
+role: "Co-Founder & Lead Engineer"
+year: 2025
 status: "published"
-tech: ["Next.js", "TypeScript", "Node.js", "MongoDB", "AI/LLM"]
+tech: ["Next.js", "TypeScript", "Node.js", "MongoDB", "LiteLLM", "Stripe"]
 featured: true
 sort_order: 1
 hero_image: "/images/projects/aim2balance/hero.avif"
@@ -13,32 +13,32 @@ hero_image: "/images/projects/aim2balance/hero.avif"
 
 ## The Problem
 
-Health professionals were spending more time on documentation and follow-up management than on actual patient interaction. The clinic needed a platform where AI could handle routine wellness assessments, generate personalized plans, and maintain context across sessions — all without requiring patients to re-explain their history every visit.
+AI chat platforms like ChatGPT, Claude, and Gemini each have their own billing, their own interfaces, and their own token tracking. For European users and businesses, there were additional pain points: USD-only billing, data hosted outside the EU, and no unified way to monitor spending across providers. A company paying for AI access across multiple providers had no single dashboard to track consumption, set budgets, or enforce usage policies.
 
-Off-the-shelf chatbot solutions treated every conversation as standalone. There was no continuity, no domain-specific knowledge, and no integration with the clinic's existing workflows. Patients would describe symptoms, receive generic advice, and lose all context the moment they closed the browser.
+The open-source ecosystem had LibreChat — a solid multi-model chat interface — but it was designed as a self-hosted tool, not as a managed platform with billing, user management, and compliance features that European businesses require.
 
 ## The Approach
 
-I evaluated building from scratch versus forking an established open-source chat framework. LibreChat had the conversational UI, model-switching infrastructure, and plugin architecture we needed. Building that foundation from zero would have taken months and produced a worse result.
+I co-founded aim2balance.ai to solve this. Rather than building a chat interface from scratch, I forked LibreChat and built the platform layer on top: EU hosting for GDPR compliance, EUR-based billing through Stripe, multi-provider token tracking, and cross-platform access via web, mobile, and browser extension.
 
-The key insight was that LibreChat's plugin system could be extended to inject domain-specific AI agents. Rather than modifying the core chat logic, I built a layer on top: custom agents that understood health terminology, could reference previous sessions, and generated structured wellness plans instead of freeform text.
+The key architectural decision was using LiteLLM as the model routing layer. LiteLLM provides a unified API across OpenAI, Anthropic, Google, and other providers, which meant the billing and tracking system only needed to integrate with one interface regardless of which model the user was talking to. Every request passes through our proxy, gets metered, and is billed in EUR against the user's Stripe wallet.
+
+MongoDB was chosen for the data layer because the chat and session data is naturally document-shaped — conversations with nested messages, metadata, and provider-specific response attributes. Relational schemas would have required excessive normalization for data that is always read and written as a unit.
 
 ## The Solution
 
-The fork retained LibreChat's multi-model chat interface but added three custom systems on top.
+The **chat platform** retains LibreChat's multi-model interface but adds user management, team workspaces, and usage dashboards. Users can switch between GPT-4, Claude, Gemini, and other models within a single conversation. Every message is routed through LiteLLM, metered for token usage, and billed against the user's EUR balance.
 
-First, a **wellness agent framework**. Each agent was configured with a system prompt, a set of allowed tools (meal plan generator, exercise recommender, symptom tracker), and access to the patient's session history. The agents operated within guardrails — they could suggest but never diagnose.
+The **billing pipeline** processes 10,000+ daily sessions through Stripe. Users fund a wallet in EUR, and each API call deducts the token cost at the current provider rate. The system handles rate conversion (provider costs in USD, user billing in EUR), overage protection (requests fail gracefully when balance is depleted), and usage reports exportable for accounting.
 
-Second, a **session continuity layer**. Every conversation was indexed and summarized. When a patient returned, the agent loaded a condensed history of prior sessions, medications mentioned, goals set, and progress reported. This eliminated the cold-start problem that made generic chatbots useless for ongoing care.
+The **Chrome extension** was built to solve a specific user request: people who use ChatGPT, Claude, and Gemini directly through their native interfaces still wanted to track their token spending in one place. The extension monitors API calls from these platforms, extracts token counts from response headers, and reports them back to the aim2balance dashboard. Users get a unified spending view regardless of whether they use our platform or the native interfaces.
 
-Third, a **structured output pipeline**. Instead of raw chat responses, the agents produced formatted wellness plans: daily schedules, meal suggestions with macros, exercise progressions. These were stored as structured documents, not chat messages, making them searchable and exportable.
-
-The MongoDB schema was designed around sessions rather than messages. Each session contained the raw conversation, extracted entities (symptoms, medications, goals), and generated artifacts (plans, summaries). This made it possible to query across sessions without parsing chat logs.
+**Cross-platform mobile apps** were shipped via Capacitor, wrapping the Next.js web app in native containers for iOS and Android. This let us maintain a single codebase while providing push notifications for billing alerts and a native app store presence.
 
 ## Impact
 
-The platform processed over **500 wellness sessions** in its first three months. Patient return rate increased to **72%**, up from 40% with the previous email-based follow-up system. Clinicians reported spending **30% less time** on documentation because the AI-generated session summaries replaced manual note-taking.
+The platform processes **10,000+ daily sessions** with EUR-based billing. The Chrome extension bridged the gap between our platform and native provider interfaces, giving users token tracking they couldn't get elsewhere. Capacitor mobile apps expanded reach to users who prefer native apps without requiring a separate mobile engineering team.
 
 ## Reflections
 
-Forking was the right call. The temptation to build from scratch was strong — LibreChat's codebase is large and opinionated — but the time saved on the conversational UI alone justified the decision. The harder lesson was scope management: the wellness agents kept expanding in capability during development, and I had to enforce hard boundaries on what they could and could not do. An AI that suggests meal plans is useful. An AI that drifts into medical advice is a liability.
+Forking LibreChat saved months of UI development but created an ongoing maintenance burden — every upstream update needs careful merging to avoid breaking our customizations. The LiteLLM integration was the best architectural decision: it decoupled our billing system from any single AI provider, meaning we can add new models without touching the metering code. The Chrome extension was the surprise hit — it solved a problem users didn't know they had until they saw their combined spending across providers for the first time.
