@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/lib/content";
 import { SpotlightCard } from "@/components/marketing/SpotlightCard";
@@ -118,25 +119,39 @@ export function ProjectCard({ project, index = 0, total = 3 }: ProjectCardProps)
           </div>
         </div>
 
-        {/* Right — device mockups */}
-        {mockType && (
+        {/* Right — screenshot or device mockups */}
+        {(project.image || mockType) && (
           <div
             aria-hidden="true"
-            className="hidden border-l border-border p-6 lg:block"
+            className="hidden border-l border-border lg:block"
             style={{
               background: `radial-gradient(ellipse at 30% 20%, oklch(0.65 0.18 ${hue} / 0.08), transparent 60%), oklch(0.12 0.005 ${hue})`,
             }}
           >
-            <div className="grid h-full grid-cols-[1fr_148px] items-center gap-4">
-              <BrowserFrame url={domain} hue={hue}>
-                <MockShot type={mockType} variant="desktop" hue={hue} />
-              </BrowserFrame>
-              <div className="translate-y-4">
-                <PhoneFrame hue={hue}>
-                  <MockShot type={mockType} variant="mobile" hue={hue} />
-                </PhoneFrame>
+            {project.image ? (
+              <div className="flex h-full items-center justify-center p-6">
+                <BrowserFrame url={domain} hue={hue}>
+                  <Image
+                    src={project.image}
+                    alt={`${project.title} screenshot`}
+                    width={800}
+                    height={500}
+                    className="h-auto w-full object-cover"
+                  />
+                </BrowserFrame>
               </div>
-            </div>
+            ) : mockType ? (
+              <div className="grid h-full grid-cols-[1fr_148px] items-center gap-4 p-6">
+                <BrowserFrame url={domain} hue={hue}>
+                  <MockShot type={mockType} variant="desktop" hue={hue} />
+                </BrowserFrame>
+                <div className="translate-y-4">
+                  <PhoneFrame hue={hue}>
+                    <MockShot type={mockType} variant="mobile" hue={hue} />
+                  </PhoneFrame>
+                </div>
+              </div>
+            ) : null}
           </div>
         )}
       </div>

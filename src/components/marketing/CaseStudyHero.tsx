@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { CaseStudyFrontmatter } from "@/lib/mdx/types";
 
@@ -65,6 +66,20 @@ export function CaseStudyHero({ frontmatter }: CaseStudyHeroProps) {
             </div>
           ))}
         </div>
+
+        {/* Hero image */}
+        {frontmatter.hero_image && (
+          <div className="overflow-hidden rounded-lg border border-border">
+            <Image
+              src={frontmatter.hero_image}
+              alt={`${frontmatter.title} — project screenshot`}
+              width={1920}
+              height={1080}
+              className="h-auto w-full object-cover"
+              priority
+            />
+          </div>
+        )}
       </div>
     </header>
   );
