@@ -21,7 +21,7 @@
       "github": "",
       "caseStudy": "/work/aim2balance"
     },
-    "image": "/images/projects/aim2balance.avif",
+    "image": "/images/projects/aim2balance/landing.png",
     "metrics": [
       { "label": "Daily sessions", "value": "10k+" },
       { "label": "Billing", "value": "EUR-based" }
@@ -54,7 +54,7 @@
       "github": "",
       "caseStudy": "/work/roofcast"
     },
-    "image": "/images/projects/roofcast.avif",
+    "image": "/images/projects/roofcast/landing.png",
     "metrics": [
       { "label": "Chain", "value": "Polygon" },
       { "label": "Settlement", "value": "On-chain" }
@@ -87,7 +87,7 @@
       "github": "",
       "caseStudy": "/work/jeofferte"
     },
-    "image": "/images/projects/jeofferte.avif",
+    "image": "/images/projects/jeofferte/landing.png",
     "metrics": [
       { "label": "Quote matching", "value": "Instant" },
       { "label": "Auth required", "value": "None" }
