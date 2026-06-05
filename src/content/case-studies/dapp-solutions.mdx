@@ -1,0 +1,48 @@
+---
+title: "DApp Solutions"
+slug: "dapp-solutions"
+tagline: "Blockchain-based real estate platform for buying and renting property with crypto"
+role: "Senior Front-end Developer"
+year: 2024
+status: "published"
+tech: ["Next.js", "React", "TypeScript", "Solidity", "NestJS", "WalletConnect"]
+featured: false
+sort_order: 6
+hero_image: ""
+---
+
+## The Problem
+
+Real estate transactions are slow, expensive, and opaque. Buyers, sellers, and renters rely on intermediaries — agents, lawyers, escrow services — each adding cost and time to what should be a straightforward exchange of property for payment. For crypto-savvy users who are already comfortable with digital assets and on-chain transactions, this traditional process feels archaic.
+
+DApp Solutions set out to eliminate the intermediaries by putting the entire property transaction lifecycle on-chain. Smart contracts would handle fund locking, document verification triggers, and automatic release — replacing the trust-based escrow model with a trustless, automated one.
+
+## The Approach
+
+The platform needed three layers to work: smart contracts that enforce transaction rules, a backend that bridges on-chain and off-chain data, and a frontend that makes Web3 interactions feel as simple as a regular website.
+
+The smart contracts were written in Solidity with a focus on safety. The core contract handles the transaction lifecycle: a buyer locks funds into the contract, both parties upload verification documents, and funds are released only after the verification conditions are met. If conditions aren't met within the deadline, funds return to the buyer automatically. No intermediary needed.
+
+The backend runs NestJS with PostgreSQL for off-chain data (property listings, user profiles, document metadata), Zod for validation, MinIO for file storage, and JWT authentication. Email notifications keep parties informed at each transaction stage.
+
+For the frontend, I chose Next.js with React, TypeScript, Zustand for state management, and Tailwind CSS with Radix UI for the component library. WalletConnect handles wallet-based authentication — users sign in with their crypto wallet instead of a traditional email/password flow.
+
+## The Solution
+
+The **property marketplace** lets users browse, list, and filter properties. Each listing shows the property details, price (in crypto), location, and transaction terms. The frontend is fully SEO-optimized with server-side rendering — important for discoverability even though the transaction layer is Web3.
+
+**WalletConnect integration** provides authentication and transaction signing. Users connect their wallet once, and subsequent actions (placing an offer, signing a contract, releasing funds) use session-based approvals. The UI shows plain-language explanations of each on-chain action before the user confirms — critical for users who understand real estate but may be newer to blockchain.
+
+The **smart contract interaction layer** abstracts the complexity of on-chain transactions. When a buyer makes an offer, the frontend constructs the transaction, estimates gas, shows the cost in both crypto and fiat equivalent, and submits it through the user's wallet. Transaction status is tracked on-chain and mirrored to the backend for notification triggers.
+
+The **document verification flow** handles the off-chain part of the transaction. Both parties upload required documents (title deeds, identity verification, inspection reports) to MinIO storage. The contract's verification condition is triggered by an authorized verifier (currently manual, designed for future oracle integration).
+
+The **fund escrow mechanism** is the trust core of the platform. Funds are locked in the smart contract from the moment an offer is accepted. They can only move in two directions: to the seller after verification, or back to the buyer if the deadline passes. No admin, no intermediary, no manual override can redirect the funds.
+
+## Impact
+
+The platform demonstrated that the full real estate transaction lifecycle — from listing to fund release — can be managed through smart contracts with a user-friendly frontend. WalletConnect integration reduced the Web3 onboarding friction that typically blocks mainstream adoption. The escrow mechanism handled real transactions with funds locked and released entirely on-chain.
+
+## Reflections
+
+The biggest challenge was making Web3 transactions feel safe to users accustomed to traditional real estate. Every on-chain action needed a clear explanation, a cost preview, and a confirmation step. The "what happens if something goes wrong" question needed an answer at every stage — and the answer was always the smart contract's automatic fallback behavior. Building trust in code replacing trust in people requires more UX work than engineering work. The headless component architecture proved valuable for white-label deployment — different clients could skin the platform without touching the transaction logic.

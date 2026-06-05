@@ -1,0 +1,38 @@
+---
+title: "3gaam"
+slug: "3gaam"
+tagline: "AI-driven student resource platform with interactive learning tools"
+role: "Front-end Developer"
+year: 2020
+status: "published"
+tech: ["React", "JavaScript", "TypeScript", "GraphQL", "Sass"]
+featured: false
+sort_order: 8
+hero_image: ""
+---
+
+## The Problem
+
+3gaam was building an AI-driven platform to help students find and interact with learning resources. The existing frontend had performance issues — GraphQL queries were poorly optimized, causing slow page loads and unreliable data fetching. The codebase was entirely JavaScript with no type safety, making it difficult to refactor without introducing regressions. The team needed someone to stabilize the frontend, fix the API integration layer, and begin the transition to TypeScript.
+
+## The Approach
+
+I started with the GraphQL layer, which was the primary source of performance issues. Queries were over-fetching data, not using fragments efficiently, and missing pagination on large result sets. I audited every query against the schema, restructured them to fetch only what each component needed, and added pagination where lists could grow unbounded.
+
+The TypeScript migration was incremental — converting files one at a time starting with the most-changed modules, adding types to the GraphQL layer first (where type safety has the highest impact), then expanding outward. This approach let us ship features continuously while improving the codebase.
+
+## The Solution
+
+The **GraphQL optimization** focused on three areas: query restructuring (eliminating over-fetching), fragment composition (sharing field selections across related queries), and pagination (adding cursor-based pagination to student resource lists). These changes reduced average API response processing time and eliminated the timeout errors that had been causing blank pages.
+
+The **interactive learning interfaces** were the user-facing components I built: resource browsers, search with filters, content viewers, and progress tracking. Each was designed for student workflows — quick scanning, bookmarking, and revisiting resources across study sessions.
+
+The **TypeScript migration** was the company's first. I established the configuration, set up strict mode incrementally, and converted the highest-impact modules first: the GraphQL client layer, shared utilities, and the most-modified components. The migration caught several latent bugs — type mismatches that had been silently failing in JavaScript.
+
+## Impact
+
+GraphQL query optimizations eliminated timeout errors and improved page load reliability. The TypeScript migration caught latent bugs and reduced the debugging time for new features. The interactive learning interfaces provided students with a faster, more intuitive way to discover and engage with resources.
+
+## Reflections
+
+This was my first production TypeScript migration, and the lesson was clear: migrate the data layer first. Types on the GraphQL client caught more bugs per file converted than any other part of the codebase, because that's where data shapes mismatch most often between what the API returns and what the component expects. Starting with UI components would have been less impactful. The GraphQL performance fixes were mostly about discipline — reading the schema, understanding what each component actually needs, and not fetching everything just because it's available. Simple fixes, big impact.

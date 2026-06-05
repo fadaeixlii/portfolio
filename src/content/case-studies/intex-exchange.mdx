@@ -1,0 +1,48 @@
+---
+title: "Intex Exchange"
+slug: "intex-exchange"
+tagline: "Real-time cryptocurrency trading platform with PWA and TradingView integration"
+role: "Senior Front-end Developer"
+year: 2023
+status: "published"
+tech: ["React", "Next.js", "TypeScript", "Redux Toolkit", "Socket.io", "TradingView"]
+featured: false
+sort_order: 5
+hero_image: ""
+---
+
+## The Problem
+
+Intex Exchange had a functioning crypto trading platform, but it was slow — 4.2-second load times — and the frontend codebase had grown unwieldy. Feature delivery took an average of 8 days per feature because there was no shared component library, no standardized patterns, and every new screen was built from scratch. The team was also growing, with junior developers joining who needed onboarding into a codebase that had no clear conventions.
+
+The platform needed to feel instant. Crypto traders make decisions in seconds based on price movements. A 4.2-second load time means missing trades. Competitors with faster platforms were winning users on speed alone.
+
+## The Approach
+
+I attacked three problems simultaneously: performance, developer velocity, and team capability.
+
+For performance, I profiled the load waterfall and identified the key bottlenecks: unoptimized bundle splitting, no caching strategy, and render-blocking API calls. The fix was introducing Progressive Web App capabilities with a hybrid caching strategy — cache-first for static assets (JavaScript bundles, images, TradingView library) and network-first for API calls (price feeds, order book data). This meant the shell loaded instantly from cache while live data streamed in.
+
+For developer velocity, I built a shared component library with standardized patterns. Every common UI element — order forms, price displays, data tables, status badges — became a reusable component with consistent APIs. The CRUD table abstraction alone eliminated days of boilerplate for every new admin or data screen.
+
+For the team, I mentored two junior developers over the engagement, running code reviews, pair programming sessions, and establishing patterns they could follow independently.
+
+## The Solution
+
+The **TradingView integration** was the centerpiece of the trading UI. TradingView's charting library provides professional-grade candlestick charts, technical indicators, and drawing tools. I integrated it with our real-time price feeds via Socket.io, so charts update live as trades happen. The library is heavy (~2MB), so it loads asynchronously after the initial shell renders — one of the key decisions that brought load times down.
+
+The **real-time data layer** used Socket.io for WebSocket connections to the exchange backend. Price tickers, order book depth, trade history, and portfolio balances all update in real time without polling. The frontend manages this through Redux Toolkit (RTK), which provided a structured state management approach the whole team could follow.
+
+The **PWA architecture** included a Service Worker with the hybrid caching strategy. Static assets are cached on first load and served from cache on subsequent visits. API responses use a network-first strategy with stale-while-revalidate fallback — the user sees the last known data instantly while fresh data loads in the background. This brought load times from 4.2s to 2.9s.
+
+The **component library** standardized UI patterns across the platform. Data tables, form inputs, modals, toast notifications, and trading-specific components (order entry, position display, P&L calculations) all followed consistent APIs. This cut average feature delivery time from 8 days to 5 days.
+
+**Internationalization** was handled through i18n, supporting multiple languages for the exchange's international user base. Every string in the component library was translation-ready from day one.
+
+## Impact
+
+Load times dropped from **4.2s to 2.9s** — a 31% improvement that directly affected user retention on a platform where speed equals trust. Feature delivery accelerated from **8 days to 5 days** average, a 37% improvement in engineering velocity. The two junior developers I mentored were delivering features independently within a month, contributing to cross-functional projects that previously required senior involvement.
+
+## Reflections
+
+The PWA hybrid caching strategy was the highest-leverage performance fix. Most crypto exchange users visit the same platform multiple times a day — cache-first for the shell means their second visit loads in under a second. The component library investment felt slow at first (building reusable components takes longer than building one-off screens), but it paid back within weeks as the team started shipping features at nearly double the pace. The lesson: on a growing team, investing in DX infrastructure compounds faster than optimizing individual features.
