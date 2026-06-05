@@ -17,11 +17,11 @@
     "hue": 50,
     "mockType": "chat",
     "links": {
-      "live": "https://aim2balance.ai",
+      "live": "https://platform.aim2balance.ai",
       "github": "",
       "caseStudy": "/work/aim2balance"
     },
-    "image": "/images/projects/aim2balance/landing.png",
+    "image": "/images/projects/aim2balance/platform-desktop.png",
     "metrics": [
       { "label": "Daily sessions", "value": "10k+" },
       { "label": "Billing", "value": "EUR-based" }
