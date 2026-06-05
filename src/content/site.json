@@ -34,7 +34,7 @@
   },
   "stats": [
     { "value": "07+", "label": "Years building for production" },
-    { "value": "08", "label": "Shipped products" },
+    { "value": "10", "label": "Shipped products" },
     { "value": "06", "label": "Industries served" },
     { "value": "—", "label": "Resume on request" }
   ],
@@ -49,7 +49,7 @@
     "responseUnit": "hrs"
   },
   "numbers": {
-    "totalProjects": 8,
+    "totalProjects": 10,
     "experienceYears": "seven",
     "experienceChapters": "Six",
     "selectedWorkCount": 3,

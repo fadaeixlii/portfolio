@@ -153,7 +153,7 @@
       "github": "",
       "caseStudy": "/work/intex-exchange"
     },
-    "image": "",
+    "image": "/images/projects/intex-exchange/hero.png",
     "metrics": [
       { "label": "Load time", "value": "4.2→2.9s" },
       { "label": "Dev cycle", "value": "8→5 days" }
@@ -186,7 +186,7 @@
       "github": "",
       "caseStudy": "/work/dapp-solutions"
     },
-    "image": "",
+    "image": "/images/projects/dapp-solutions/hero.png",
     "metrics": [
       { "label": "Settlement", "value": "On-chain" },
       { "label": "Auth", "value": "WalletConnect" }
@@ -219,7 +219,7 @@
       "github": "",
       "caseStudy": "/work/panikar-assessment"
     },
-    "image": "",
+    "image": "/images/projects/panikar-assessment/hero.png",
     "metrics": [
       { "label": "Users", "value": "5,000+" },
       { "label": "Load time", "value": "-15%" }
@@ -252,7 +252,7 @@
       "github": "",
       "caseStudy": "/work/3gaam"
     },
-    "image": "",
+    "image": "/images/projects/3gaam/hero.png",
     "metrics": [
       { "label": "API", "value": "GraphQL" },
       { "label": "Migration", "value": "JS→TS" }
@@ -261,6 +261,72 @@
       { "label": "api layer", "value": "GraphQL" },
       { "label": "migration", "value": "JS → TypeScript" },
       { "label": "AI features", "value": "student resources" }
+    ]
+  },
+  {
+    "slug": "shareprompt",
+    "title": "SharePrompt",
+    "domain": "AI tools",
+    "tagline": "Discover and share AI-powered prompts across models",
+    "description": "A platform for discovering and sharing AI prompts. Users browse curated prompts, submit their own, and rate community contributions. Built as a side project to explore prompt engineering workflows and community-driven content.",
+    "pullQuote": "The best prompts shouldn't live in someone's clipboard — they should be shared.",
+    "role": "Full-Stack Developer",
+    "year": 2024,
+    "duration": "Side project",
+    "client": "Personal",
+    "team": "Solo",
+    "tech": ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+    "featured": false,
+    "status": "published",
+    "hue": 15,
+    "mockType": "chat",
+    "links": {
+      "live": "",
+      "github": "",
+      "caseStudy": ""
+    },
+    "image": "/images/projects/shareprompt/hero.png",
+    "metrics": [
+      { "label": "Type", "value": "Side project" },
+      { "label": "Focus", "value": "Prompt sharing" }
+    ],
+    "kpis": [
+      { "label": "type", "value": "side project" },
+      { "label": "focus", "value": "AI prompts" },
+      { "label": "stack", "value": "Next.js + TS" }
+    ]
+  },
+  {
+    "slug": "virdaar",
+    "title": "Virdaar",
+    "domain": "Food-tech",
+    "tagline": "Persian food ordering and restaurant discovery mobile app",
+    "description": "A food ordering mobile app for the Persian market. Users browse restaurant menus, customize orders, and track delivery. Clean mobile UI with category browsing and restaurant-specific menus.",
+    "pullQuote": "Food ordering designed for the Persian market — from restaurant menus to doorstep delivery.",
+    "role": "Front-end Developer",
+    "year": 2020,
+    "duration": "6 months",
+    "client": "Virdaar",
+    "team": "2 developers",
+    "tech": ["React Native", "TypeScript", "REST APIs"],
+    "featured": false,
+    "status": "published",
+    "hue": 45,
+    "mockType": "commerce",
+    "links": {
+      "live": "",
+      "github": "",
+      "caseStudy": ""
+    },
+    "image": "/images/projects/virdaar/hero.png",
+    "metrics": [
+      { "label": "Platform", "value": "Mobile" },
+      { "label": "Market", "value": "Persian" }
+    ],
+    "kpis": [
+      { "label": "platform", "value": "iOS + Android" },
+      { "label": "market", "value": "Persian" },
+      { "label": "framework", "value": "React Native" }
     ]
   }
 ]
