@@ -6,23 +6,23 @@
     },
     {
       "name": "Backend",
-      "skills": ["Node.js", "NestJS", "Express", "REST APIs", "GraphQL", "Python"]
+      "skills": ["Node.js", "NestJS", "Express", "REST APIs", "GraphQL", "Python", "Socket.io"]
     },
     {
       "name": "Database",
-      "skills": ["PostgreSQL", "MongoDB", "Supabase", "Redis"]
+      "skills": ["PostgreSQL", "PostGIS", "MongoDB", "TypeORM", "Supabase", "Redis"]
     },
     {
       "name": "AI & LLM",
-      "skills": ["LiteLLM", "RAG", "Prompt Engineering", "OpenAI API", "LangChain"]
+      "skills": ["LiteLLM", "RAG", "Prompt Engineering", "OpenAI API", "LangChain", "Multi-Agent Systems", "AI Automation"]
     },
     {
       "name": "Blockchain",
-      "skills": ["Solidity", "Ethers.js", "Web3.js", "Hardhat", "Foundry", "Viem", "Wagmi", "WalletConnect"]
+      "skills": ["Solidity", "Ethers.js", "Web3.js", "Hardhat", "Foundry", "Viem", "Wagmi", "WalletConnect", "Gnosis Conditional Tokens"]
     },
     {
       "name": "Tools & DevOps",
-      "skills": ["Git", "Docker", "Turborepo", "GitHub Actions", "AWS S3", "Cloudflare", "Sentry", "Linux"]
+      "skills": ["Git", "Docker", "Turborepo", "GitHub Actions", "CI/CD", "AWS S3", "Cloudflare", "Sentry", "Figma", "Linux"]
     }
   ]
 }

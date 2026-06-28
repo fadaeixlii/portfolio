@@ -11,15 +11,19 @@ sort_order: 1
 hero_image: "/images/projects/aim2balance/platform-desktop.png"
 ---
 
+## The Mission
+
+Every AI conversation has a physical cost — the energy and water consumed by the data centers running the models. aim2balance.ai exists to make that cost visible and to cancel it out. Built under the German environmental nonprofit **Bergwaldprojekt eV**, the platform measures the energy and water footprint of each session and funds real-world reforestation in proportion to it — financing forest restoration per square meter based on actual consumption. Using AI on aim2balance isn't carbon-neutral by accounting tricks; it directly pays for trees in the ground.
+
 ## The Problem
 
-AI chat platforms like ChatGPT, Claude, and Gemini each have their own billing, their own interfaces, and their own token tracking. For European users and businesses, there were additional pain points: USD-only billing, data hosted outside the EU, and no unified way to monitor spending across providers. A company paying for AI access across multiple providers had no single dashboard to track consumption, set budgets, or enforce usage policies.
+AI chat platforms like ChatGPT, Claude, and Gemini each have their own billing, their own interfaces, and their own token tracking. For European users and businesses, there were additional pain points: USD-only billing, data hosted outside the EU, and no unified way to monitor spending across providers. A company paying for AI access across multiple providers had no single dashboard to track consumption, set budgets, or enforce usage policies — let alone account for the environmental impact of all that compute.
 
-The open-source ecosystem had LibreChat — a solid multi-model chat interface — but it was designed as a self-hosted tool, not as a managed platform with billing, user management, and compliance features that European businesses require.
+The open-source ecosystem had LibreChat — a solid multi-model chat interface — but it was designed as a self-hosted tool, not as a managed platform with billing, user management, environmental accounting, and compliance features that European businesses require.
 
 ## The Approach
 
-I co-founded aim2balance.ai to solve this. Rather than building a chat interface from scratch, I forked LibreChat and built the platform layer on top: EU hosting for GDPR compliance, EUR-based billing through Stripe, multi-provider token tracking, and cross-platform access via web, mobile, and browser extension.
+I co-founded aim2balance.ai to solve this. Rather than building a chat interface from scratch, I forked LibreChat and built the platform layer on top: EU hosting for GDPR compliance, EUR-based billing through Stripe with auto-recharge wallets, multi-provider token tracking, environmental impact accounting, and cross-platform access via web, mobile, and browser extension.
 
 The key architectural decision was using LiteLLM as the model routing layer. LiteLLM provides a unified API across OpenAI, Anthropic, Google, and other providers, which meant the billing and tracking system only needed to integrate with one interface regardless of which model the user was talking to. Every request passes through our proxy, gets metered, and is billed in EUR against the user's Stripe wallet.
 
@@ -39,7 +43,7 @@ The **marketing website** ([aim2balance.ai](https://aim2balance.ai)) was built s
 
 ## Impact
 
-The platform processes **10,000+ daily sessions** with EUR-based billing. The Chrome extension bridged the gap between our platform and native provider interfaces, giving users token tracking they couldn't get elsewhere. Capacitor mobile apps expanded reach to users who prefer native apps without requiring a separate mobile engineering team.
+The platform processes **10,000+ daily sessions** with EUR-based billing at sub-second transaction latency — and every one of those sessions funds reforestation proportional to its energy and water footprint. The Chrome extension bridged the gap between our platform and native provider interfaces, giving users token tracking they couldn't get elsewhere. Capacitor mobile apps reached the Google Play Store and App Store with a 100% approval rate, expanding reach to users who prefer native apps without requiring a separate mobile engineering team.
 
 ## Reflections
 

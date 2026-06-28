@@ -5,11 +5,12 @@
     "period": "2025 — Present",
     "location": "Germany, Remote",
     "type": "Co-Founder",
-    "description": "Co-founded an EU-hosted AI chat platform forked from LibreChat. Built the entire billing pipeline with Stripe wallets handling 10,000+ daily sessions, a Chrome extension that tracks token consumption across ChatGPT, Claude, and Gemini, and shipped cross-platform mobile apps via Capacitor.",
+    "description": "Co-founded an EU-hosted AI chat platform under Bergwaldprojekt eV that offsets the environmental impact of AI usage by funding real-world reforestation per square meter, based on energy and water consumption. Forked from LibreChat with GDPR-compliant EU hosting. Built the entire EUR billing pipeline with auto-recharge Stripe wallets handling 10,000+ daily sessions, a Chrome extension that tracks token consumption across ChatGPT, Claude, and Gemini, and shipped cross-platform mobile apps via Capacitor.",
     "highlights": [
-      "EUR-based billing pipeline processing 10,000+ daily sessions via Stripe",
+      "Mission-driven AI platform that funds reforestation to offset the energy and water footprint of every AI session",
+      "EUR-based billing pipeline with auto-recharge, processing 10,000+ daily sessions via Stripe at sub-second latency",
       "Chrome extension tracking real-time token usage across ChatGPT, Claude, and Gemini",
-      "Cross-platform mobile apps for iOS and Android shipped with Capacitor"
+      "Cross-platform mobile apps for iOS and Android shipped with Capacitor (100% app-store approval)"
     ],
     "tech": ["Next.js", "TypeScript", "Node.js", "MongoDB", "LiteLLM", "Stripe", "Capacitor"]
   },
@@ -21,19 +22,19 @@
     "type": "Full-time",
     "description": "Led a 3-person engineering team shipping three products simultaneously — Jeofferte (quote marketplace), Meshi (food-tech with geo-based matching), and Roofcast (Web3 prediction market on Polygon). Owned architecture decisions, code review, and deployment pipelines across all three.",
     "highlights": [
-      "Roofcast: Web3 DApp on Polygon with Gnosis Conditional Tokens for prediction markets",
+      "Roofcast: Web3 prediction-market DApp on Polygon with Gnosis Conditional Tokens and USDC on-chain settlement",
       "Jeofferte: quote marketplace with instant supplier matching via background pre-processing",
       "Meshi: geo-based food matching engine with PostGIS and real-time availability"
     ],
     "tech": ["Next.js 15", "React", "NestJS", "TypeScript", "Zustand", "React Query", "Solidity", "PostgreSQL", "PostGIS", "Zod", "MinIO", "Stripe"]
   },
   {
-    "company": "DApp Solutions",
+    "company": "Exmodules",
     "role": "Senior Front-end Developer",
     "period": "2024 — 2025",
     "location": "Remote",
     "type": "Contract",
-    "description": "Built a blockchain-based real estate platform enabling users to buy or rent property with cryptocurrency. Smart contracts handle the full transaction lifecycle — funds locked and released only after document verification. WalletConnect for authentication and on-chain signing.",
+    "description": "Led Web3 initiatives at Exmodules, building DApp Solutions — a blockchain-based real estate platform enabling users to buy or rent property with cryptocurrency — and facilitating token creation. Smart contracts handle the full transaction lifecycle, with funds locked and released only after document verification. Built a generic data-fetching hook and a reusable CRUD table within a modular headless component architecture.",
     "highlights": [
       "Smart contracts managing full property transaction lifecycle with fund escrow",
       "WalletConnect integration for wallet-based authentication and on-chain signing",

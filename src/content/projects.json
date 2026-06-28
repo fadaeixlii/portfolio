@@ -4,8 +4,8 @@
     "title": "Aim2Balance",
     "domain": "AI platform",
     "tagline": "EU-hosted AI chat platform with EUR billing and cross-provider token tracking",
-    "description": "Co-founded and built an AI chat platform forked from LibreChat, hosted in the EU for GDPR compliance. Engineered EUR-based billing with Stripe wallets processing 10,000+ daily sessions, a Chrome extension tracking token consumption across ChatGPT, Claude, and Gemini, and cross-platform mobile apps via Capacitor.",
-    "pullQuote": "We forked an open-source chat platform into an EU-hosted product handling 10,000 sessions a day.",
+    "description": "Co-founded and built an EU-hosted AI chat platform under Bergwaldprojekt eV that offsets the environmental impact of AI by funding real-world reforestation — measured per square meter against each session's energy and water use. Forked from LibreChat for GDPR-compliant EU hosting. Engineered EUR-based billing with auto-recharge Stripe wallets processing 10,000+ daily sessions, a Chrome extension tracking token consumption across ChatGPT, Claude, and Gemini, and cross-platform mobile apps via Capacitor.",
+    "pullQuote": "An AI platform that plants forests — every session's energy and water footprint funds real-world reforestation.",
     "role": "Co-Founder & Lead Engineer",
     "year": 2025,
     "duration": "Ongoing",
@@ -24,11 +24,12 @@
     "image": "/images/projects/aim2balance/platform-desktop.png",
     "metrics": [
       { "label": "Daily sessions", "value": "10k+" },
-      { "label": "Billing", "value": "EUR-based" }
+      { "label": "Mission", "value": "Reforestation" }
     ],
     "kpis": [
       { "label": "daily sessions", "value": "10k+" },
       { "label": "billing", "value": "EUR / Stripe" },
+      { "label": "impact", "value": "funds reforestation" },
       { "label": "platforms", "value": "Web + iOS + Android" }
     ]
   },
@@ -37,20 +38,20 @@
     "title": "Roofcast",
     "domain": "Web3 prediction market",
     "tagline": "Decentralized prediction market for real estate on Polygon",
-    "description": "A Web3 DApp built on Polygon using Gnosis Conditional Tokens for real estate prediction markets. Users stake on property value outcomes with fully on-chain settlement. Integrated WalletConnect, token creation, and real-time market data feeds.",
-    "pullQuote": "On-chain prediction markets where real money settles on real estate outcomes.",
+    "description": "A Web3 DApp built on Polygon using Gnosis Conditional Tokens for real estate prediction markets. Users stake on threshold-based property-value outcomes with fully on-chain USDC settlement. Integrated WalletConnect, token creation, and real-time market data feeds.",
+    "pullQuote": "On-chain prediction markets where real USDC settles on real estate outcomes.",
     "role": "Tech Lead",
     "year": 2025,
     "duration": "4 months",
     "client": "Zoof-it",
     "team": "Led 3-person team",
-    "tech": ["React", "TypeScript", "Solidity", "Polygon", "Gnosis Conditional Tokens", "Ethers.js", "NestJS", "PostgreSQL"],
+    "tech": ["React", "TypeScript", "Solidity", "Polygon", "Gnosis Conditional Tokens", "USDC", "Ethers.js", "NestJS", "PostgreSQL"],
     "featured": true,
     "status": "published",
     "hue": 180,
     "mockType": "analytics",
     "links": {
-      "live": "",
+      "live": "https://roofcast.io",
       "github": "",
       "caseStudy": "/work/roofcast"
     },
@@ -61,7 +62,7 @@
     ],
     "kpis": [
       { "label": "blockchain", "value": "Polygon" },
-      { "label": "settlement", "value": "on-chain" },
+      { "label": "settlement", "value": "USDC on-chain" },
       { "label": "smart contracts", "value": "Gnosis CT" }
     ]
   },
@@ -149,7 +150,7 @@
     "hue": 30,
     "mockType": "analytics",
     "links": {
-      "live": "",
+      "live": "https://intex.finance",
       "github": "",
       "caseStudy": "/work/intex-exchange"
     },
@@ -174,7 +175,7 @@
     "role": "Senior Front-end Developer",
     "year": 2024,
     "duration": "8 months",
-    "client": "DApp Solutions",
+    "client": "Exmodules",
     "team": "2 front-end engineers",
     "tech": ["Next.js", "React", "TypeScript", "Zustand", "Tailwind CSS", "Radix UI", "Solidity", "NestJS", "PostgreSQL", "Zod", "MinIO", "WalletConnect"],
     "featured": false,
