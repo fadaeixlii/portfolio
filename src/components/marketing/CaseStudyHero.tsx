@@ -57,7 +57,7 @@ export function CaseStudyHero({ frontmatter, liveUrl }: CaseStudyHeroProps) {
 
         {/* Meta ledger */}
         <div className="grid grid-cols-2 gap-4 border-t border-border pt-6 sm:grid-cols-3 md:grid-cols-6">
-          <div>
+          <div className="col-span-2 sm:col-span-1 md:col-span-2">
             <span className="text-xs uppercase tracking-widest text-muted-foreground">
               Role
             </span>
