@@ -33,7 +33,10 @@ export function FadeIn({
           observer.disconnect();
         }
       },
-      { threshold: 0.15 }
+      // threshold 0 (not a ratio) so sections taller than the viewport still
+      // trigger — a large ratio never resolves when the element exceeds the
+      // viewport height. rootMargin delays the reveal until it's slightly in view.
+      { threshold: 0, rootMargin: "0px 0px -64px 0px" }
     );
     observer.observe(el);
     return () => observer.disconnect();
