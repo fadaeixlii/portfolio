@@ -55,7 +55,9 @@ hero_image: "/images/projects/slug/hero.avif"
 - What did I learn that I'll carry forward?
 
 ## Voice Rules
-- First-person singular, past tense
+- First-person singular, past tense — narrating what *I* did (Problem, Approach, Impact, Reflections)
+- Exception: the **Solution** section may use present tense to describe how the *shipped, still-live product* works ("the dashboard shows…", "the API serves…"). This is intentional, not a violation.
+- First-person **singular** throughout — no "we"/"our" even on team projects (this is one author's account)
 - No buzzwords (see voice-guide.md)
 - 600–1,200 words total
 - One idea per sentence

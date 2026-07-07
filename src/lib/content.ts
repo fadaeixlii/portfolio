@@ -22,19 +22,3 @@ export function getFeaturedProjects() {
 export function getProjectBySlug(slug: string) {
   return projects.find((p) => p.slug === slug);
 }
-
-export {
-  getCaseStudy,
-  getAllCaseStudySlugs,
-  getAllCaseStudies,
-  getAdjacentCaseStudies,
-} from "./mdx/case-studies";
-
-export {
-  getBlogPost,
-  getAllBlogSlugs,
-  getAllBlogPosts,
-  getAdjacentBlogPosts,
-} from "./mdx/blog";
-
-export type { CaseStudyFrontmatter, BlogPostFrontmatter } from "./mdx/types";

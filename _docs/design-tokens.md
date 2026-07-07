@@ -23,10 +23,15 @@
 | Body | Geist Sans | 17px | 1.6 | 0 |
 | Small | Geist Sans | 14px | 1.5 | 0 |
 | Mono | Geist Mono | 15px | 1.6 | 0 |
+| Eyebrow | Geist Mono | 10–11px | 1.5 | 0.16em | uppercase section labels, ledger keys, index numerals |
+
+**Eyebrow / micro-label scale** — the `text-[10px]`/`text-[11px]` uppercase-mono labels (SectionLabel, ledger keys, `§` markers, tech tags) are an intentional, documented scale step, not arbitrary values. Keep them consistent; don't "fix" them to the body scale.
 
 ## Spacing (8pt grid)
 
 Use Tailwind spacing utilities: p-2 (8px), p-4 (16px), p-6 (24px), p-8 (32px), etc.
+
+**Accepted sub-grid steps** — a small set of half-steps is allowed for optical fit on dense micro-UI: `gap-1.5` (6px) between inline icon+label, `py-0.5` (2px) on pills/badges, `pb-0.5`/`pb-1.5` on underline links. These are deliberate; the 8pt rule governs layout/section spacing, not 1px optical tweaks on tags.
 
 ## Radii
 

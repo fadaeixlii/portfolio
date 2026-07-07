@@ -40,7 +40,7 @@ export default function WorkPage() {
         <div className="flex flex-col gap-6">
           <h2 className="sr-only">Projects</h2>
           {published.map((project, i) => (
-            <FadeIn key={project.slug} delay={0.08 * i}>
+            <FadeIn key={project.slug} delay={Math.min(0.05 * i, 0.3)}>
               <ProjectCard project={project} />
             </FadeIn>
           ))}

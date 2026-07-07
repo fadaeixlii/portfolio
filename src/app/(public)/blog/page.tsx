@@ -38,7 +38,7 @@ export default async function BlogPage() {
 
         <div className="flex flex-col gap-4">
           {posts.map((post, i) => (
-            <FadeIn key={post.slug} delay={0.08 * i}>
+            <FadeIn key={post.slug} delay={Math.min(0.05 * i, 0.3)}>
               <BlogPostCard post={post} />
             </FadeIn>
           ))}

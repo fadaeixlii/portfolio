@@ -62,7 +62,7 @@ export function FadeIn({
       transition={
         shouldReduce
           ? { duration: 0 }
-          : { duration: 0.6, delay, ease: [0.25, 0.46, 0.45, 0.94] }
+          : { duration: 0.2, delay, ease: [0.25, 0.46, 0.45, 0.94] }
       }
     >
       {children}
