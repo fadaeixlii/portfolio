@@ -1,0 +1,37 @@
+{
+  "enabled": false,
+  "note": "Staged, not rendered. Flip enabled to true once quotes are finalized and any placeholders are filled. LinkedIn source: https://www.linkedin.com/in/mohammadmkh/",
+  "linkedin": "https://www.linkedin.com/in/mohammadmkh/",
+  "items": [
+    {
+      "name": "Stefan Verhagen",
+      "title": "AI & Blockchain Transformation & Agentic Platforms Leader | Fractional CTO | Cornell MBA",
+      "relationship": "Managed Mohammad directly",
+      "date": "2026-05-20",
+      "project": "Zoof-it — Roofcast, Jeofferte, Meshi",
+      "quote": "Mohammad is a driven and technically proficient professional who played a crucial role in the development and optimization of Roofcast, JeOfferte.nl and Meshi. He consistently excelled at bridging the gap between frontend and backend, collaborating effectively with the team to solve complex technical challenges.",
+      "source": "linkedin",
+      "status": "verified"
+    },
+    {
+      "name": "Mojtaba Akhlaghi",
+      "title": "Fullstack Developer | React, Next.js, Python | SaaS & Cloud (AWS)",
+      "relationship": "Worked on the same team",
+      "date": "2024-04-04",
+      "project": "",
+      "quote": "Working with a professional software engineer who loves to learn and teach others, with high-level skills in front-end development — he contributes to the growth and excellence of his colleagues wherever he is.",
+      "source": "linkedin",
+      "status": "verified"
+    },
+    {
+      "name": "",
+      "title": "",
+      "relationship": "",
+      "date": "",
+      "project": "Opalify",
+      "quote": "",
+      "source": "",
+      "status": "placeholder"
+    }
+  ]
+}

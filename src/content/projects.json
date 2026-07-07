@@ -4,7 +4,7 @@
     "title": "Aim2Balance",
     "domain": "AI platform",
     "tagline": "EU-hosted AI chat platform with EUR billing and cross-provider token tracking",
-    "description": "Built the engineering layer of an EU-hosted AI chat platform under Bergwaldprojekt eV that offsets the environmental impact of AI by funding real-world reforestation — measured per square meter against each session's energy and water use. Forked from LibreChat for GDPR-compliant EU hosting. Architected LiteLLM as the routing proxy across OpenAI, Anthropic, and Google — letting agents switch models mid-task without touching the metering code — plus EUR-based billing with auto-recharge Stripe wallets processing 10,000+ daily sessions, a Chrome extension tracking token consumption across ChatGPT, Claude, and Gemini, and cross-platform mobile apps via Capacitor.",
+    "description": "Built the engineering layer of an EU-hosted AI chat platform under Bergwaldprojekt eV that offsets the environmental impact of AI by funding real-world reforestation — measured per square meter against each session's energy and water use. Forked from LibreChat for GDPR-compliant EU hosting. Contributed the LiteLLM proxy integration as the model-routing layer — capturing per-request cost and token usage to feed the EUR-based billing pipeline — with auto-recharge Stripe wallets processing 10,000+ daily sessions, a Chrome extension tracking token consumption across ChatGPT, Claude, and Gemini, and cross-platform mobile apps via Capacitor.",
     "pullQuote": "The energy and water cost of each session converts directly to funded m² of German reforestation.",
     "role": "Full-Stack & AI Agentic Engineer",
     "year": 2025,
@@ -105,7 +105,7 @@
     "domain": "Food-tech",
     "tagline": "Geo-based food platform connecting users with nearby providers in real time",
     "description": "A food-tech platform with a geo-based matching engine that connects users to nearby food providers. Built location-aware search with PostGIS, real-time availability tracking, and a streamlined ordering flow. Modernized the entire UI from legacy code to a React component system.",
-    "pullQuote": "Matching hungry users with the closest kitchen — in under two seconds.",
+    "pullQuote": "Matching hungry users with the closest kitchen — the moment hunger strikes.",
     "role": "Tech Lead",
     "year": 2025,
     "duration": "3 months",
@@ -123,13 +123,13 @@
     },
     "image": "/images/projects/meshi/landing.png",
     "metrics": [
-      { "label": "Matching", "value": "<2s" },
+      { "label": "Load time", "value": "−10%" },
       { "label": "Coverage", "value": "Netherlands" }
     ],
     "kpis": [
-      { "label": "match time", "value": "<2s" },
+      { "label": "page load", "value": "−10%" },
       { "label": "coverage", "value": "Netherlands" },
-      { "label": "UI rewrite", "value": "complete" }
+      { "label": "UI rewrite", "value": "full React rebuild" }
     ]
   },
   {
@@ -195,7 +195,8 @@
     "kpis": [
       { "label": "transactions", "value": "smart contract" },
       { "label": "auth", "value": "WalletConnect" },
-      { "label": "fund release", "value": "post-verification" }
+      { "label": "fund release", "value": "post-verification" },
+      { "label": "reusable components", "value": "−50% data-layer code" }
     ]
   },
   {

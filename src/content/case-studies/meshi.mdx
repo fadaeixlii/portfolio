@@ -21,7 +21,7 @@ Meshi set out to build a fairer alternative: a platform where restaurants keep m
 
 The core technical challenge was geo-based matching. When a user opens the app, the platform needs to instantly show restaurants within delivery range, sorted by proximity and availability. On the big platforms, this is solved with massive infrastructure and pre-computed indexes. We needed the same speed on a fraction of the budget.
 
-I chose PostgreSQL with PostGIS for the spatial queries. PostGIS can compute distances, filter by radius, and sort by proximity in a single indexed query — no external service needed. Combined with Redis for caching frequently-accessed restaurant data (menus, availability status), the matching runs in under two seconds even on cold starts.
+I chose PostgreSQL with PostGIS for the spatial queries. PostGIS can compute distances, filter by radius, and sort by proximity in a single indexed query — no external service needed. Combined with Redis for caching frequently-accessed restaurant data (menus, availability status), the matching resolves in a single indexed query, fast even on cold starts.
 
 The frontend was a full React rewrite. The previous version was built on older patterns that made it difficult to add features. I modernized the entire UI to a component-based architecture with proper state management, responsive design, and a mobile-first approach — critical because most food ordering happens on phones.
 
@@ -41,7 +41,7 @@ The **mobile apps** on iOS and Android provide push notifications for order upda
 
 ## Impact
 
-The platform launched in the Netherlands with restaurant partners across multiple cities. The PostGIS matching engine delivers results in under 2 seconds regardless of the number of registered restaurants. The mobile-first UI rewrite improved the ordering completion rate compared to the previous version, and the native apps expanded reach to users who prefer app-based ordering.
+The platform launched in the Netherlands with restaurant partners across multiple cities. The full React UI rewrite cut page load times by roughly 10% and lifted user engagement, while the PostGIS matching engine holds its speed regardless of how many restaurants are registered. The native iOS and Android apps expanded reach to users who prefer app-based ordering.
 
 ## Reflections
 

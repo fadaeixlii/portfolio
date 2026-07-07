@@ -5,9 +5,9 @@
     "period": "2025 — 2026",
     "location": "Germany, Remote",
     "type": "Full-time",
-    "description": "Built the full engineering stack for an EU-hosted AI chat platform operated by Bergwaldprojekt eV that offsets the environmental impact of AI usage by funding real-world reforestation per square meter, based on energy and water consumption. Forked from LibreChat with GDPR-compliant EU hosting. Architected LiteLLM-based agentic model routing across OpenAI, Anthropic, and Google, the entire EUR billing pipeline with auto-recharge Stripe wallets handling 10,000+ daily sessions, a Chrome extension that tracks token consumption across ChatGPT, Claude, and Gemini, and shipped cross-platform mobile apps via Capacitor.",
+    "description": "Built the full engineering stack for an EU-hosted AI chat platform operated by Bergwaldprojekt eV that offsets the environmental impact of AI usage by funding real-world reforestation per square meter, based on energy and water consumption. Forked from LibreChat with GDPR-compliant EU hosting. Contributed the LiteLLM proxy integration as the model-routing layer, engineered the entire EUR billing pipeline with auto-recharge Stripe wallets handling 10,000+ daily sessions, a Chrome extension that tracks token consumption across ChatGPT, Claude, and Gemini, and shipped cross-platform mobile apps via Capacitor.",
     "highlights": [
-      "Configured LiteLLM as a unified proxy so agent workflows can switch between GPT-4, Claude, and Gemini mid-task — metering and billing stay identical across models",
+      "Contributed the LiteLLM proxy integration as the model-routing layer, capturing per-request cost and token usage across GPT-4, Claude, and Gemini for the billing pipeline",
       "Built environmental accounting into the billing pipeline: each session's token count maps to a reforestation spend via Bergwaldprojekt eV",
       "EUR-based billing pipeline with auto-recharge, processing 10,000+ daily sessions via Stripe at sub-second latency",
       "Chrome extension tracking real-time token usage across ChatGPT, Claude, and Gemini",
