@@ -21,7 +21,7 @@ Prediction markets solve this for politics and sports. The question was: could t
 
 I built Roofcast as a Web3 DApp on Polygon using Gnosis Conditional Tokens — a battle-tested framework for creating and settling prediction markets on-chain. The choice of Polygon over Ethereum mainnet was driven by gas costs: prediction markets involve many small transactions (placing bets, claiming winnings), and mainnet fees would have made micro-positions uneconomical.
 
-Gnosis Conditional Tokens provided the core market mechanics: creating conditions (e.g., "Will property prices in Amsterdam-Zuid increase by >5% in 2025?"), minting outcome tokens, and settling markets based on oracle-provided results. I built the smart contracts, the settlement logic, and the frontend that made this accessible to users who might never have interacted with a DApp before.
+Gnosis Conditional Tokens provided the core market mechanics: creating conditions (e.g., "Will property prices in Amsterdam-Zuid increase by >5% in 2025?"), minting outcome tokens, and settling markets in USDC based on oracle-provided results. Positions are threshold-based — users stake on whether a property value crosses a defined level — and winnings settle on-chain in USDC. I built the smart contracts, the settlement logic, and the frontend that made this accessible to users who might never have interacted with a DApp before.
 
 The backend runs NestJS with PostgreSQL, handling user profiles, market metadata, historical data, and the off-chain components that support the on-chain logic — like price feed aggregation and notification services.
 

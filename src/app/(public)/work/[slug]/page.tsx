@@ -5,6 +5,7 @@ import {
   getAllCaseStudySlugs,
   getAdjacentCaseStudies,
 } from "@/lib/mdx/case-studies";
+import { getProjectBySlug } from "@/lib/content";
 import { CaseStudyHero } from "@/components/marketing/CaseStudyHero";
 import { CaseStudyNav } from "@/components/marketing/CaseStudyNav";
 import { FadeIn } from "@/components/shared/FadeIn";
@@ -44,11 +45,12 @@ export default async function CaseStudyPage({ params }: Props) {
 
   const { content, frontmatter } = result;
   const adjacent = await getAdjacentCaseStudies(slug);
+  const liveUrl = getProjectBySlug(slug)?.links.live || undefined;
 
   return (
     <article className="mx-auto w-full max-w-4xl px-4 py-10 sm:px-6 sm:py-16 md:px-12 lg:px-16">
       <FadeIn>
-        <CaseStudyHero frontmatter={frontmatter} />
+        <CaseStudyHero frontmatter={frontmatter} liveUrl={liveUrl} />
       </FadeIn>
 
       <FadeIn delay={0.08}>

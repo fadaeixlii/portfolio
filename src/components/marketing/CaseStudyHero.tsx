@@ -4,9 +4,10 @@ import type { CaseStudyFrontmatter } from "@/lib/mdx/types";
 
 interface CaseStudyHeroProps {
   frontmatter: CaseStudyFrontmatter;
+  liveUrl?: string;
 }
 
-export function CaseStudyHero({ frontmatter }: CaseStudyHeroProps) {
+export function CaseStudyHero({ frontmatter, liveUrl }: CaseStudyHeroProps) {
   return (
     <header className="flex flex-col gap-8">
       <Link
@@ -41,6 +42,17 @@ export function CaseStudyHero({ frontmatter }: CaseStudyHeroProps) {
           <blockquote className="border-l-2 border-accent/30 pl-4 font-serif text-xl italic leading-relaxed text-foreground/80 sm:text-2xl">
             {frontmatter.tagline}
           </blockquote>
+        )}
+
+        {liveUrl && (
+          <a
+            href={liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex w-fit items-center gap-1.5 rounded-lg border border-border px-4 py-3 font-mono text-[11px] uppercase tracking-[0.08em] text-muted-foreground transition-colors hover:border-accent/40 hover:text-foreground"
+          >
+            Visit live site <span className="text-[9px]">↗</span>
+          </a>
         )}
 
         {/* Meta ledger */}
