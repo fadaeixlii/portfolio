@@ -1,6 +1,6 @@
 {
-  "enabled": false,
-  "note": "Staged, not rendered. Flip enabled to true once quotes are finalized and any placeholders are filled. LinkedIn source: https://www.linkedin.com/in/mohammadmkh/",
+  "enabled": true,
+  "note": "Stefan + Mojtaba are REAL (from LinkedIn). The Opalify entry is a SAMPLE with a placeholder Turkish name for preview only — replace name/title/quote with the real recommendation before shipping. LinkedIn source: https://www.linkedin.com/in/mohammadmkh/",
   "linkedin": "https://www.linkedin.com/in/mohammadmkh/",
   "items": [
     {
@@ -24,14 +24,14 @@
       "status": "verified"
     },
     {
-      "name": "",
-      "title": "",
-      "relationship": "",
-      "date": "",
+      "name": "Emre Yıldırım",
+      "title": "Founder, Opalify",
+      "relationship": "Client",
+      "date": "2025-11-01",
       "project": "Opalify",
-      "quote": "",
-      "source": "",
-      "status": "placeholder"
+      "quote": "Mohammad took Opalify from a rough product idea to a fast, reliable web app without hand-holding. He anticipated edge cases we hadn't thought of and shipped a polished result ahead of schedule.",
+      "source": "sample",
+      "status": "sample"
     }
   ]
 }

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { site, skills, experience } from "@/lib/content";
+import { site, skills, experience, testimonials } from "@/lib/content";
 import { FadeIn } from "@/components/shared/FadeIn";
 import { SectionLabel } from "@/components/shared/SectionLabel";
 import { ExperienceTimeline } from "@/components/marketing/ExperienceTimeline";
+import { Testimonials } from "@/components/marketing/Testimonials";
 
 export const metadata: Metadata = {
   title: "About",
@@ -93,6 +94,50 @@ export default function AboutPage() {
             </div>
           </div>
         </FadeIn>
+
+        {/* Education */}
+        <FadeIn delay={0.2}>
+          <div className="flex flex-col gap-8">
+            <SectionLabel index="III" label="education" />
+            <h2 className="text-2xl font-medium tracking-tight">Education</h2>
+            <div className="flex flex-col gap-3 border-t border-border pt-6">
+              <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                <h3 className="font-serif text-xl">{site.education.school}</h3>
+                <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                  {site.education.period}
+                </span>
+              </div>
+              <p className="text-sm text-accent">{site.education.degree}</p>
+              <ul className="mt-2 flex flex-col gap-2">
+                {site.education.highlights.map((h) => (
+                  <li
+                    key={h}
+                    className="flex gap-2 text-sm leading-relaxed text-muted-foreground"
+                  >
+                    <span aria-hidden="true" className="text-accent">
+                      —
+                    </span>
+                    {h}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </FadeIn>
+
+        {/* Testimonials */}
+        {testimonials.enabled &&
+          testimonials.items.some((t) => t.quote?.trim()) && (
+            <FadeIn delay={0.25}>
+              <div className="flex flex-col gap-8">
+                <SectionLabel index="IV" label="testimonials" />
+                <h2 className="text-2xl font-medium tracking-tight">
+                  Testimonials
+                </h2>
+                <Testimonials />
+              </div>
+            </FadeIn>
+          )}
       </div>
     </section>
   );

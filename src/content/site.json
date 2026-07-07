@@ -49,6 +49,15 @@
     "responseTime": "48",
     "responseUnit": "hrs"
   },
+  "education": {
+    "school": "Quchan University of Technology",
+    "degree": "B.Sc. Computer Engineering",
+    "period": "2016 — 2020",
+    "highlights": [
+      "1st place ×4 and 2nd place ×2 in ICPC university programming contests",
+      "Teaching Assistant for multiple technical subjects"
+    ]
+  },
   "numbers": {
     "totalProjects": 9,
     "experienceYears": "seven",
