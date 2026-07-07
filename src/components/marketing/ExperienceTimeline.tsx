@@ -1,5 +1,3 @@
-"use client"; // scroll-triggered FadeIn per entry
-
 import { FadeIn } from "@/components/shared/FadeIn";
 import type { Experience } from "@/lib/content";
 
@@ -24,7 +22,7 @@ export function ExperienceTimeline({ entries }: ExperienceTimelineProps) {
           const type = (job as Record<string, unknown>).type as string | undefined;
 
           return (
-            <FadeIn key={i} delay={i * 0.08}>
+            <FadeIn key={i} delay={Math.min(i * 0.05, 0.3)}>
               <li
                 className="relative pl-12"
                 style={{ paddingBottom: i < entries.length - 1 ? 64 : 0 }}

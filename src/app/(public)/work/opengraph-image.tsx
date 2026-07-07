@@ -7,6 +7,6 @@ export const contentType = ogContentType;
 export default function Image() {
   return generateOgImage({
     title: "Work",
-    subtitle: "Selected projects and case studies from six years of full-stack development.",
+    subtitle: "Selected projects and case studies from seven years of full-stack development.",
   });
 }

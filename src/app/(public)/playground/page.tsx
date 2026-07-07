@@ -5,6 +5,15 @@ export const metadata: Metadata = {
   description:
     "Interactive experiments, animation demos, and creative coding explorations.",
   alternates: { canonical: "https://fadaeixlii.com/playground" },
+  openGraph: {
+    type: "website",
+    title: "Playground — Mohammad M Khani",
+    description:
+      "Interactive experiments, animation demos, and creative coding explorations.",
+    url: "https://fadaeixlii.com/playground",
+    siteName: "fadaeixlii.com",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function PlaygroundPage() {

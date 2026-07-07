@@ -8,6 +8,15 @@ export const metadata: Metadata = {
   description:
     "Get in touch for freelance projects, consulting, or collaboration opportunities.",
   alternates: { canonical: "https://fadaeixlii.com/contact" },
+  openGraph: {
+    type: "website",
+    title: "Contact — Mohammad M Khani",
+    description:
+      "Get in touch for freelance projects, consulting, or collaboration opportunities.",
+    url: "https://fadaeixlii.com/contact",
+    siteName: "fadaeixlii.com",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function ContactPage() {

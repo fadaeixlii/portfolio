@@ -9,18 +9,20 @@ import { CountUp } from "@/components/shared/CountUp";
 import { Magnet } from "@/components/shared/Magnet";
 import { ClickSpark } from "@/components/shared/ClickSpark";
 import { FadeIn } from "@/components/shared/FadeIn";
-import { NLClock } from "@/components/shared/NLClock";
+import { WorldClock } from "@/components/shared/WorldClock";
 import { TechGrid } from "@/components/marketing/TechGrid";
-import { site, skills, experience, getFeaturedProjects } from "@/lib/content";
+import { site, skills, experience, projects } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: `${site.name} — ${site.role}`,
   description: site.hero.subtitle,
+  alternates: { canonical: site.siteUrl },
   openGraph: {
     type: "website",
     url: site.siteUrl,
     title: `${site.name} — ${site.role}`,
     description: site.hero.subtitle,
+    siteName: "fadaeixlii.com",
   },
   twitter: { card: "summary_large_image" },
 };
@@ -39,7 +41,7 @@ const sectionNav = [
 ] as const;
 
 export default function HomePage() {
-  const featured = getFeaturedProjects();
+  const published = projects.filter((p) => p.status === "published");
 
   return (
     <>
@@ -75,7 +77,7 @@ export default function HomePage() {
                   <div className="mb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
                     {site.hero.city}
                   </div>
-                  <NLClock />
+                  <WorldClock />
                 </div>
                 <div className="text-right">
                   <div className="mb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
@@ -162,7 +164,7 @@ export default function HomePage() {
       <TechGrid categories={skills.categories} />
 
       {/* ── Selected Work ── */}
-      {featured.length > 0 && (
+      {published.length > 0 && (
         <section id="work" className="border-t border-border px-4 py-16 sm:px-6 sm:py-24 md:px-12 lg:px-16">
           <FadeIn>
             <div className="mx-auto w-full max-w-7xl">
@@ -173,9 +175,9 @@ export default function HomePage() {
                 </div>
                 <div>
                   <h2 className="font-serif text-3xl font-normal lowercase tracking-tight sm:text-[40px] sm:leading-tight">
-                    {site.numbers.selectedWorkCount} projects,{" "}
+                    {site.numbers.totalProjects} projects,{" "}
                     <em className="italic text-muted-foreground">
-                      picked over {site.numbers.totalProjects}.
+                      all shipped, all live.
                     </em>
                   </h2>
                   <p className="mt-6 max-w-xl text-muted-foreground">
@@ -186,12 +188,12 @@ export default function HomePage() {
               </div>
 
               <div className="flex flex-col gap-8">
-                {featured.map((project, i) => (
+                {published.map((project, i) => (
                   <ProjectCard
                     key={project.slug}
                     project={project}
                     index={i}
-                    total={featured.length}
+                    total={published.length}
                   />
                 ))}
               </div>
@@ -199,13 +201,13 @@ export default function HomePage() {
               {/* Archive link */}
               <div className="mt-10 flex items-center justify-between">
                 <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
-                  {featured.length} of {site.numbers.totalProjects} · curated by year
+                  all {published.length} projects · newest first
                 </span>
                 <Link
                   href="/work"
                   className="inline-flex items-center gap-2 text-sm lowercase text-accent transition-colors hover:text-foreground"
                 >
-                  view full archive <span>→</span>
+                  open work page <span>→</span>
                 </Link>
               </div>
             </div>

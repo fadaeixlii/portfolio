@@ -16,11 +16,12 @@ export default async function MessagesPage() {
     .order("created_at", { ascending: false });
 
   if (error) {
+    console.error("Failed to load messages:", error.message);
     return (
       <div className="flex flex-col gap-4">
         <h1 className="text-xl font-medium">Messages</h1>
         <p className="text-sm text-destructive">
-          Failed to load messages: {error.message}
+          Failed to load messages. Please try again.
         </p>
       </div>
     );
@@ -45,7 +46,7 @@ export default async function MessagesPage() {
         <MessageList messages={messages} />
       ) : (
         <p className="py-12 text-center text-sm text-muted-foreground">
-          No messages yet. They'll appear here when someone uses the contact form.
+          No messages yet. New messages appear here when someone uses the contact form.
         </p>
       )}
     </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition, useRef } from "react";
+import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { contactFormSchema, type ContactFormData } from "@/lib/validation/contact";
@@ -17,7 +17,6 @@ import { cn } from "@/lib/utils";
 export function ContactForm() {
   const [isPending, startTransition] = useTransition();
   const [result, setResult] = useState<ContactFormResult | null>(null);
-  const mountTime = useRef(Date.now());
 
   const {
     register,
@@ -30,10 +29,7 @@ export function ContactForm() {
 
   function onSubmit(data: ContactFormData) {
     startTransition(async () => {
-      const res = await submitContactForm({
-        ...data,
-        _t: mountTime.current,
-      });
+      const res = await submitContactForm({ ...data });
       setResult(res);
       if (res.success) reset();
     });

@@ -6,8 +6,17 @@ import { FadeIn } from "@/components/shared/FadeIn";
 export const metadata: Metadata = {
   title: "Blog — Mohammad M Khani",
   description:
-    "Articles on React, TypeScript, Next.js, and web architecture. Patterns and lessons from six years of full-stack development.",
+    "Articles on React, TypeScript, Next.js, and web architecture. Patterns and lessons from seven years of full-stack development.",
   alternates: { canonical: "https://fadaeixlii.com/blog" },
+  openGraph: {
+    type: "website",
+    title: "Blog — Mohammad M Khani",
+    description:
+      "Articles on React, TypeScript, Next.js, and web architecture. Patterns and lessons from seven years of full-stack development.",
+    url: "https://fadaeixlii.com/blog",
+    siteName: "fadaeixlii.com",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default async function BlogPage() {
@@ -29,7 +38,7 @@ export default async function BlogPage() {
 
         <div className="flex flex-col gap-4">
           {posts.map((post, i) => (
-            <FadeIn key={post.slug} delay={0.08 * i}>
+            <FadeIn key={post.slug} delay={Math.min(0.05 * i, 0.3)}>
               <BlogPostCard post={post} />
             </FadeIn>
           ))}

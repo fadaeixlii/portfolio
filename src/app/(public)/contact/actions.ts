@@ -7,8 +7,8 @@ export type ContactFormResult =
   | { success: true; message: string }
   | { success: false; message: string; errors?: Record<string, string[]> };
 
-const MIN_SUBMIT_TIME_MS = 3000;
-const MAX_MESSAGES_PER_HOUR = 3;
+// Rate limit (3/email/hour) is enforced in public.contact_rate_limited() — see
+// supabase/migrations/20260707120000_contact_rate_limit_fn.sql
 
 export async function submitContactForm(
   formData: Record<string, unknown>
@@ -29,21 +29,23 @@ export async function submitContactForm(
     return { success: true, message: "Message sent. I'll get back to you within 48 hours." };
   }
 
-  // Timing check — reject instant submissions
-  if (parsed.data._t && Date.now() - parsed.data._t < MIN_SUBMIT_TIME_MS) {
-    return { success: true, message: "Message sent. I'll get back to you within 48 hours." };
-  }
-
   const supabase = await createClient();
 
-  // Rate limit — max 3 messages per email per hour
-  const { count } = await supabase
-    .from("contact_messages")
-    .select("*", { count: "exact", head: true })
-    .eq("email", parsed.data.email)
-    .gte("created_at", new Date(Date.now() - 60 * 60 * 1000).toISOString());
+  // Rate limit — max 3 messages per email per hour (checked via security
+  // definer RPC since anon has no SELECT on contact_messages)
+  const { data: rateLimited, error: rateLimitError } = await supabase.rpc(
+    "contact_rate_limited",
+    { p_email: parsed.data.email }
+  );
 
-  if (count !== null && count >= MAX_MESSAGES_PER_HOUR) {
+  if (rateLimitError) {
+    return {
+      success: false,
+      message: "Something went wrong. Try again later.",
+    };
+  }
+
+  if (rateLimited) {
     return {
       success: false,
       message: "You've sent too many messages recently. Please try again later.",
@@ -63,8 +65,46 @@ export async function submitContactForm(
     };
   }
 
+  // Notify by email (best-effort — never block the submit on it)
+  await sendNotificationEmail(parsed.data).catch((e) =>
+    console.error("Contact email notify failed:", e)
+  );
+
   return {
     success: true,
     message: "Message sent. I'll get back to you within 48 hours.",
   };
+}
+
+// Sends a notification email via Resend. No-ops if RESEND_API_KEY is unset,
+// so the form still works (message is saved to Supabase regardless).
+async function sendNotificationEmail(data: {
+  name: string;
+  email: string;
+  message: string;
+}) {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) return;
+
+  const to = process.env.CONTACT_TO_EMAIL ?? "mmohammadkhani408@gmail.com";
+  const from = process.env.CONTACT_FROM_EMAIL ?? "Portfolio <onboarding@resend.dev>";
+
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from,
+      to,
+      reply_to: data.email,
+      subject: `New portfolio message from ${data.name}`,
+      text: `Name: ${data.name}\nEmail: ${data.email}\n\n${data.message}`,
+    }),
+  });
+
+  if (!res.ok) {
+    throw new Error(`Resend ${res.status}: ${await res.text()}`);
+  }
 }

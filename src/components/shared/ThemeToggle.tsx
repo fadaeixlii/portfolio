@@ -9,6 +9,8 @@ export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
+  // next-themes hydration guard: render nothing theme-specific until mounted.
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- canonical, non-cascading
   useEffect(() => setMounted(true), []);
 
   if (!mounted) {

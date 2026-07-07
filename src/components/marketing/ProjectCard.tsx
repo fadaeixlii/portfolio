@@ -104,6 +104,7 @@ export function ProjectCard({ project, index = 0, total = 3 }: ProjectCardProps)
                 className="inline-flex items-center gap-1.5 rounded-lg border border-border px-4 py-3 font-mono text-[11px] uppercase tracking-[0.08em] text-muted-foreground transition-colors hover:border-accent/40 hover:text-foreground"
               >
                 Live <span className="text-[9px]">↗</span>
+                <span className="sr-only"> (opens in new tab)</span>
               </a>
             )}
             {project.links.github && (
@@ -114,6 +115,7 @@ export function ProjectCard({ project, index = 0, total = 3 }: ProjectCardProps)
                 className="inline-flex items-center gap-1.5 rounded-lg border border-border px-4 py-3 font-mono text-[11px] uppercase tracking-[0.08em] text-muted-foreground transition-colors hover:border-accent/40 hover:text-foreground"
               >
                 GitHub <span className="text-[9px]">↗</span>
+                <span className="sr-only"> (opens in new tab)</span>
               </a>
             )}
           </div>
@@ -125,24 +127,25 @@ export function ProjectCard({ project, index = 0, total = 3 }: ProjectCardProps)
             aria-hidden="true"
             className="hidden border-l border-border lg:block"
             style={{
-              background: `radial-gradient(ellipse at 30% 20%, oklch(0.65 0.18 ${hue} / 0.08), transparent 60%), oklch(0.12 0.005 ${hue})`,
+              background: `radial-gradient(ellipse at 30% 20%, oklch(0.65 0.18 ${hue} / 0.08), transparent 60%), var(--project-panel)`,
             }}
           >
             {project.image ? (
               <div className="flex h-full items-center justify-center p-6">
-                <BrowserFrame url={domain} hue={hue}>
+                <BrowserFrame url={domain}>
                   <Image
                     src={project.image}
                     alt={`${project.title} screenshot`}
                     width={800}
                     height={500}
+                    sizes="(max-width: 1024px) 100vw, 480px"
                     className="h-auto w-full object-cover"
                   />
                 </BrowserFrame>
               </div>
             ) : mockType ? (
               <div className="grid h-full grid-cols-[1fr_148px] items-center gap-4 p-6">
-                <BrowserFrame url={domain} hue={hue}>
+                <BrowserFrame url={domain}>
                   <MockShot type={mockType} variant="desktop" hue={hue} />
                 </BrowserFrame>
                 <div className="translate-y-4">

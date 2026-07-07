@@ -24,7 +24,10 @@ export async function updateMessageStatus(id: string, status: string) {
     .update({ status })
     .eq("id", id);
 
-  if (error) return { error: error.message };
+  if (error) {
+    console.error("updateMessageStatus failed:", error.message);
+    return { error: "Could not update the message." };
+  }
 
   revalidatePath("/admin/messages");
   return { success: true };
@@ -37,7 +40,10 @@ export async function deleteMessage(id: string) {
     .delete()
     .eq("id", id);
 
-  if (error) return { error: error.message };
+  if (error) {
+    console.error("deleteMessage failed:", error.message);
+    return { error: "Could not delete the message." };
+  }
 
   revalidatePath("/admin/messages");
   return { success: true };

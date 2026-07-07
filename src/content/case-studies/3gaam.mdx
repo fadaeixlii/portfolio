@@ -19,7 +19,7 @@ hero_image: "/images/projects/3gaam/hero.png"
 
 I started with the GraphQL layer, which was the primary source of performance issues. Queries were over-fetching data, not using fragments efficiently, and missing pagination on large result sets. I audited every query against the schema, restructured them to fetch only what each component needed, and added pagination where lists could grow unbounded.
 
-The TypeScript migration was incremental — converting files one at a time starting with the most-changed modules, adding types to the GraphQL layer first (where type safety has the highest impact), then expanding outward. This approach let us ship features continuously while improving the codebase.
+The TypeScript migration was incremental — converting files one at a time starting with the most-changed modules, adding types to the GraphQL layer first (where type safety has the highest impact), then expanding outward. This approach let me ship features continuously while improving the codebase.
 
 ## The Solution
 

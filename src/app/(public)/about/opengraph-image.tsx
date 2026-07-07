@@ -7,6 +7,6 @@ export const contentType = ogContentType;
 export default function Image() {
   return generateOgImage({
     title: "About",
-    subtitle: "Six years shipping React applications to production.",
+    subtitle: "Seven years shipping React applications to production.",
   });
 }

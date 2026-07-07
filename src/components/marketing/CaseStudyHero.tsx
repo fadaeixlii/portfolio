@@ -52,6 +52,7 @@ export function CaseStudyHero({ frontmatter, liveUrl }: CaseStudyHeroProps) {
             className="inline-flex w-fit items-center gap-1.5 rounded-lg border border-border px-4 py-3 font-mono text-[11px] uppercase tracking-[0.08em] text-muted-foreground transition-colors hover:border-accent/40 hover:text-foreground"
           >
             Visit live site <span className="text-[9px]">↗</span>
+            <span className="sr-only"> (opens in new tab)</span>
           </a>
         )}
 

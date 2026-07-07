@@ -12,8 +12,6 @@ export const contactFormSchema = z.object({
     .max(5000, "Message must be under 5000 characters"),
   // Honeypot — must remain empty. Bots auto-fill fields named "company"
   company: z.string().max(0).optional(),
-  // Timestamp — form must have been open for at least 3 seconds
-  _t: z.number().optional(),
 });
 
 export type ContactFormData = z.infer<typeof contactFormSchema>;
