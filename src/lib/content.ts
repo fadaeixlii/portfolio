@@ -15,10 +15,6 @@ export const skills = skillsData;
 export const experience = experienceData;
 export const testimonials = testimonialsData;
 
-export function getFeaturedProjects() {
-  return projects.filter((p) => p.featured);
-}
-
 export function getProjectBySlug(slug: string) {
   return projects.find((p) => p.slug === slug);
 }
