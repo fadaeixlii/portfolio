@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s | fadaeixlii.com",
   },
   description:
-    "Full-stack developer building web applications with React, Next.js, TypeScript, and Solidity. Based in Greece.",
+    "Full-stack developer building web applications with React, Next.js, TypeScript, and Solidity. Based between Athens & Mashhad.",
   metadataBase: new URL("https://fadaeixlii.com"),
   alternates: {
     types: {

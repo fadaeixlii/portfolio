@@ -127,12 +127,12 @@ export function ProjectCard({ project, index = 0, total = 3 }: ProjectCardProps)
             aria-hidden="true"
             className="hidden border-l border-border lg:block"
             style={{
-              background: `radial-gradient(ellipse at 30% 20%, oklch(0.65 0.18 ${hue} / 0.08), transparent 60%), oklch(0.12 0.005 ${hue})`,
+              background: `radial-gradient(ellipse at 30% 20%, oklch(0.65 0.18 ${hue} / 0.08), transparent 60%), var(--project-panel)`,
             }}
           >
             {project.image ? (
               <div className="flex h-full items-center justify-center p-6">
-                <BrowserFrame url={domain} hue={hue}>
+                <BrowserFrame url={domain}>
                   <Image
                     src={project.image}
                     alt={`${project.title} screenshot`}
@@ -145,7 +145,7 @@ export function ProjectCard({ project, index = 0, total = 3 }: ProjectCardProps)
               </div>
             ) : mockType ? (
               <div className="grid h-full grid-cols-[1fr_148px] items-center gap-4 p-6">
-                <BrowserFrame url={domain} hue={hue}>
+                <BrowserFrame url={domain}>
                   <MockShot type={mockType} variant="desktop" hue={hue} />
                 </BrowserFrame>
                 <div className="translate-y-4">

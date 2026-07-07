@@ -7,6 +7,6 @@ export const contentType = ogContentType;
 export default function Image() {
   return generateOgImage({
     title: "Mohammad M Khani",
-    subtitle: "Full-stack developer · AI & Web3. React, Next.js, TypeScript. Based in Greece.",
+    subtitle: "Full-stack developer · AI & Web3. React, Next.js, TypeScript. Based between Athens & Mashhad.",
   });
 }

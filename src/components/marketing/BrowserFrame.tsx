@@ -1,16 +1,15 @@
 interface BrowserFrameProps {
   url?: string;
-  hue?: number;
   children: React.ReactNode;
 }
 
-export function BrowserFrame({ url = "fadaeixlii.com", hue = 50, children }: BrowserFrameProps) {
+export function BrowserFrame({ url = "fadaeixlii.com", children }: BrowserFrameProps) {
   return (
     <div
       className="overflow-hidden rounded-lg border border-border-strong"
       style={{
-        background: `oklch(0.10 0.004 ${hue})`,
-        boxShadow: "0 30px 80px -30px rgba(0,0,0,0.6), 0 0 0 1px oklch(0.20 0.006 50 / 0.6)",
+        background: "var(--browser-frame)",
+        boxShadow: "0 30px 80px -30px oklch(0 0 0 / 0.35), 0 0 0 1px var(--border)",
       }}
     >
       {/* Chrome bar */}

@@ -65,8 +65,46 @@ export async function submitContactForm(
     };
   }
 
+  // Notify by email (best-effort — never block the submit on it)
+  await sendNotificationEmail(parsed.data).catch((e) =>
+    console.error("Contact email notify failed:", e)
+  );
+
   return {
     success: true,
     message: "Message sent. I'll get back to you within 48 hours.",
   };
+}
+
+// Sends a notification email via Resend. No-ops if RESEND_API_KEY is unset,
+// so the form still works (message is saved to Supabase regardless).
+async function sendNotificationEmail(data: {
+  name: string;
+  email: string;
+  message: string;
+}) {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) return;
+
+  const to = process.env.CONTACT_TO_EMAIL ?? "mmohammadkhani408@gmail.com";
+  const from = process.env.CONTACT_FROM_EMAIL ?? "Portfolio <onboarding@resend.dev>";
+
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from,
+      to,
+      reply_to: data.email,
+      subject: `New portfolio message from ${data.name}`,
+      text: `Name: ${data.name}\nEmail: ${data.email}\n\n${data.message}`,
+    }),
+  });
+
+  if (!res.ok) {
+    throw new Error(`Resend ${res.status}: ${await res.text()}`);
+  }
 }

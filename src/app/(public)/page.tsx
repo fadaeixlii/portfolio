@@ -9,7 +9,7 @@ import { CountUp } from "@/components/shared/CountUp";
 import { Magnet } from "@/components/shared/Magnet";
 import { ClickSpark } from "@/components/shared/ClickSpark";
 import { FadeIn } from "@/components/shared/FadeIn";
-import { NLClock } from "@/components/shared/NLClock";
+import { WorldClock } from "@/components/shared/WorldClock";
 import { TechGrid } from "@/components/marketing/TechGrid";
 import { site, skills, experience, projects } from "@/lib/content";
 
@@ -77,7 +77,7 @@ export default function HomePage() {
                   <div className="mb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
                     {site.hero.city}
                   </div>
-                  <NLClock />
+                  <WorldClock />
                 </div>
                 <div className="text-right">
                   <div className="mb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
