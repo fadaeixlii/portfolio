@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   title: "About",
   description: site.about.intro,
   alternates: { canonical: "https://fadaeixlii.com/about" },
+  openGraph: {
+    type: "profile",
+    title: "About — Mohammad M Khani",
+    description: site.about.intro,
+    url: "https://fadaeixlii.com/about",
+    siteName: "fadaeixlii.com",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function AboutPage() {
@@ -37,7 +45,6 @@ export default function AboutPage() {
                   height={280}
                   className="block w-full object-cover dark:hidden"
                   style={{ height: "auto" }}
-                  priority
                 />
               </div>
               <div className="flex flex-col gap-4">

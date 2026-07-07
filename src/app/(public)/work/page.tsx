@@ -8,6 +8,15 @@ export const metadata: Metadata = {
   description:
     "Selected projects and case studies. React, Next.js, TypeScript, and Node.js applications in production.",
   alternates: { canonical: "https://fadaeixlii.com/work" },
+  openGraph: {
+    type: "website",
+    title: "Work — Mohammad M Khani",
+    description:
+      "Selected projects and case studies. React, Next.js, TypeScript, and Node.js applications in production.",
+    url: "https://fadaeixlii.com/work",
+    siteName: "fadaeixlii.com",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function WorkPage() {
@@ -29,6 +38,7 @@ export default function WorkPage() {
         </FadeIn>
 
         <div className="flex flex-col gap-6">
+          <h2 className="sr-only">Projects</h2>
           {published.map((project, i) => (
             <FadeIn key={project.slug} delay={0.08 * i}>
               <ProjectCard project={project} />

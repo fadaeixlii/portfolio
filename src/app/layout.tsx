@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { ThemeProvider } from "next-themes";
+import { site } from "@/lib/content";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -22,11 +23,11 @@ const deltha = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "Mohammad M Khani — Full-Stack Developer",
+    default: `${site.name} — ${site.role}`,
     template: "%s | fadaeixlii.com",
   },
   description:
-    "Senior full-stack developer building web applications with React, Next.js, and TypeScript. Based in the Netherlands.",
+    "Full-stack developer building web applications with React, Next.js, TypeScript, and Solidity. Based in Greece.",
   metadataBase: new URL("https://fadaeixlii.com"),
   alternates: {
     types: {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition, useRef } from "react";
+import { useState, useTransition, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { contactFormSchema, type ContactFormData } from "@/lib/validation/contact";
@@ -17,7 +17,10 @@ import { cn } from "@/lib/utils";
 export function ContactForm() {
   const [isPending, startTransition] = useTransition();
   const [result, setResult] = useState<ContactFormResult | null>(null);
-  const mountTime = useRef(Date.now());
+  const mountTime = useRef(0);
+  useEffect(() => {
+    mountTime.current = Date.now();
+  }, []);
 
   const {
     register,

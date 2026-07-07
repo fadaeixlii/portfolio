@@ -82,9 +82,9 @@ export function HeroScene() {
       // Project all points to 2D
       const proj: Projected[] = [];
       for (const p of pts) {
-        let x = Math.sin(p.theta) * Math.cos(p.phi) * radius;
-        let y = Math.cos(p.theta) * radius;
-        let z = Math.sin(p.theta) * Math.sin(p.phi) * radius;
+        const x = Math.sin(p.theta) * Math.cos(p.phi) * radius;
+        const y = Math.cos(p.theta) * radius;
+        const z = Math.sin(p.theta) * Math.sin(p.phi) * radius;
 
         // Y rotation
         const x1 = x * cosY - z * sinY;

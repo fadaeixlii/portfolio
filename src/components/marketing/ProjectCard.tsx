@@ -104,6 +104,7 @@ export function ProjectCard({ project, index = 0, total = 3 }: ProjectCardProps)
                 className="inline-flex items-center gap-1.5 rounded-lg border border-border px-4 py-3 font-mono text-[11px] uppercase tracking-[0.08em] text-muted-foreground transition-colors hover:border-accent/40 hover:text-foreground"
               >
                 Live <span className="text-[9px]">↗</span>
+                <span className="sr-only"> (opens in new tab)</span>
               </a>
             )}
             {project.links.github && (
@@ -114,6 +115,7 @@ export function ProjectCard({ project, index = 0, total = 3 }: ProjectCardProps)
                 className="inline-flex items-center gap-1.5 rounded-lg border border-border px-4 py-3 font-mono text-[11px] uppercase tracking-[0.08em] text-muted-foreground transition-colors hover:border-accent/40 hover:text-foreground"
               >
                 GitHub <span className="text-[9px]">↗</span>
+                <span className="sr-only"> (opens in new tab)</span>
               </a>
             )}
           </div>
@@ -136,6 +138,7 @@ export function ProjectCard({ project, index = 0, total = 3 }: ProjectCardProps)
                     alt={`${project.title} screenshot`}
                     width={800}
                     height={500}
+                    sizes="(max-width: 1024px) 100vw, 480px"
                     className="h-auto w-full object-cover"
                   />
                 </BrowserFrame>

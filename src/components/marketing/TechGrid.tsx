@@ -300,7 +300,7 @@ function CategoryRow({
 
       {/* Skill pills */}
       <div className="flex flex-wrap gap-2.5">
-        {category.skills.map((skill, i) => (
+        {category.skills.map((skill) => (
           <div
             key={skill}
             className="group inline-flex items-center gap-2 rounded-md border border-border bg-background px-3 py-2 transition-colors duration-200 hover:border-accent/40 hover:bg-accent/5"

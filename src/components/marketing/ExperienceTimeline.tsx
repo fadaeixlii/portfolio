@@ -1,5 +1,3 @@
-"use client"; // scroll-triggered FadeIn per entry
-
 import { FadeIn } from "@/components/shared/FadeIn";
 import type { Experience } from "@/lib/content";
 

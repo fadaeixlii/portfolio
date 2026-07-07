@@ -16,11 +16,13 @@ import { site, skills, experience, getFeaturedProjects } from "@/lib/content";
 export const metadata: Metadata = {
   title: `${site.name} — ${site.role}`,
   description: site.hero.subtitle,
+  alternates: { canonical: site.siteUrl },
   openGraph: {
     type: "website",
     url: site.siteUrl,
     title: `${site.name} — ${site.role}`,
     description: site.hero.subtitle,
+    siteName: "fadaeixlii.com",
   },
   twitter: { card: "summary_large_image" },
 };

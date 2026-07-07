@@ -72,6 +72,21 @@ export default async function BlogPostPage({ params }: Props) {
         }}
       />
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://fadaeixlii.com" },
+              { "@type": "ListItem", position: 2, name: "Blog", item: "https://fadaeixlii.com/blog" },
+              { "@type": "ListItem", position: 3, name: frontmatter.title, item: `https://fadaeixlii.com/blog/${slug}` },
+            ],
+          }),
+        }}
+      />
+
       <BlogPostNav prev={adjacent.prev} next={adjacent.next} />
     </article>
   );
