@@ -266,39 +266,6 @@
     ]
   },
   {
-    "slug": "shareprompt",
-    "title": "SharePrompt",
-    "domain": "AI tools",
-    "tagline": "Discover and share AI-powered prompts across models",
-    "description": "A platform for discovering and sharing AI prompts. Users browse curated prompts, submit their own, and rate community contributions. Built as a side project to explore prompt engineering workflows and community-driven content.",
-    "pullQuote": "The best prompts shouldn't live in someone's clipboard — they should be shared.",
-    "role": "Full-Stack Developer",
-    "year": 2024,
-    "duration": "Side project",
-    "client": "Personal",
-    "team": "Solo",
-    "tech": ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-    "featured": false,
-    "status": "published",
-    "hue": 15,
-    "mockType": "chat",
-    "links": {
-      "live": "",
-      "github": "",
-      "caseStudy": ""
-    },
-    "image": "/images/projects/shareprompt/hero.png",
-    "metrics": [
-      { "label": "Type", "value": "Side project" },
-      { "label": "Focus", "value": "Prompt sharing" }
-    ],
-    "kpis": [
-      { "label": "type", "value": "side project" },
-      { "label": "focus", "value": "AI prompts" },
-      { "label": "stack", "value": "Next.js + TS" }
-    ]
-  },
-  {
     "slug": "virdaar",
     "title": "Virdaar",
     "domain": "Food-tech",

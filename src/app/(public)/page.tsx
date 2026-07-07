@@ -95,7 +95,7 @@ export default function HomePage() {
                 {/* Role label */}
                 <HeroItem>
                   <div className="mb-6 font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
-                    ✶ &nbsp; Senior full-stack engineer · est. {site.hero.established}
+                    ✶ &nbsp; Full-stack developer · AI &amp; Web3 · est. {site.hero.established}
                   </div>
                 </HeroItem>
 
@@ -315,6 +315,14 @@ export default function HomePage() {
               >
                 {site.email}
               </a>
+              {site.phone && (
+                <a
+                  href={`tel:${site.phone.replace(/\s/g, "")}`}
+                  className="border-b border-accent pb-1.5 font-mono text-base text-accent transition-colors hover:text-foreground"
+                >
+                  {site.phone}
+                </a>
+              )}
               <span className="font-mono text-xs text-muted-foreground">or</span>
               {site.social.github && (
                 <a

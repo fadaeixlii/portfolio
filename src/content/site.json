@@ -1,11 +1,12 @@
 {
   "name": "Mohammad M Khani",
   "shortName": "fadaeixlii",
-  "role": "Senior Full-Stack Developer",
+  "role": "Full-Stack Developer · AI & Web3",
   "tagline": "I build web applications that handle real users and real money.",
   "bio": "Seven years shipping React, Next.js, and Node.js applications to production. Built the platform engineering for aim2balance.ai — an EU-hosted AI chat system that converts each session's compute cost to funded reforestation via Bergwaldprojekt eV — led Web3 DApp development on Polygon, and architected billing pipelines handling 10,000+ daily sessions.",
   "location": "Greece",
-  "email": "mohammad4252@gmail.com",
+  "email": "mmohammadkhani408@gmail.com",
+  "phone": "+44 7828 796868",
   "siteUrl": "https://fadaeixlii.com",
   "social": {
     "github": "https://github.com/fadaeixlii",
@@ -15,7 +16,7 @@
   },
   "hero": {
     "headline": "I build web applications that handle real users and real money.",
-    "subtitle": "Full-stack & AI agentic engineer. React, Next.js, TypeScript, Solidity. Based in Greece.",
+    "subtitle": "Full-stack developer · AI & Web3. React, Next.js, TypeScript, Solidity. Based in Greece.",
     "cta": { "label": "Start a project", "href": "/contact" },
     "indexNo": "001",
     "volume": "VII",
@@ -25,7 +26,7 @@
     "city": "Athens"
   },
   "about": {
-    "intro": "Seven years shipping full-stack applications to production — from AI chat platforms and crypto exchanges to Web3 prediction markets and food-tech. I've built AI agentic platforms, led engineering teams, and written Solidity contracts that settle real money on-chain.",
+    "intro": "Seven years shipping full-stack applications to production — from AI chat platforms and crypto exchanges to Web3 prediction markets and food-tech. I've built AI-integrated platforms, led engineering teams, and written Solidity contracts that settle real money on-chain.",
     "paragraphs": [
       "I specialize in building full-stack applications with React, Next.js, TypeScript, and Node.js. My work spans AI-integrated products (LiteLLM, RAG), Web3 DApps (Solidity on Polygon), crypto exchanges, real estate platforms, and food-tech systems.",
       "I built the platform for aim2balance.ai — an EU-hosted AI chat system operated under Bergwaldprojekt eV. Each session's energy and water draw is measured and converted to funded m² of reforestation — the cost hits the billing pipeline, not a carbon ledger. It runs a LiteLLM proxy for model routing and per-session cost capture, EUR-based billing with auto-recharge Stripe wallets, and a Chrome extension tracking token consumption across ChatGPT, Claude, and Gemini. Before that, I led a 3-person team building three products simultaneously at Zoof-it.",
@@ -34,7 +35,7 @@
   },
   "stats": [
     { "value": "07+", "label": "Years building for production" },
-    { "value": "10", "label": "Shipped products" },
+    { "value": "09", "label": "Shipped products" },
     { "value": "06", "label": "Industries served" },
     { "value": "10k+", "label": "Daily sessions billed" }
   ],
@@ -49,7 +50,7 @@
     "responseUnit": "hrs"
   },
   "numbers": {
-    "totalProjects": 10,
+    "totalProjects": 9,
     "experienceYears": "seven",
     "experienceChapters": "Six",
     "selectedWorkCount": 3,
