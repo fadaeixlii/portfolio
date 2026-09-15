@@ -58,3 +58,6 @@ _drafts/*
 # planning docs (remove after Phase 0)
 compass_artifact_*.md
 portfolio-claude-code-kickoff.md
+
+# doctor-run backups
+*.doctor-bak
