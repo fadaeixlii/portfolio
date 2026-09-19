@@ -92,9 +92,13 @@
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 
   /* ---- Glass -------------------------------------------------------- */
-  --glass-blur: 16px;
+  --glass-blur: 16px;              /* cost scales with radius; >20px is invisible */
   --glass-saturate: 140%;
   --glass-fill: color-mix(in oklch, var(--surface) 62%, transparent);
+  --glass-tint-top: color-mix(in oklch, var(--ink) 8%, transparent);
+  --glass-tint-bottom: color-mix(in oklch, var(--paper) 10%, transparent);
+  --glass-highlight: color-mix(in oklch, var(--ink) 22%, transparent);
+  --glass-shadow: 0 8px 32px -12px color-mix(in oklch, var(--slate-950) 55%, transparent);
 }
 
 [dir="rtl"] {

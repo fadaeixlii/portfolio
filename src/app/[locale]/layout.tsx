@@ -5,6 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing, isRtl } from "@/lib/i18n/routing";
 import { fontVariables } from "@/lib/fonts";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import { GlassFilter } from "@/components/primitives/GlassFilter";
 import "@/styles/globals.css";
 
 export function generateStaticParams() {
@@ -40,6 +41,7 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body>
+        <GlassFilter />
         <ThemeProvider>
           <NextIntlClientProvider>{children}</NextIntlClientProvider>
         </ThemeProvider>
