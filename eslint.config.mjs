@@ -5,14 +5,28 @@ import nextTs from "eslint-config-next/typescript";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
+  {
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          paths: [
+            {
+              name: "framer-motion",
+              message: "Import from 'motion/react' instead.",
+            },
+            {
+              name: "@supabase/auth-helpers-nextjs",
+              message: "Import from '@supabase/ssr' instead.",
+            },
+          ],
+        },
+      ],
+      "@typescript-eslint/no-explicit-any": "error",
+    },
+  },
   // Override default ignores of eslint-config-next.
-  globalIgnores([
-    // Default ignores of eslint-config-next:
-    ".next/**",
-    "out/**",
-    "build/**",
-    "next-env.d.ts",
-  ]),
+  globalIgnores([".next/**", "node_modules/**", "scripts/**"]),
 ]);
 
 export default eslintConfig;
