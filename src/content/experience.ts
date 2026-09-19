@@ -8,7 +8,7 @@ export const experience: z.input<typeof experienceSchema>[] = [
     role: "AI Engineer & Full-Stack Developer",
     startYear: 2025,
     period: "Nov 2025 — Sep 2026",
-    location: "Germany · Remote",
+    location: "Remote, from Germany",
     summary:
       "Built an EU-hosted AI chat service from an empty repo to production: a model gateway over three EU providers, agents with retrieval, and EUR billing. Metered the energy and water of every chat and turned that cost into funded reforestation.",
     products: ["Model gateway", "EUR billing", "Chrome extension"],
@@ -30,7 +30,7 @@ export const experience: z.input<typeof experienceSchema>[] = [
     role: "Full-Stack Developer",
     startYear: 2025,
     period: "Mar 2025 — Feb 2026",
-    location: "Netherlands · Remote",
+    location: "Remote, from the Netherlands",
     summary:
       "Shipped three products for one Dutch studio: a quote marketplace, a food-ordering rebuild, and a property prediction market on Polygon. Full-time through November 2025, then on contract.",
     products: ["Jeofferte", "Meshi", "Roofcast"],
@@ -52,7 +52,7 @@ export const experience: z.input<typeof experienceSchema>[] = [
     role: "Senior Frontend Developer",
     startYear: 2024,
     period: "Sep 2024 — Feb 2025",
-    location: "Iran · On-site",
+    location: "On-site, Iran",
     summary:
       "Built a real-estate web app with crypto payment and token creation in Next.js and TypeScript. Shipped a generic data hook and a CRUD table so new screens took less code.",
     products: ["Property DApp"],
@@ -72,7 +72,7 @@ export const experience: z.input<typeof experienceSchema>[] = [
     role: "Senior Frontend Developer",
     startYear: 2022,
     period: "Nov 2022 — Aug 2024",
-    location: "Iran · On-site",
+    location: "On-site, Iran",
     summary:
       "Delivered a crypto exchange web app with live charts, order management and WebSocket market data. A PWA caching layer took page load from 4.2s to 2.9s, and a shared component library cut the feature cycle from 8 days to 5.",
     products: ["Trading platform", "Component library"],
@@ -93,7 +93,7 @@ export const experience: z.input<typeof experienceSchema>[] = [
     role: "Frontend Developer",
     startYear: 2020,
     period: "Mar 2020 — Sep 2022",
-    location: "Iran · On-site",
+    location: "On-site, Iran",
     summary:
       "Built a personality-assessment platform for the academy's students, used by 5,000+ people. Tuned the Webpack build so the test opened faster on slow connections.",
     products: ["Assessment platform", "Design system"],
@@ -112,7 +112,7 @@ export const experience: z.input<typeof experienceSchema>[] = [
     role: "Frontend Developer",
     startYear: 2019,
     period: "Feb 2019 — Feb 2020",
-    location: "Iran · On-site",
+    location: "On-site, Iran",
     summary:
       "Launched an AI-driven study-resource platform in React and TypeScript. Fixed the GraphQL schema and resolver bugs that were blocking the team.",
     products: ["Study-resource platform"],
