@@ -106,4 +106,5 @@
 
 [dir="rtl"] {
   --tracking-display: 0;
+  --font-display: var(--font-vazirmatn);
 }
