@@ -877,11 +877,27 @@ export function LocaleSwitch() {
 `src/app/[locale]/page.tsx`:
 
 ```tsx
+import { use } from "react";
 import { useTranslations } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { LocaleSwitch } from "@/components/layout/LocaleSwitch";
 
-export default function HomePage() {
+export default function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  // React's `use()`, not `await`. Awaiting makes the component async, and
+  // `useTranslations` throws in an async component. `use()` unwraps the
+  // promise while the component stays synchronous.
+  const { locale } = use(params);
+
+  // Must run before any next-intl hook. Without it the route falls back to
+  // headers() and opts out of static rendering — the build shows `ƒ` instead
+  // of a prerendered path.
+  setRequestLocale(locale);
+
   const t = useTranslations("nav");
 
   return (
@@ -909,7 +925,10 @@ pnpm test:tokens
 pnpm build
 ```
 
-Expected: all three PASS, and the build output lists `/en`, `/de`, `/nl`, `/fa`.
+Expected: all three PASS, and the build's route table shows `/[locale]` as **prerendered**
+(`●` or `○`), not dynamic (`ƒ`). A `ƒ` means `setRequestLocale` is not running before a
+next-intl hook somewhere — usually a page that forgot it, or one that used `await params`
+instead of `use(params)` and so became async.
 
 - [ ] **Step 6: Commit**
 
