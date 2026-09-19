@@ -1,6 +1,13 @@
 @import "tailwindcss";
 @import "./tokens.css";
 
+/* Tailwind v4 auto-detects sources. Exclude the scratch directories: briefs and
+ * review diffs contain literal class strings, and scanning them generates dead
+ * utilities that ship in the production bundle. */
+@source not "../../.superpowers";
+@source not "../../.scratch";
+@source not "../../docs";
+
 @theme inline {
   /* Tailwind's --color-* namespace on the left, Layer 2 aliases on the right.
    * The two sets of names must differ or the variable resolves to itself. */
