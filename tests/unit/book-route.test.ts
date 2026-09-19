@@ -80,6 +80,37 @@ beforeEach(() => {
 });
 
 describe("POST /api/book", () => {
+  it("503s and never inserts when the ip rate-limit count query errors", async () => {
+    // A failed count must not read as "zero bookings" — that would let the
+    // limiter fail open. count comes back null alongside a Supabase error.
+    const { POST } = await import("@/app/api/book/route");
+
+    fromMock.mockReturnValueOnce(
+      makeBuilder({ count: null, error: { message: "connection reset" } }),
+    ); // ip cap query fails
+
+    const res = await POST(bookRequest());
+
+    expect(res.status).toBe(503);
+    expect(fromMock).toHaveBeenCalledTimes(1);
+    expect(insertEventMock).not.toHaveBeenCalled();
+  });
+
+  it("503s and never inserts when the email rate-limit count query errors", async () => {
+    const { POST } = await import("@/app/api/book/route");
+
+    fromMock
+      .mockReturnValueOnce(makeBuilder({ count: 0 })) // ip cap ok
+      .mockReturnValueOnce(
+        makeBuilder({ count: null, error: { message: "connection reset" } }),
+      ); // email cap query fails
+
+    const res = await POST(bookRequest());
+
+    expect(res.status).toBe(503);
+    expect(insertEventMock).not.toHaveBeenCalled();
+  });
+
   it("maps a 23505 unique_violation on insert to 409 slot_taken", async () => {
     const { POST } = await import("@/app/api/book/route");
 

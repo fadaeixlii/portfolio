@@ -39,24 +39,34 @@ export async function POST(request: Request) {
   // .retry(false) everywhere below: postgrest-js's own retry (up to 3x with
   // backoff) doesn't back off for our fetch timeout's TimeoutError, so
   // without it a wedged Supabase host takes ~4x 5s, not 5s.
-  const { count: ipCount } = await supabase
+  const { count: ipCount, error: ipCountError } = await supabase
     .from("bookings")
     .select("id", { count: "exact", head: true })
     .eq("ip", ip)
     .neq("status", "cancelled")
     .gte("created_at", since)
     .retry(false);
+  // A failed count must not read as "zero bookings" — that would let the
+  // limiter fail open. Treat it as a failed request instead.
+  if (ipCountError) {
+    console.error("book rate limit check (ip) failed", ipCountError);
+    return NextResponse.json({ error: "server" }, { status: 503 });
+  }
   if ((ipCount ?? 0) >= SCHEDULE_CONFIG.maxBookingsPerIpPerDay) {
     return NextResponse.json({ error: "rate_limited" }, { status: 429 });
   }
 
-  const { count: emailCount } = await supabase
+  const { count: emailCount, error: emailCountError } = await supabase
     .from("bookings")
     .select("id", { count: "exact", head: true })
     .eq("email", input.email)
     .neq("status", "cancelled")
     .gte("created_at", since)
     .retry(false);
+  if (emailCountError) {
+    console.error("book rate limit check (email) failed", emailCountError);
+    return NextResponse.json({ error: "server" }, { status: 503 });
+  }
   if ((emailCount ?? 0) >= SCHEDULE_CONFIG.maxBookingsPerEmailPerDay) {
     return NextResponse.json({ error: "rate_limited" }, { status: 429 });
   }

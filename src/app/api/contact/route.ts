@@ -30,12 +30,18 @@ export async function POST(request: Request) {
   // .retry(false): postgrest-js's own retry doesn't back off for our fetch
   // timeout's TimeoutError, so without it a wedged Supabase host takes ~4x
   // the 5s fetch timeout, not 5s. See the comment in service.ts.
-  const { count } = await supabase
+  const { count, error: countError } = await supabase
     .from("contact_messages")
     .select("id", { count: "exact", head: true })
     .eq("ip", ip)
     .gte("created_at", since)
     .retry(false);
+  // A failed count must not read as "zero messages" — that would let the
+  // limiter fail open. Treat it as a failed request instead.
+  if (countError) {
+    console.error("contact rate limit check failed", countError);
+    return NextResponse.json({ error: "server" }, { status: 503 });
+  }
   if ((count ?? 0) >= MAX_MESSAGES_PER_IP_PER_DAY) {
     return NextResponse.json({ error: "rate_limited" }, { status: 429 });
   }

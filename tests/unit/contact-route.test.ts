@@ -89,6 +89,23 @@ describe("POST /api/contact", () => {
     expect(sendContactEmailMock).not.toHaveBeenCalled();
   });
 
+  it("503s and never emails when the rate-limit count query errors", async () => {
+    // A failed count must not read as "zero messages" — that would let the
+    // limiter fail open, allowing unlimited submissions. This is the
+    // regression case: count comes back null alongside a Supabase error.
+    const { POST } = await import("@/app/api/contact/route");
+
+    fromMock.mockReturnValueOnce(
+      makeBuilder({ count: null, error: { message: "connection reset" } }),
+    ); // ip cap query fails
+
+    const res = await POST(contactRequest());
+
+    expect(res.status).toBe(503);
+    expect(fromMock).toHaveBeenCalledTimes(1);
+    expect(sendContactEmailMock).not.toHaveBeenCalled();
+  });
+
   it("500s and never emails when the insert fails", async () => {
     const { POST } = await import("@/app/api/contact/route");
 
