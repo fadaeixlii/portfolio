@@ -40,7 +40,7 @@ export function NavPill() {
               className={cn(
                 "rounded-[var(--radius-full)] px-3 py-1.5",
                 "text-[length:var(--text-sm)] whitespace-nowrap",
-                "transition-colors duration-[var(--dur-fast)]",
+                "transition-[color,border-color] duration-[var(--dur-fast)]",
                 active ? "bg-surface-raised text-text" : "text-dim hover:text-text",
               )}
             >

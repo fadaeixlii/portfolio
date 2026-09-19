@@ -10,7 +10,6 @@ export const Field = forwardRef<
     label: string;
     error?: string;
     hint?: string;
-    multiline?: boolean;
   }
 >(function Field({ label, error, hint, className, id, ...props }, ref) {
   const generated = useId();
@@ -38,7 +37,7 @@ export const Field = forwardRef<
           "h-11 rounded-[var(--radius-md)] border bg-transparent px-4",
           "text-[length:var(--text-base)] text-text",
           "placeholder:text-dim",
-          "transition-colors duration-[var(--dur-fast)]",
+          "transition-[color,border-color] duration-[var(--dur-fast)]",
           "disabled:opacity-45",
           error ? "border-error" : "border-hairline focus-visible:border-signal",
           className,
