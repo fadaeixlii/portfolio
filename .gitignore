@@ -67,3 +67,8 @@ portfolio-claude-code-kickoff.md
 
 # Google OAuth client downloads — never commit
 client_secret_*.json
+
+# Playwright artifacts
+/test-results/
+/playwright-report/
+/blob-report/
