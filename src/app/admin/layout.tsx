@@ -16,7 +16,14 @@ export default async function AdminLayout({
   const { data } = await supabase.auth.getUser();
   // getUser() revalidates against the auth server; getSession() trusts a
   // cookie a client could have forged.
-  if (!data.user) redirect("/auth/login");
+  const allowlist = (process.env.ADMIN_EMAILS ?? "")
+    .split(",")
+    .map((email) => email.trim().toLowerCase())
+    .filter(Boolean);
+  const email = data.user?.email?.toLowerCase();
+  // Signed in but not on the allowlist gets the same redirect as signed-out —
+  // never a "forbidden" page, which would confirm the route exists.
+  if (!email || !allowlist.includes(email)) redirect("/auth/login");
 
   return (
     <UnlocalisedShell>
