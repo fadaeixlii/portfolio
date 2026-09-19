@@ -147,5 +147,30 @@
       "cancel": "Termin stornieren",
       "cancelled": "Storniert. Der Termin ist wieder frei."
     }
+  },
+  "contact": {
+    "heading": "Kontakt aufnehmen",
+    "subheading": "Erzählen Sie mir, woran Sie arbeiten. Ich lese jede Nachricht selbst.",
+    "form": {
+      "name": "Name",
+      "email": "E-Mail",
+      "message": "Nachricht",
+      "honeypot": "Firma",
+      "submit": "Nachricht senden"
+    },
+    "confirmed": {
+      "heading": "Nachricht gesendet.",
+      "body": "Ich lese alles persönlich und antworte innerhalb weniger Tage."
+    },
+    "errors": {
+      "rate_limited": "Sie haben das heutige Limit für Nachrichten erreicht. Versuchen Sie es morgen erneut oder schreiben Sie mir direkt eine E-Mail.",
+      "server": "Auf dem Server ist etwas schiefgelaufen. Versuchen Sie es erneut oder schreiben Sie mir direkt eine E-Mail.",
+      "network": "Die Anfrage ist fehlgeschlagen. Prüfen Sie Ihre Verbindung und versuchen Sie es erneut."
+    },
+    "direct": {
+      "heading": "Oder direkt erreichen",
+      "email": "E-Mail",
+      "github": "GitHub"
+    }
   }
 }

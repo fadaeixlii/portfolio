@@ -7,16 +7,9 @@ import { signBookingToken } from "@/lib/calendar/token";
 import { sendBookingEmails } from "@/lib/email/booking";
 import { SCHEDULE_CONFIG } from "@/lib/calendar/config";
 import { bookingRequestSchema } from "@/lib/calendar/schema";
+import { clientIp } from "@/lib/http/client-ip";
 
 export const dynamic = "force-dynamic";
-
-/** First `x-forwarded-for` entry, trimmed; a fixed fallback for local dev
- *  where no proxy sets the header. Never trust anything past the first
- *  entry — a client can append its own. */
-function clientIp(request: Request): string {
-  const first = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
-  return first || "127.0.0.1";
-}
 
 export async function POST(request: Request) {
   const json: unknown = await request.json().catch(() => null);

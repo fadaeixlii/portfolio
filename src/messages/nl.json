@@ -147,5 +147,30 @@
       "cancel": "Gesprek annuleren",
       "cancelled": "Geannuleerd. Het tijdstip is weer vrij."
     }
+  },
+  "contact": {
+    "heading": "Neem contact op",
+    "subheading": "Vertel me waar je aan werkt. Ik lees elk bericht zelf.",
+    "form": {
+      "name": "Naam",
+      "email": "E-mail",
+      "message": "Bericht",
+      "honeypot": "Bedrijf",
+      "submit": "Bericht versturen"
+    },
+    "confirmed": {
+      "heading": "Bericht verzonden.",
+      "body": "Ik lees alles persoonlijk en reageer binnen een paar dagen."
+    },
+    "errors": {
+      "rate_limited": "Je hebt de dagelijkse limiet voor berichten bereikt. Probeer het morgen opnieuw of mail me direct.",
+      "server": "Er ging iets mis op de server. Probeer het opnieuw of mail me direct.",
+      "network": "De aanvraag is mislukt. Controleer je verbinding en probeer het opnieuw."
+    },
+    "direct": {
+      "heading": "Of neem direct contact op",
+      "email": "E-mail",
+      "github": "GitHub"
+    }
   }
 }

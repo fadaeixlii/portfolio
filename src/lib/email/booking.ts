@@ -1,13 +1,12 @@
 import "server-only";
 import { buildIcs, type IcsBooking } from "@/lib/calendar/ics";
+import { sendResendEmail, escapeHtml } from "@/lib/email/resend";
 
 export type BookingEmailInput = IcsBooking & {
   email: string;
   locale: string;
   manageToken: string;
 };
-
-const RESEND_URL = "https://api.resend.com/emails";
 
 const SUBJECT: Record<string, string> = {
   en: "Your call is booked",
@@ -19,34 +18,6 @@ const SUBJECT: Record<string, string> = {
 function manageUrl(token: string): string {
   const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mohammadmkh.dev";
   return `${base}/schedule/manage/${token}`;
-}
-
-/** A visitor controls name/topic/notes end to end — escape before it ever
- *  reaches an HTML (or plain-text-that-gets-read-as-markup) email body. */
-function escapeHtml(value: string): string {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
-
-async function sendResendEmail(payload: Record<string, unknown>): Promise<void> {
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) return; // sandbox / not configured — booking still succeeds without email
-
-  const res = await fetch(RESEND_URL, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(payload),
-  });
-  if (!res.ok) {
-    throw new Error(`resend send failed: ${res.status} ${await res.text()}`);
-  }
 }
 
 /**

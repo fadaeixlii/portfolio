@@ -147,5 +147,30 @@
       "cancel": "Cancel the call",
       "cancelled": "Cancelled. The slot is free again."
     }
+  },
+  "contact": {
+    "heading": "Get in touch",
+    "subheading": "Tell me what you're building. I read every message myself.",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "honeypot": "Company",
+      "submit": "Send message"
+    },
+    "confirmed": {
+      "heading": "Message sent.",
+      "body": "I read everything personally and reply within a couple of days."
+    },
+    "errors": {
+      "rate_limited": "You've reached today's limit for messages. Try again tomorrow, or email me directly.",
+      "server": "Something went wrong on the server. Try again, or email me directly.",
+      "network": "The request failed. Check your connection and try again."
+    },
+    "direct": {
+      "heading": "Or reach me directly",
+      "email": "Email",
+      "github": "GitHub"
+    }
   }
 }
