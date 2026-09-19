@@ -24,6 +24,10 @@ function toIcsDate(iso: string): string {
 /** RFC 5545 TEXT escaping: backslash, semicolon, comma, newline. */
 function escapeText(text: string): string {
   return text
+    // Normalize CRLF/bare CR to LF first, so a literal CR never survives
+    // into a content line (RFC 5545 uses CRLF structurally for line breaks).
+    .replace(/\r\n/g, "\n")
+    .replace(/\r/g, "\n")
     .replace(/\\/g, "\\\\")
     .replace(/;/g, "\\;")
     .replace(/,/g, "\\,")

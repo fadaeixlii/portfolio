@@ -56,17 +56,17 @@ export function generateSlots(
   // Walk calendar dates in the target timezone. Step by 12h so a date is
   // never skipped by an offset change, then dedupe by date string.
   const seen = new Set<string>();
-  for (let t = from.getTime(); t <= to.getTime(); t += 12 * 60 * MINUTE) {
-    const dateKey = isoDateIn(new Date(t), timeZone);
-    if (seen.has(dateKey)) continue;
+  const processInstant = (instant: Date) => {
+    const dateKey = isoDateIn(instant, timeZone);
+    if (seen.has(dateKey)) return;
     seen.add(dateKey);
 
-    if (blackout.has(dateKey)) continue;
+    if (blackout.has(dateKey)) return;
     const [y, m, d] = dateKey.split("-").map(Number);
 
     const dayStart = new TZDate(y, m - 1, d, workDayStartHour, 0, 0, timeZone);
     if (!(workDays as readonly number[]).includes(weekdayIn(dayStart, timeZone))) {
-      continue;
+      return;
     }
     const dayEnd = new TZDate(y, m - 1, d, workDayEndHour, 0, 0, timeZone);
 
@@ -81,7 +81,16 @@ export function generateSlots(
       if (start < from || end > to) continue;
       out.push({ start, end });
     }
+  };
+
+  for (let t = from.getTime(); t <= to.getTime(); t += 12 * 60 * MINUTE) {
+    processInstant(new Date(t));
   }
+  // The 12h stride can overshoot `to` without ever landing on `to`'s own
+  // date (a window under 12h that crosses midnight) — evaluate it
+  // explicitly too. `processInstant` is a no-op if that date was already
+  // covered, via `seen`.
+  processInstant(to);
 
   return out.sort((a, b) => a.start.getTime() - b.start.getTime());
 }

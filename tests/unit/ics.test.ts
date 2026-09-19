@@ -40,4 +40,12 @@ describe("buildIcs", () => {
     const ics = buildIcs({ ...BOOKING, notes: "Prefers Tue, Wed; flexible" });
     expect(ics).toContain("Prefers Tue\\, Wed\\; flexible");
   });
+
+  it("normalizes a bare CR in free text instead of leaving it mid-line", () => {
+    const ics = buildIcs({ ...BOOKING, notes: "Line one\rLine two" });
+    // A literal CR anywhere but the CRLF line breaks this function itself
+    // inserts would corrupt the content line under RFC 5545's line folding.
+    expect(ics.replace(/\r\n/g, "")).not.toContain("\r");
+    expect(ics).toContain("Line one\\nLine two");
+  });
 });
