@@ -1,4 +1,6 @@
 name: deploy
+
+# Gated on the quality workflow so a red test suite can never reach production.
 on:
   workflow_run:
     workflows: [quality]
@@ -6,13 +8,34 @@ on:
     branches: [main]
 
 jobs:
-  deploy:
+  # Secrets are not readable from an `if:` on the job itself, so this step
+  # decides and the deploy job keys off its output. Until the VPS exists, the
+  # deploy simply skips — a workflow that fails red on every push trains people
+  # to ignore it, and then it hides a real failure.
+  check-config:
+    runs-on: ubuntu-latest
     if: github.event.workflow_run.conclusion == 'success'
+    outputs:
+      configured: ${{ steps.probe.outputs.configured }}
+    steps:
+      - id: probe
+        run: |
+          if [ -n "${{ secrets.VPS_HOST }}" ] && [ -n "${{ secrets.VPS_USER }}" ] && [ -n "${{ secrets.VPS_SSH_KEY }}" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Deploy skipped — set VPS_HOST, VPS_USER and VPS_SSH_KEY to enable it. See docs/launch-checklist.md."
+          fi
+
+  deploy:
+    needs: check-config
+    if: needs.check-config.outputs.configured == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
+
       - name: Deploy
         run: |
           ssh -o StrictHostKeyChecking=accept-new ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} '
