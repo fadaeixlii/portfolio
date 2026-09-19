@@ -94,7 +94,6 @@ export const caseStudies: z.input<typeof caseStudySchema>[] = [
       "Added a PWA caching layer: cache-first for static assets, network-first for market data.",
       "Wired TradingView charts to a WebSocket feed for live prices and orders.",
       "Standardised the team's patterns behind a shared component library.",
-      "Mentored two junior developers into that pattern.",
     ],
     outcome: "Pages opened faster and a feature reached traders in fewer days.",
     figures: [

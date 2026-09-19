@@ -36,3 +36,7 @@ export function getStack(): StackGroup[] {
 export function getCaseStudy(slug: string): CaseStudy | undefined {
   return CASE_STUDIES.find((c) => c.slug === slug);
 }
+
+export function getCaseStudies(): CaseStudy[] {
+  return CASE_STUDIES;
+}
