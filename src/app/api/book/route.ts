@@ -10,6 +10,14 @@ import { bookingRequestSchema } from "@/lib/calendar/schema";
 
 export const dynamic = "force-dynamic";
 
+/** First `x-forwarded-for` entry, trimmed; a fixed fallback for local dev
+ *  where no proxy sets the header. Never trust anything past the first
+ *  entry — a client can append its own. */
+function clientIp(request: Request): string {
+  const first = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
+  return first || "127.0.0.1";
+}
+
 export async function POST(request: Request) {
   const json: unknown = await request.json().catch(() => null);
   const parsed = bookingRequestSchema.safeParse(json);
@@ -21,20 +29,42 @@ export async function POST(request: Request) {
     // Honeypot tripped. Answer 200 so a bot learns nothing.
     return NextResponse.json({ ok: true });
   }
+  if (Date.now() - input.formRenderedAt < SCHEDULE_CONFIG.minFormSeconds * 1000) {
+    // Submitted faster than a human fills a form. Same non-tell as the
+    // honeypot: 200, nothing written.
+    return NextResponse.json({ ok: true });
+  }
 
   const start = new Date(input.start);
   const end = new Date(start.getTime() + SCHEDULE_CONFIG.slotMinutes * 60_000);
   const supabase = createServiceClient();
+  const ip = clientIp(request);
 
-  // Per-email daily cap.
+  // Rate limit: primarily by IP (not attacker-chosen), email cap second and
+  // additive (spec §3.5 — email alone lets a script vary the address).
   const since = new Date(Date.now() - 86_400_000).toISOString();
-  const { count } = await supabase
+  // .retry(false) everywhere below: postgrest-js's own retry (up to 3x with
+  // backoff) doesn't back off for our fetch timeout's TimeoutError, so
+  // without it a wedged Supabase host takes ~4x 5s, not 5s.
+  const { count: ipCount } = await supabase
+    .from("bookings")
+    .select("id", { count: "exact", head: true })
+    .eq("ip", ip)
+    .neq("status", "cancelled")
+    .gte("created_at", since)
+    .retry(false);
+  if ((ipCount ?? 0) >= SCHEDULE_CONFIG.maxBookingsPerIpPerDay) {
+    return NextResponse.json({ error: "rate_limited" }, { status: 429 });
+  }
+
+  const { count: emailCount } = await supabase
     .from("bookings")
     .select("id", { count: "exact", head: true })
     .eq("email", input.email)
     .neq("status", "cancelled")
-    .gte("created_at", since);
-  if ((count ?? 0) >= SCHEDULE_CONFIG.maxBookingsPerEmailPerDay) {
+    .gte("created_at", since)
+    .retry(false);
+  if ((emailCount ?? 0) >= SCHEDULE_CONFIG.maxBookingsPerEmailPerDay) {
     return NextResponse.json({ error: "rate_limited" }, { status: 429 });
   }
 
@@ -60,6 +90,7 @@ export async function POST(request: Request) {
       notes: input.notes ?? null,
       locale: input.locale,
       visitor_tz: input.visitorTz,
+      ip,
     })
     .select()
     .single();

@@ -23,8 +23,16 @@ export const SCHEDULE_CONFIG = {
   horizonDays: 28,
   /** Dates fully closed. ISO yyyy-mm-dd in the configured timezone. */
   blackoutDates: [] as string[],
-  /** Cap per visitor per day, enforced in the booking route. */
+  /** Cap per visitor email per day, enforced in the booking route. Additive
+   *  to the IP cap below — email is attacker-chosen, so it is not the
+   *  primary defense (spec §3.5). */
   maxBookingsPerEmailPerDay: 2,
+  /** Cap per client IP per day. The primary rate limit — IP is not
+   *  attacker-chosen the way the email field is. */
+  maxBookingsPerIpPerDay: 5,
+  /** A submission arriving sooner than this after the form rendered is
+   *  treated like a tripped honeypot: 200, nothing written. */
+  minFormSeconds: 3,
   /** Fallback the booker UI shows when the calendar is unreachable. */
   contactEmail: "mmohammadkhani408@gmail.com",
 } as const;

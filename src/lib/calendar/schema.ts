@@ -11,6 +11,10 @@ export const bookingRequestSchema = z.object({
   notes: z.string().max(1000).optional(),
   locale: z.enum(locales),
   visitorTz: z.string().max(64),
+  /** Epoch ms when the booker rendered the form step. The route rejects a
+   *  submission that arrives too soon after this — the same anti-bot check
+   *  as the honeypot, just timing-based instead of field-based. */
+  formRenderedAt: z.number(),
   /** Honeypot. Real people leave it empty; a bot that fills it must still
    *  pass validation so the handler reaches the 200-and-drop branch below —
    *  `max(0)` would instead 400 a filled honeypot before it gets there. */
