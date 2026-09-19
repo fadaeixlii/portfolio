@@ -15,10 +15,10 @@ export function StackGrid({ groups }: { groups: StackGroup[] }) {
             variant="flat"
             className="flex h-full flex-col gap-[var(--space-3)] p-[var(--space-6)]"
           >
-            <h2 className="font-display text-[length:var(--text-lg)] text-text">
+            <h2 dir="auto" className="font-display text-[length:var(--text-lg)] text-text">
               {group.name}
             </h2>
-            <div className="flex flex-wrap gap-[var(--space-3)] text-[length:var(--text-sm)] text-dim">
+            <div dir="auto" className="flex flex-wrap gap-[var(--space-3)] text-[length:var(--text-sm)] text-dim">
               {group.items.map((item) => (
                 <span key={item}>{item}</span>
               ))}

@@ -33,17 +33,17 @@ export function Timeline({ entries }: { entries: ExperienceEntry[] }) {
                 <span className="font-mono text-[length:var(--text-sm)] tabular-nums text-signal">
                   {entry.period}
                 </span>
-                <span className="text-[length:var(--text-sm)] text-dim">
+                <span dir="auto" className="text-[length:var(--text-sm)] text-dim">
                   {entry.location}
                 </span>
               </div>
-              <h3 className="mt-1 font-display text-[length:var(--text-2xl)] text-text">
+              <h3 dir="auto" className="mt-1 font-display text-[length:var(--text-2xl)] text-text">
                 {entry.company}
               </h3>
-              <p className="text-[length:var(--text-sm)] text-dim">
+              <p dir="auto" className="text-[length:var(--text-sm)] text-dim">
                 {entry.role}
               </p>
-              <p className="mt-[var(--space-3)] max-w-[var(--measure)] text-text">
+              <p dir="auto" className="mt-[var(--space-3)] max-w-[var(--measure)] text-text">
                 {entry.summary}
               </p>
               {/* The one clause explaining the Nov 2025 – Feb 2026 overlap
@@ -55,7 +55,7 @@ export function Timeline({ entries }: { entries: ExperienceEntry[] }) {
                   {t("overlapNote")}
                 </p>
               ) : null}
-              <div className="mt-[var(--space-4)] flex flex-wrap gap-[var(--space-3)] text-[length:var(--text-xs)] text-dim">
+              <div dir="auto" className="mt-[var(--space-4)] flex flex-wrap gap-[var(--space-3)] text-[length:var(--text-xs)] text-dim">
                 {entry.stack.map((item) => (
                   <span key={item}>{item}</span>
                 ))}

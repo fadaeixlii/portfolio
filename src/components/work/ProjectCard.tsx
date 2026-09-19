@@ -21,17 +21,17 @@ export function ProjectCard({ project }: { project: Project }) {
       variant="flat"
       className="flex h-full flex-col gap-[var(--space-3)] p-[var(--space-6)] transition-transform duration-[var(--dur-base)] ease-[var(--ease-out)] hover:-translate-y-0.5"
     >
-      <h3 className="font-display text-[length:var(--text-xl)] text-text">
+      <h3 dir="auto" className="font-display text-[length:var(--text-xl)] text-text">
         {project.name}
       </h3>
-      <p className="line-clamp-2 text-[length:var(--text-sm)] text-dim">
+      <p dir="auto" className="line-clamp-2 text-[length:var(--text-sm)] text-dim">
         {project.summary}
       </p>
       <div className="mt-auto flex flex-wrap items-center gap-[var(--space-3)] text-[length:var(--text-sm)] text-dim">
         <span>{project.year}</span>
-        <span>{project.domain}</span>
+        <span dir="auto">{project.domain}</span>
       </div>
-      <div className="flex flex-wrap gap-[var(--space-2)] text-[length:var(--text-xs)] text-dim">
+      <div dir="auto" className="flex flex-wrap gap-[var(--space-2)] text-[length:var(--text-xs)] text-dim">
         {project.stack.slice(0, 4).map((item) => (
           <span key={item}>{item}</span>
         ))}

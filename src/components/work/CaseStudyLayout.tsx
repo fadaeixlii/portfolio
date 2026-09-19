@@ -15,10 +15,13 @@ const SCREENSHOTS: Partial<
   Record<string, { src: string; width: number; height: number; alt: string }>
 > = {
   aim2balance: {
-    src: "/images/projects/aim2balance/platform-desktop.png",
+    // Was platform-desktop.png — a real logged-in session (wallet balance,
+    // account name, chat titles, usage stats). This is the public marketing
+    // page instead; see docs/decisions.md.
+    src: "/images/projects/aim2balance/landing.png",
     width: 1920,
     height: 1080,
-    alt: "aim2balance platform dashboard with the model gateway and EUR billing",
+    alt: "aim2balance marketing landing page",
   },
   jeofferte: {
     src: "/images/projects/jeofferte/landing.png",
@@ -79,11 +82,11 @@ export function CaseStudyLayout({
   return (
     <div className="mx-auto flex max-w-5xl flex-col gap-[var(--space-16)] px-[var(--space-6)] py-[var(--space-24)]">
       <Reveal as="header" className="flex flex-col gap-[var(--space-4)]">
-        <h1 className="font-display text-[length:var(--text-4xl)] leading-[var(--leading-tight)] text-text">
+        <h1 dir="auto" className="font-display text-[length:var(--text-4xl)] leading-[var(--leading-tight)] text-text">
           {project.name}
         </h1>
         <div className="flex flex-wrap gap-[var(--space-4)] text-[length:var(--text-sm)] text-dim">
-          <span>{project.role}</span>
+          <span dir="auto">{project.role}</span>
           <span>{project.year}</span>
           {project.href ? (
             <a
@@ -115,7 +118,7 @@ export function CaseStudyLayout({
 
       {/* Problem — one sentence, large, on --paper, never glass. */}
       <Reveal>
-        <p className="max-w-[var(--measure)] text-[length:var(--text-2xl)] font-display leading-[var(--leading-tight)] text-text">
+        <p dir="auto" className="max-w-[var(--measure)] text-[length:var(--text-2xl)] font-display leading-[var(--leading-tight)] text-text">
           {caseStudy.problem}
         </p>
       </Reveal>
@@ -131,7 +134,7 @@ export function CaseStudyLayout({
               <span className="font-mono text-[length:var(--text-sm)] text-signal">
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <span className="max-w-[var(--measure)] text-text">{step}</span>
+              <span dir="auto" className="max-w-[var(--measure)] text-text">{step}</span>
             </li>
           ))}
         </ol>
@@ -141,7 +144,7 @@ export function CaseStudyLayout({
         <h2 className="text-[length:var(--text-sm)] text-dim">
           {t("stack")}
         </h2>
-        <div className="mt-[var(--space-3)] flex flex-wrap gap-[var(--space-3)] text-[length:var(--text-sm)] text-text">
+        <div dir="auto" className="mt-[var(--space-3)] flex flex-wrap gap-[var(--space-3)] text-[length:var(--text-sm)] text-text">
           {project.stack.map((item) => (
             <span key={item}>{item}</span>
           ))}
@@ -152,7 +155,7 @@ export function CaseStudyLayout({
         <h2 className="text-[length:var(--text-sm)] text-dim">
           {t("outcome")}
         </h2>
-        <p className="mt-[var(--space-3)] max-w-[var(--measure)] text-[length:var(--text-lg)] text-text">
+        <p dir="auto" className="mt-[var(--space-3)] max-w-[var(--measure)] text-[length:var(--text-lg)] text-text">
           {caseStudy.outcome}
         </p>
       </Reveal>
@@ -167,7 +170,7 @@ export function CaseStudyLayout({
               <span className="font-mono text-[length:var(--text-3xl)] tabular-nums text-signal">
                 {figure.value}
               </span>
-              <span className="text-[length:var(--text-sm)] text-dim">
+              <span dir="auto" className="text-[length:var(--text-sm)] text-dim">
                 {figure.label}
               </span>
             </div>
