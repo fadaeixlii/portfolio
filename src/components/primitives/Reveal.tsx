@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import type { ElementType, ReactNode } from "react";
 import { MOTION, EASE, useMotionSafe } from "@/lib/motion";
 import { cn } from "@/lib/cn";
@@ -24,7 +24,7 @@ export function Reveal({
   className,
 }: RevealProps) {
   const safe = useMotionSafe();
-  const Component = motion[as as "div"] ?? motion.div;
+  const Component = m[as as "div"] ?? m.div;
 
   if (!MOTION.reveal.enabled || !safe) {
     // Reduced motion still gets a crossfade, never a jump.
@@ -72,7 +72,7 @@ export function Stagger({
   className?: string;
 }) {
   const safe = useMotionSafe();
-  const Component = motion[as as "div"] ?? motion.div;
+  const Component = m[as as "div"] ?? m.div;
 
   return (
     <Component
@@ -105,7 +105,7 @@ export function StaggerItem({
   const safe = useMotionSafe();
 
   return (
-    <motion.div
+    <m.div
       variants={{
         hidden: { opacity: 0, y: safe ? MOTION.reveal.distance : 0 },
         shown: {
@@ -120,6 +120,6 @@ export function StaggerItem({
       className={className}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

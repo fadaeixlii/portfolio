@@ -6,6 +6,7 @@ import { routing, isRtl, type Locale } from "@/lib/i18n/routing";
 import { fontVariables } from "@/lib/fonts";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import { MotionProvider } from "@/components/layout/MotionProvider";
 import { GlassFilter } from "@/components/primitives/GlassFilter";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { NavPill } from "@/components/layout/NavPill";
@@ -55,11 +56,13 @@ export default async function LocaleLayout({
         <GlassFilter />
         <ThemeProvider>
           <NextIntlClientProvider>
-            {/* Skip link — the first tabbable thing on every page. */}
-            <SkipLink />
-            <NavPill />
-            {children}
-            <SiteFooter />
+            <MotionProvider>
+              {/* Skip link — the first tabbable thing on every page. */}
+              <SkipLink />
+              <NavPill />
+              {children}
+              <SiteFooter />
+            </MotionProvider>
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

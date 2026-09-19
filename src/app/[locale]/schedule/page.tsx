@@ -1,11 +1,19 @@
 import { use } from "react";
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Reveal } from "@/components/primitives/Reveal";
-import { Booker } from "@/components/schedule/Booker";
 import { buildMetadata } from "@/lib/seo/metadata";
 import type { Locale } from "@/lib/i18n/routing";
+
+// The heaviest component on the site's primary conversion page (react-hook-form
+// + zod resolver + motion + its own sub-tree) — split into its own chunk
+// instead of the initial /schedule bundle. No `ssr: false`: it's the page's
+// main content, so it still needs to render on the server for first paint.
+const Booker = dynamic(() =>
+  import("@/components/schedule/Booker").then((m) => m.Booker),
+);
 
 export async function generateMetadata({
   params,

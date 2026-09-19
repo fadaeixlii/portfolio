@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { useTranslations } from "next-intl";
 import { Surface } from "@/components/primitives/Surface";
 import { EASE, MOTION } from "@/lib/motion";
@@ -29,7 +29,11 @@ export function HeroBento() {
     <div className="grid grid-cols-1 items-start gap-[var(--space-4)] md:grid-cols-3">
       {/* Identity — sized to its own content, not to the rest of the grid. */}
       <Surface className="flex flex-col gap-[var(--space-4)] p-[var(--space-6)] md:col-start-1">
-        <div className="relative aspect-square w-full overflow-hidden rounded-[var(--radius-md)]">
+        {/* Square on desktop where it shares a row with the headline; a
+            shorter ratio below `md`, where the grid stacks to one column and
+            a full-width square portrait was pushing the `<h1>` off-screen
+            (y≈666 of 844 at 390px). */}
+        <div className="relative aspect-video w-full overflow-hidden rounded-[var(--radius-md)] md:aspect-square">
           <Image
             src="/images/portrait.jpg"
             alt=""
@@ -75,7 +79,7 @@ export function HeroBento() {
           variant="flat"
           className="flex flex-col justify-center p-[var(--space-8)]"
         >
-          <motion.h1
+          <m.h1
             initial={false}
             animate={
               resolved ? { opacity: 1, y: 0 } : { opacity: 0.35, y: 6 }
@@ -85,7 +89,7 @@ export function HeroBento() {
           >
             <span className="block text-text">{t("headline.line1")}</span>
             <span className="block text-dim">{t("headline.line2")}</span>
-          </motion.h1>
+          </m.h1>
         </Surface>
 
         {/* Stat cell — three mono readouts need room a narrow column can't give. */}
