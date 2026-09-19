@@ -5,6 +5,7 @@ import { getFeaturedProjects, getExperience, getStack } from "@/content";
 import { BootSequence } from "@/components/home/BootSequence";
 import { HeroBento } from "@/components/home/HeroBento";
 import { ProjectCard } from "@/components/work/ProjectCard";
+import { StackGrid } from "@/components/stack/StackGrid";
 import { Reveal, Stagger, StaggerItem } from "@/components/primitives/Reveal";
 import { Link } from "@/lib/i18n/navigation";
 
@@ -91,19 +92,8 @@ export default function HomePage({
         <h2 className="font-display text-[length:var(--text-3xl)]">
           {t("stack.heading")}
         </h2>
-        <div className="mt-[var(--space-8)] grid grid-cols-2 gap-[var(--space-6)] md:grid-cols-3">
-          {stack.map((group) => (
-            <div key={group.name} className="flex flex-col gap-[var(--space-2)]">
-              <span className="text-[length:var(--text-sm)] text-dim">
-                {group.name}
-              </span>
-              <div className="flex flex-wrap gap-[var(--space-2)] text-[length:var(--text-sm)] text-text">
-                {group.items.map((item) => (
-                  <span key={item}>{item}</span>
-                ))}
-              </div>
-            </div>
-          ))}
+        <div className="mt-[var(--space-8)]">
+          <StackGrid groups={stack} />
         </div>
       </Reveal>
 

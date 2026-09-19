@@ -2,7 +2,14 @@ import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
 for (const locale of ["en", "fa"] as const) {
-  for (const route of ["", "/styleguide"] as const) {
+  for (const route of [
+    "",
+    "/styleguide",
+    "/work",
+    "/work/aim2balance",
+    "/experience",
+    "/stack",
+  ] as const) {
     for (const theme of ["dark", "light"] as const) {
       test(`${locale}${route || "/"} / ${theme} has no axe violations`, async ({ page }) => {
         await page.goto(`/${locale}${route}`);

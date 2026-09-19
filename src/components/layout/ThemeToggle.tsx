@@ -25,7 +25,7 @@ export function ThemeToggle() {
       type="button"
       aria-label={t("toggleTheme")}
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="grid size-9 place-items-center rounded-full text-dim transition-colors hover:text-text"
+      className="grid size-9 place-items-center rounded-full text-dim transition-[color] duration-[var(--dur-fast)] hover:text-text"
     >
       {/* Render a stable icon until mounted so SSR and client markup agree. */}
       {mounted && !isDark ? (
