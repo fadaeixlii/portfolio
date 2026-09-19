@@ -61,3 +61,6 @@ portfolio-claude-code-kickoff.md
 
 # doctor-run backups
 *.doctor-bak
+
+# firecrawl research cache
+.firecrawl/
