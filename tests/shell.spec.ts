@@ -20,6 +20,12 @@ test.describe("locale direction", () => {
   }
 });
 
+test("unknown route under a locale renders a real 404 document", async ({ page }) => {
+  await page.goto("/fa/nope");
+  await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
+  await expect(page).toHaveTitle(/.+/);
+});
+
 test("theme toggle flips data-theme and survives reload", async ({ page }) => {
   await page.goto("/en");
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");

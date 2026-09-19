@@ -15,5 +15,10 @@
     "skipToContent": "Naar inhoud",
     "toggleTheme": "Thema wisselen",
     "selectLanguage": "Taal"
+  },
+  "notFound": {
+    "heading": "Pagina niet gevonden",
+    "body": "De pagina die je zoekt bestaat niet.",
+    "home": "Naar home"
   }
 }

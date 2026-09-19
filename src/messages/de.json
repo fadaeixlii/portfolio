@@ -15,5 +15,10 @@
     "skipToContent": "Zum Inhalt springen",
     "toggleTheme": "Design wechseln",
     "selectLanguage": "Sprache"
+  },
+  "notFound": {
+    "heading": "Seite nicht gefunden",
+    "body": "Die gesuchte Seite existiert nicht.",
+    "home": "Zur Startseite"
   }
 }
