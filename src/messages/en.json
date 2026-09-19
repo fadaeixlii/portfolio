@@ -24,5 +24,57 @@
   "footer": {
     "statement": "Systems that count what they cost.",
     "cta": "Book a call"
+  },
+  "home": {
+    "hero": {
+      "role": "AI Engineer & Full-Stack Developer",
+      "headline": {
+        "line1": "AI engineer,",
+        "line2": "based in Athens, Greece."
+      },
+      "cta": {
+        "heading": "Book a call",
+        "sub": "30 minutes, no pitch deck."
+      },
+      "capabilities": {
+        "one": "Ships production AI systems end to end.",
+        "two": "Builds full-stack products, database to deploy."
+      }
+    },
+    "stats": {
+      "since": "since",
+      "products": "products",
+      "providers": "EU providers"
+    },
+    "sections": {
+      "work": {
+        "heading": "Selected work",
+        "viewAll": "View all work"
+      },
+      "experience": {
+        "heading": "Experience",
+        "viewAll": "Full timeline"
+      },
+      "stack": {
+        "heading": "Stack"
+      },
+      "cta": {
+        "heading": "Have a project in mind?",
+        "action": "Book a call"
+      }
+    }
+  },
+  "work": {
+    "index": {
+      "heading": "Work",
+      "subheading": "Nine shipped products across AI, marketplaces and Web3."
+    },
+    "caseStudy": {
+      "approach": "Approach",
+      "stack": "Stack",
+      "outcome": "Outcome",
+      "liveLink": "View live",
+      "next": "Next project"
+    }
   }
 }

@@ -24,5 +24,57 @@
   "footer": {
     "statement": "Systemen die meten wat ze kosten.",
     "cta": "Gesprek plannen"
+  },
+  "home": {
+    "hero": {
+      "role": "AI Engineer & Full-Stack Developer",
+      "headline": {
+        "line1": "AI engineer,",
+        "line2": "gevestigd in Athene, Griekenland."
+      },
+      "cta": {
+        "heading": "Gesprek plannen",
+        "sub": "30 minuten, geen pitch deck."
+      },
+      "capabilities": {
+        "one": "Bouwt productieklare AI-systemen van begin tot eind.",
+        "two": "Bouwt full-stack producten, van database tot deploy."
+      }
+    },
+    "stats": {
+      "since": "sinds",
+      "products": "producten",
+      "providers": "EU-aanbieders"
+    },
+    "sections": {
+      "work": {
+        "heading": "Uitgelicht werk",
+        "viewAll": "Bekijk al het werk"
+      },
+      "experience": {
+        "heading": "Ervaring",
+        "viewAll": "Volledige tijdlijn"
+      },
+      "stack": {
+        "heading": "Stack"
+      },
+      "cta": {
+        "heading": "Een project in gedachten?",
+        "action": "Gesprek plannen"
+      }
+    }
+  },
+  "work": {
+    "index": {
+      "heading": "Werk",
+      "subheading": "Negen gelanceerde producten binnen AI, marktplaatsen en Web3."
+    },
+    "caseStudy": {
+      "approach": "Aanpak",
+      "stack": "Stack",
+      "outcome": "Resultaat",
+      "liveLink": "Bekijk live",
+      "next": "Volgend project"
+    }
   }
 }

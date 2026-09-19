@@ -24,5 +24,57 @@
   "footer": {
     "statement": "Systeme, die messen, was sie kosten.",
     "cta": "Termin buchen"
+  },
+  "home": {
+    "hero": {
+      "role": "KI-Ingenieur & Full-Stack-Entwickler",
+      "headline": {
+        "line1": "KI-Ingenieur,",
+        "line2": "wohnhaft in Athen, Griechenland."
+      },
+      "cta": {
+        "heading": "Termin buchen",
+        "sub": "30 Minuten, kein Pitch-Deck."
+      },
+      "capabilities": {
+        "one": "Baut produktionsreife KI-Systeme von Anfang bis Ende.",
+        "two": "Baut Full-Stack-Produkte, von der Datenbank bis zum Deploy."
+      }
+    },
+    "stats": {
+      "since": "seit",
+      "products": "Produkte",
+      "providers": "EU-Anbieter"
+    },
+    "sections": {
+      "work": {
+        "heading": "Ausgewählte Arbeiten",
+        "viewAll": "Alle Arbeiten ansehen"
+      },
+      "experience": {
+        "heading": "Erfahrung",
+        "viewAll": "Vollständiger Werdegang"
+      },
+      "stack": {
+        "heading": "Stack"
+      },
+      "cta": {
+        "heading": "Haben Sie ein Projekt im Kopf?",
+        "action": "Termin buchen"
+      }
+    }
+  },
+  "work": {
+    "index": {
+      "heading": "Arbeiten",
+      "subheading": "Neun ausgelieferte Produkte in KI, Marktplätzen und Web3."
+    },
+    "caseStudy": {
+      "approach": "Vorgehen",
+      "stack": "Stack",
+      "outcome": "Ergebnis",
+      "liveLink": "Live ansehen",
+      "next": "Nächstes Projekt"
+    }
   }
 }
