@@ -3,19 +3,13 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { getFeaturedProjects, getExperience, getStack } from "@/content";
+import { SHOTS } from "@/content/shots";
 import { BootSequence } from "@/components/home/BootSequence";
 import { HeroBento } from "@/components/home/HeroBento";
 import { StatRow } from "@/components/home/StatRow";
 import { StackGrid } from "@/components/stack/StackGrid";
 import { Reveal } from "@/components/primitives/Reveal";
 import { Link } from "@/lib/i18n/navigation";
-
-/** One screenshot per featured project. A project without one gets no thumbnail. */
-const SHOTS: Record<string, string> = {
-  aim2balance: "/images/projects/aim2balance/landing.png",
-  jeofferte: "/images/projects/jeofferte/landing.png",
-  roofcast: "/images/projects/roofcast/landing.png",
-};
 
 const HEAD =
   "font-display text-[length:var(--text-section)] font-extrabold uppercase leading-[var(--leading-display)] tracking-[var(--tracking-display)]";
@@ -102,13 +96,15 @@ export default function HomePage({
                 href={`/work/${project.slug}`}
                 className="group flex items-center gap-[var(--space-4)] py-[var(--space-4)]"
               >
+                {/* Decorative: the project name is the link text right
+                    beside it, so a second announcement is noise. */}
                 {SHOTS[project.slug] ? (
                   <Image
-                    src={SHOTS[project.slug]}
+                    src={SHOTS[project.slug]!.src}
                     alt=""
                     width={120}
                     height={75}
-                    className="hidden h-[75px] w-[120px] shrink-0 object-cover [filter:var(--shot)] sm:block"
+                    className="hidden h-[75px] w-[120px] shrink-0 object-cover object-top [filter:var(--shot)] sm:block"
                   />
                 ) : null}
                 <span className="flex min-w-0 flex-col gap-1">
