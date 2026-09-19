@@ -10,13 +10,17 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   use: {
-    baseURL: "http://localhost:3000",
+    baseURL: "http://localhost:3100",
     trace: "on-first-retry",
   },
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   webServer: {
-    command: "pnpm build && pnpm start",
-    url: "http://localhost:3000/en",
+    // Port 3100, not 3000: see docs/decisions.md. `reuseExistingServer`
+    // (true outside CI) is only safe because nothing else has a reason to
+    // be listening on this port — a dev server left on 3000 can no longer
+    // be silently adopted as the build under test.
+    command: "pnpm build && pnpm exec next start -p 3100",
+    url: "http://localhost:3100/en",
     reuseExistingServer: !process.env.CI,
     timeout: 180_000,
   },
