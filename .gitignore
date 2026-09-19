@@ -64,3 +64,6 @@ portfolio-claude-code-kickoff.md
 
 # firecrawl research cache
 .firecrawl/
+
+# Google OAuth client downloads — never commit
+client_secret_*.json

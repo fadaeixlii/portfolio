@@ -35,7 +35,9 @@
 
 - [x] **Step 1: Write `docs/google-calendar-setup.md`** — **already written 2026-09-19**, see that file. Mohammad performs it himself before this phase starts; nothing here blocks on it except Step 6's verification.
 
-- [ ] **Step 2: Write `scripts/calendar-auth.mjs`**
+- [x] **Step 2: Write `scripts/calendar-auth.mjs`** — **already written 2026-09-19** and registered as `pnpm calendar:auth`. It reads `.env.local` (falling back to `.env`), strips stray quotes, and gives a named fix for each of `redirect_uri_mismatch`, `access_denied`, a missing refresh token and `EADDRINUSE`. Verify only: running it with no credentials must exit 1 with the step-4 pointer.
+
+<details><summary>Original implementation, for reference</summary>
 
 ```js
 #!/usr/bin/env node
@@ -120,7 +122,9 @@ const server = createServer(async (req, res) => {
 server.listen(4321);
 ```
 
-Add `"calendar:auth": "node scripts/calendar-auth.mjs"` to `package.json`.
+</details>
+
+Already in `package.json`.
 
 - [ ] **Step 3: Extend the secret guard**
 

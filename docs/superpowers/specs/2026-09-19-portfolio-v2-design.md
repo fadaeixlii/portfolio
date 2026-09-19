@@ -390,8 +390,10 @@ from the CVs, and the CV wins every conflict.
 
 | Field | Value |
 |---|---|
-| Display name | **Mohammad.M.KH** |
-| Full name (formal contexts only) | Mohammad Mohammad Khani |
+| Display name | **Mohammad M. Khani** |
+| First name | Mohammad |
+| Surname | MohammadKhani |
+| Full name (formal contexts only) | Mohammad MohammadKhani |
 | Domain | `mohammadmkh.dev` |
 | LinkedIn | `/in/mohammadmkh` |
 | Email | `mmohammadkhani408@gmail.com` |

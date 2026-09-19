@@ -124,6 +124,11 @@ From the portfolio repo:
 pnpm calendar:auth
 ```
 
+If that reports `Command "calendar:auth" not found`, you are on a checkout from before
+2026-09-19 — `git pull` and try again.
+
+If it reports `.env.local is missing GOOGLE_CLIENT_ID`, go back to step 5.
+
 The script prints a long `https://accounts.google.com/...` URL.
 
 1. Open it in a browser signed in as the account you added as a test user.

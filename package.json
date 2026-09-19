@@ -9,7 +9,8 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "test": "playwright test",
-    "analyze": "ANALYZE=true next build"
+    "analyze": "ANALYZE=true next build",
+    "calendar:auth": "node scripts/calendar-auth.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",
