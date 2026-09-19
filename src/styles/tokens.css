@@ -95,6 +95,17 @@
   --text-sm: 0.9375rem;
   --text-xs: 0.8125rem;
 
+  /* ---- Type faces ---------------------------------------------------
+     Raw faces, deliberately NOT in Tailwind's reserved `--font-*`
+     namespace. `@theme inline` bridges `--font-display`/`--font-sans` to
+     these, so the utilities compile to `var(--display-face)` and the
+     [dir="rtl"] override below actually reaches them. Bridging straight to
+     `var(--font-archivo)` inlines Archivo into every `font-display`
+     utility and the RTL override lands on a variable nothing reads.
+     Same shape as `--color-signal: var(--signal)`. */
+  --display-face: var(--font-archivo);
+  --body-face: var(--font-archivo);
+
   --leading-display: 0.93;
   --leading-tight: 1.15;
   --leading-body: 1.6;
@@ -137,5 +148,8 @@
 
 [dir="rtl"] {
   --tracking-display: 0;
-  --font-display: var(--font-vazirmatn);
+  /* Archivo has no Arabic coverage — without this every Farsi heading and
+     paragraph falls through to a system Naskh. */
+  --display-face: var(--font-vazirmatn);
+  --body-face: var(--font-vazirmatn);
 }

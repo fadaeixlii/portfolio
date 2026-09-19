@@ -24,8 +24,8 @@
   --color-error: var(--error);
   --color-success: var(--success);
 
-  --font-display: var(--font-archivo);
-  --font-sans: var(--font-vazirmatn);
+  --font-display: var(--display-face);
+  --font-sans: var(--body-face);
   --font-mono: var(--font-jetbrains);
 }
 
