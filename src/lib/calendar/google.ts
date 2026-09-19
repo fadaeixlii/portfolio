@@ -120,31 +120,6 @@ export async function insertEvent(input: InsertEventInput): Promise<{
   );
 }
 
-export type PatchEventInput = Partial<{
-  start: Date;
-  end: Date;
-  summary: string;
-  description: string;
-}>;
-
-/** Reschedule or edit an existing event. `sendUpdates=all` notifies the attendee. */
-export async function patchEvent(
-  eventId: string,
-  patch: PatchEventInput,
-): Promise<{ id: string; htmlLink: string }> {
-  const calendarId = process.env.GOOGLE_CALENDAR_ID ?? "primary";
-  const body: Record<string, unknown> = {};
-  if (patch.start) body.start = { dateTime: patch.start.toISOString() };
-  if (patch.end) body.end = { dateTime: patch.end.toISOString() };
-  if (patch.summary !== undefined) body.summary = patch.summary;
-  if (patch.description !== undefined) body.description = patch.description;
-
-  return call(
-    `/calendars/${encodeURIComponent(calendarId)}/events/${eventId}?sendUpdates=all`,
-    { method: "PATCH", body: JSON.stringify(body) },
-  );
-}
-
 export async function cancelEvent(eventId: string): Promise<void> {
   const calendarId = process.env.GOOGLE_CALENDAR_ID ?? "primary";
   const token = await getAccessToken();
