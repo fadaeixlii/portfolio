@@ -1,0 +1,121 @@
+import { z } from "zod";
+import type { experienceSchema } from "./schema";
+
+/** Newest first. `summary` is two sentences at most: the timeline is scanned, not read. */
+export const experience: z.input<typeof experienceSchema>[] = [
+  {
+    company: "aim2balance.ai",
+    role: "AI Engineer & Full-Stack Developer",
+    startYear: 2025,
+    period: "Nov 2025 — Sep 2026",
+    location: "Remote, from Germany",
+    summary:
+      "Built an EU-hosted AI chat service from an empty repo to production: a model gateway over three EU providers, agents with retrieval, and EUR billing. Metered the energy and water of every chat and turned that cost into funded reforestation.",
+    products: ["Model gateway", "EUR billing", "Chrome extension"],
+    stack: [
+      "TypeScript",
+      "Python",
+      "LiteLLM",
+      "FastAPI",
+      "LangGraph",
+      "NestJS",
+      "MongoDB",
+      "PostgreSQL",
+      "Stripe",
+      "Docker",
+    ],
+  },
+  {
+    company: "Zoof-it",
+    role: "Full-Stack Developer",
+    startYear: 2025,
+    period: "Mar 2025 — Feb 2026",
+    location: "Remote, from the Netherlands",
+    summary:
+      "Shipped three products for one Dutch studio: a quote marketplace, a food-ordering rebuild, and a property prediction market on Polygon. Full-time through November 2025, then on contract.",
+    products: ["Jeofferte", "Meshi", "Roofcast"],
+    stack: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "NestJS",
+      "PostgreSQL",
+      "PostGIS",
+      "Solidity",
+      "Polygon",
+      "Stripe",
+      "Figma",
+    ],
+  },
+  {
+    company: "Exmodules",
+    role: "Senior Frontend Developer",
+    startYear: 2024,
+    period: "Sep 2024 — Feb 2025",
+    location: "On-site, Iran",
+    summary:
+      "Built a real-estate web app with crypto payment and token creation in Next.js and TypeScript. Shipped a generic data hook and a CRUD table so new screens took less code.",
+    products: ["Property DApp"],
+    stack: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Solidity",
+      "WalletConnect",
+      "NestJS",
+      "PostgreSQL",
+    ],
+  },
+  {
+    company: "Intex exchange",
+    role: "Senior Frontend Developer",
+    startYear: 2022,
+    period: "Nov 2022 — Aug 2024",
+    location: "On-site, Iran",
+    summary:
+      "Delivered a crypto exchange web app with live charts, order management and WebSocket market data. A PWA caching layer took page load from 4.2s to 2.9s, and a shared component library cut the feature cycle from 8 days to 5.",
+    products: ["Trading platform", "Component library"],
+    stack: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Redux Toolkit",
+      "Socket.io",
+      "MongoDB",
+      "TradingView",
+      "Service Worker",
+      "Tailwind CSS",
+    ],
+  },
+  {
+    company: "Panikar Academy",
+    role: "Frontend Developer",
+    startYear: 2020,
+    period: "Mar 2020 — Sep 2022",
+    location: "On-site, Iran",
+    summary:
+      "Built a personality-assessment platform for the academy's students, used by 5,000+ people. Tuned the Webpack build so the test opened faster on slow connections.",
+    products: ["Assessment platform", "Design system"],
+    stack: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "GraphQL",
+      "Webpack",
+      "Sass",
+    ],
+  },
+  {
+    company: "3gaam",
+    role: "Frontend Developer",
+    startYear: 2019,
+    period: "Feb 2019 — Feb 2020",
+    location: "On-site, Iran",
+    summary:
+      "Launched an AI-driven study-resource platform in React and TypeScript. Fixed the GraphQL schema and resolver bugs that were blocking the team.",
+    products: ["Study-resource platform"],
+    stack: ["React", "JavaScript", "TypeScript", "GraphQL", "Sass"],
+  },
+];

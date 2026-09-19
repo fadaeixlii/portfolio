@@ -24,6 +24,29 @@
 - The aim2balance/Zoof-it overlap (Nov 2025–Feb 2026) gets one explaining clause on the timeline, never silence.
 - Copy rules: no ALL-CAPS eyebrows, no `A · B · C` middle-dot strings, no `→` appended to link text, no `01/02/03` numbering except the experience timeline, buttons name what happens.
 - Body copy never sits on a glass surface.
+- **Every page under `[locale]` follows this exact shape**, or the route silently stops being
+  prerendered and the performance budget fails:
+
+  ```tsx
+  import { use } from "react";
+  import { setRequestLocale } from "next-intl/server";
+  import { useTranslations } from "next-intl";
+
+  export default function SomePage({
+    params,
+  }: {
+    params: Promise<{ locale: string }>;
+  }) {
+    const { locale } = use(params);   // use(), never await — await forces async
+    setRequestLocale(locale);          // before any next-intl hook
+    const t = useTranslations("...");
+    // ...
+  }
+  ```
+
+  For a dynamic segment such as `work/[slug]`, the params type is
+  `Promise<{ locale: string; slug: string }>` and both values come out of the same `use()`.
+  After every task in this phase, `pnpm build` must still show these routes prerendered.
 
 ---
 

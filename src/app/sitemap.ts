@@ -1,32 +1,25 @@
 import type { MetadataRoute } from "next";
-import { getAllCaseStudySlugs } from "@/lib/mdx/case-studies";
-import { getAllBlogSlugs } from "@/lib/mdx/blog";
+import { routing } from "@/lib/i18n/routing";
+import { getProjects } from "@/content";
+import { SITE_URL } from "@/lib/seo/metadata";
 
+const STATIC = ["", "/work", "/experience", "/stack", "/schedule", "/contact"];
+
+/** /styleguide, /admin and /auth are deliberately absent — dev tooling and
+ *  a private admin tool, neither meant for a search index. robots.ts
+ *  disallows all three too. */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://fadaeixlii.com";
+  const paths = [...STATIC, ...getProjects().map((p) => `/work/${p.slug}`)];
 
-  const caseStudyEntries = getAllCaseStudySlugs().map((slug) => ({
-    url: `${baseUrl}/work/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.9,
-  }));
-
-  const blogEntries = getAllBlogSlugs().map((slug) => ({
-    url: `${baseUrl}/blog/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
-
-  return [
-    { url: baseUrl, lastModified: new Date(), changeFrequency: "monthly", priority: 1 },
-    { url: `${baseUrl}/work`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    ...caseStudyEntries,
-    { url: `${baseUrl}/about`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
-    ...blogEntries,
-    { url: `${baseUrl}/playground`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
-    { url: `${baseUrl}/contact`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.7 },
-  ];
+  return routing.locales.flatMap((locale) =>
+    paths.map((path) => ({
+      url: `${SITE_URL}/${locale}${path}`,
+      lastModified: new Date(),
+      alternates: {
+        languages: Object.fromEntries(
+          routing.locales.map((l) => [l, `${SITE_URL}/${l}${path}`]),
+        ),
+      },
+    })),
+  );
 }

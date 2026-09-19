@@ -1,0 +1,20 @@
+[
+  {
+    "date": "2026-09-19",
+    "macrostructure": "Bento Grid",
+    "theme": "custom",
+    "theme_axes": "dark / grotesk-sans / warm-amber",
+    "vibe": "instrument panel, measured, technical",
+    "enrichment": "none",
+    "brief": "mohammadmkh.dev v2 — AI and full-stack engineer portfolio"
+  },
+  {
+    "date": "2026-09-19",
+    "macrostructure": "Bento Grid",
+    "theme": "custom",
+    "theme_axes": "dark / grotesk-sans / warm-amber",
+    "vibe": "instrument panel, measured, technical",
+    "enrichment": "none",
+    "brief": "Phase 5 launch: a11y sweep, perf budget, anti-slop pass — 58 slop gates re-run, no invented metrics beyond spec §4.2's list, no fixes needed to tokens.css (axe + Lighthouse contrast pairs already pass); removed a stray '→' from admin link text"
+  }
+]

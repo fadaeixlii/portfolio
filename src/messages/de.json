@@ -1,0 +1,176 @@
+{
+  "_status": "machine",
+  "metadata": {
+    "title": "Mohammad M. Khani — AI Engineer"
+  },
+  "nav": {
+    "home": "Start",
+    "work": "Arbeiten",
+    "experience": "Erfahrung",
+    "stack": "Stack",
+    "schedule": "Termin buchen"
+  },
+  "common": {
+    "skipToContent": "Zum Inhalt springen",
+    "toggleTheme": "Design wechseln",
+    "selectLanguage": "Sprache"
+  },
+  "notFound": {
+    "heading": "Seite nicht gefunden",
+    "body": "Die gesuchte Seite existiert nicht.",
+    "home": "Zur Startseite"
+  },
+  "footer": {
+    "statement": "Systeme, die messen, was sie kosten.",
+    "cta": "Termin buchen"
+  },
+  "home": {
+    "hero": {
+      "name": "Mohammad M. Khani",
+      "role": "KI-Ingenieur & Full-Stack-Entwickler",
+      "location": "Athens, Greece",
+      "headline": {
+        "line1": "AI Engineer.",
+        "line2": "Null auf eins."
+      },
+      "cta": {
+        "heading": "Termin buchen",
+        "sub": "30 Minuten, kein Pitch-Deck."
+      },
+      "capabilities": {
+        "one": "Baut produktionsreife KI-Systeme von Anfang bis Ende.",
+        "two": "Baut Full-Stack-Produkte, von der Datenbank bis zum Deploy."
+      }
+    },
+    "stats": {
+      "since": "seit",
+      "products": "Produkte",
+      "providers": "EU-Anbieter"
+    },
+    "sections": {
+      "work": {
+        "heading": "Ausgewählte Arbeiten",
+        "viewAll": "Alle Arbeiten ansehen"
+      },
+      "experience": {
+        "heading": "Erfahrung",
+        "viewAll": "Vollständiger Werdegang"
+      },
+      "stack": {
+        "heading": "Stack"
+      },
+      "cta": {
+        "heading": "Haben Sie ein Projekt im Kopf?",
+        "action": "Termin buchen"
+      }
+    }
+  },
+  "work": {
+    "index": {
+      "heading": "Arbeiten",
+      "subheading": "Neun ausgelieferte Produkte in KI, Marktplätzen und Web3."
+    },
+    "caseStudy": {
+      "approach": "Vorgehen",
+      "stack": "Stack",
+      "outcome": "Ergebnis",
+      "liveLink": "Live ansehen",
+      "next": "Nächstes Projekt"
+    }
+  },
+  "experience": {
+    "heading": "Erfahrung",
+    "subheading": "Jede Station seit 2019, neueste zuerst.",
+    "overlapNote": "Überschneidet sich mit der Zoof-it-Rolle unten: Vollzeit bei aim2balance ab November 2025, während Zoof-it bis Februar 2026 auf Honorarbasis weiterlief."
+  },
+  "stack": {
+    "heading": "Stack",
+    "subheading": "Was in einem Produktionscode tatsächlich zum Einsatz kam. Nichts nur gelesen."
+  },
+  "schedule": {
+    "heading": "Termin buchen",
+    "subheading": "30 Minuten, kein Pitch-Deck.",
+    "loading": "Kalender wird geladen",
+    "timezone": {
+      "shown": "Zeiten angezeigt in {zone}",
+      "change": "ändern",
+      "label": "Zeitzone"
+    },
+    "month": {
+      "prev": "Vorheriger Monat",
+      "next": "Nächster Monat",
+      "available": "Zeiten verfügbar",
+      "unavailable": "keine Zeiten verfügbar"
+    },
+    "day": {
+      "back": "Datum ändern",
+      "slotsGroup": "{count} Zeiten verfügbar am {date}",
+      "empty": "An diesem Tag sind keine Zeiten verfügbar."
+    },
+    "slot": {
+      "back": "Uhrzeit ändern",
+      "hostLabel": "Mohammads Zeit, Teheran:",
+      "continue": "Weiter"
+    },
+    "form": {
+      "back": "Uhrzeit ändern",
+      "name": "Name",
+      "email": "E-Mail",
+      "topic": "Thema",
+      "topicHint": "Optional — worüber möchten Sie sprechen?",
+      "notes": "Notizen",
+      "honeypot": "Firma",
+      "submit": "Termin buchen"
+    },
+    "confirmed": {
+      "heading": "Termin gebucht.",
+      "joinMeet": "Meet beitreten",
+      "addToCalendar": "Zum Kalender hinzufügen",
+      "manage": "Verwalten oder stornieren"
+    },
+    "errors": {
+      "unavailableHeading": "Der Kalender ist gerade nicht erreichbar.",
+      "unavailableAction": "Stattdessen E-Mail senden",
+      "slotTaken": "Dieser Termin wurde vergeben, während Sie getippt haben. Wählen Sie unten eine andere Uhrzeit.",
+      "rate_limited": "Sie haben das heutige Limit für Buchungsanfragen erreicht. Versuchen Sie es morgen erneut oder schreiben Sie mir eine E-Mail.",
+      "server": "Auf dem Server ist etwas schiefgelaufen. Versuchen Sie es erneut oder schreiben Sie mir eine E-Mail.",
+      "network": "Die Anfrage ist fehlgeschlagen. Prüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
+      "networkHeading": "Der Kalender konnte nicht geladen werden.",
+      "retry": "Erneut versuchen"
+    },
+    "manage": {
+      "loading": "Buchung wird geladen",
+      "heading": "Ihr Termin",
+      "notFoundHeading": "Nicht gefunden",
+      "notFoundBody": "Dieser Link ist ungültig.",
+      "backHome": "Zurück zur Buchung",
+      "cancel": "Termin stornieren",
+      "cancelled": "Storniert. Der Termin ist wieder frei."
+    }
+  },
+  "contact": {
+    "heading": "Kontakt aufnehmen",
+    "subheading": "Erzählen Sie mir, woran Sie arbeiten. Ich lese jede Nachricht selbst.",
+    "form": {
+      "name": "Name",
+      "email": "E-Mail",
+      "message": "Nachricht",
+      "honeypot": "Firma",
+      "submit": "Nachricht senden"
+    },
+    "confirmed": {
+      "heading": "Nachricht gesendet.",
+      "body": "Ich lese alles persönlich und antworte innerhalb weniger Tage."
+    },
+    "errors": {
+      "rate_limited": "Sie haben das heutige Limit für Nachrichten erreicht. Versuchen Sie es morgen erneut oder schreiben Sie mir direkt eine E-Mail.",
+      "server": "Auf dem Server ist etwas schiefgelaufen. Versuchen Sie es erneut oder schreiben Sie mir direkt eine E-Mail.",
+      "network": "Die Anfrage ist fehlgeschlagen. Prüfen Sie Ihre Verbindung und versuchen Sie es erneut."
+    },
+    "direct": {
+      "heading": "Oder direkt erreichen",
+      "email": "E-Mail",
+      "github": "GitHub"
+    }
+  }
+}

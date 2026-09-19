@@ -13,6 +13,17 @@
 ## Global Constraints
 
 - Package manager is **pnpm**. Never `npm` or `yarn` — fail loudly if either appears.
+- **Next.js 16 breaking changes — verified against `node_modules/next/dist/docs/` on 2026-09-19:**
+  - `middleware.ts` is **renamed to `proxy.ts`**, with a named export `proxy`. The `edge`
+    runtime is not supported there; `proxy` runs on Node and that is not configurable.
+  - `params` and `searchParams` are **always async**. Synchronous access was removed, not
+    merely deprecated. So are `cookies()`, `headers()` and `draftMode()`.
+  - `next lint` **no longer exists** and `next build` does not lint. Run `eslint` directly.
+    The `eslint` key in `next.config.ts` was removed too — do not add one.
+  - `@next/eslint-plugin-next` defaults to **flat config**.
+  - `next typegen` generates `PageProps<'/route'>` and `LayoutProps<'/route'>` helpers.
+  - Read `node_modules/next/dist/docs/` before writing any Next.js API you are unsure of.
+    `AGENTS.md` at the repo root says the same thing, and it is right.
 - Motion imports come from `motion/react`. **Never** `framer-motion`.
 - Supabase clients come from `@supabase/ssr`. Never `auth-helpers-nextjs`.
 - No hex literals, no `rgb()`, no raw `oklch()` anywhere except `src/styles/tokens.css`.
@@ -154,9 +165,13 @@ Replace the `"scripts"` block with:
   "typecheck": "tsc --noEmit",
   "test": "playwright test",
   "test:unit": "vitest run",
-  "test:tokens": "node scripts/check-tokens.mjs"
+  "test:tokens": "node scripts/check-tokens.mjs",
+  "typegen": "next typegen"
 }
 ```
+
+`next lint` was removed in Next.js 16, so `lint` calls `eslint` directly — that is already
+what the script does. Do not add an `eslint` key to `next.config.ts`; it no longer exists.
 
 - [ ] **Step 5: Verify the toolchain**
 
@@ -370,9 +385,12 @@ rm src/styles/_probe.css
   --font-sans: var(--font-vazirmatn);
   --font-mono: var(--font-jetbrains);
 
-  --radius-sm: var(--radius-sm);
-  --radius-md: var(--radius-md);
-  --radius-lg: var(--radius-lg);
+  /* No --radius-* mapping here on purpose. Tailwind v4 reserves that
+   * namespace, so `--radius-sm: var(--radius-sm)` would resolve to itself —
+   * the same circular-declaration bug the colour block above avoids by
+   * using distinct names on each side. Every radius in this project is
+   * written as an arbitrary value, `rounded-[var(--radius-lg)]`, which
+   * reads Layer 1 directly. */
 }
 
 @layer base {
@@ -493,7 +511,7 @@ git commit -m "feat: font stack with Arabic coverage"
 ### Task 5: i18n routing
 
 **Files:**
-- Create: `src/lib/i18n/routing.ts`, `src/lib/i18n/request.ts`, `src/lib/i18n/navigation.ts`, `src/middleware.ts`, `src/messages/{en,de,nl,fa}.json`
+- Create: `src/lib/i18n/routing.ts`, `src/lib/i18n/request.ts`, `src/lib/i18n/navigation.ts`, `src/proxy.ts`, `src/messages/{en,de,nl,fa}.json`
 
 **Interfaces:**
 - Consumes: `next-intl` from Task 2, the plugin path `./src/lib/i18n/request.ts` wired in `next.config.ts`
@@ -551,19 +569,28 @@ export const { Link, redirect, usePathname, useRouter, getPathname } =
   createNavigation(routing);
 ```
 
-- [ ] **Step 4: Write `src/middleware.ts`**
+- [ ] **Step 4: Write `src/proxy.ts`**
+
+Next.js 16 renamed `middleware.ts` to `proxy.ts`. `next-intl` still exposes the factory as
+`createMiddleware`; only the file and the exported function name changed.
 
 ```ts
 import createMiddleware from "next-intl/middleware";
 import { routing } from "@/lib/i18n/routing";
 
-export default createMiddleware(routing);
+// Named `proxy` per Next.js 16. A file called middleware.ts is ignored.
+export const proxy = createMiddleware(routing);
+export default proxy;
 
 export const config = {
-  // Everything except API routes, Next internals, and files with an extension.
+  // Everything except API routes, Next internals, admin, and files with an
+  // extension. `admin` is excluded because it is deliberately unlocalised.
   matcher: "/((?!api|_next|_vercel|admin|.*\\..*).*)",
 };
 ```
+
+There must be **no** `src/middleware.ts`. If one exists, delete it — Next 16 will not run
+it and the locale routing will silently never fire.
 
 - [ ] **Step 5: Create the four message files**
 
@@ -654,7 +681,7 @@ export const config = {
 - [ ] **Step 6: Commit**
 
 ```bash
-git add src/lib/i18n src/middleware.ts src/messages
+git add src/lib/i18n src/proxy.ts src/messages
 git commit -m "feat: four-locale routing with rtl flag"
 ```
 
@@ -850,11 +877,27 @@ export function LocaleSwitch() {
 `src/app/[locale]/page.tsx`:
 
 ```tsx
+import { use } from "react";
 import { useTranslations } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { LocaleSwitch } from "@/components/layout/LocaleSwitch";
 
-export default function HomePage() {
+export default function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  // React's `use()`, not `await`. Awaiting makes the component async, and
+  // `useTranslations` throws in an async component. `use()` unwraps the
+  // promise while the component stays synchronous.
+  const { locale } = use(params);
+
+  // Must run before any next-intl hook. Without it the route falls back to
+  // headers() and opts out of static rendering — the build shows `ƒ` instead
+  // of a prerendered path.
+  setRequestLocale(locale);
+
   const t = useTranslations("nav");
 
   return (
@@ -882,7 +925,10 @@ pnpm test:tokens
 pnpm build
 ```
 
-Expected: all three PASS, and the build output lists `/en`, `/de`, `/nl`, `/fa`.
+Expected: all three PASS, and the build's route table shows `/[locale]` as **prerendered**
+(`●` or `○`), not dynamic (`ƒ`). A `ƒ` means `setRequestLocale` is not running before a
+next-intl hook somewhere — usually a page that forgot it, or one that used `await params`
+instead of `use(params)` and so became async.
 
 - [ ] **Step 6: Commit**
 
@@ -1231,7 +1277,7 @@ git push -u origin feat/v2
 Phase 1 is done when all of these hold:
 
 - [ ] `v1-archive` tag and `archive/v1` branch exist on the remote, and `git show v1-archive:src/app/\(public\)/page.tsx` still prints v1 source
-- [ ] `/` redirects to `/en`; all four locale routes render
+- [ ] `/` redirects to `/en`; all four locale routes render (proving `src/proxy.ts` is being picked up — a stray `middleware.ts` would leave `/` 404ing)
 - [ ] `/fa` renders `dir="rtl"` and Farsi nav labels in Vazirmatn, not a system fallback
 - [ ] The theme toggle changes `data-theme`, changes the computed body background, and persists across reload
 - [ ] `pnpm lint`, `pnpm typecheck`, `pnpm test:tokens` and `pnpm test` all pass

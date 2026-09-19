@@ -1,0 +1,22 @@
+services:
+  portfolio:
+    build: .
+    restart: unless-stopped
+    env_file: .env.production
+    expose: ["3000"]
+    networks: [web]
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports: ["80:80", "443:443"]
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - /etc/ssl/cloudflare:/etc/ssl/cloudflare:ro
+      - caddy_data:/data
+    networks: [web]
+
+networks:
+  web:
+volumes:
+  caddy_data:

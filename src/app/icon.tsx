@@ -1,9 +1,18 @@
 import { ImageResponse } from "next/og";
+import { getOgColors } from "@/lib/seo/og-colors";
+
+// Node runtime, not edge: getOgColors() reads tokens.css off disk (see its
+// file header for why satori can't just take var(--signal) or oklch()).
+export const runtime = "nodejs";
 
 export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
 
-export default function Icon() {
+/** The only favicon the site needs: the signal colour on paper, the same
+ *  pairing the opengraph images use. No separate icon design system. */
+export default async function Icon() {
+  const colors = getOgColors();
+
   return new ImageResponse(
     (
       <div
@@ -13,22 +22,15 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#111010",
-          borderRadius: "6px",
+          background: colors.paper,
+          color: colors.signal,
+          fontSize: 22,
+          fontWeight: 700,
         }}
       >
-        <div
-          style={{
-            fontSize: 20,
-            fontWeight: 700,
-            color: "#dc8228",
-            letterSpacing: "-0.05em",
-          }}
-        >
-          M
-        </div>
+        M
       </div>
     ),
-    { ...size }
+    size,
   );
 }

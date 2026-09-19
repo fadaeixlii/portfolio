@@ -1,0 +1,176 @@
+{
+  "_status": "authored",
+  "metadata": {
+    "title": "Mohammad M. Khani — AI Engineer"
+  },
+  "nav": {
+    "home": "Home",
+    "work": "Work",
+    "experience": "Experience",
+    "stack": "Stack",
+    "schedule": "Book a call"
+  },
+  "common": {
+    "skipToContent": "Skip to content",
+    "toggleTheme": "Switch theme",
+    "selectLanguage": "Language"
+  },
+  "notFound": {
+    "heading": "Page not found",
+    "body": "The page you're looking for doesn't exist.",
+    "home": "Go home"
+  },
+  "footer": {
+    "statement": "Systems that count what they cost.",
+    "cta": "Book a call"
+  },
+  "home": {
+    "hero": {
+      "name": "Mohammad M. Khani",
+      "role": "AI Engineer & Full-Stack Developer",
+      "location": "Athens, Greece",
+      "headline": {
+        "line1": "AI engineer.",
+        "line2": "Zero to one."
+      },
+      "cta": {
+        "heading": "Book a call",
+        "sub": "30 minutes, no pitch deck."
+      },
+      "capabilities": {
+        "one": "Ships production AI systems end to end.",
+        "two": "Builds full-stack products, database to deploy."
+      }
+    },
+    "stats": {
+      "since": "since",
+      "products": "products",
+      "providers": "EU providers"
+    },
+    "sections": {
+      "work": {
+        "heading": "Selected work",
+        "viewAll": "View all work"
+      },
+      "experience": {
+        "heading": "Experience",
+        "viewAll": "Full timeline"
+      },
+      "stack": {
+        "heading": "Stack"
+      },
+      "cta": {
+        "heading": "Have a project in mind?",
+        "action": "Book a call"
+      }
+    }
+  },
+  "work": {
+    "index": {
+      "heading": "Work",
+      "subheading": "Nine shipped products across AI, marketplaces and Web3."
+    },
+    "caseStudy": {
+      "approach": "Approach",
+      "stack": "Stack",
+      "outcome": "Outcome",
+      "liveLink": "View live",
+      "next": "Next project"
+    }
+  },
+  "experience": {
+    "heading": "Experience",
+    "subheading": "Every role since 2019, newest first.",
+    "overlapNote": "Overlaps the Zoof-it role below: full-time on aim2balance from November 2025, while Zoof-it continued on contract through February 2026."
+  },
+  "stack": {
+    "heading": "Stack",
+    "subheading": "What has shipped in a production codebase. Nothing read-about."
+  },
+  "schedule": {
+    "heading": "Book a call",
+    "subheading": "30 minutes, no pitch deck.",
+    "loading": "Loading the calendar",
+    "timezone": {
+      "shown": "Times shown in {zone}",
+      "change": "change",
+      "label": "Timezone"
+    },
+    "month": {
+      "prev": "Previous month",
+      "next": "Next month",
+      "available": "times available",
+      "unavailable": "no times available"
+    },
+    "day": {
+      "back": "Change date",
+      "slotsGroup": "{count} times available on {date}",
+      "empty": "No times available this day."
+    },
+    "slot": {
+      "back": "Change time",
+      "hostLabel": "Mohammad's time, Tehran:",
+      "continue": "Continue"
+    },
+    "form": {
+      "back": "Change time",
+      "name": "Name",
+      "email": "Email",
+      "topic": "Topic",
+      "topicHint": "Optional — what do you want to talk about?",
+      "notes": "Notes",
+      "honeypot": "Company",
+      "submit": "Book the call"
+    },
+    "confirmed": {
+      "heading": "You're booked.",
+      "joinMeet": "Join the meet",
+      "addToCalendar": "Add to calendar",
+      "manage": "Manage or cancel"
+    },
+    "errors": {
+      "unavailableHeading": "The calendar isn't reachable right now.",
+      "unavailableAction": "Email me instead",
+      "slotTaken": "That slot was taken while you were typing. Pick another time below.",
+      "rate_limited": "You've reached today's limit for booking requests. Try again tomorrow, or email me instead.",
+      "server": "Something went wrong on the server. Try again, or email me instead.",
+      "network": "The request failed. Check your connection and try again.",
+      "networkHeading": "The calendar didn't load.",
+      "retry": "Try again"
+    },
+    "manage": {
+      "loading": "Loading your booking",
+      "heading": "Your call",
+      "notFoundHeading": "Not found",
+      "notFoundBody": "This link isn't valid.",
+      "backHome": "Back to booking",
+      "cancel": "Cancel the call",
+      "cancelled": "Cancelled. The slot is free again."
+    }
+  },
+  "contact": {
+    "heading": "Get in touch",
+    "subheading": "Tell me what you're building. I read every message myself.",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "honeypot": "Company",
+      "submit": "Send message"
+    },
+    "confirmed": {
+      "heading": "Message sent.",
+      "body": "I read everything personally and reply within a couple of days."
+    },
+    "errors": {
+      "rate_limited": "You've reached today's limit for messages. Try again tomorrow, or email me directly.",
+      "server": "Something went wrong on the server. Try again, or email me directly.",
+      "network": "The request failed. Check your connection and try again."
+    },
+    "direct": {
+      "heading": "Or reach me directly",
+      "email": "Email",
+      "github": "GitHub"
+    }
+  }
+}

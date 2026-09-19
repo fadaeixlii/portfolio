@@ -67,3 +67,18 @@ portfolio-claude-code-kickoff.md
 
 # Google OAuth client downloads — never commit
 client_secret_*.json
+
+# Playwright artifacts
+/test-results/
+/playwright-report/
+/blob-report/
+
+# Lighthouse CI local reports
+/.lighthouseci/
+
+# scratch space for content source material (Task 2)
+.scratch/
+
+# SDD scratch (per-plan workspaces)
+.superpowers/
+.scratch/

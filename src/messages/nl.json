@@ -1,0 +1,176 @@
+{
+  "_status": "machine",
+  "metadata": {
+    "title": "Mohammad M. Khani — AI Engineer"
+  },
+  "nav": {
+    "home": "Home",
+    "work": "Werk",
+    "experience": "Ervaring",
+    "stack": "Stack",
+    "schedule": "Gesprek plannen"
+  },
+  "common": {
+    "skipToContent": "Naar inhoud",
+    "toggleTheme": "Thema wisselen",
+    "selectLanguage": "Taal"
+  },
+  "notFound": {
+    "heading": "Pagina niet gevonden",
+    "body": "De pagina die je zoekt bestaat niet.",
+    "home": "Naar home"
+  },
+  "footer": {
+    "statement": "Systemen die meten wat ze kosten.",
+    "cta": "Gesprek plannen"
+  },
+  "home": {
+    "hero": {
+      "name": "Mohammad M. Khani",
+      "role": "AI Engineer & Full-Stack Developer",
+      "location": "Athens, Greece",
+      "headline": {
+        "line1": "AI engineer.",
+        "line2": "Nul naar één."
+      },
+      "cta": {
+        "heading": "Gesprek plannen",
+        "sub": "30 minuten, geen pitch deck."
+      },
+      "capabilities": {
+        "one": "Bouwt productieklare AI-systemen van begin tot eind.",
+        "two": "Bouwt full-stack producten, van database tot deploy."
+      }
+    },
+    "stats": {
+      "since": "sinds",
+      "products": "producten",
+      "providers": "EU-aanbieders"
+    },
+    "sections": {
+      "work": {
+        "heading": "Uitgelicht werk",
+        "viewAll": "Bekijk al het werk"
+      },
+      "experience": {
+        "heading": "Ervaring",
+        "viewAll": "Volledige tijdlijn"
+      },
+      "stack": {
+        "heading": "Stack"
+      },
+      "cta": {
+        "heading": "Een project in gedachten?",
+        "action": "Gesprek plannen"
+      }
+    }
+  },
+  "work": {
+    "index": {
+      "heading": "Werk",
+      "subheading": "Negen gelanceerde producten binnen AI, marktplaatsen en Web3."
+    },
+    "caseStudy": {
+      "approach": "Aanpak",
+      "stack": "Stack",
+      "outcome": "Resultaat",
+      "liveLink": "Bekijk live",
+      "next": "Volgend project"
+    }
+  },
+  "experience": {
+    "heading": "Ervaring",
+    "subheading": "Elke rol sinds 2019, nieuwste eerst.",
+    "overlapNote": "Overlapt met de Zoof-it-rol hieronder: fulltime bij aim2balance vanaf november 2025, terwijl Zoof-it op contractbasis doorliep tot februari 2026."
+  },
+  "stack": {
+    "heading": "Stack",
+    "subheading": "Wat daadwerkelijk in een productiecodebase heeft gedraaid. Niets uit een cursus."
+  },
+  "schedule": {
+    "heading": "Gesprek plannen",
+    "subheading": "30 minuten, geen pitch deck.",
+    "loading": "Agenda wordt geladen",
+    "timezone": {
+      "shown": "Tijden weergegeven in {zone}",
+      "change": "wijzigen",
+      "label": "Tijdzone"
+    },
+    "month": {
+      "prev": "Vorige maand",
+      "next": "Volgende maand",
+      "available": "tijden beschikbaar",
+      "unavailable": "geen tijden beschikbaar"
+    },
+    "day": {
+      "back": "Datum wijzigen",
+      "slotsGroup": "{count} tijden beschikbaar op {date}",
+      "empty": "Geen tijden beschikbaar op deze dag."
+    },
+    "slot": {
+      "back": "Tijd wijzigen",
+      "hostLabel": "Mohammads tijd, Teheran:",
+      "continue": "Doorgaan"
+    },
+    "form": {
+      "back": "Tijd wijzigen",
+      "name": "Naam",
+      "email": "E-mail",
+      "topic": "Onderwerp",
+      "topicHint": "Optioneel — waar wil je het over hebben?",
+      "notes": "Notities",
+      "honeypot": "Bedrijf",
+      "submit": "Gesprek boeken"
+    },
+    "confirmed": {
+      "heading": "Je bent ingepland.",
+      "joinMeet": "Deelnemen aan Meet",
+      "addToCalendar": "Toevoegen aan agenda",
+      "manage": "Beheren of annuleren"
+    },
+    "errors": {
+      "unavailableHeading": "De agenda is nu niet bereikbaar.",
+      "unavailableAction": "Stuur me in plaats daarvan een e-mail",
+      "slotTaken": "Dat tijdstip werd bezet terwijl je aan het typen was. Kies hieronder een andere tijd.",
+      "rate_limited": "Je hebt de dagelijkse limiet voor boekingsaanvragen bereikt. Probeer het morgen opnieuw of mail me.",
+      "server": "Er ging iets mis op de server. Probeer het opnieuw of mail me.",
+      "network": "De aanvraag is mislukt. Controleer je verbinding en probeer het opnieuw.",
+      "networkHeading": "De agenda kon niet worden geladen.",
+      "retry": "Opnieuw proberen"
+    },
+    "manage": {
+      "loading": "Boeking wordt geladen",
+      "heading": "Je gesprek",
+      "notFoundHeading": "Niet gevonden",
+      "notFoundBody": "Deze link is niet geldig.",
+      "backHome": "Terug naar boeken",
+      "cancel": "Gesprek annuleren",
+      "cancelled": "Geannuleerd. Het tijdstip is weer vrij."
+    }
+  },
+  "contact": {
+    "heading": "Neem contact op",
+    "subheading": "Vertel me waar je aan werkt. Ik lees elk bericht zelf.",
+    "form": {
+      "name": "Naam",
+      "email": "E-mail",
+      "message": "Bericht",
+      "honeypot": "Bedrijf",
+      "submit": "Bericht versturen"
+    },
+    "confirmed": {
+      "heading": "Bericht verzonden.",
+      "body": "Ik lees alles persoonlijk en reageer binnen een paar dagen."
+    },
+    "errors": {
+      "rate_limited": "Je hebt de dagelijkse limiet voor berichten bereikt. Probeer het morgen opnieuw of mail me direct.",
+      "server": "Er ging iets mis op de server. Probeer het opnieuw of mail me direct.",
+      "network": "De aanvraag is mislukt. Controleer je verbinding en probeer het opnieuw."
+    },
+    "direct": {
+      "heading": "Of neem direct contact op",
+      "email": "E-mail",
+      "github": "GitHub"
+    }
+  }
+}
