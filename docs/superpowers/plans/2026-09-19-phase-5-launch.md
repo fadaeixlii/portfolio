@@ -6,7 +6,7 @@
 
 **Architecture:** Nothing new is invented here. The contact form reuses the Phase 2 `Field`/`Button` primitives and the existing Supabase table; admin is a thin authenticated read; SEO is generated from the same typed content that renders the pages, so metadata cannot drift from what the page says.
 
-**Tech Stack:** Next.js metadata API, `next/og`, Supabase auth, Playwright + axe, Lighthouse CI, Vercel.
+**Tech Stack:** Next.js metadata API, `next/og`, Supabase auth, Playwright + axe, Lighthouse CI, Docker + Caddy on the VPS, Cloudflare.
 
 **Spec:** `docs/superpowers/specs/2026-09-19-portfolio-v2-design.md` §5.
 
@@ -351,33 +351,191 @@ git commit -m "chore: slop test pass"
 
 ---
 
-### Task 7: Deploy
+### Task 7: Deploy to the VPS behind Cloudflare
 
 **Files:**
-- Create: `docs/deployment.md`
+- Create: `Dockerfile`, `docker-compose.yml`, `.github/workflows/deploy.yml`, `deploy/Caddyfile`, `docs/deployment.md`
 - Modify: `README.md`
 
 **Interfaces:**
-- Produces: the live site on the real domain
+- Produces: `fadaeixlii.dev` served from the VPS through Cloudflare, with automatic deploys on push to `main`
 
-- [ ] **Step 1: Create the Vercel project**
+- [ ] **Step 1: Register the domain and point DNS at Cloudflare**
 
-Link the repo, framework preset Next.js, build `pnpm build`, install `pnpm install --frozen-lockfile`. Set every variable from spec §3.6 in Production and Preview. `GOOGLE_REFRESH_TOKEN`, `GOOGLE_CLIENT_SECRET`, `SUPABASE_SECRET_KEY` and `BOOKING_TOKEN_SECRET` are server-only — confirm none carries a `NEXT_PUBLIC_` prefix.
+Buy `fadaeixlii.dev`. Porkbun is $8.75 the first year and $12.87 to renew; Cloudflare
+Registrar sells at cost with no markup. Whichever registrar takes the payment, set the
+domain's nameservers to the pair Cloudflare gives you — that is what makes the rest of
+this task work, and it costs nothing.
 
-- [ ] **Step 2: Deploy a preview and test it end to end**
+In the Cloudflare dashboard:
 
-On the preview URL: walk all four locales, toggle both themes, submit the contact form, and **make a real booking** — confirm the event lands in the calendar with a Meet link, both emails arrive, and the cancel link frees the slot. Then delete the test booking.
+| Record | Name | Content | Proxy |
+|---|---|---|---|
+| A | `@` | `<VPS IPv4>` | **Proxied** (orange) |
+| A | `www` | `<VPS IPv4>` | **Proxied** (orange) |
 
-- [ ] **Step 3: Prove no secret shipped**
+Then **SSL/TLS → Overview → Full (strict)**. Anything less lets Cloudflare talk to your
+origin unencrypted, which defeats the point.
 
-```bash
-pnpm build
-grep -rE "GOOGLE_(CLIENT_SECRET|REFRESH_TOKEN)|SUPABASE_SECRET|BOOKING_TOKEN_SECRET" .next/static && echo "LEAK" || echo "clean"
+- [ ] **Step 2: Issue a Cloudflare Origin Certificate**
+
+**SSL/TLS → Origin Server → Create Certificate.** Fifteen-year validity, covers
+`fadaeixlii.dev` and `*.fadaeixlii.dev`. Save the certificate and key onto the VPS at
+`/etc/ssl/cloudflare/`, mode `600`, owned by root. This certificate is only trusted by
+Cloudflare, which is exactly what Full (strict) wants, and it never needs renewing on
+the cadence Let's Encrypt would.
+
+- [ ] **Step 3: Write the Dockerfile**
+
+```dockerfile
+FROM node:22-alpine AS deps
+WORKDIR /app
+RUN corepack enable
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
+
+FROM node:22-alpine AS build
+WORKDIR /app
+RUN corepack enable
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+# Public env vars are inlined at build time; secrets are read at runtime.
+ARG NEXT_PUBLIC_SITE_URL
+ARG NEXT_PUBLIC_SUPABASE_URL
+ARG NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+RUN pnpm build
+
+FROM node:22-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production PORT=3000 HOSTNAME=0.0.0.0
+RUN addgroup -g 1001 nodejs && adduser -u 1001 -G nodejs -S nextjs
+# `output: standalone` traces exactly what the server needs.
+COPY --from=build --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=build --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=build --chown=nextjs:nodejs /app/public ./public
+USER nextjs
+EXPOSE 3000
+CMD ["node", "server.js"]
 ```
 
-Expected: `clean`. **If this prints LEAK, stop and do not deploy.**
+- [ ] **Step 4: Write the compose file and the Caddyfile**
 
-- [ ] **Step 4: Merge and cut over**
+`docker-compose.yml` runs the app on an internal network; Caddy terminates TLS with the
+origin certificate and proxies to it.
+
+```yaml
+services:
+  portfolio:
+    build: .
+    restart: unless-stopped
+    env_file: .env.production
+    expose: ["3000"]
+    networks: [web]
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports: ["80:80", "443:443"]
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - /etc/ssl/cloudflare:/etc/ssl/cloudflare:ro
+      - caddy_data:/data
+    networks: [web]
+
+networks:
+  web:
+volumes:
+  caddy_data:
+```
+
+`deploy/Caddyfile`:
+
+```
+fadaeixlii.dev, www.fadaeixlii.dev {
+	tls /etc/ssl/cloudflare/origin.pem /etc/ssl/cloudflare/origin.key
+	encode zstd gzip
+	reverse_proxy portfolio:3000
+	header {
+		# .dev is HSTS-preloaded; say so explicitly anyway.
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+	}
+}
+```
+
+**Port check before you start:** `job` and `outreach` already run on this box. Confirm
+nothing else holds 80 or 443 — `ss -tlnp | grep -E ':(80|443)\b'`. If one of them does,
+that service becomes another site block in this same Caddyfile rather than a second
+proxy.
+
+- [ ] **Step 5: Write the deploy workflow**
+
+`.github/workflows/deploy.yml` — on push to `main`, after the quality workflow passes,
+SSH to the VPS, pull, build and restart:
+
+```yaml
+name: deploy
+on:
+  workflow_run:
+    workflows: [quality]
+    types: [completed]
+    branches: [main]
+
+jobs:
+  deploy:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
+      - name: Deploy
+        run: |
+          ssh -o StrictHostKeyChecking=accept-new ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} '
+            set -e
+            cd /srv/portfolio
+            git fetch --all && git reset --hard origin/main
+            docker compose build portfolio
+            docker compose up -d
+            docker image prune -f
+          '
+```
+
+Gating on `workflow_run` means a red test suite never reaches production.
+
+- [ ] **Step 6: Put the secrets in the right two places**
+
+On the VPS in `/srv/portfolio/.env.production`, mode `600`: every variable from spec §3.6.
+In GitHub repo secrets: only `VPS_SSH_KEY`, `VPS_USER`, `VPS_HOST`.
+
+`GOOGLE_CLIENT_SECRET`, `GOOGLE_REFRESH_TOKEN`, `SUPABASE_SECRET_KEY` and
+`BOOKING_TOKEN_SECRET` live **only** in `.env.production` and are read at runtime. None
+carries a `NEXT_PUBLIC_` prefix, so none can reach a browser bundle.
+
+- [ ] **Step 7: Prove no secret shipped**
+
+```bash
+docker compose build portfolio
+docker compose run --rm --entrypoint sh portfolio -c \
+  "grep -rE 'GOOGLE_(CLIENT_SECRET|REFRESH_TOKEN)|SUPABASE_SECRET|BOOKING_TOKEN_SECRET' .next/static || echo clean"
+```
+
+Expected: `clean`. **If this prints a match, stop and do not deploy.**
+
+- [ ] **Step 8: Set up email on the domain**
+
+Cloudflare **Email Routing**: verify the domain, add `hi@fadaeixlii.dev` forwarding to
+Mohammad's Gmail. Cloudflare writes the MX and SPF records itself. Free, five minutes,
+and it gives the site a real address that is not a personal Gmail.
+
+To *send* from that address later, add it in Gmail under "Send mail as" using an SMTP
+relay — Resend is already an account here and will do it. Optional; forwarding alone is
+enough to launch.
+
+- [ ] **Step 9: Deploy and walk the whole site**
+
+Merge and push:
 
 ```bash
 git switch main
@@ -386,21 +544,29 @@ pnpm lint && pnpm typecheck && pnpm test:tokens && pnpm test:messages && pnpm te
 git push origin main
 ```
 
-Point `fadaeixlii.com` and `www` at the Vercel project. Confirm HTTPS, the `www` redirect, and that `/` resolves to `/en`.
+Then on the live domain: all four locales, both themes, contact form, and **one real
+booking** — confirm the event appears in the calendar with a Meet link, both emails
+arrive, and the cancel link frees the slot. Delete the test booking afterwards.
 
-- [ ] **Step 5: Write the runbook**
+Also confirm `http://` redirects to `https://`, `www` redirects to apex, and `/`
+resolves to `/en`.
 
-`docs/deployment.md`: env var table, how to rotate the Google refresh token, how to read logs, how to roll back (`vercel rollback`), and what to do when the health check reports the calendar is down.
+- [ ] **Step 10: Write the runbook**
 
-- [ ] **Step 6: Update the README**
+`docs/deployment.md`: the env-var table, how to rotate the Google refresh token, how to
+read logs (`docker compose logs -f portfolio`), how to roll back (`git reset --hard
+<sha> && docker compose up -d --build`), what to do when the calendar health check
+reports down, and how to purge the Cloudflare cache after a deploy that changes static
+assets.
 
-What the site is, how to run it, where the spec and plans live, and one line noting that v1 lives at the `v1-archive` tag.
+- [ ] **Step 11: Update the README and commit**
 
-- [ ] **Step 7: Commit**
+What the site is, how to run it, where the spec and plans live, and one line noting that
+v1 lives at the `v1-archive` tag.
 
 ```bash
-git add docs/deployment.md README.md
-git commit -m "docs: deployment runbook"
+git add Dockerfile docker-compose.yml deploy .github/workflows/deploy.yml docs/deployment.md README.md
+git commit -m "feat: vps deploy behind cloudflare"
 git push origin main
 ```
 
@@ -408,7 +574,7 @@ git push origin main
 
 ## Phase exit criteria
 
-- [ ] `fadaeixlii.com` serves v2 over HTTPS, `/` redirects to `/en`
+- [ ] `fadaeixlii.dev` serves v2 over HTTPS through Cloudflare, `/` redirects to `/en`, `www` redirects to apex
 - [ ] All four locales, both themes, every route render correctly in production
 - [ ] A real booking produces a calendar event with a Meet link and two emails; cancelling frees the slot
 - [ ] The contact form stores a message and notifies
@@ -416,5 +582,7 @@ git push origin main
 - [ ] axe reports zero violations across every route × theme × direction
 - [ ] No horizontal scroll at 320 / 375 / 414 / 768 px
 - [ ] The 58 slop gates all answer "no", with any exception written down and justified
-- [ ] `grep` of `.next/static` finds no secret
+- [ ] `grep` of `.next/static` inside the built image finds no secret
+- [ ] Cloudflare SSL mode is Full (strict) and the origin certificate is installed
+- [ ] `hi@fadaeixlii.dev` forwards and arrives
 - [ ] `v1-archive` tag still resolves and the README says so

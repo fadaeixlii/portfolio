@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** A booking page that reads Mohammad's real Google Calendar, offers only genuinely free slots inside 08:00–16:00 Tehran time, lets a visitor pick one in their own timezone, and writes a confirmed event with a Meet link.
+**Goal:** A booking page that reads Mohammad's real Google Calendar, offers only genuinely free slots inside 09:00–18:00 Tehran time, Monday to Friday, lets a visitor pick one in their own timezone, and writes a confirmed event with a Meet link.
 
 **Architecture:** Slot generation is a pure module with no network and no clock dependency, so the timezone and DST logic can be tested exhaustively. Everything with a side effect — token exchange, free/busy, event creation — sits behind thin `fetch` wrappers. Postgres owns the double-booking guarantee through a partial unique index; application code never arbitrates a race.
 
@@ -165,11 +165,15 @@ git commit -m "feat: google calendar auth bootstrap"
 export const SCHEDULE_CONFIG = {
   /** Mohammad's wall clock. Slots are generated against this, not UTC. */
   timeZone: "Asia/Tehran",
-  /** 08:00–16:00 inclusive of the start, exclusive of the end. */
-  workDayStartHour: 8,
-  workDayEndHour: 16,
-  /** 0 = Sunday … 6 = Saturday, in the configured timezone. */
-  workDays: [0, 1, 2, 3, 6] as const,
+  /** 09:00–18:00 inclusive of the start, exclusive of the end.
+   *  In Berlin winter that reads 06:30–15:30, which covers a European
+   *  founder's working morning and most of their afternoon. */
+  workDayStartHour: 9,
+  workDayEndHour: 18,
+  /** 0 = Sunday … 6 = Saturday, in the configured timezone. Mon–Fri,
+   *  because the target clients are EU and their week is the one that
+   *  matters for booking a call. */
+  workDays: [1, 2, 3, 4, 5] as const,
   slotMinutes: 30,
   /** Dead time either side of an existing event before a slot is offered. */
   bufferMinutes: 15,
@@ -219,56 +223,58 @@ import { SCHEDULE_CONFIG } from "@/lib/calendar/config";
 const CFG = SCHEDULE_CONFIG;
 const at = (iso: string) => new Date(iso);
 
+// 2026-10-05 is a Monday, 2026-10-10 a Saturday. Tehran is UTC+3:30 with no
+// DST, so 09:00 Tehran is 05:30 UTC and 18:00 Tehran is 14:30 UTC.
 describe("generateSlots", () => {
-  it("places the first slot at 08:00 Tehran, which is 04:30 UTC", () => {
+  it("places the first slot at 09:00 Tehran, which is 05:30 UTC", () => {
     const slots = generateSlots(
-      at("2026-10-04T00:00:00Z"),
       at("2026-10-05T00:00:00Z"),
+      at("2026-10-06T00:00:00Z"),
       CFG,
       at("2026-09-01T00:00:00Z"),
     );
     expect(slots.length).toBeGreaterThan(0);
-    expect(slots[0].start.toISOString()).toBe("2026-10-04T04:30:00.000Z");
+    expect(slots[0].start.toISOString()).toBe("2026-10-05T05:30:00.000Z");
   });
 
-  it("stops before 16:00 Tehran — the last slot ends exactly at the boundary", () => {
+  it("stops before 18:00 Tehran — the last slot ends exactly at the boundary", () => {
     const slots = generateSlots(
-      at("2026-10-04T00:00:00Z"),
       at("2026-10-05T00:00:00Z"),
+      at("2026-10-06T00:00:00Z"),
       CFG,
       at("2026-09-01T00:00:00Z"),
     );
     const last = slots[slots.length - 1];
-    expect(last.end.toISOString()).toBe("2026-10-04T12:30:00.000Z");
+    expect(last.start.toISOString()).toBe("2026-10-05T14:00:00.000Z");
+    expect(last.end.toISOString()).toBe("2026-10-05T14:30:00.000Z");
   });
 
-  it("produces 16 slots in an 8-hour day at 30 minutes", () => {
+  it("produces 18 slots in a 9-hour day at 30 minutes", () => {
     const slots = generateSlots(
-      at("2026-10-04T00:00:00Z"),
       at("2026-10-05T00:00:00Z"),
+      at("2026-10-06T00:00:00Z"),
       CFG,
       at("2026-09-01T00:00:00Z"),
     );
-    expect(slots).toHaveLength(16);
+    expect(slots).toHaveLength(18);
   });
 
-  it("skips days not in workDays", () => {
-    // 2026-10-08 is a Thursday; workDays excludes 4 (Thursday) and 5 (Friday).
+  it("skips weekends", () => {
+    // 2026-10-10 is a Saturday and 2026-10-11 a Sunday. Neither is in workDays.
     const slots = generateSlots(
-      at("2026-10-08T00:00:00Z"),
       at("2026-10-10T00:00:00Z"),
-      { ...CFG, workDays: [0, 1, 2, 3, 6] },
+      at("2026-10-12T00:00:00Z"),
+      CFG,
       at("2026-09-01T00:00:00Z"),
     );
-    const days = new Set(slots.map((s) => s.start.toISOString().slice(0, 10)));
-    expect(days.has("2026-10-08")).toBe(false);
+    expect(slots).toHaveLength(0);
   });
 
   it("honours minimum notice", () => {
-    const now = at("2026-10-04T04:00:00Z"); // 07:30 Tehran, same morning
+    const now = at("2026-10-05T05:00:00Z"); // 08:30 Tehran, same morning
     const slots = generateSlots(
-      at("2026-10-04T00:00:00Z"),
-      at("2026-10-06T00:00:00Z"),
+      at("2026-10-05T00:00:00Z"),
+      at("2026-10-07T00:00:00Z"),
       CFG,
       now,
     );
@@ -280,17 +286,17 @@ describe("generateSlots", () => {
 
   it("excludes blackout dates", () => {
     const slots = generateSlots(
-      at("2026-10-04T00:00:00Z"),
       at("2026-10-05T00:00:00Z"),
-      { ...CFG, blackoutDates: ["2026-10-04"] },
+      at("2026-10-06T00:00:00Z"),
+      { ...CFG, blackoutDates: ["2026-10-05"] },
       at("2026-09-01T00:00:00Z"),
     );
     expect(slots).toHaveLength(0);
   });
 
   it("never emits a slot outside the requested window", () => {
-    const from = at("2026-10-04T00:00:00Z");
-    const to = at("2026-10-07T00:00:00Z");
+    const from = at("2026-10-05T00:00:00Z");
+    const to = at("2026-10-08T00:00:00Z");
     const slots = generateSlots(from, to, CFG, at("2026-09-01T00:00:00Z"));
     for (const s of slots) {
       expect(s.start.getTime()).toBeGreaterThanOrEqual(from.getTime());
@@ -300,29 +306,30 @@ describe("generateSlots", () => {
 });
 
 describe("subtractBusy", () => {
+  // The first three slots of Monday 2026-10-05, in UTC.
   const slots = [
-    { start: at("2026-10-04T04:30:00Z"), end: at("2026-10-04T05:00:00Z") },
-    { start: at("2026-10-04T05:00:00Z"), end: at("2026-10-04T05:30:00Z") },
-    { start: at("2026-10-04T05:30:00Z"), end: at("2026-10-04T06:00:00Z") },
+    { start: at("2026-10-05T05:30:00Z"), end: at("2026-10-05T06:00:00Z") },
+    { start: at("2026-10-05T06:00:00Z"), end: at("2026-10-05T06:30:00Z") },
+    { start: at("2026-10-05T06:30:00Z"), end: at("2026-10-05T07:00:00Z") },
   ];
 
   it("removes a slot that overlaps a busy block", () => {
     const out = subtractBusy(
       slots,
-      [{ start: at("2026-10-04T05:05:00Z"), end: at("2026-10-04T05:20:00Z") }],
+      [{ start: at("2026-10-05T06:05:00Z"), end: at("2026-10-05T06:20:00Z") }],
       0,
     );
     expect(out).toHaveLength(2);
     expect(out.map((s) => s.start.toISOString())).not.toContain(
-      "2026-10-04T05:00:00.000Z",
+      "2026-10-05T06:00:00.000Z",
     );
   });
 
   it("applies the buffer to both sides of a busy block", () => {
-    // A 15-minute buffer around 05:00–05:30 also kills 04:30 and 05:30.
+    // A 15-minute buffer around 06:00–06:30 also kills 05:30 and 06:30.
     const out = subtractBusy(
       slots,
-      [{ start: at("2026-10-04T05:00:00Z"), end: at("2026-10-04T05:30:00Z") }],
+      [{ start: at("2026-10-05T06:00:00Z"), end: at("2026-10-05T06:30:00Z") }],
       15,
     );
     expect(out).toHaveLength(0);
@@ -331,11 +338,11 @@ describe("subtractBusy", () => {
   it("keeps a slot that merely touches a busy edge when there is no buffer", () => {
     const out = subtractBusy(
       slots,
-      [{ start: at("2026-10-04T05:30:00Z"), end: at("2026-10-04T06:00:00Z") }],
+      [{ start: at("2026-10-05T06:30:00Z"), end: at("2026-10-05T07:00:00Z") }],
       0,
     );
     expect(out.map((s) => s.start.toISOString())).toContain(
-      "2026-10-04T05:00:00.000Z",
+      "2026-10-05T06:00:00.000Z",
     );
   });
 
@@ -465,7 +472,7 @@ export function subtractBusy(
 - [ ] **Step 4: Run the tests**
 
 Run: `pnpm test:unit -- slots`
-Expected: all 11 PASS. If the 04:30 UTC assertion fails, the machine's ICU lacks `Asia/Tehran` — check `node -e "console.log(new Intl.DateTimeFormat('en',{timeZone:'Asia/Tehran'}).format(new Date()))"`.
+Expected: all 11 PASS. If the 05:30 UTC assertion fails, the machine's ICU lacks `Asia/Tehran` — check `node -e "console.log(new Intl.DateTimeFormat('en',{timeZone:'Asia/Tehran'}).format(new Date()))"`.
 
 - [ ] **Step 5: Prove the buffer test can fail**
 

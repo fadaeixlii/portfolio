@@ -9,7 +9,7 @@
 
 ## 1. What this is
 
-A complete rebuild of `fadaeixlii.com` from an empty `src/`. The current site stays
+A complete rebuild of the portfolio at **`fadaeixlii.dev`** from an empty `src/`. The current site stays
 reachable as an archive tag and branch; nothing is deleted from history.
 
 The brief pinned a visual reference — [`sawad.framer.website`](https://sawad.framer.website/) —
@@ -205,10 +205,12 @@ Stamp every generated stylesheet and seed `.hallmark/log.json` so later runs rot
 | Time | `@date-fns/tz` | slot maths; Intl-backed, small |
 | Validation | Zod v4 + React Hook Form v7 | already in repo |
 | Package manager | pnpm | fail loudly on npm/yarn |
-| Host | Vercel | Cloudflare adapter was never actually configured |
+| Host | **Own VPS, Cloudflare in front** | Same box that already runs `job` and `outreach`. Cloudflare's free proxy supplies the edge cache, TLS and DDoS absorption. |
 
 **Removed:** `next-mdx-remote`, `@types/mdx`, `shadcn`, `@base-ui/react`, `plaiceholder`
 (no blog, no MDX, component kit is hand-built to the token system).
+
+**Build output:** `output: 'standalone'` — Next.js traces only the files the server actually needs, so the artifact copied to the VPS is tens of megabytes rather than a whole `node_modules`.
 
 **Deliberately not added:** `googleapis` (~2 MB to replace three `fetch` calls),
 `react-bits` as a dependency (it is MIT + Commons Clause and ships as copy-paste source —
@@ -294,8 +296,10 @@ request, cached in module memory until 60s before expiry. Scope:
 
 **Availability** — `GET /api/availability?from=&to=&tz=`
 
-1. Generate candidate slots from config: `Asia/Tehran`, 08:00–16:00, Mon–Thu + Sat–Sun per
-   config, 30-minute slots, 15-minute buffer, minimum 12h notice, 28-day horizon.
+1. Generate candidate slots from config: `Asia/Tehran`, **09:00–18:00, Monday–Friday**,
+   30-minute slots, 15-minute buffer, minimum 12h notice, 28-day horizon. Those hours
+   read 06:30–15:30 in Berlin in winter, which is what makes an EU founder's afternoon
+   bookable at all — 08:00–16:00 Tehran would have stopped at their 13:30.
 2. `POST https://www.googleapis.com/calendar/v3/freeBusy` for the window.
 3. Subtract busy blocks, blackout dates, and `bookings` rows not in `cancelled`.
 4. Return slots as UTC ISO strings. The client renders them in the visitor's timezone.
@@ -346,8 +350,9 @@ create unique index bookings_slot_unique
 
 RLS on, no anon policies — every write goes through the service key in a route handler.
 
-**Config** — `src/lib/calendar/config.ts` holds working hours, days, slot length, buffer,
-notice, horizon and blackout dates. One file, typed, no magic numbers elsewhere.
+**Config** — `src/lib/calendar/config.ts` holds working hours (09:00–18:00 `Asia/Tehran`),
+days (Mon–Fri), slot length, buffer, notice, horizon and blackout dates. One file, typed,
+no magic numbers elsewhere.
 
 ### 3.6 Environment
 
@@ -478,7 +483,8 @@ cancel/reschedule token routes · four-locale strings for the whole flow.
 **Phase 5 task list.** Contact form on the new system · admin messages + bookings views ·
 `generateMetadata` and `opengraph-image` per route · sitemap with `hreflang` · robots ·
 axe sweep · Lighthouse budget · the 58-gate slop test · `tokens.css` export and
-`.hallmark/log.json` · Vercel project, env, domain cutover · archive note in the README.
+`.hallmark/log.json` · domain, Cloudflare DNS + origin cert, Docker/Caddy on the VPS, deploy
+workflow, email routing · archive note in the README.
 
 ---
 
