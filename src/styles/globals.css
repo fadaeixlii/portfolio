@@ -18,10 +18,6 @@
   --font-display: var(--font-archivo);
   --font-sans: var(--font-vazirmatn);
   --font-mono: var(--font-jetbrains);
-
-  --radius-sm: var(--radius-sm);
-  --radius-md: var(--radius-md);
-  --radius-lg: var(--radius-lg);
 }
 
 @layer base {
