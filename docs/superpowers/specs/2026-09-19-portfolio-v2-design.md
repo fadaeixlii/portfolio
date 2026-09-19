@@ -356,6 +356,18 @@ no magic numbers elsewhere.
 
 ### 3.6 Environment
 
+**Pre-flight, 2026-09-19.** Verified against the live services before implementation:
+
+| Dependency | State |
+|---|---|
+| Google Calendar | **working** — refresh token exchanges, scope includes write, `freeBusy` returns real busy blocks, and the slot engine yields 18 slots on a clear day |
+| Supabase | **project is gone** — `gmxarjxpsuwnpxobvruv.supabase.co` does not resolve. A free-tier project that stays paused is eventually deleted. A **new project** must be created and both migrations re-applied; there is nothing to reuse. |
+| Resend | **key is dead** — the API returns 401. A new key is needed before booking confirmations or the contact form can send. |
+| `NEXT_PUBLIC_SITE_URL` | still `https://fadaeixlii.com`; becomes `https://mohammadmkh.dev` |
+
+None of these block Phases 1 or 2. Supabase is first needed in Phase 4 (bookings table)
+and Resend in Phase 4 (confirmation email).
+
 ```
 NEXT_PUBLIC_SITE_URL
 NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY / SUPABASE_SECRET_KEY

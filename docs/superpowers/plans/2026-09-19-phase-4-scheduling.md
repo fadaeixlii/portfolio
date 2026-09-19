@@ -641,6 +641,17 @@ git commit -m "feat: google calendar rest client"
 **Interfaces:**
 - Produces: `public.bookings` with the partial unique index that guarantees one confirmed booking per start time; `createServiceClient()` — the service-role client every calendar route uses
 
+- [ ] **Step 0: Create a fresh Supabase project**
+
+The v1 project was deleted — its host no longer resolves in DNS. Create a new project at
+**https://supabase.com/dashboard**, put its URL, publishable key and secret key into
+`.env.local`, then re-apply the v1 contact migrations before this one:
+
+```bash
+supabase link --project-ref <new-ref>
+supabase db push          # applies contact_messages + rate-limit fn, then bookings
+```
+
 - [ ] **Step 1: Write the migration**
 
 ```sql
