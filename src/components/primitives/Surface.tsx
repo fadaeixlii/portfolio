@@ -61,7 +61,8 @@ export function Surface<T extends ElementType = "div">({
           "after:h-px after:rounded-t-[inherit] after:bg-[var(--glass-highlight)]",
         ],
         !glassy && "bg-surface",
-        refracted && "[backdrop-filter:url(#glass-refraction)_blur(var(--glass-blur))]",
+        refracted &&
+          "[backdrop-filter:url(#glass-refraction)_blur(var(--glass-blur))_saturate(var(--glass-saturate))]",
         className,
       )}
       {...rest}
