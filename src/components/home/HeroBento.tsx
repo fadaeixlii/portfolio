@@ -41,10 +41,13 @@ export function HeroBento() {
         </div>
         <div className="flex flex-col gap-1">
           <span className="font-display text-[length:var(--text-xl)] text-text">
-            Mohammad M. Khani
+            {t("name")}
           </span>
           <span className="text-[length:var(--text-sm)] text-dim">
             {t("role")}
+          </span>
+          <span className="text-[length:var(--text-sm)] text-dim">
+            {t("location")}
           </span>
         </div>
         <div className="flex gap-[var(--space-4)] text-[length:var(--text-sm)] text-dim">
@@ -101,14 +104,15 @@ export function HeroBento() {
           <span className="text-[length:var(--text-sm)]">{t("cta.sub")}</span>
         </Surface>
 
-        {/* Capability cells — one line each, no icons. */}
+        {/* Capability cells — one line each, no icons. Prose, so `flat`:
+            glass is for chrome, headings and single-line labels only. */}
         <div className="grid grid-cols-1 gap-[var(--space-4)] sm:grid-cols-2">
-          <Surface className="flex items-center p-[var(--space-6)]">
+          <Surface variant="flat" className="flex items-center p-[var(--space-6)]">
             <p className="text-[length:var(--text-base)] text-text">
               {t("capabilities.one")}
             </p>
           </Surface>
-          <Surface className="flex items-center p-[var(--space-6)]">
+          <Surface variant="flat" className="flex items-center p-[var(--space-6)]">
             <p className="text-[length:var(--text-base)] text-text">
               {t("capabilities.two")}
             </p>

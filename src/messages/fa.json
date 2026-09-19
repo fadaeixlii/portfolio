@@ -8,8 +8,7 @@
     "work": "نمونه‌کارها",
     "experience": "سوابق",
     "stack": "ابزارها",
-    "schedule": "رزرو جلسه",
-    "contact": "تماس"
+    "schedule": "رزرو جلسه"
   },
   "common": {
     "skipToContent": "پرش به محتوا",
@@ -27,7 +26,9 @@
   },
   "home": {
     "hero": {
+      "name": "محمد محمدخانی",
       "role": "مهندس هوش مصنوعی و توسعه‌دهنده فول‌استک",
+      "location": "Athens, Greece",
       "headline": {
         "line1": "مهندس هوش مصنوعی.",
         "line2": "از صفر تا یک."

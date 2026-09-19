@@ -8,8 +8,7 @@
     "work": "Werk",
     "experience": "Ervaring",
     "stack": "Stack",
-    "schedule": "Gesprek plannen",
-    "contact": "Contact"
+    "schedule": "Gesprek plannen"
   },
   "common": {
     "skipToContent": "Naar inhoud",
@@ -27,7 +26,9 @@
   },
   "home": {
     "hero": {
+      "name": "Mohammad M. Khani",
       "role": "AI Engineer & Full-Stack Developer",
+      "location": "Athens, Greece",
       "headline": {
         "line1": "AI engineer.",
         "line2": "Nul naar één."

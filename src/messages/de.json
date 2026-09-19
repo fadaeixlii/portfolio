@@ -8,8 +8,7 @@
     "work": "Arbeiten",
     "experience": "Erfahrung",
     "stack": "Stack",
-    "schedule": "Termin buchen",
-    "contact": "Kontakt"
+    "schedule": "Termin buchen"
   },
   "common": {
     "skipToContent": "Zum Inhalt springen",
@@ -27,7 +26,9 @@
   },
   "home": {
     "hero": {
+      "name": "Mohammad M. Khani",
       "role": "KI-Ingenieur & Full-Stack-Entwickler",
+      "location": "Athens, Greece",
       "headline": {
         "line1": "AI Engineer.",
         "line2": "Null auf eins."
