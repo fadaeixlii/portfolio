@@ -6,6 +6,9 @@ import { routing, isRtl } from "@/lib/i18n/routing";
 import { fontVariables } from "@/lib/fonts";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { GlassFilter } from "@/components/primitives/GlassFilter";
+import { SkipLink } from "@/components/layout/SkipLink";
+import { NavPill } from "@/components/layout/NavPill";
+import { SiteFooter } from "@/components/layout/SiteFooter";
 import "@/styles/globals.css";
 
 export function generateStaticParams() {
@@ -43,7 +46,13 @@ export default async function LocaleLayout({
       <body>
         <GlassFilter />
         <ThemeProvider>
-          <NextIntlClientProvider>{children}</NextIntlClientProvider>
+          <NextIntlClientProvider>
+            {/* Skip link — the first tabbable thing on every page. */}
+            <SkipLink />
+            <NavPill />
+            {children}
+            <SiteFooter />
+          </NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>

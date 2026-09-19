@@ -20,5 +20,9 @@
     "heading": "Pagina niet gevonden",
     "body": "De pagina die je zoekt bestaat niet.",
     "home": "Naar home"
+  },
+  "footer": {
+    "statement": "Systemen die meten wat ze kosten.",
+    "cta": "Gesprek plannen"
   }
 }

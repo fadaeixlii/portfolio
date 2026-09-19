@@ -20,5 +20,9 @@
     "heading": "Seite nicht gefunden",
     "body": "Die gesuchte Seite existiert nicht.",
     "home": "Zur Startseite"
+  },
+  "footer": {
+    "statement": "Systeme, die messen, was sie kosten.",
+    "cta": "Termin buchen"
   }
 }

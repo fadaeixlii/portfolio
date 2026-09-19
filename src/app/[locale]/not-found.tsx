@@ -7,7 +7,7 @@ export default function NotFound() {
   const t = useTranslations("notFound");
 
   return (
-    <main className="grid min-h-dvh place-items-center p-8 text-center">
+    <main id="main" className="grid min-h-dvh place-items-center p-8 text-center">
       <div>
         <h1 className="text-[length:var(--text-3xl)]">{t("heading")}</h1>
         <p className="mt-4 text-dim">{t("body")}</p>
