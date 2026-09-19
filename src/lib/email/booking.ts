@@ -15,9 +15,9 @@ const SUBJECT: Record<string, string> = {
   fa: "قرار شما رزرو شد",
 };
 
-function manageUrl(token: string): string {
+function manageUrl(token: string, locale: string): string {
   const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mohammadmkh.dev";
-  return `${base}/schedule/manage/${token}`;
+  return `${base}/${locale}/schedule/manage/${token}`;
 }
 
 /**
@@ -50,7 +50,7 @@ export async function sendBookingEmails(booking: BookingEmailInput): Promise<voi
           (booking.meet_url
             ? `<p><a href="${booking.meet_url}">Join with Google Meet</a></p>`
             : "") +
-          `<p><a href="${manageUrl(booking.manageToken)}">Manage or cancel this booking</a></p>`,
+          `<p><a href="${manageUrl(booking.manageToken, booking.locale)}">Manage or cancel this booking</a></p>`,
         attachments: [{ filename: "call.ics", content: icsBase64 }],
       }),
       ...(to
