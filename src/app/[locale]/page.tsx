@@ -1,8 +1,19 @@
+import { use } from "react";
 import { useTranslations } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { LocaleSwitch } from "@/components/layout/LocaleSwitch";
 
-export default function HomePage() {
+export default function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = use(params);
+
+  // Must run before any next-intl hook, or the route falls back to dynamic.
+  setRequestLocale(locale);
+
   const t = useTranslations("nav");
 
   return (
