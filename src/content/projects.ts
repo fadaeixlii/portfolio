@@ -1,5 +1,160 @@
 import { z } from "zod";
 import type { projectSchema } from "./schema";
 
-/** Placeholder — filled in Task 2. */
-export const projects: z.input<typeof projectSchema>[] = [];
+/** Input type, not output: `featured` has a schema default, so it is optional here. */
+export const projects: z.input<typeof projectSchema>[] = [
+  {
+    slug: "aim2balance",
+    name: "aim2balance.ai",
+    summary:
+      "An EU-hosted AI chat service that pays for reforestation out of the energy each conversation uses.",
+    domain: "AI platform",
+    year: 2026,
+    role: "AI Engineer & Full-Stack Developer",
+    stack: [
+      "TypeScript",
+      "Python",
+      "LiteLLM",
+      "LangGraph",
+      "NestJS",
+      "PostgreSQL",
+      "MongoDB",
+      "Stripe",
+    ],
+    href: "https://platform.aim2balance.ai",
+    featured: true,
+  },
+  {
+    slug: "ai-cost-extension",
+    name: "AI cost extension",
+    summary:
+      "A Chrome extension that shows the energy, water and CO2 behind each chat on ChatGPT, Claude and Gemini.",
+    domain: "Browser extension",
+    year: 2026,
+    role: "AI Engineer & Full-Stack Developer",
+    stack: ["TypeScript", "Chrome Extensions", "EcoLogits"],
+    featured: false,
+  },
+  {
+    slug: "jeofferte",
+    name: "Jeofferte",
+    summary:
+      "A Dutch marketplace where you post a job without an account and nearby suppliers buy the lead and reply.",
+    domain: "Marketplace",
+    year: 2025,
+    role: "Full-Stack Developer",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "NestJS",
+      "PostgreSQL",
+      "PostGIS",
+      "Tailwind CSS",
+      "Stripe",
+    ],
+    href: "https://jeofferte.nl",
+    featured: true,
+  },
+  {
+    slug: "roofcast",
+    name: "Roofcast",
+    summary:
+      "A prediction market where people trade on where property values go, settled on-chain in USDC.",
+    domain: "Prediction market",
+    year: 2025,
+    role: "Tech Lead",
+    stack: [
+      "Solidity",
+      "Polygon",
+      "Ethers.js",
+      "React",
+      "TypeScript",
+      "NestJS",
+      "PostgreSQL",
+    ],
+    href: "https://roofcast.io",
+    featured: true,
+  },
+  {
+    slug: "meshi",
+    name: "Meshi",
+    summary:
+      "A food-ordering site that finds the kitchens closest to you and shows what they can cook right now.",
+    domain: "Food ordering",
+    year: 2025,
+    role: "Full-Stack Developer",
+    stack: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "NestJS",
+      "PostgreSQL",
+      "PostGIS",
+      "Figma",
+    ],
+    href: "https://meshi.nl",
+    featured: false,
+  },
+  {
+    slug: "exmodules",
+    name: "Exmodules property DApp",
+    summary:
+      "A property site where you buy or rent with crypto, and a contract holds the money until the papers check out.",
+    domain: "Property and Web3",
+    year: 2024,
+    role: "Senior Frontend Developer",
+    stack: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Solidity",
+      "WalletConnect",
+      "NestJS",
+    ],
+    featured: false,
+  },
+  {
+    slug: "intex-exchange",
+    name: "Intex exchange",
+    summary:
+      "A crypto exchange with live price charts and orders that update the moment the market moves.",
+    domain: "Crypto exchange",
+    year: 2023,
+    role: "Senior Frontend Developer",
+    stack: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Redux Toolkit",
+      "Socket.io",
+      "MongoDB",
+      "TradingView",
+      "Service Worker",
+    ],
+    href: "https://intex.finance",
+    featured: false,
+  },
+  {
+    slug: "panikar-assessment",
+    name: "Panikar assessment",
+    summary:
+      "A personality test for students that turns their answers into a career-direction report.",
+    domain: "Ed-tech",
+    year: 2021,
+    role: "Frontend Developer",
+    stack: ["React", "Next.js", "TypeScript", "GraphQL", "Webpack", "Sass"],
+    featured: false,
+  },
+  {
+    slug: "3gaam",
+    name: "3gaam",
+    summary:
+      "A study-resource platform that helps students find the right material for what they are revising.",
+    domain: "Ed-tech",
+    year: 2019,
+    role: "Frontend Developer",
+    stack: ["React", "TypeScript", "GraphQL", "Sass"],
+    featured: false,
+  },
+];

@@ -8,8 +8,7 @@ const BANNED = [
 ];
 
 describe("content", () => {
-  // Task 2 fills projects.ts with real data; un-skip once it lands.
-  it.skip("loads projects with required fields", () => {
+  it("loads projects with required fields", () => {
     const projects = getProjects();
     expect(projects.length).toBeGreaterThan(0);
     for (const p of projects) {

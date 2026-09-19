@@ -72,3 +72,6 @@ client_secret_*.json
 /test-results/
 /playwright-report/
 /blob-report/
+
+# scratch space for content source material (Task 2)
+.scratch/
