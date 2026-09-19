@@ -1,8 +1,26 @@
 import { use } from "react";
+import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { getStack } from "@/content";
 import { StackGrid } from "@/components/stack/StackGrid";
+import { buildMetadata } from "@/lib/seo/metadata";
+import type { Locale } from "@/lib/i18n/routing";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "stack" });
+  return buildMetadata({
+    title: t("heading"),
+    description: t("subheading"),
+    path: "/stack",
+    locale: locale as Locale,
+  });
+}
 
 export default function StackPage({
   params,

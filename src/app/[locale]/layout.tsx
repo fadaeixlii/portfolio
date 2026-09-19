@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { routing, isRtl } from "@/lib/i18n/routing";
+import { routing, isRtl, type Locale } from "@/lib/i18n/routing";
 import { fontVariables } from "@/lib/fonts";
+import { buildMetadata } from "@/lib/seo/metadata";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { GlassFilter } from "@/components/primitives/GlassFilter";
 import { SkipLink } from "@/components/layout/SkipLink";
@@ -21,8 +22,15 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "metadata" });
-  return { title: t("title") };
+  const t = await getTranslations({ locale, namespace: "home.hero" });
+  // Sitewide fallback — any page that doesn't call buildMetadata itself
+  // (there shouldn't be one) inherits this instead of a bare title.
+  return buildMetadata({
+    title: t("name"),
+    description: `${t("role")} — ${t("location")}`,
+    path: "",
+    locale: locale as Locale,
+  });
 }
 
 export default async function LocaleLayout({

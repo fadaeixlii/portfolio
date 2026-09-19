@@ -4,7 +4,14 @@ import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 
 const ROOT = process.cwd();
-const ALLOWED = ["src/styles/tokens.css"];
+const ALLOWED = [
+  "src/styles/tokens.css",
+  // OG images render through satori, which has no support for CSS custom
+  // properties or oklch() — this file reads tokens.css at request time and
+  // converts whatever is there, rather than hand-authoring a value, so
+  // tokens.css stays the single source of truth. See its own file header.
+  "src/lib/seo/og-colors.ts",
+];
 const EXTS = [".css", ".ts", ".tsx"];
 const RAW_COLOUR = /#[0-9a-fA-F]{3,8}\b|\brgba?\(|\bhsla?\(|\boklch\(/;
 const PHYSICAL =

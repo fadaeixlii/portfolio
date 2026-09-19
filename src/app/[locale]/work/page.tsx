@@ -1,9 +1,27 @@
 import { use } from "react";
+import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { getProjects } from "@/content";
 import { ProjectCard } from "@/components/work/ProjectCard";
 import { Stagger, StaggerItem } from "@/components/primitives/Reveal";
+import { buildMetadata } from "@/lib/seo/metadata";
+import type { Locale } from "@/lib/i18n/routing";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "work.index" });
+  return buildMetadata({
+    title: t("heading"),
+    description: t("subheading"),
+    path: "/work",
+    locale: locale as Locale,
+  });
+}
 
 export default function WorkIndexPage({
   params,
