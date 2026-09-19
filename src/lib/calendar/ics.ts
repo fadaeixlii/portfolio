@@ -1,5 +1,6 @@
-import "server-only";
-
+// No "server-only" guard: pure text formatting, no secrets, and
+// BookingConfirmed needs it client-side to build the "Add to calendar"
+// download without a round trip.
 export type IcsBooking = {
   id: string;
   start_at: string;

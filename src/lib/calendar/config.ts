@@ -25,6 +25,8 @@ export const SCHEDULE_CONFIG = {
   blackoutDates: [] as string[],
   /** Cap per visitor per day, enforced in the booking route. */
   maxBookingsPerEmailPerDay: 2,
+  /** Fallback the booker UI shows when the calendar is unreachable. */
+  contactEmail: "mmohammadkhani408@gmail.com",
 } as const;
 
 export type ScheduleConfig = typeof SCHEDULE_CONFIG;

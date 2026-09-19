@@ -86,5 +86,66 @@
   "stack": {
     "heading": "Stack",
     "subheading": "Was in einem Produktionscode tatsächlich zum Einsatz kam. Nichts nur gelesen."
+  },
+  "schedule": {
+    "heading": "Termin buchen",
+    "subheading": "30 Minuten, kein Pitch-Deck.",
+    "loading": "Kalender wird geladen",
+    "timezone": {
+      "shown": "Zeiten angezeigt in {zone}",
+      "change": "ändern",
+      "label": "Zeitzone"
+    },
+    "month": {
+      "prev": "Vorheriger Monat",
+      "next": "Nächster Monat",
+      "available": "Zeiten verfügbar",
+      "unavailable": "keine Zeiten verfügbar"
+    },
+    "day": {
+      "back": "Datum ändern",
+      "slotsGroup": "{count} Zeiten verfügbar am {date}",
+      "empty": "An diesem Tag sind keine Zeiten verfügbar."
+    },
+    "slot": {
+      "back": "Uhrzeit ändern",
+      "hostLabel": "Mohammads Zeit, Teheran:",
+      "continue": "Weiter"
+    },
+    "form": {
+      "back": "Uhrzeit ändern",
+      "name": "Name",
+      "email": "E-Mail",
+      "topic": "Thema",
+      "topicHint": "Optional — worüber möchten Sie sprechen?",
+      "notes": "Notizen",
+      "honeypot": "Firma",
+      "submit": "Termin buchen"
+    },
+    "confirmed": {
+      "heading": "Termin gebucht.",
+      "joinMeet": "Meet beitreten",
+      "addToCalendar": "Zum Kalender hinzufügen",
+      "manage": "Verwalten oder stornieren"
+    },
+    "errors": {
+      "unavailableHeading": "Der Kalender ist gerade nicht erreichbar.",
+      "unavailableAction": "Stattdessen E-Mail senden",
+      "slotTaken": "Dieser Termin wurde vergeben, während Sie getippt haben. Wählen Sie unten eine andere Uhrzeit.",
+      "rate_limited": "Sie haben das heutige Limit für Buchungsanfragen erreicht. Versuchen Sie es morgen erneut oder schreiben Sie mir eine E-Mail.",
+      "server": "Auf dem Server ist etwas schiefgelaufen. Versuchen Sie es erneut oder schreiben Sie mir eine E-Mail.",
+      "network": "Die Anfrage ist fehlgeschlagen. Prüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
+      "networkHeading": "Der Kalender konnte nicht geladen werden.",
+      "retry": "Erneut versuchen"
+    },
+    "manage": {
+      "loading": "Buchung wird geladen",
+      "heading": "Ihr Termin",
+      "notFoundHeading": "Nicht gefunden",
+      "notFoundBody": "Dieser Link ist ungültig.",
+      "backHome": "Zurück zur Buchung",
+      "cancel": "Termin stornieren",
+      "cancelled": "Storniert. Der Termin ist wieder frei."
+    }
   }
 }

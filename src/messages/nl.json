@@ -86,5 +86,66 @@
   "stack": {
     "heading": "Stack",
     "subheading": "Wat daadwerkelijk in een productiecodebase heeft gedraaid. Niets uit een cursus."
+  },
+  "schedule": {
+    "heading": "Gesprek plannen",
+    "subheading": "30 minuten, geen pitch deck.",
+    "loading": "Agenda wordt geladen",
+    "timezone": {
+      "shown": "Tijden weergegeven in {zone}",
+      "change": "wijzigen",
+      "label": "Tijdzone"
+    },
+    "month": {
+      "prev": "Vorige maand",
+      "next": "Volgende maand",
+      "available": "tijden beschikbaar",
+      "unavailable": "geen tijden beschikbaar"
+    },
+    "day": {
+      "back": "Datum wijzigen",
+      "slotsGroup": "{count} tijden beschikbaar op {date}",
+      "empty": "Geen tijden beschikbaar op deze dag."
+    },
+    "slot": {
+      "back": "Tijd wijzigen",
+      "hostLabel": "Mohammads tijd, Teheran:",
+      "continue": "Doorgaan"
+    },
+    "form": {
+      "back": "Tijd wijzigen",
+      "name": "Naam",
+      "email": "E-mail",
+      "topic": "Onderwerp",
+      "topicHint": "Optioneel — waar wil je het over hebben?",
+      "notes": "Notities",
+      "honeypot": "Bedrijf",
+      "submit": "Gesprek boeken"
+    },
+    "confirmed": {
+      "heading": "Je bent ingepland.",
+      "joinMeet": "Deelnemen aan Meet",
+      "addToCalendar": "Toevoegen aan agenda",
+      "manage": "Beheren of annuleren"
+    },
+    "errors": {
+      "unavailableHeading": "De agenda is nu niet bereikbaar.",
+      "unavailableAction": "Stuur me in plaats daarvan een e-mail",
+      "slotTaken": "Dat tijdstip werd bezet terwijl je aan het typen was. Kies hieronder een andere tijd.",
+      "rate_limited": "Je hebt de dagelijkse limiet voor boekingsaanvragen bereikt. Probeer het morgen opnieuw of mail me.",
+      "server": "Er ging iets mis op de server. Probeer het opnieuw of mail me.",
+      "network": "De aanvraag is mislukt. Controleer je verbinding en probeer het opnieuw.",
+      "networkHeading": "De agenda kon niet worden geladen.",
+      "retry": "Opnieuw proberen"
+    },
+    "manage": {
+      "loading": "Boeking wordt geladen",
+      "heading": "Je gesprek",
+      "notFoundHeading": "Niet gevonden",
+      "notFoundBody": "Deze link is niet geldig.",
+      "backHome": "Terug naar boeken",
+      "cancel": "Gesprek annuleren",
+      "cancelled": "Geannuleerd. Het tijdstip is weer vrij."
+    }
   }
 }

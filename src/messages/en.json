@@ -86,5 +86,66 @@
   "stack": {
     "heading": "Stack",
     "subheading": "What has shipped in a production codebase. Nothing read-about."
+  },
+  "schedule": {
+    "heading": "Book a call",
+    "subheading": "30 minutes, no pitch deck.",
+    "loading": "Loading the calendar",
+    "timezone": {
+      "shown": "Times shown in {zone}",
+      "change": "change",
+      "label": "Timezone"
+    },
+    "month": {
+      "prev": "Previous month",
+      "next": "Next month",
+      "available": "times available",
+      "unavailable": "no times available"
+    },
+    "day": {
+      "back": "Change date",
+      "slotsGroup": "{count} times available on {date}",
+      "empty": "No times available this day."
+    },
+    "slot": {
+      "back": "Change time",
+      "hostLabel": "Mohammad's time, Tehran:",
+      "continue": "Continue"
+    },
+    "form": {
+      "back": "Change time",
+      "name": "Name",
+      "email": "Email",
+      "topic": "Topic",
+      "topicHint": "Optional — what do you want to talk about?",
+      "notes": "Notes",
+      "honeypot": "Company",
+      "submit": "Book the call"
+    },
+    "confirmed": {
+      "heading": "You're booked.",
+      "joinMeet": "Join the meet",
+      "addToCalendar": "Add to calendar",
+      "manage": "Manage or cancel"
+    },
+    "errors": {
+      "unavailableHeading": "The calendar isn't reachable right now.",
+      "unavailableAction": "Email me instead",
+      "slotTaken": "That slot was taken while you were typing. Pick another time below.",
+      "rate_limited": "You've reached today's limit for booking requests. Try again tomorrow, or email me instead.",
+      "server": "Something went wrong on the server. Try again, or email me instead.",
+      "network": "The request failed. Check your connection and try again.",
+      "networkHeading": "The calendar didn't load.",
+      "retry": "Try again"
+    },
+    "manage": {
+      "loading": "Loading your booking",
+      "heading": "Your call",
+      "notFoundHeading": "Not found",
+      "notFoundBody": "This link isn't valid.",
+      "backHome": "Back to booking",
+      "cancel": "Cancel the call",
+      "cancelled": "Cancelled. The slot is free again."
+    }
   }
 }

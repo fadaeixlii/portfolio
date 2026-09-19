@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { z } from "zod";
 import { randomUUID } from "node:crypto";
 import { getAvailability } from "@/lib/calendar/availability";
 import { insertEvent } from "@/lib/calendar/google";
@@ -7,26 +6,13 @@ import { createServiceClient } from "@/lib/supabase/service";
 import { signBookingToken } from "@/lib/calendar/token";
 import { sendBookingEmails } from "@/lib/email/booking";
 import { SCHEDULE_CONFIG } from "@/lib/calendar/config";
+import { bookingRequestSchema } from "@/lib/calendar/schema";
 
 export const dynamic = "force-dynamic";
 
-const body = z.object({
-  start: z.string().datetime(),
-  name: z.string().min(2).max(80),
-  email: z.string().email().max(160),
-  topic: z.string().max(120).optional(),
-  notes: z.string().max(1000).optional(),
-  locale: z.enum(["en", "de", "nl", "fa"]),
-  visitorTz: z.string().max(64),
-  /** Honeypot. Real people leave it empty; a bot that fills it must still
-   *  pass validation so the handler reaches the 200-and-drop branch below —
-   *  `max(0)` would instead 400 a filled honeypot before it gets there. */
-  company: z.string().max(200).optional(),
-});
-
 export async function POST(request: Request) {
   const json: unknown = await request.json().catch(() => null);
-  const parsed = body.safeParse(json);
+  const parsed = bookingRequestSchema.safeParse(json);
   if (!parsed.success) {
     return NextResponse.json({ error: "invalid" }, { status: 400 });
   }
