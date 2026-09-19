@@ -10,6 +10,7 @@ const LABELS: Record<string, string> = {
   de: "DE",
   nl: "NL",
   fa: "فا",
+  el: "EL",
 };
 
 export function LocaleSwitch() {

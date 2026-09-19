@@ -18,7 +18,9 @@
   --color-dim: var(--ink-dim);
   --color-hairline: var(--hairline);
   --color-signal: var(--signal);
+  --color-signal-text: var(--signal-text);
   --color-signal-ink: var(--signal-ink);
+  --color-ghost: var(--ghost);
   --color-error: var(--error);
   --color-success: var(--success);
 

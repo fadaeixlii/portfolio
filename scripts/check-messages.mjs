@@ -16,7 +16,7 @@ const flatten = (obj, prefix = "") =>
 const base = flatten(load("en"));
 let bad = 0;
 
-for (const locale of ["de", "nl", "fa"]) {
+for (const locale of ["de", "nl", "fa", "el"]) {
   const keys = new Set(flatten(load(locale)));
   const missing = base.filter((k) => !keys.has(k));
   if (missing.length) {

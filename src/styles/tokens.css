@@ -1,31 +1,46 @@
-/* Hallmark · macrostructure: Bento Grid · tone: technical-austere · anchor hue: orange 52
+/* Modernist · macrostructure: bordered chrome, sharp corners · tone: severe
  * The ONLY file permitted to author a raw colour value. Change the ramps in Layer 1
  * and every surface, both themes, follows.
  */
 
 :root {
-  /* ---- Layer 1 · raw ramps ------------------------------------------ */
-  --slate-50:  oklch(97% 0.004 255);
-  --slate-100: oklch(94% 0.006 255);
-  --slate-200: oklch(87% 0.008 255);
-  --slate-400: oklch(64% 0.012 255);
-  --slate-500: oklch(52% 0.014 255);
-  --slate-700: oklch(32% 0.016 255);
-  --slate-800: oklch(23% 0.018 255);
-  --slate-850: oklch(18% 0.017 255);
-  --slate-900: oklch(13% 0.016 255);
-  --slate-950: oklch(9% 0.014 255);
+  /* ---- Layer 1 · raw ramps -------------------------------------------
+   * Not a mathematically constructed ramp: each step is a literal Modernist
+   * design value, converted to OKLCH. Numbering follows relative lightness
+   * where it can, but these are independent picks across two themes, not a
+   * single hue progression — --slate-950 (light-theme ink) is a touch
+   * LIGHTER than --slate-900 (dark-theme paper); that's the source values,
+   * not a mistake. */
+  --slate-50:  oklch(96.19% 0.001 17.2);  /* #f3f2f2 — dark ink / light paper */
+  --slate-100: oklch(93.48% 0.001 17.2);  /* #eae9e9 — light surface */
+  --slate-200: oklch(90.83% 0.002 17.2);  /* #e2e0e0 — light surface-raised */
+  --slate-400: oklch(67.98% 0.005 17.3);  /* #9b9797 — dark ink-dim */
+  --slate-500: oklch(48.11% 0.004 17.3);  /* #605d5d — light ink-dim */
+  /* Not itself a UI colour: the dark hairline is authored as translucent
+   * ink (see --hairline below). This step exists only as an opaque
+   * approximation — hairline-on-paper, dark — for og-colors.ts, which reads
+   * raw ramp steps directly because satori can't render color-mix(). */
+  --slate-700: oklch(40.60% 0.002 67.8);  /* ~#4a4948 */
+  --slate-800: oklch(24.96% 0.004 48.6);  /* #232120 — dark surface-raised */
+  --slate-850: oklch(21.97% 0.004 48.6);  /* #1c1a19 — dark surface */
+  --slate-900: oklch(18.75% 0.003 67.7);  /* #141312 — dark paper */
+  --slate-950: oklch(23.69% 0.004 48.6);  /* #201e1d — light ink */
 
-  /* The signal. Hue 50-58 is orange proper; amber (hue 75-85) read too gold.
-   * Kept warm against deliberately cool neutrals — that contrast is what makes
-   * the accent read as a signal rather than as decoration. */
-  --orange-400: oklch(76% 0.150 56);
-  --orange-500: oklch(68% 0.180 52);
-  --orange-600: oklch(60% 0.190 48);
-  --orange-700: oklch(52% 0.175 45);
+  /* The signal: red-orange, hue ~31-32. Two steps only — dark fill/text share
+   * one value, light needs a deeper step for text (see --signal-text). */
+  --orange-500: oklch(68.01% 0.209 31.5); /* #ff563c — dark signal */
+  --orange-700: oklch(61.12% 0.225 31.5); /* #ec3013 — light signal */
+  --orange-800: oklch(48.06% 0.185 31.4); /* #ae1800 — light signal-text */
 
   --red-500:   oklch(62% 0.190 25);
   --green-500: oklch(68% 0.150 150);
+
+  /* Pure black: --paper (18.75% L) reads as near-black on the dark-theme
+   * signal fill (5.88:1), but the same reuse against the light-theme fill
+   * only clears 4.42:1 — under the 4.5:1 AA floor for the CTA's small
+   * uppercase label. Nothing short of true black clears it (measured
+   * ceiling 5.00:1), so text-on-signal-fill gets its own step. */
+  --black: oklch(0% 0 0);
 
   /* ---- Layer 2 · semantic aliases · dark is the default -------------
    * Deliberately NOT named --color-*: that namespace belongs to Tailwind's
@@ -36,24 +51,28 @@
   --surface-raised: var(--slate-800);
   --ink:            var(--slate-50);
   --ink-dim:        var(--slate-400);
-  --hairline:       var(--slate-700);
+  --hairline:       color-mix(in oklch, var(--ink) 24%, transparent);
+  --ghost:          color-mix(in oklch, var(--ink) 17%, transparent);
   --signal:         var(--orange-500);
-  --signal-ink:     var(--slate-950);
-  --focus:          var(--orange-400);
+  --signal-text:    var(--orange-500);
+  --signal-ink:     var(--paper);
+  --focus:          var(--signal);
   --error:          var(--red-500);
   --success:        var(--green-500);
 }
 
 :root[data-theme="light"] {
   --paper:          var(--slate-50);
-  --surface:        oklch(99% 0.002 255);
-  --surface-raised: var(--slate-100);
-  --ink:            var(--slate-900);
+  --surface:        var(--slate-100);
+  --surface-raised: var(--slate-200);
+  --ink:            var(--slate-950);
   --ink-dim:        var(--slate-500);
-  --hairline:       var(--slate-200);
+  --hairline:       color-mix(in oklch, var(--ink) 40%, transparent);
+  --ghost:          color-mix(in oklch, var(--ink) 18%, transparent);
   --signal:         var(--orange-700);
-  --signal-ink:     var(--slate-50);
-  --focus:          var(--orange-600);
+  --signal-text:    var(--orange-800);
+  --signal-ink:     var(--black);
+  --focus:          var(--signal);
 }
 
 :root {
@@ -84,15 +103,22 @@
   --space-12: 3rem;    --space-16: 4rem;    --space-24: 6rem;
   --space-32: 8rem;
 
-  /* ---- Radii -------------------------------------------------------- */
-  --radius-sm: 0.25rem; --radius-md: 0.75rem;
-  --radius-lg: 1.5rem;  --radius-full: 9999px;
+  /* ---- Radii ----------------------------------------------------------
+   * Sharp corners are the core of the Modernist direction: every radius is
+   * 0 except --radius-full, kept for the genuinely round things (the
+   * availability dot, radio marks). */
+  --radius-sm: 0; --radius-md: 0;
+  --radius-lg: 0; --radius-full: 9999px;
 
   /* ---- Motion ------------------------------------------------------- */
   --dur-fast: 120ms; --dur-base: 240ms; --dur-slow: 480ms;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in: cubic-bezier(0.55, 0, 1, 0.45);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Every project screenshot and the portrait render through this — one
+   * place to switch it off. */
+  --shot: grayscale(1) contrast(1.06);
 
   /* ---- Glass -------------------------------------------------------- */
   --glass-blur: 16px;              /* cost scales with radius; >20px is invisible */

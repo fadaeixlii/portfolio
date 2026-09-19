@@ -11,6 +11,7 @@ test.describe("locale direction", () => {
     ["de", "ltr"],
     ["nl", "ltr"],
     ["fa", "rtl"],
+    ["el", "ltr"],
   ] as const) {
     test(`${locale} renders dir=${dir}`, async ({ page }) => {
       await page.goto(`/${locale}`);

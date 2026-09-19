@@ -8,7 +8,7 @@ const BANNED = [
   "seven years", "7+ years", "co-founder",
 ];
 
-const LOCALES = ["en", "de", "nl", "fa"] as const;
+const LOCALES = ["en", "de", "nl", "fa", "el"] as const;
 const messages = () =>
   LOCALES.map((locale) =>
     readFileSync(`src/messages/${locale}.json`, "utf8"),

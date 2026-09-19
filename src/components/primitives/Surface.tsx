@@ -46,7 +46,7 @@ export function Surface<T extends ElementType = "div">({
     <Component
       data-surface={variant}
       className={cn(
-        "relative isolate rounded-[var(--radius-lg)] border border-hairline",
+        "relative isolate rounded-[var(--radius-lg)] border-2 border-hairline",
         glassy && [
           "bg-[var(--glass-fill)]",
           "[backdrop-filter:blur(var(--glass-blur))_saturate(var(--glass-saturate))]",
