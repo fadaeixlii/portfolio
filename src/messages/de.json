@@ -76,22 +76,31 @@
   "work": {
     "index": {
       "heading": "Arbeiten",
+      "line1": "Ausgewählte",
+      "line2": "Arbeiten",
       "subheading": "Neun ausgelieferte Produkte in KI, Marktplätzen und Web3."
     },
     "caseStudy": {
       "approach": "Vorgehen",
+      "role": "Rolle",
+      "year": "Jahr",
       "stack": "Stack",
       "outcome": "Ergebnis",
       "liveLink": "Live ansehen",
-      "next": "Nächstes Projekt"
+      "next": "Nächstes Projekt",
+      "back": "Zurück zu den Arbeiten"
     }
   },
   "experience": {
     "heading": "Erfahrung",
+    "line1": "Jede Rolle",
+    "line2": "Seit 2019",
     "subheading": "Jede Station seit 2019, neueste zuerst."
   },
   "stack": {
     "heading": "Stack",
+    "line1": "Der",
+    "line2": "Stack",
     "subheading": "Was in einem Produktionscode tatsächlich zum Einsatz kam. Nichts nur gelesen."
   },
   "schedule": {
@@ -157,6 +166,8 @@
   },
   "contact": {
     "heading": "Kontakt aufnehmen",
+    "line1": "Lass uns",
+    "line2": "Zusammenarbeiten",
     "subheading": "Erzählen Sie mir, woran Sie arbeiten. Ich lese jede Nachricht selbst.",
     "form": {
       "name": "Name",

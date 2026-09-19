@@ -76,22 +76,31 @@
   "work": {
     "index": {
       "heading": "Werk",
+      "line1": "Geselecteerd",
+      "line2": "Werk",
       "subheading": "Negen gelanceerde producten binnen AI, marktplaatsen en Web3."
     },
     "caseStudy": {
       "approach": "Aanpak",
+      "role": "Rol",
+      "year": "Jaar",
       "stack": "Stack",
       "outcome": "Resultaat",
       "liveLink": "Bekijk live",
-      "next": "Volgend project"
+      "next": "Volgend project",
+      "back": "Terug naar werk"
     }
   },
   "experience": {
     "heading": "Ervaring",
+    "line1": "Elke rol",
+    "line2": "Sinds 2019",
     "subheading": "Elke rol sinds 2019, nieuwste eerst."
   },
   "stack": {
     "heading": "Stack",
+    "line1": "De",
+    "line2": "Stack",
     "subheading": "Wat daadwerkelijk in een productiecodebase heeft gedraaid. Niets uit een cursus."
   },
   "schedule": {
@@ -157,6 +166,8 @@
   },
   "contact": {
     "heading": "Neem contact op",
+    "line1": "Laten we",
+    "line2": "Samenwerken",
     "subheading": "Vertel me waar je aan werkt. Ik lees elk bericht zelf.",
     "form": {
       "name": "Naam",

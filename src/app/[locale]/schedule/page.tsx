@@ -43,7 +43,7 @@ export default function SchedulePage({
   return (
     <main
       id="main"
-      className="mx-auto min-h-dvh max-w-5xl px-[var(--space-6)] pt-[var(--space-32)] pb-[var(--space-24)]"
+      className="min-h-dvh px-[var(--space-6)] pt-[var(--space-24)] pb-[var(--space-22)]"
     >
       <Reveal as="h1" className="font-display text-[length:var(--text-4xl)] leading-[var(--leading-tight)]">
         {t("heading")}

@@ -92,8 +92,14 @@ export default function StyleguidePage({
   setRequestLocale(locale);
 
   return (
-    <main id="main" className="mx-auto flex max-w-5xl flex-col gap-[var(--space-24)] p-8">
-      <h1 className="mt-[var(--space-16)] font-display text-[length:var(--text-4xl)] leading-[var(--leading-tight)]">
+    // The shell already caps and centres the content column at 1180px and
+    // supplies the gutter; a second mx-auto max-w-5xl inside it centred this
+    // page inside an already-centred column.
+    <main
+      id="main"
+      className="flex flex-col gap-[var(--space-22)] px-[var(--space-6)] pt-[var(--space-24)] pb-[var(--space-22)]"
+    >
+      <h1 className="font-display text-[length:var(--text-4xl)] font-extrabold uppercase leading-[var(--leading-display)] tracking-[var(--tracking-display)]">
         Styleguide
       </h1>
 

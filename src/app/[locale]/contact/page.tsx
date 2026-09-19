@@ -2,8 +2,8 @@ import { use } from "react";
 import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { setRequestLocale, getTranslations } from "next-intl/server";
-import { Reveal } from "@/components/primitives/Reveal";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { PageHead } from "@/components/layout/PageHead";
 import { SCHEDULE_CONFIG } from "@/lib/calendar/config";
 import { buildMetadata } from "@/lib/seo/metadata";
 import type { Locale } from "@/lib/i18n/routing";
@@ -36,34 +36,49 @@ export default function ContactPage({
   return (
     <main
       id="main"
-      className="mx-auto min-h-dvh max-w-5xl px-[var(--space-6)] pt-[var(--space-32)] pb-[var(--space-24)]"
+      className="min-h-dvh px-[var(--space-6)] pt-[var(--space-24)] pb-[var(--space-22)]"
     >
-      <Reveal as="h1" className="font-display text-[length:var(--text-4xl)] leading-[var(--leading-tight)]">
-        {t("heading")}
-      </Reveal>
-      <Reveal as="p" delay={0.05} className="mt-[var(--space-4)] max-w-[var(--measure)] text-dim">
-        {t("subheading")}
-      </Reveal>
+      <PageHead line1={t("line1")} line2={t("line2")} sub={t("subheading")} />
 
-      <div className="mt-[var(--space-12)]">
+      <div className="mt-[var(--space-22)]">
         <ContactForm />
       </div>
 
-      {/* No phone number — the canon forbids publishing it. */}
-      <div className="mx-auto mt-[var(--space-12)] flex max-w-xl flex-col gap-2">
-        <p className="text-[length:var(--text-sm)] text-dim">{t("direct.heading")}</p>
-        <a
-          href={`mailto:${SCHEDULE_CONFIG.contactEmail}`}
-          className="text-[length:var(--text-base)] text-signal-text hover:underline"
-        >
-          {t("direct.email")} — {SCHEDULE_CONFIG.contactEmail}
-        </a>
-        <a
-          href="https://github.com/fadaeixlii"
-          className="text-[length:var(--text-base)] text-signal-text hover:underline"
-        >
-          {t("direct.github")} — github.com/fadaeixlii
-        </a>
+      {/* No phone number — the canon forbids publishing it. Label and value
+          are separate elements: a joined "Email — address" string is the
+          middle-dot meta pattern under another punctuation mark. */}
+      <div className="mt-[var(--space-22)] border-t-2 border-hairline pt-[var(--space-6)]">
+        <p className="text-[length:var(--text-xs)] font-semibold uppercase tracking-wide text-dim">
+          {t("direct.heading")}
+        </p>
+        <dl className="mt-[var(--space-4)] flex flex-col gap-[var(--space-3)]">
+          <div className="flex flex-wrap items-baseline gap-x-[var(--space-4)] gap-y-1">
+            <dt className="w-20 shrink-0 text-[length:var(--text-sm)] text-dim">
+              {t("direct.email")}
+            </dt>
+            <dd>
+              <a
+                href={`mailto:${SCHEDULE_CONFIG.contactEmail}`}
+                className="text-[length:var(--text-base)] text-signal-text hover:underline"
+              >
+                {SCHEDULE_CONFIG.contactEmail}
+              </a>
+            </dd>
+          </div>
+          <div className="flex flex-wrap items-baseline gap-x-[var(--space-4)] gap-y-1">
+            <dt className="w-20 shrink-0 text-[length:var(--text-sm)] text-dim">
+              {t("direct.github")}
+            </dt>
+            <dd>
+              <a
+                href="https://github.com/fadaeixlii"
+                className="text-[length:var(--text-base)] text-signal-text hover:underline"
+              >
+                github.com/fadaeixlii
+              </a>
+            </dd>
+          </div>
+        </dl>
       </div>
     </main>
   );

@@ -76,22 +76,31 @@
   "work": {
     "index": {
       "heading": "Work",
+      "line1": "Selected",
+      "line2": "Work",
       "subheading": "Nine shipped products across AI, marketplaces and Web3."
     },
     "caseStudy": {
       "approach": "Approach",
+      "role": "Role",
+      "year": "Year",
       "stack": "Stack",
       "outcome": "Outcome",
       "liveLink": "View live",
-      "next": "Next project"
+      "next": "Next project",
+      "back": "Back to work"
     }
   },
   "experience": {
     "heading": "Experience",
+    "line1": "Every role",
+    "line2": "Since 2019",
     "subheading": "Every role since 2019, newest first."
   },
   "stack": {
     "heading": "Stack",
+    "line1": "The",
+    "line2": "Stack",
     "subheading": "What has shipped in a production codebase. Nothing read-about."
   },
   "schedule": {
@@ -157,6 +166,8 @@
   },
   "contact": {
     "heading": "Get in touch",
+    "line1": "Let's work",
+    "line2": "Together",
     "subheading": "Tell me what you're building. I read every message myself.",
     "form": {
       "name": "Name",
