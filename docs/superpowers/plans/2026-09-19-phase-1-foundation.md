@@ -168,7 +168,7 @@ git commit -m "chore: v2 dependency baseline"
 
 **Files:**
 - Create: `src/styles/tokens.css`, `src/styles/globals.css`
-- Test: `scripts/check-tokens.mjs`, `tests/fixtures/bad-token.css`
+- Test: `scripts/check-tokens.mjs`
 
 **Interfaces:**
 - Consumes: Task 2's build config

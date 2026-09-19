@@ -122,14 +122,18 @@ Everywhere else motion answers an action or a scroll position:
 
 | Where | What | Type |
 |---|---|---|
-| Work grid, timeline | `<Reveal>` — opacity + 16px translate, staggered | Scroll-triggered, **opt-in per section** |
+| Every section | `<Reveal>` — opacity + 16px translate, `once: true` | Scroll-triggered |
+| Grids and lists | `<Stagger>` — 60ms between children, capped at 8 | Scroll-triggered |
 | Experience timeline | Progress rail scrubbed by `useScroll`/`useTransform` | Scroll-linked |
 | Cards, buttons | ≤150ms transform/opacity on hover and press | User-triggered |
 | Booker | Layout transitions between month → day → slot → form | User-triggered |
 
-`<Reveal>` is deliberately **not** applied to every section. It exists as a primitive with an
-`enabled` prop so the decision is reversible in one place if Mohammad wants the reference's
-behaviour everywhere after seeing it live.
+`<Reveal>` wraps **every** section, matching the reference. Two guards keep it from reading
+as the generated-page default: the hero boot sequence is a genuinely different motion so the
+top of the page does not open with the same fade as everything under it, and reveals use
+`once: true` with a 12% viewport margin so nothing re-animates on scroll-back. A single
+`MOTION.reveal.enabled` flag in `src/lib/motion.ts` turns the whole behaviour off if it ever
+needs to go.
 
 Rules: `transform` and `opacity` only, never layout properties. Three named easings
 (`--ease-out`, `--ease-in`, `--ease-in-out`), never the browser default. `prefers-reduced-motion`
@@ -138,18 +142,38 @@ Focus rings never animate.
 
 ### 2.6 Glass surfaces
 
-A `<Surface>` component with three variants, because the effect degrades badly if you ship
-the top tier everywhere:
+Glass is the default surface across the whole site — navbar, cards, the booker, modals.
+Browser support, verified 2026-09-19:
+
+| Technique | Chrome | Safari | Firefox | Verdict |
+|---|---|---|---|---|
+| `backdrop-filter: blur() saturate()` | 76+ | 9+ | **103+** | universal |
+| Gradient overlay, inner highlight, shadow | all | all | all | universal |
+| `backdrop-filter: url(#svg-filter)` | yes | **no** (WebKit #245510) | **parses, renders nothing** | Chromium only |
+
+So the shipped default is the **tinted-and-layered** tier: blur + saturate, a translucent
+tint floor, a gradient overlay, a 1px inner highlight on the top edge, and a soft drop
+shadow. It is pure paint, costs almost nothing beyond the blur, and carries most of the
+perceived quality of the Apple effect. It runs everywhere.
 
 | Variant | Technique | Used on |
 |---|---|---|
-| `flat` | Solid `--color-surface` + hairline | Default for content cards |
-| `frosted` | `backdrop-filter: blur(16px) saturate(140%)` + translucent fill + hairline | Nav pill, booker slot sheet, modal scrim |
-| `refracted` | `frosted` + SVG `feDisplacementMap` edge distortion | Nav pill only, behind `@supports (backdrop-filter: blur(1px))` and a reduced-motion check |
+| `glass` **(default)** | blur(16px) saturate(140%) + tint floor + gradient overlay + inner top highlight + shadow | Navbar, every card, booker panels, modals |
+| `glass-refracted` | `glass` + SVG `feDisplacementMap` edge distortion | Navbar only, and only where a **runtime probe** confirms it renders |
+| `flat` | Solid `--surface` + hairline | Escape hatch where a blur would cost too much (long scrolling lists) |
 
-`refracted` breaks in Firefox and costs real frames during scroll, so it is a progressive
-enhancement that silently falls back to `frosted`. This is the honest version of the
-"liquid glass" request.
+Firefox's parse-as-valid-then-render-nothing behaviour means `@supports` is not a usable
+test. `useBackdropSvgSupport()` paints a probe element to an offscreen canvas once on mount
+and reads a pixel; only a real displacement flips the variant on. Everyone else keeps the
+universal tier and sees no difference worth naming.
+
+Three legibility and cost rules, non-negotiable:
+
+- **Tint floor, not a whisper.** The translucent fill sits at ~62% opacity so text on glass
+  has a contrast floor independent of what scrolls behind it.
+- **Blur capped at 16px.** Cost scales with radius and past ~20px nobody can tell.
+- **No body copy on glass.** Chrome, navigation, headings and single-line labels only.
+  Paragraphs sit on `--paper`.
 
 ### 2.7 Structural picks (hallmark)
 
