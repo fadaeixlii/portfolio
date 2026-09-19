@@ -385,9 +385,12 @@ rm src/styles/_probe.css
   --font-sans: var(--font-vazirmatn);
   --font-mono: var(--font-jetbrains);
 
-  --radius-sm: var(--radius-sm);
-  --radius-md: var(--radius-md);
-  --radius-lg: var(--radius-lg);
+  /* No --radius-* mapping here on purpose. Tailwind v4 reserves that
+   * namespace, so `--radius-sm: var(--radius-sm)` would resolve to itself —
+   * the same circular-declaration bug the colour block above avoids by
+   * using distinct names on each side. Every radius in this project is
+   * written as an arbitrary value, `rounded-[var(--radius-lg)]`, which
+   * reads Layer 1 directly. */
 }
 
 @layer base {
