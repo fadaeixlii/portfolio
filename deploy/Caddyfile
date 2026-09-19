@@ -1,11 +1,25 @@
-mohammadmkh.dev, www.mohammadmkh.dev {
+# Apex serves the site. www redirects to it — one canonical host, so search
+# engines and analytics do not split the domain in two.
+
+www.mohammadmkh.dev {
+	tls /etc/ssl/cloudflare/origin.pem /etc/ssl/cloudflare/origin.key
+	redir https://mohammadmkh.dev{uri} permanent
+}
+
+mohammadmkh.dev {
 	tls /etc/ssl/cloudflare/origin.pem /etc/ssl/cloudflare/origin.key
 	encode zstd gzip
 	reverse_proxy portfolio:3000
+
 	header {
-		# .dev is HSTS-preloaded; say so explicitly anyway.
+		# .dev is on the HSTS preload list already; stating it is belt and braces.
 		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 		X-Content-Type-Options nosniff
 		Referrer-Policy strict-origin-when-cross-origin
+		X-Frame-Options DENY
 	}
+
+	# Next.js fingerprints these filenames, so they can be cached hard.
+	@immutable path /_next/static/* /fonts/*
+	header @immutable Cache-Control "public, max-age=31536000, immutable"
 }
