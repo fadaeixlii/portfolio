@@ -7,7 +7,8 @@ const ROOT = process.cwd();
 const ALLOWED = ["src/styles/tokens.css"];
 const EXTS = [".css", ".ts", ".tsx"];
 const RAW_COLOUR = /#[0-9a-fA-F]{3,8}\b|\brgba?\(|\bhsla?\(|\boklch\(/;
-const PHYSICAL = /\b(?:ml|mr|pl|pr)-(?:\d|px|auto|\[)|\b(?:left|right)-(?:\d|px|\[)|\btext-(?:left|right)\b/;
+const PHYSICAL =
+  /\b(?:ml|mr|pl|pr)-(?:\d|px|auto|\[)|\b(?:left|right)-(?:\d|px|\[)|\btext-(?:left|right)\b|\b(?:margin|padding)-(?:left|right)\s*:|(?<![\w-])(?:left|right)\s*:/;
 
 function walk(dir, out = []) {
   for (const entry of readdirSync(dir)) {
