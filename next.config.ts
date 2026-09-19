@@ -5,9 +5,9 @@ const withNextIntl = createNextIntlPlugin("./src/lib/i18n/request.ts");
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
-  // Traced standalone server — the VPS receives a self-contained bundle
-  // instead of the whole node_modules tree.
-  output: "standalone",
+  // Phase 5 re-adds output: "standalone" along with the static/public
+  // copying it needs — next start doesn't support it, and Playwright's
+  // webServer runs next start.
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
