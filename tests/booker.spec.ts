@@ -42,6 +42,25 @@ async function mockAvailability(
   });
 }
 
+/**
+ * The booker fires `/api/health/calendar` once on mount and swaps the whole
+ * calendar for the email fallback when it fails. That call is a real request
+ * to Google, so leaving it unmocked makes every test below depend on whether
+ * the machine running it happens to hold working credentials — green on a
+ * laptop with a live token, red on CI with dummy ones. Mock it explicitly so
+ * these tests exercise the booker instead of the environment. The unhealthy
+ * path gets its own test rather than arriving by accident.
+ */
+async function mockHealth(page: Page, ok = true) {
+  await page.route("**/api/health/calendar", async (route) => {
+    await route.fulfill({
+      status: ok ? 200 : 503,
+      contentType: "application/json",
+      body: JSON.stringify(ok ? { ok: true } : { ok: false, reason: "mocked" }),
+    });
+  });
+}
+
 async function mockBook(page: Page, status: number, body: unknown) {
   await page.route("**/api/book", async (route) => {
     await route.fulfill({ status, contentType: "application/json", body: JSON.stringify(body) });
@@ -61,6 +80,7 @@ const firstSlotLabel = (page: Page) =>
   page.locator('[role="radiogroup"] label').first();
 
 test("walks month → day → slot → form → confirmed", async ({ page }) => {
+  await mockHealth(page);
   await mockAvailability(page);
   await mockBook(page, 200, {
     ok: true,
@@ -88,6 +108,7 @@ test("walks month → day → slot → form → confirmed", async ({ page }) => 
 });
 
 test("409 on submit keeps the form's values and surfaces the message", async ({ page }) => {
+  await mockHealth(page);
   await mockAvailability(page);
   await mockBook(page, 409, { error: "slot_taken" });
 
@@ -111,6 +132,7 @@ test("409 on submit keeps the form's values and surfaces the message", async ({ 
 });
 
 test("503 from availability shows the email fallback, not an empty month", async ({ page }) => {
+  await mockHealth(page);
   await mockAvailability(page, { status: 503 });
 
   await page.goto("/en/schedule");
@@ -122,7 +144,27 @@ test("503 from availability shows the email fallback, not an empty month", async
   );
 });
 
+test("a dead calendar credential shows the email fallback before any month loads", async ({
+  page,
+}) => {
+  // Distinct from the availability-503 test above: this is the mount-time
+  // health probe failing, which is what a revoked or expired Google refresh
+  // token looks like to a visitor. Availability is left healthy so a pass
+  // here cannot be produced by the other failure path.
+  await mockHealth(page, false);
+  await mockAvailability(page);
+
+  await page.goto("/en/schedule");
+
+  await expect(page.getByRole("table")).not.toBeVisible();
+  await expect(page.getByRole("link", { name: "Email me instead" })).toHaveAttribute(
+    "href",
+    /^mailto:/,
+  );
+});
+
 test("keyboard-only pass through the whole flow", async ({ page }) => {
+  await mockHealth(page);
   await mockAvailability(page);
   await mockBook(page, 200, {
     ok: true,
@@ -151,6 +193,7 @@ test("keyboard-only pass through the whole flow", async ({ page }) => {
 });
 
 test("/fa renders the grid RTL with Persian digits", async ({ page }) => {
+  await mockHealth(page);
   await mockAvailability(page);
 
   await page.goto("/fa/schedule");
@@ -185,6 +228,7 @@ test("the month grid stays keyboard-reachable after paging from a 31-day month",
   // November, so no button gets `tabIndex=0` and the grid drops out of the
   // tab order entirely.
   await page.clock.install({ time: new Date("2026-10-15T12:00:00Z") });
+  await mockHealth(page);
   await mockAvailability(page, { slots: twoMonthsOfSlots() });
 
   await page.goto("/en/schedule");
