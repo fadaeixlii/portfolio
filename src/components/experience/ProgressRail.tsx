@@ -5,7 +5,8 @@ import type { RefObject } from "react";
 import { useMotionSafe } from "@/lib/motion";
 
 /**
- * A vertical rail whose fill tracks scroll position through the timeline.
+ * A vertical rule whose fill tracks scroll position through the timeline.
+ * 2px like every other rule in this design, not a hairline.
  * Scroll-linked rather than triggered, so it reads as a measurement rather
  * than an entrance. Mirrors to the right-hand side under RTL via `start-0` —
  * a logical offset, never `left`/`right`.
@@ -26,7 +27,7 @@ export function ProgressRail({
     <div
       data-rail
       aria-hidden
-      className="absolute inset-y-0 start-0 w-px bg-hairline"
+      className="absolute inset-y-0 start-0 w-0.5 bg-hairline"
     >
       <motion.div
         data-rail-fill
