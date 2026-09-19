@@ -67,9 +67,12 @@ export function HeroBento() {
       </Surface>
 
       <div className="flex flex-col gap-[var(--space-4)] md:col-span-2 md:col-start-2">
-        {/* Headline — resolves at boot stage 3. */}
+        {/* Headline — resolves at boot stage 3. `flat`, not glass: this cell
+            holds the LCP text and is the largest backdrop-filter area on the
+            page, which delays first paint. The nav pill stays glass because
+            it's small. */}
         <Surface
-          variant="glass-refracted"
+          variant="flat"
           className="flex flex-col justify-center p-[var(--space-8)]"
         >
           <motion.h1

@@ -1,0 +1,53 @@
+name: quality
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+env:
+  # Dummy public values so the non-Lighthouse gates need no repo secrets.
+  # Tests mock Supabase/Google/Resend; only `next build` inlines these, and
+  # it never dials out to them.
+  NEXT_PUBLIC_SITE_URL: http://localhost:3000
+  NEXT_PUBLIC_SUPABASE_URL: https://ci-dummy.supabase.co
+  NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ci-dummy-publishable-key
+  NEXT_PUBLIC_SUPABASE_PROJECT_REF: ci-dummy
+  SUPABASE_SECRET_KEY: ci-dummy-secret-key
+  ADMIN_EMAILS: ci-dummy@example.com
+  CONTACT_TO_EMAIL: ci-dummy@example.com
+  CONTACT_FROM_EMAIL: "Portfolio <onboarding@resend.dev>"
+  BOOKING_TOKEN_SECRET: ci-dummy-booking-token-secret
+  GOOGLE_CLIENT_ID: ci-dummy
+  GOOGLE_CLIENT_SECRET: ci-dummy
+  GOOGLE_CALENDAR_ID: ci-dummy
+  GOOGLE_REFRESH_TOKEN: ci-dummy
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test:tokens
+      - run: pnpm test:messages
+      - run: pnpm test:unit
+      - run: pnpm build
+
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps chromium
+
+      - run: pnpm test
+
+      - name: Lighthouse CI
+        run: pnpm dlx @lhci/cli@0.15.x autorun
