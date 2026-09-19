@@ -32,7 +32,7 @@ export const experience: z.input<typeof experienceSchema>[] = [
     period: "Mar 2025 — Feb 2026",
     location: "Remote, from the Netherlands",
     summary:
-      "Shipped three products for one Dutch studio: a quote marketplace, a food-ordering rebuild, and a property prediction market on Polygon. Full-time through November 2025, then on contract.",
+      "Shipped three products for one Dutch studio: a quote marketplace, a food-ordering rebuild, and a property prediction market on Polygon.",
     products: ["Jeofferte", "Meshi", "Roofcast"],
     stack: [
       "Next.js",

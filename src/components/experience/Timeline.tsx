@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import { useTranslations } from "next-intl";
 import type { ExperienceEntry } from "@/content/schema";
 import { Hairline } from "@/components/primitives/Hairline";
 import { Stagger, StaggerItem } from "@/components/primitives/Reveal";
@@ -15,7 +14,6 @@ import { ProgressRail } from "./ProgressRail";
  * pull centers the 10px dot on the 1px line under both LTR and RTL.
  */
 export function Timeline({ entries }: { entries: ExperienceEntry[] }) {
-  const t = useTranslations("experience");
   const railRef = useRef<HTMLDivElement>(null);
 
   return (
@@ -46,15 +44,6 @@ export function Timeline({ entries }: { entries: ExperienceEntry[] }) {
               <p dir="auto" className="mt-[var(--space-3)] max-w-[var(--measure)] text-text">
                 {entry.summary}
               </p>
-              {/* The one clause explaining the Nov 2025 – Feb 2026 overlap
-                  between this entry and the next, rather than leaving a
-                  reader to spot the contradiction. Specific to these two
-                  entries, not a generic mechanism — nothing else overlaps. */}
-              {entry.company === "aim2balance.ai" ? (
-                <p className="mt-[var(--space-3)] text-[length:var(--text-sm)] text-dim">
-                  {t("overlapNote")}
-                </p>
-              ) : null}
               <div dir="auto" className="mt-[var(--space-4)] flex flex-wrap gap-[var(--space-3)] text-[length:var(--text-xs)] text-dim">
                 {entry.stack.map((item) => (
                   <span key={item}>{item}</span>
