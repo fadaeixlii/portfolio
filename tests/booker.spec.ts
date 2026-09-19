@@ -160,3 +160,42 @@ test("/fa renders the grid RTL with Persian digits", async ({ page }) => {
   const dayText = await firstOpenDay(page).textContent();
   expect(dayText).toMatch(/[۰-۹]/);
 });
+
+/** Every day in October and November 2026 (31 and 30 days) at 06:00 UTC —
+ *  enough for both months the test pages through to render every day as
+ *  bookable, regardless of the real weekday/working-hours rules covered by
+ *  tests/unit/slots.test.ts. */
+function twoMonthsOfSlots(): string[] {
+  const out: string[] = [];
+  for (const [month, days] of [[9, 31], [10, 30]] as const) {
+    for (let d = 1; d <= days; d++) {
+      out.push(new Date(Date.UTC(2026, month, d, 6, 0, 0)).toISOString());
+    }
+  }
+  return out;
+}
+
+test("the month grid stays keyboard-reachable after paging from a 31-day month", async ({
+  page,
+}) => {
+  // Pin "today" to 2026-10-15: October has 31 days, November (one click of
+  // "Next month" away, and inside the 28-day horizon) has 30. Without
+  // `key={monthKey}` on <MonthGrid>, focusing day 31 then paging to
+  // November leaves `focusDay=31` stuck in state — no day 31 exists in
+  // November, so no button gets `tabIndex=0` and the grid drops out of the
+  // tab order entirely.
+  await page.clock.install({ time: new Date("2026-10-15T12:00:00Z") });
+  await mockAvailability(page, { slots: twoMonthsOfSlots() });
+
+  await page.goto("/en/schedule");
+  await expect(page.getByRole("table")).toBeVisible();
+
+  const day31 = page.locator("table button").filter({ hasText: /^31$/ });
+  await expect(day31).toHaveCount(1);
+  await day31.focus();
+
+  await page.getByRole("button", { name: "Next month" }).click();
+  await expect(page.getByRole("table")).toBeVisible();
+
+  await expect(page.locator('table button[tabindex="0"]')).toHaveCount(1);
+});

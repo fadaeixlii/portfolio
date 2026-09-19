@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AnimatePresence, motion } from "motion/react";
@@ -97,6 +97,24 @@ export function Booker() {
   // `monthCache` is deliberately not one (see the comment on the effect).
   const [refetchToken, setRefetchToken] = useState(0);
 
+  // Cheap liveness check, once on mount: a dead Google credential answers
+  // in ~0.5s here versus the ~5s it now takes /api/availability to time out
+  // and fall back — checking first gets the visitor to the email fallback
+  // faster on the common "calendar is just down" case.
+  const [calendarHealthy, setCalendarHealthy] = useState<boolean | null>(null);
+  useEffect(() => {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 5000);
+    fetch("/api/health/calendar", { signal: controller.signal })
+      .then((res) => setCalendarHealthy(res.ok))
+      .catch(() => setCalendarHealthy(false))
+      .finally(() => clearTimeout(timeout));
+    return () => {
+      clearTimeout(timeout);
+      controller.abort();
+    };
+  }, []);
+
   useEffect(() => {
     if (!monthKey || monthCache[monthKey]) return;
     const controller = new AbortController();
@@ -137,7 +155,11 @@ export function Booker() {
         // Aborted for a reason other than the timeout (unmount, deps
         // changed) — a fresh effect run already owns the next fetch.
         if (controller.signal.aborted && !timedOut) return;
-        setMonthCache((c) => ({ ...c, [monthKey]: { status: "error", kind: "network" } }));
+        // A backend that never answers is the same "calendar unreachable"
+        // case as a 503 — show the email fallback, not a retry button that
+        // will just hang again.
+        const kind = timedOut ? "unavailable" : "network";
+        setMonthCache((c) => ({ ...c, [monthKey]: { status: "error", kind } }));
       })
       .finally(() => clearTimeout(timeout));
     return () => {
@@ -246,6 +268,14 @@ export function Booker() {
     defaultValues: { name: "", email: "", topic: "", notes: "", company: "" },
   });
 
+  // Timestamp the form step is shown, for the server's minimum-time-on-form
+  // check — reset every time the visitor (re)reaches this step, not just
+  // once, so going back and re-submitting fast still reads as fast.
+  const formRenderedAtRef = useRef<number | null>(null);
+  useEffect(() => {
+    if (step === "form") formRenderedAtRef.current = Date.now();
+  }, [step]);
+
   async function onSubmit(values: BookingFormValues) {
     if (!selectedSlot) return;
     setNotice(null);
@@ -262,6 +292,7 @@ export function Booker() {
           notes: values.notes || undefined,
           locale,
           visitorTz: timeZone,
+          formRenderedAt: formRenderedAtRef.current ?? Date.now(),
           company: values.company || undefined,
         }),
       });
@@ -303,25 +334,31 @@ export function Booker() {
 
   let content: ReactNode;
 
+  // 503 from availability, a hung backend, or a failed /api/health/calendar
+  // check: never an empty month — the calendar swaps for a plain way to
+  // reach Mohammad directly. Shared by both the health check (fast path,
+  // ~0.5s) and the availability fetch's own error branches below.
+  const unavailablePanel = (
+    <div className="flex flex-col gap-[var(--space-3)]">
+      <p className="text-[length:var(--text-sm)] text-error">{t("errors.unavailableHeading")}</p>
+      <a
+        href={`mailto:${SCHEDULE_CONFIG.contactEmail}`}
+        className="text-[length:var(--text-sm)] text-signal hover:underline"
+      >
+        {t("errors.unavailableAction")}
+      </a>
+    </div>
+  );
+
   if (!mounted) {
     content = <p className="text-[length:var(--text-sm)] text-dim">{t("loading")}</p>;
   } else if (step === "month") {
-    if (!entry) {
+    if (calendarHealthy === false) {
+      content = unavailablePanel;
+    } else if (!entry) {
       content = <p className="text-[length:var(--text-sm)] text-dim">{t("loading")}</p>;
     } else if (entry.status === "error" && entry.kind === "unavailable") {
-      // 503 from availability: never an empty month — the calendar swaps for
-      // a plain way to reach Mohammad directly.
-      content = (
-        <div className="flex flex-col gap-[var(--space-3)]">
-          <p className="text-[length:var(--text-sm)] text-error">{t("errors.unavailableHeading")}</p>
-          <a
-            href={`mailto:${SCHEDULE_CONFIG.contactEmail}`}
-            className="text-[length:var(--text-sm)] text-signal hover:underline"
-          >
-            {t("errors.unavailableAction")}
-          </a>
-        </div>
-      );
+      content = unavailablePanel;
     } else if (entry.status === "error") {
       content = (
         <div className="flex flex-col gap-[var(--space-3)]">
@@ -359,6 +396,7 @@ export function Booker() {
             </Button>
           </div>
           <MonthGrid
+            key={monthKey}
             year={year}
             month={month}
             weekdayLabels={weekdayLabels}

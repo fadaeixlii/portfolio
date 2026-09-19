@@ -5,6 +5,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { Surface } from "@/components/primitives/Surface";
 import { Button } from "@/components/primitives/Button";
 import { Link } from "@/lib/i18n/navigation";
+import { useVisitorTimeZone } from "@/hooks/useVisitorTimeZone";
 
 type Booking = {
   id: string;
@@ -32,6 +33,7 @@ type LoadState =
 export function ManageBooking({ token }: { token: string }) {
   const t = useTranslations("schedule.manage");
   const locale = useLocale();
+  const timeZone = useVisitorTimeZone();
   const [state, setState] = useState<LoadState>({ kind: "loading" });
   const [cancelling, setCancelling] = useState(false);
 
@@ -89,12 +91,11 @@ export function ManageBooking({ token }: { token: string }) {
 
   const { booking } = state;
   const when = new Intl.DateTimeFormat(locale, {
+    timeZone,
     dateStyle: "full",
     timeStyle: "short",
     calendar: "gregory",
-  }).format(
-    new Date(booking.start_at),
-  );
+  }).format(new Date(booking.start_at));
   const cancelled = booking.status === "cancelled";
 
   return (
