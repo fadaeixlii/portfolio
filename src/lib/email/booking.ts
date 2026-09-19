@@ -21,6 +21,17 @@ function manageUrl(token: string): string {
   return `${base}/schedule/manage/${token}`;
 }
 
+/** A visitor controls name/topic/notes end to end — escape before it ever
+ *  reaches an HTML (or plain-text-that-gets-read-as-markup) email body. */
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 async function sendResendEmail(payload: Record<string, unknown>): Promise<void> {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) return; // sandbox / not configured — booking still succeeds without email
@@ -53,13 +64,18 @@ export async function sendBookingEmails(booking: BookingEmailInput): Promise<voi
     const when = new Date(booking.start_at).toUTCString();
     const to = process.env.CONTACT_TO_EMAIL;
 
+    const safeName = escapeHtml(booking.name);
+    const safeEmail = escapeHtml(booking.email);
+    const safeTopic = booking.topic ? escapeHtml(booking.topic) : null;
+    const safeNotes = booking.notes ? escapeHtml(booking.notes) : null;
+
     await Promise.all([
       sendResendEmail({
         from,
         to: booking.email,
         subject,
         html:
-          `<p>Hi ${booking.name},</p><p>Your call is booked for ${when}.</p>` +
+          `<p>Hi ${safeName},</p><p>Your call is booked for ${when}.</p>` +
           (booking.meet_url
             ? `<p><a href="${booking.meet_url}">Join with Google Meet</a></p>`
             : "") +
@@ -71,11 +87,13 @@ export async function sendBookingEmails(booking: BookingEmailInput): Promise<voi
             sendResendEmail({
               from,
               to,
-              subject: `New booking: ${booking.name}`,
+              // Subject is plain text, not HTML, but it's still visitor input
+              // reaching an inbox unescaped — same treatment.
+              subject: `New booking: ${safeName}`,
               html:
-                `<p>${booking.name} (${booking.email}) booked ${when}.</p>` +
-                (booking.topic ? `<p>Topic: ${booking.topic}</p>` : "") +
-                (booking.notes ? `<p>Notes: ${booking.notes}</p>` : ""),
+                `<p>${safeName} (${safeEmail}) booked ${when}.</p>` +
+                (safeTopic ? `<p>Topic: ${safeTopic}</p>` : "") +
+                (safeNotes ? `<p>Notes: ${safeNotes}</p>` : ""),
             }),
           ]
         : []),
