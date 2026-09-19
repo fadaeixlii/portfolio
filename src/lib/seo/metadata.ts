@@ -29,7 +29,10 @@ export function buildMetadata({
 
   return {
     metadataBase: new URL(SITE_URL),
-    title: `${title} — ${SITE_NAME}`,
+    // The home page's own title *is* the site name (the hero name), so
+    // appending " — SITE_NAME" would double it. `absolute` renders exactly
+    // as given, with no suffix.
+    title: path === "" ? { absolute: title } : `${title} — ${SITE_NAME}`,
     description,
     alternates: {
       canonical: url,
