@@ -1,0 +1,11 @@
+mohammadmkh.dev, www.mohammadmkh.dev {
+	tls /etc/ssl/cloudflare/origin.pem /etc/ssl/cloudflare/origin.key
+	encode zstd gzip
+	reverse_proxy portfolio:3000
+	header {
+		# .dev is HSTS-preloaded; say so explicitly anyway.
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+	}
+}

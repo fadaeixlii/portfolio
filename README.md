@@ -20,6 +20,12 @@ pnpm test:unit    # vitest
 pnpm test:tokens  # design-token guard (no raw colour, no physical-direction utilities)
 ```
 
+## Deployment
+
+Docker image behind Caddy (TLS) behind Cloudflare (DNS/proxy), auto-deployed on push to
+`main`. See [`docs/deployment.md`](docs/deployment.md) for the env-var table, rollback,
+and runbook; `Dockerfile`, `docker-compose.yml` and `deploy/Caddyfile` are the artifacts.
+
 ## Docs
 
 Spec and phase plans live in [`docs/superpowers/`](docs/superpowers/).
