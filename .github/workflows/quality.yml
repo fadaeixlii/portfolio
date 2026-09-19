@@ -64,4 +64,13 @@ jobs:
           name: lighthouse-reports
           path: .lighthouseci/
           retention-days: 30
-          if-no-files-found: warn
+          # upload-artifact@v4 skips dot-prefixed paths unless told otherwise,
+          # so without this it finds nothing in `.lighthouseci/`, warns, and
+          # the run stays green having uploaded nothing. LHCI does write the
+          # reports — the first attempt at this step proved it ("Dumping 12
+          # reports to disk ... Done writing reports to disk") and still
+          # produced zero artifacts.
+          include-hidden-files: true
+          # Fail loudly rather than warn: a silent "no files found" is how
+          # this step passed while doing nothing.
+          if-no-files-found: error
