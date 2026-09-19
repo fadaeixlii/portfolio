@@ -76,5 +76,14 @@
       "liveLink": "Live ansehen",
       "next": "Nächstes Projekt"
     }
+  },
+  "experience": {
+    "heading": "Erfahrung",
+    "subheading": "Jede Station seit 2019, neueste zuerst.",
+    "overlapNote": "Überschneidet sich mit der Zoof-it-Rolle unten: Vollzeit bei aim2balance ab November 2025, während Zoof-it bis Februar 2026 auf Honorarbasis weiterlief."
+  },
+  "stack": {
+    "heading": "Stack",
+    "subheading": "Was in einem Produktionscode tatsächlich zum Einsatz kam. Nichts nur gelesen."
   }
 }

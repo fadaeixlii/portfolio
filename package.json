@@ -11,6 +11,7 @@
     "test": "playwright test",
     "test:unit": "vitest run",
     "test:tokens": "node scripts/check-tokens.mjs",
+    "test:messages": "node scripts/check-messages.mjs",
     "typegen": "next typegen",
     "calendar:auth": "node scripts/calendar-auth.mjs"
   },
