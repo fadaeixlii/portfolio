@@ -39,7 +39,7 @@ export function SiteFooter() {
           </Link>
           <Link
             href="/schedule"
-            className="text-[length:12px] font-semibold uppercase tracking-wide text-signal hover:underline"
+            className="text-[length:12px] font-semibold uppercase tracking-wide text-signal-text hover:underline"
           >
             {t("cta")}
           </Link>

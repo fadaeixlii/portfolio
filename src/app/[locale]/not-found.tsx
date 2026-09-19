@@ -13,7 +13,7 @@ export default function NotFound() {
         <p className="mt-4 text-dim">{t("body")}</p>
         <Link
           href="/"
-          className="mt-8 inline-block text-signal underline-offset-4 hover:underline"
+          className="mt-8 inline-block text-signal-text underline-offset-4 hover:underline"
         >
           {t("home")}
         </Link>

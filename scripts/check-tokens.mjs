@@ -14,6 +14,10 @@ const ALLOWED = [
 ];
 const EXTS = [".css", ".ts", ".tsx"];
 const RAW_COLOUR = /#[0-9a-fA-F]{3,8}\b|\brgba?\(|\bhsla?\(|\boklch\(/;
+// --signal is a fill role: on the light theme it is 3.75:1 on --paper, which
+// fails AA for text. --signal-text is the deeper step that exists for text.
+// Caught in review after `text-signal` shipped on 13 routes at 12px.
+const SIGNAL_AS_TEXT = /(?<![\w-])text-signal(?!-(?:text|ink))/;
 const PHYSICAL =
   /\b(?:ml|mr|pl|pr)-(?:\d|px|auto|\[)|\b(?:left|right)-(?:\d|px|\[)|\btext-(?:left|right)\b|\b(?:margin|padding)-(?:left|right)\s*:|(?<![\w-])(?:left|right)\s*:/;
 
@@ -35,6 +39,9 @@ for (const file of walk(join(ROOT, "src"))) {
     if (line.trimStart().startsWith("//") || line.trimStart().startsWith("*")) return;
     if (!ALLOWED.includes(rel) && RAW_COLOUR.test(line)) {
       violations.push(`${rel}:${i + 1}  raw colour — use a token`);
+    }
+    if (SIGNAL_AS_TEXT.test(line)) {
+      violations.push(`${rel}:${i + 1}  text-signal — --signal is a fill role, use text-signal-text`);
     }
     if (PHYSICAL.test(line)) {
       violations.push(`${rel}:${i + 1}  physical direction — use ms-/me-/ps-/pe-/start-/end-`);

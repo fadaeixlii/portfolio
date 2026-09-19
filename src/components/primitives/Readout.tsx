@@ -80,7 +80,7 @@ export function Readout({
 
   return (
     <div ref={ref} className={cn("flex flex-col gap-1", className)}>
-      <span className="font-mono text-[length:var(--text-3xl)] tabular-nums text-signal">
+      <span className="font-mono text-[length:var(--text-3xl)] tabular-nums text-signal-text">
         {formatReadout(rounded, format, locale)}
       </span>
       {label ? (

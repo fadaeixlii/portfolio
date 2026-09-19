@@ -30,7 +30,7 @@ export function Timeline({ entries }: { entries: ExperienceEntry[] }) {
                 className="absolute top-1.5 start-0 -ms-[5px] size-[10px] rounded-full bg-signal"
               />
               <div className="flex flex-wrap items-baseline gap-[var(--space-3)]">
-                <span className="font-mono text-[length:var(--text-sm)] tabular-nums text-signal">
+                <span className="font-mono text-[length:var(--text-sm)] tabular-nums text-signal-text">
                   {entry.period}
                 </span>
                 <span dir="auto" className="text-[length:var(--text-sm)] text-dim">

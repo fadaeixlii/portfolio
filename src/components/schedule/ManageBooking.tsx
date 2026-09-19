@@ -82,7 +82,7 @@ export function ManageBooking({ token }: { token: string }) {
       <Surface variant="flat" className="flex flex-col gap-[var(--space-4)] p-[var(--space-8)]">
         <p className="text-[length:var(--text-lg)]">{t("notFoundHeading")}</p>
         <p className="text-dim">{t("notFoundBody")}</p>
-        <Link href="/schedule" className="text-signal hover:underline">
+        <Link href="/schedule" className="text-signal-text hover:underline">
           {t("backHome")}
         </Link>
       </Surface>
@@ -108,7 +108,7 @@ export function ManageBooking({ token }: { token: string }) {
           href={booking.meet_url}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-signal hover:underline"
+          className="text-signal-text hover:underline"
         >
           {booking.meet_url}
         </a>

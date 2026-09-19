@@ -151,7 +151,7 @@ export function MonthGrid({
                       "transition-[color,border-color] duration-[var(--dur-fast)] ease-[var(--ease-out)]",
                       disabled
                         ? "cursor-not-allowed text-dim opacity-40"
-                        : "cursor-pointer text-text hover:border-signal hover:text-signal",
+                        : "cursor-pointer text-text hover:border-signal hover:text-signal-text",
                       selected && "border-signal bg-signal text-signal-ink",
                     )}
                   >

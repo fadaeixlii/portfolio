@@ -91,7 +91,7 @@ export function CaseStudyLayout({
           {project.href ? (
             <a
               href={project.href}
-              className="text-signal hover:underline"
+              className="text-signal-text hover:underline"
               target="_blank"
               rel="noreferrer"
             >
@@ -131,7 +131,7 @@ export function CaseStudyLayout({
         <ol className="mt-[var(--space-4)] flex flex-col gap-[var(--space-4)]">
           {caseStudy.approach.map((step, index) => (
             <li key={step} className="flex gap-[var(--space-4)]">
-              <span className="font-mono text-[length:var(--text-sm)] text-signal">
+              <span className="font-mono text-[length:var(--text-sm)] text-signal-text">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <span dir="auto" className="max-w-[var(--measure)] text-text">{step}</span>
@@ -167,7 +167,7 @@ export function CaseStudyLayout({
               to count up to. */}
           {caseStudy.figures.map((figure) => (
             <div key={figure.label} className="flex flex-col gap-1">
-              <span className="font-mono text-[length:var(--text-3xl)] tabular-nums text-signal">
+              <span className="font-mono text-[length:var(--text-3xl)] tabular-nums text-signal-text">
                 {figure.value}
               </span>
               <span dir="auto" className="text-[length:var(--text-sm)] text-dim">
@@ -182,7 +182,7 @@ export function CaseStudyLayout({
         <Hairline className="mb-[var(--space-8)]" />
         <Link
           href={`/work/${next.slug}`}
-          className="font-display text-[length:var(--text-xl)] text-text transition-[color] duration-[var(--dur-fast)] hover:text-signal"
+          className="font-display text-[length:var(--text-xl)] text-text transition-[color] duration-[var(--dur-fast)] hover:text-signal-text"
         >
           {t("next")} — {next.name}
         </Link>

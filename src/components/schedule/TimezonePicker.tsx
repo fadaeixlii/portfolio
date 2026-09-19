@@ -26,7 +26,7 @@ export function TimezonePicker({
         <button
           type="button"
           onClick={() => setEditing(true)}
-          className="text-signal underline-offset-4 hover:underline"
+          className="text-signal-text underline-offset-4 hover:underline"
         >
           {t("change")}
         </button>

@@ -343,7 +343,7 @@ export function Booker() {
       <p className="text-[length:var(--text-sm)] text-error">{t("errors.unavailableHeading")}</p>
       <a
         href={`mailto:${SCHEDULE_CONFIG.contactEmail}`}
-        className="text-[length:var(--text-sm)] text-signal hover:underline"
+        className="text-[length:var(--text-sm)] text-signal-text hover:underline"
       >
         {t("errors.unavailableAction")}
       </a>
@@ -421,7 +421,7 @@ export function Booker() {
         <button
           type="button"
           onClick={() => setStep("month")}
-          className="self-start text-[length:var(--text-sm)] text-dim hover:text-signal"
+          className="self-start text-[length:var(--text-sm)] text-dim hover:text-signal-text"
         >
           {t("day.back")}
         </button>
@@ -466,7 +466,7 @@ export function Booker() {
         <button
           type="button"
           onClick={() => setStep("day")}
-          className="self-start text-[length:var(--text-sm)] text-dim hover:text-signal"
+          className="self-start text-[length:var(--text-sm)] text-dim hover:text-signal-text"
         >
           {t("slot.back")}
         </button>
@@ -485,7 +485,7 @@ export function Booker() {
         <button
           type="button"
           onClick={() => setStep("slot")}
-          className="self-start text-[length:var(--text-sm)] text-dim hover:text-signal"
+          className="self-start text-[length:var(--text-sm)] text-dim hover:text-signal-text"
         >
           {t("form.back")}
         </button>

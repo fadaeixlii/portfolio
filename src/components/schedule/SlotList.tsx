@@ -64,7 +64,7 @@ export function SlotList({
                 "border border-hairline px-[var(--space-3)] py-[var(--space-2)] text-center",
                 "transition-[color,border-color] duration-[var(--dur-fast)] ease-[var(--ease-out)]",
                 "hover:border-signal",
-                "peer-checked:border-signal peer-checked:text-signal",
+                "peer-checked:border-signal peer-checked:text-signal-text",
                 "peer-focus-visible:outline peer-focus-visible:outline-2",
                 "peer-focus-visible:outline-[var(--focus)] peer-focus-visible:outline-offset-2",
               )}

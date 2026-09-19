@@ -11,8 +11,8 @@
 
 .btn.is-hover.btn-outline,
 .btn-outline:hover {
-  border-color: var(--signal);
-  color: var(--signal);
+  border-color: var(--signal-text);
+  color: var(--signal-text);
 }
 
 .btn.is-hover.btn-ghost,

@@ -54,13 +54,13 @@ export default function ContactPage({
         <p className="text-[length:var(--text-sm)] text-dim">{t("direct.heading")}</p>
         <a
           href={`mailto:${SCHEDULE_CONFIG.contactEmail}`}
-          className="text-[length:var(--text-base)] text-signal hover:underline"
+          className="text-[length:var(--text-base)] text-signal-text hover:underline"
         >
           {t("direct.email")} — {SCHEDULE_CONFIG.contactEmail}
         </a>
         <a
           href="https://github.com/fadaeixlii"
-          className="text-[length:var(--text-base)] text-signal hover:underline"
+          className="text-[length:var(--text-base)] text-signal-text hover:underline"
         >
           {t("direct.github")} — github.com/fadaeixlii
         </a>

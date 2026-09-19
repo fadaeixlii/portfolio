@@ -40,7 +40,7 @@ export default function HomePage({
           </h2>
           <Link
             href="/work"
-            className="text-[length:var(--text-sm)] text-signal hover:underline"
+            className="text-[length:var(--text-sm)] text-signal-text hover:underline"
           >
             {t("work.viewAll")}
           </Link>
@@ -61,7 +61,7 @@ export default function HomePage({
           </h2>
           <Link
             href="/experience"
-            className="text-[length:var(--text-sm)] text-signal hover:underline"
+            className="text-[length:var(--text-sm)] text-signal-text hover:underline"
           >
             {t("experience.viewAll")}
           </Link>

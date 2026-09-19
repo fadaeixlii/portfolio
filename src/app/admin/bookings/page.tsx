@@ -46,7 +46,7 @@ export default async function AdminBookingsPage() {
     <div className="flex flex-col gap-[var(--space-8)]">
       <div className="flex items-center justify-between">
         <h1 className="font-display text-[length:var(--text-2xl)]">Bookings</h1>
-        <Link href="/admin" className="text-[length:var(--text-sm)] text-signal hover:underline">
+        <Link href="/admin" className="text-[length:var(--text-sm)] text-signal-text hover:underline">
           ← Messages
         </Link>
       </div>
@@ -70,7 +70,7 @@ export default async function AdminBookingsPage() {
                 </div>
                 {b.topic ? <p className="text-dim">{b.topic}</p> : null}
                 {b.meet_url ? (
-                  <a href={b.meet_url} className="text-[length:var(--text-sm)] text-signal hover:underline">
+                  <a href={b.meet_url} className="text-[length:var(--text-sm)] text-signal-text hover:underline">
                     {b.meet_url}
                   </a>
                 ) : null}

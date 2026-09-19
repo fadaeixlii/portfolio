@@ -80,7 +80,7 @@ export function BookingConfirmed({
         </Button>
         <Link
           href={`/schedule/manage/${manageToken}`}
-          className="inline-flex h-11 items-center px-6 text-[length:var(--text-base)] text-dim hover:text-signal"
+          className="inline-flex h-11 items-center px-6 text-[length:var(--text-base)] text-dim hover:text-signal-text"
         >
           {t("manage")}
         </Link>

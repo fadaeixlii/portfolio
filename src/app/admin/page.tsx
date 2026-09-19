@@ -34,7 +34,7 @@ export default async function AdminMessagesPage() {
     <div className="flex flex-col gap-[var(--space-8)]">
       <div className="flex items-center justify-between">
         <h1 className="font-display text-[length:var(--text-2xl)]">Messages</h1>
-        <Link href="/admin/bookings" className="text-[length:var(--text-sm)] text-signal hover:underline">
+        <Link href="/admin/bookings" className="text-[length:var(--text-sm)] text-signal-text hover:underline">
           Bookings
         </Link>
       </div>

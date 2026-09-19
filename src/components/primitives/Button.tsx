@@ -12,7 +12,7 @@ const VARIANT: Record<Variant, string> = {
   signal:
     "bg-signal text-signal-ink hover:brightness-110 active:brightness-95",
   outline:
-    "border border-hairline text-text hover:border-signal hover:text-signal",
+    "border border-hairline text-text hover:border-signal hover:text-signal-text",
   ghost: "text-dim hover:text-text",
 };
 
