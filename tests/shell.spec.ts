@@ -48,3 +48,26 @@ test("paper colour actually changes between themes", async ({ page }) => {
   );
   expect(dark).not.toBe(light);
 });
+
+test.describe("nav pill stays on screen", () => {
+  // The `fixed` wrapper clips rather than scrolls, so an overflowing pill
+  // goes off-screen silently — no scrollbar, no error, just an unreachable
+  // "Home" link and theme toggle. Assert the real bounding box instead.
+  for (const width of [320, 390, 768]) {
+    test(`fits within a ${width}px viewport`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 800 });
+      await page.goto("/en");
+      const nav = page.getByRole("navigation", { name: "Home" });
+      const box = await nav.boundingBox();
+      expect(box).not.toBeNull();
+      expect(box!.x).toBeGreaterThanOrEqual(0);
+      expect(box!.x + box!.width).toBeLessThanOrEqual(width);
+
+      // The two ends of the pill must actually be reachable.
+      await expect(page.getByRole("link", { name: "Home" })).toBeInViewport();
+      await expect(
+        page.getByRole("button", { name: /switch theme/i }),
+      ).toBeInViewport();
+    });
+  }
+});

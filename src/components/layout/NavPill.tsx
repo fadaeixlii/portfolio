@@ -28,7 +28,7 @@ export function NavPill() {
         as="nav"
         variant="glass-refracted"
         aria-label={t("home")}
-        className="pointer-events-auto flex items-center gap-1 rounded-[var(--radius-full)] px-2 py-2"
+        className="pointer-events-auto flex max-w-[calc(100vw-2rem)] flex-wrap items-center justify-center gap-x-1 gap-y-2 rounded-[var(--radius-full)] px-2 py-2"
       >
         {ROUTES.map(({ href, key }) => {
           const active = pathname === href;
