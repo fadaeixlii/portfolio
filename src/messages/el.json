@@ -15,6 +15,10 @@
     "toggleTheme": "Εναλλαγή θέματος",
     "selectLanguage": "Γλώσσα"
   },
+  "sidebar": {
+    "available": "Διαθέσιμος για έργα",
+    "email": "Email"
+  },
   "notFound": {
     "heading": "Η σελίδα δεν βρέθηκε",
     "body": "Η σελίδα που αναζητάτε δεν υπάρχει.",
@@ -29,11 +33,12 @@
     "hero": {
       "name": "Mohammad M. Khani",
       "role": "Μηχανικός AI & Full-Stack Developer",
-      "location": "Athens, Greece",
+      "location": "Αθήνα, Ελλάδα",
       "headline": {
         "line1": "Μηχανικός AI.",
         "line2": "Από το μηδέν στο ένα."
       },
+      "bio": "Φτιάχνω τα κομμάτια που δεν επιτρέπεται να σπάσουν: χρεώσεις, model gateways, on-chain εκκαθάριση.",
       "cta": {
         "heading": "Κλείστε κλήση",
         "sub": "30 λεπτά, χωρίς παρουσίαση πώλησης."
@@ -45,12 +50,13 @@
     },
     "stats": {
       "since": "από",
-      "products": "προϊόντα",
+      "products": "παραδομένα προϊόντα",
       "providers": "πάροχοι ΕΕ"
     },
     "sections": {
       "work": {
-        "heading": "Επιλεγμένα έργα",
+        "line1": "Πρόσφατα",
+        "line2": "Έργα",
         "viewAll": "Όλα τα έργα"
       },
       "experience": {
@@ -58,7 +64,8 @@
         "viewAll": "Πλήρες ιστορικό"
       },
       "stack": {
-        "heading": "Τεχνολογίες"
+        "heading": "Τεχνολογίες",
+        "viewAll": "Πλήρης λίστα"
       },
       "cta": {
         "heading": "Έχετε ένα project στο μυαλό σας;",

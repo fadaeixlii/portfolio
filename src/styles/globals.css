@@ -71,3 +71,34 @@
     }
   }
 }
+
+/* The signature move: a solid headline line over an outlined one.
+ *
+ * `color` is deliberately the readable value, not the ghost fill. Two things
+ * depend on that. A browser without -webkit-text-stroke (non-standard, but
+ * Baseline "widely available" since April 2017) drops both webkit
+ * declarations and renders a solid --ink-dim line instead of an unreadable
+ * 17%-alpha one. And axe-core reads `color`, not the painted fill, so the
+ * contrast it measures is the contrast the stroke actually draws.
+ *
+ * Unlayered on purpose: it must beat the text-* utility on the same span.
+ */
+.headline-outline {
+  color: var(--ink-dim);
+}
+
+@supports (-webkit-text-stroke: 1px currentColor) {
+  .headline-outline {
+    -webkit-text-fill-color: var(--ghost);
+    -webkit-text-stroke: 1px var(--ink-dim);
+  }
+
+  /* Vazirmatn's counters are tighter than Archivo's, so the same 1px stroke
+   * reads as a flat dim line rather than an outlined one. Compared 1 / 1.5 /
+   * 2px on the Farsi hero at 1280px in both themes: 1px loses the edge, 2px
+   * is right in the dark theme but out-weighs line 1 in the light one.
+   * 1.5px is the value that reads as outlined in both. */
+  [dir="rtl"] .headline-outline {
+    -webkit-text-stroke-width: 1.5px;
+  }
+}

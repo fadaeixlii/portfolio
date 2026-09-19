@@ -15,6 +15,10 @@
     "toggleTheme": "Design wechseln",
     "selectLanguage": "Sprache"
   },
+  "sidebar": {
+    "available": "Verfügbar für Projekte",
+    "email": "E-Mail"
+  },
   "notFound": {
     "heading": "Seite nicht gefunden",
     "body": "Die gesuchte Seite existiert nicht.",
@@ -29,11 +33,12 @@
     "hero": {
       "name": "Mohammad M. Khani",
       "role": "KI-Ingenieur & Full-Stack-Entwickler",
-      "location": "Athens, Greece",
+      "location": "Athen, Griechenland",
       "headline": {
         "line1": "AI Engineer.",
         "line2": "Null auf eins."
       },
+      "bio": "Ich baue die Teile, die funktionieren müssen: Billing-Pipelines, Model-Gateways, On-Chain-Settlement.",
       "cta": {
         "heading": "Termin buchen",
         "sub": "30 Minuten, kein Pitch-Deck."
@@ -45,12 +50,13 @@
     },
     "stats": {
       "since": "seit",
-      "products": "Produkte",
+      "products": "ausgelieferte Produkte",
       "providers": "EU-Anbieter"
     },
     "sections": {
       "work": {
-        "heading": "Ausgewählte Arbeiten",
+        "line1": "Aktuelle",
+        "line2": "Projekte",
         "viewAll": "Alle Arbeiten ansehen"
       },
       "experience": {
@@ -58,7 +64,8 @@
         "viewAll": "Vollständiger Werdegang"
       },
       "stack": {
-        "heading": "Stack"
+        "heading": "Stack",
+        "viewAll": "Vollständige Liste"
       },
       "cta": {
         "heading": "Haben Sie ein Projekt im Kopf?",

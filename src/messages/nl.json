@@ -15,6 +15,10 @@
     "toggleTheme": "Thema wisselen",
     "selectLanguage": "Taal"
   },
+  "sidebar": {
+    "available": "Beschikbaar voor projecten",
+    "email": "E-mail"
+  },
   "notFound": {
     "heading": "Pagina niet gevonden",
     "body": "De pagina die je zoekt bestaat niet.",
@@ -29,11 +33,12 @@
     "hero": {
       "name": "Mohammad M. Khani",
       "role": "AI Engineer & Full-Stack Developer",
-      "location": "Athens, Greece",
+      "location": "Athene, Griekenland",
       "headline": {
         "line1": "AI engineer.",
         "line2": "Nul naar één."
       },
+      "bio": "Ik bouw de onderdelen die het moeten doen: billing pipelines, model gateways, on-chain afwikkeling.",
       "cta": {
         "heading": "Gesprek plannen",
         "sub": "30 minuten, geen pitch deck."
@@ -45,12 +50,13 @@
     },
     "stats": {
       "since": "sinds",
-      "products": "producten",
+      "products": "opgeleverde producten",
       "providers": "EU-aanbieders"
     },
     "sections": {
       "work": {
-        "heading": "Uitgelicht werk",
+        "line1": "Recente",
+        "line2": "Projecten",
         "viewAll": "Bekijk al het werk"
       },
       "experience": {
@@ -58,7 +64,8 @@
         "viewAll": "Volledige tijdlijn"
       },
       "stack": {
-        "heading": "Stack"
+        "heading": "Stack",
+        "viewAll": "Volledige lijst"
       },
       "cta": {
         "heading": "Een project in gedachten?",

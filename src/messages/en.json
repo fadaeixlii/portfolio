@@ -15,6 +15,10 @@
     "toggleTheme": "Switch theme",
     "selectLanguage": "Language"
   },
+  "sidebar": {
+    "available": "Available for projects",
+    "email": "Email"
+  },
   "notFound": {
     "heading": "Page not found",
     "body": "The page you're looking for doesn't exist.",
@@ -34,6 +38,7 @@
         "line1": "AI engineer.",
         "line2": "Zero to one."
       },
+      "bio": "I build the parts that have to work: billing pipelines, model gateways, on-chain settlement.",
       "cta": {
         "heading": "Book a call",
         "sub": "30 minutes, no pitch deck."
@@ -45,12 +50,13 @@
     },
     "stats": {
       "since": "since",
-      "products": "products",
+      "products": "shipped products",
       "providers": "EU providers"
     },
     "sections": {
       "work": {
-        "heading": "Selected work",
+        "line1": "Recent",
+        "line2": "Projects",
         "viewAll": "View all work"
       },
       "experience": {
@@ -58,7 +64,8 @@
         "viewAll": "Full timeline"
       },
       "stack": {
-        "heading": "Stack"
+        "heading": "Stack",
+        "viewAll": "Full list"
       },
       "cta": {
         "heading": "Have a project in mind?",
