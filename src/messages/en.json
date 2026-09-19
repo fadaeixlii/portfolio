@@ -1,0 +1,16 @@
+{
+  "_status": "authored",
+  "nav": {
+    "home": "Home",
+    "work": "Work",
+    "experience": "Experience",
+    "stack": "Stack",
+    "schedule": "Book a call",
+    "contact": "Contact"
+  },
+  "common": {
+    "skipToContent": "Skip to content",
+    "toggleTheme": "Switch theme",
+    "selectLanguage": "Language"
+  }
+}

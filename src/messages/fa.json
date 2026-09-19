@@ -1,0 +1,16 @@
+{
+  "_status": "machine",
+  "nav": {
+    "home": "خانه",
+    "work": "نمونه‌کارها",
+    "experience": "سوابق",
+    "stack": "ابزارها",
+    "schedule": "رزرو جلسه",
+    "contact": "تماس"
+  },
+  "common": {
+    "skipToContent": "پرش به محتوا",
+    "toggleTheme": "تغییر پوسته",
+    "selectLanguage": "زبان"
+  }
+}

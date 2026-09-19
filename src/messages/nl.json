@@ -1,0 +1,16 @@
+{
+  "_status": "machine",
+  "nav": {
+    "home": "Home",
+    "work": "Werk",
+    "experience": "Ervaring",
+    "stack": "Stack",
+    "schedule": "Gesprek plannen",
+    "contact": "Contact"
+  },
+  "common": {
+    "skipToContent": "Naar inhoud",
+    "toggleTheme": "Thema wisselen",
+    "selectLanguage": "Taal"
+  }
+}
