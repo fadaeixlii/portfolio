@@ -358,11 +358,11 @@ git commit -m "chore: slop test pass"
 - Modify: `README.md`
 
 **Interfaces:**
-- Produces: `fadaeixlii.dev` served from the VPS through Cloudflare, with automatic deploys on push to `main`
+- Produces: `mohammadmkh.dev` served from the VPS through Cloudflare, with automatic deploys on push to `main`
 
 - [ ] **Step 1: Register the domain and point DNS at Cloudflare**
 
-Buy `fadaeixlii.dev`. Porkbun is $8.75 the first year and $12.87 to renew; Cloudflare
+Buy `mohammadmkh.dev`. Porkbun is $8.75 the first year and $12.87 to renew; Cloudflare
 Registrar sells at cost with no markup. Whichever registrar takes the payment, set the
 domain's nameservers to the pair Cloudflare gives you — that is what makes the rest of
 this task work, and it costs nothing.
@@ -380,7 +380,7 @@ origin unencrypted, which defeats the point.
 - [ ] **Step 2: Issue a Cloudflare Origin Certificate**
 
 **SSL/TLS → Origin Server → Create Certificate.** Fifteen-year validity, covers
-`fadaeixlii.dev` and `*.fadaeixlii.dev`. Save the certificate and key onto the VPS at
+`mohammadmkh.dev` and `*.mohammadmkh.dev`. Save the certificate and key onto the VPS at
 `/etc/ssl/cloudflare/`, mode `600`, owned by root. This certificate is only trusted by
 Cloudflare, which is exactly what Full (strict) wants, and it never needs renewing on
 the cadence Let's Encrypt would.
@@ -451,7 +451,7 @@ volumes:
 `deploy/Caddyfile`:
 
 ```
-fadaeixlii.dev, www.fadaeixlii.dev {
+mohammadmkh.dev, www.mohammadmkh.dev {
 	tls /etc/ssl/cloudflare/origin.pem /etc/ssl/cloudflare/origin.key
 	encode zstd gzip
 	reverse_proxy portfolio:3000
@@ -525,7 +525,7 @@ Expected: `clean`. **If this prints a match, stop and do not deploy.**
 
 - [ ] **Step 8: Set up email on the domain**
 
-Cloudflare **Email Routing**: verify the domain, add `hi@fadaeixlii.dev` forwarding to
+Cloudflare **Email Routing**: verify the domain, add `hi@mohammadmkh.dev` forwarding to
 Mohammad's Gmail. Cloudflare writes the MX and SPF records itself. Free, five minutes,
 and it gives the site a real address that is not a personal Gmail.
 
@@ -574,7 +574,7 @@ git push origin main
 
 ## Phase exit criteria
 
-- [ ] `fadaeixlii.dev` serves v2 over HTTPS through Cloudflare, `/` redirects to `/en`, `www` redirects to apex
+- [ ] `mohammadmkh.dev` serves v2 over HTTPS through Cloudflare, `/` redirects to `/en`, `www` redirects to apex
 - [ ] All four locales, both themes, every route render correctly in production
 - [ ] A real booking produces a calendar event with a Meet link and two emails; cancelling frees the slot
 - [ ] The contact form stores a message and notifies
@@ -584,5 +584,5 @@ git push origin main
 - [ ] The 58 slop gates all answer "no", with any exception written down and justified
 - [ ] `grep` of `.next/static` inside the built image finds no secret
 - [ ] Cloudflare SSL mode is Full (strict) and the origin certificate is installed
-- [ ] `hi@fadaeixlii.dev` forwards and arrives
+- [ ] `hi@mohammadmkh.dev` forwards and arrives
 - [ ] `v1-archive` tag still resolves and the README says so

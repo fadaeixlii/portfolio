@@ -1118,7 +1118,7 @@ git commit -m "test: shell routing, theme and axe gates"
     "theme_axes": "dark / grotesk-sans / warm-amber",
     "vibe": "instrument panel, measured, technical",
     "enrichment": "none",
-    "brief": "fadaeixlii.dev v2 — AI and full-stack engineer portfolio"
+    "brief": "mohammadmkh.dev v2 — AI and full-stack engineer portfolio"
   }
 ]
 ```
@@ -1128,7 +1128,7 @@ git commit -m "test: shell routing, theme and axe gates"
 The v1 constitution names a stack and a workflow that no longer exist. Overwrite the file with:
 
 ```markdown
-# fadaeixlii.dev — v2
+# mohammadmkh.dev — v2
 
 Personal portfolio of Mohammad MKH. Public, production, client-facing.
 Source of truth: `docs/superpowers/specs/2026-09-19-portfolio-v2-design.md`.
@@ -1148,7 +1148,7 @@ fifteen seconds and books a call. Every page feeds `/schedule`.
 - Google Calendar REST v3 through `fetch` — no `googleapis` package
 - Archivo (display) · Vazirmatn (body, Latin + Arabic) · JetBrains Mono (numerals only)
 - pnpm. Never npm, never yarn.
-- Host: own VPS, Docker + Caddy, Cloudflare proxy in front. Domain `fadaeixlii.dev`.
+- Host: own VPS, Docker + Caddy, Cloudflare proxy in front. Domain `mohammadmkh.dev`.
 
 ## Non-negotiable
 
@@ -1194,7 +1194,7 @@ all five commands above green.
 # Decisions
 
 - **2026-09-19 · Own VPS behind Cloudflare, not Vercel.** The box already runs `job` and `outreach`, so the marginal cost is zero and the deploy pattern exists. Cloudflare's free proxy supplies the edge cache, TLS and DDoS protection that a single-region origin cannot. The v1 Cloudflare Pages adapter was never actually installed — that doc was all TODOs.
-- **2026-09-19 · Domain `fadaeixlii.dev`.** Matches the GitHub handle. `.dev` is HSTS-preloaded, so HTTPS is not optional.
+- **2026-09-19 · Domain `mohammadmkh.dev`.** Matches the GitHub handle. `.dev` is HSTS-preloaded, so HTTPS is not optional.
 - **2026-09-19 · Booking window 09:00–18:00 `Asia/Tehran`, Mon–Fri.** 08:00–16:00 would have ended at 13:30 Berlin, making every European afternoon unbookable on a site whose entire job is getting a call booked.
 - **2026-09-19 · No `googleapis` package.** Three `fetch` calls replace a ~2 MB dependency.
 - **2026-09-19 · Content as typed TS, not MDX.** With the blog cut, MDX earned nothing and cost three dependencies.

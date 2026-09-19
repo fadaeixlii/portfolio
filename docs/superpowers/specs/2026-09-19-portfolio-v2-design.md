@@ -9,7 +9,7 @@
 
 ## 1. What this is
 
-A complete rebuild of the portfolio at **`fadaeixlii.dev`** from an empty `src/`. The current site stays
+A complete rebuild of the portfolio at **`mohammadmkh.dev`** from an empty `src/`. The current site stays
 reachable as an archive tag and branch; nothing is deleted from history.
 
 The brief pinned a visual reference — [`sawad.framer.website`](https://sawad.framer.website/) —
@@ -382,9 +382,59 @@ code for the refresh token.
 Reuse as **source material**, rewrite every line: `src/content/{projects,experience,skills,site}.json`
 and the eight case studies. Copy is authored in `en` only.
 
-### 4.2 Claim rules — binding
+### 4.2 Confirmed facts — these are the canon for this site
 
-Copy is governed by `docs/06-identity-canon.md` in the workspace root and by the proof-point
+Settled 2026-09-19 against `resume/current/Mohammad_MKH_{AI_Engineer,FullStack}_2026-09-17.md`.
+**Where this table and `docs/06-identity-canon.md` disagree, this table wins** — it is taken
+from the CVs, and the CV wins every conflict.
+
+| Field | Value |
+|---|---|
+| Display name | **Mohammad.M.KH** |
+| Full name (formal contexts only) | Mohammad Mohammad Khani |
+| Domain | `mohammadmkh.dev` |
+| LinkedIn | `/in/mohammadmkh` |
+| Email | `mmohammadkhani408@gmail.com` |
+| Location | Athens, Greece · EU Citizen (Greek passport) |
+| Degree | **B.S. Computer Science**, Quchan University of Technology — graduated |
+| Phone | **never published on the site** |
+
+**Dates — the CV's, used verbatim:**
+
+| Role | Company | Period |
+|---|---|---|
+| AI Engineer & Full-Stack Developer | aim2balance.ai, Germany | Nov 2025 – Sep 2026 |
+| Full-Stack Developer | Zoof-it, Netherlands | Mar 2025 – Feb 2026 |
+| Senior Frontend Developer | Exmodules | Sep 2024 – Feb 2025 |
+| Senior Frontend Developer | Intex exchange | Nov 2022 – Aug 2024 |
+| Frontend Developer | Panikar Academy | Mar 2020 – Sep 2022 |
+| Frontend Developer | 3gaam | Feb 2019 – Feb 2020 |
+
+Two consequences:
+
+- Career starts **Feb 2019**, so the hero readout reads `2019` and the honest span is seven
+  years and seven months. "Since 2019" is the phrasing; a rounded year count is not needed.
+- aim2balance and Zoof-it **overlap Nov 2025 – Feb 2026**. The experience timeline carries one
+  clause explaining it rather than leaving a reader to spot it: full-time at Zoof-it through
+  November 2025, then on contract while aim2balance started.
+
+**Featured work:** aim2balance, Roofcast, Jeofferte lead the home page. Every other project —
+Meshi, Intex exchange, Panikar, Exmodules, 3gaam and the Chrome extension — lives on `/work`
+with its own case study. Nothing is dropped, only ranked.
+
+**Imagery:** the v1 library at `public/images/projects/` carries 47 real screenshots across 11
+projects, including logged-in product views. Use those. Live re-captures of the public URLs
+are worthless for aim2balance (sign-in wall) and thin elsewhere. Each case study shows a
+screenshot **and** links the live URL.
+
+**Portrait:** `MyPhoto.JPG` in the workspace root — 6000×4000 studio headshot on a neutral
+warm ground. Crop to portrait, apply the amber duotone in the identity cell, and export AVIF
+plus WebP at 2×. Copy it into `public/images/portrait.jpg` rather than reading it from outside
+the repo.
+
+### 4.3 Claim rules — binding
+
+Copy is governed by the confirmed-facts table in §4.2, then by `docs/06-identity-canon.md` in the workspace root and by the proof-point
 list in the `outreach-writer` skill's `profile/mohammad.md`. That skill is invoked when the
 copy task runs; its verified/unverified split is the source of truth.
 
@@ -398,8 +448,8 @@ copy task runs; its verified/unverified split is the source of truth.
 | "Resolved five critical API failures" | projects.json | counts tickets |
 | "40% content-management reduction", "14 → 5 bugs per sprint", "10–15% build gain", "5% cost reduction" | various | no source |
 | `+44 7828 796868` | site.json | reads as UK residency; canon forbids publishing it |
-| "Greece & Iran", "Athens & Mashhad" | site.json | canon says Greece |
-| "Seven years" / "7+ years" | site.json, bio | the date plan puts the total under seven |
+| "Greece & Iran", "Athens & Mashhad" | site.json | the CV says Athens, Greece |
+| "Seven years" / "7+ years" | site.json, bio | superseded: the CV dates start Feb 2019, so the span is 7y7m. Use "since 2019" rather than a rounded count — it is precise and needs no arithmetic from the reader. |
 | "co-founder", "currently at aim2balance" | assorted | explicitly forbidden |
 
 **Numbers that may appear, each traceable:**

@@ -17,7 +17,11 @@
 - Everything in Phase 2's Global Constraints still binds.
 - **No claim may appear that is not traceable.** The removal list in spec §4.2 is mandatory. Banned outright: "10,000+ daily sessions", "sub-second latency", "100% deployment success", "resolved five critical API failures", "40% content-management reduction", "14 → 5 bugs per sprint", "10–15% build gain", "5% cost reduction", the `+44` phone number, "Greece & Iran", "Athens & Mashhad", "seven years", "7+ years", "co-founder", any present-tense claim about aim2balance.
 - **Permitted numbers, each with a source:** since 2019 · 9 shipped products · 3 EU model providers · 4.2s → 2.9s · 8 days → 5 days · 5,000+ users (Panikar).
-- Location is **Greece**. LinkedIn is `/in/mohammadmkh`. aim2balance is **past tense**.
+- Display name is **Mohammad.M.KH**. Location is **Athens, Greece**; EU citizen, Greek passport.
+- Degree is **B.S. Computer Science**, Quchan University of Technology — the CV's wording, not the canon's "Computer Engineering".
+- LinkedIn is `/in/mohammadmkh`. Domain is `mohammadmkh.dev`. aim2balance is **past tense**.
+- Dates are the CV's, verbatim: aim2balance Nov 2025–Sep 2026 · Zoof-it Mar 2025–Feb 2026 · Exmodules Sep 2024–Feb 2025 · Intex Nov 2022–Aug 2024 · Panikar Mar 2020–Sep 2022 · 3gaam Feb 2019–Feb 2020.
+- The aim2balance/Zoof-it overlap (Nov 2025–Feb 2026) gets one explaining clause on the timeline, never silence.
 - Copy rules: no ALL-CAPS eyebrows, no `A · B · C` middle-dot strings, no `→` appended to link text, no `01/02/03` numbering except the experience timeline, buttons name what happens.
 - Body copy never sits on a glass surface.
 

@@ -33,19 +33,7 @@
 **Interfaces:**
 - Produces: a `GOOGLE_REFRESH_TOKEN` in `.env.local`; documented manual steps
 
-- [ ] **Step 1: Write `docs/google-calendar-setup.md`**
-
-Document, as numbered steps Mohammad performs once:
-
-1. Create a Google Cloud project at `console.cloud.google.com`.
-2. Enable the **Google Calendar API**.
-3. OAuth consent screen: type **External**, publishing status **Testing**, add `mmohammadkhani408@gmail.com` as the sole test user. Testing mode is correct here — the app has exactly one user, and it avoids Google's verification review.
-4. Create credentials → **OAuth client ID** → **Web application**. Authorised redirect URI: `http://localhost:4321/callback`.
-5. Put the client id and secret in `.env.local`.
-6. Run `pnpm calendar:auth`, open the printed URL, grant access. The script prints `GOOGLE_REFRESH_TOKEN=…`; paste it into `.env.local`.
-7. Set `GOOGLE_CALENDAR_ID=primary` unless a dedicated calendar is preferred.
-
-Add a warning: a refresh token from a **Testing**-mode consent screen expires after seven days of non-use in some configurations. If bookings stop working, re-run step 6. The health check in Task 8 surfaces this rather than showing visitors an empty calendar.
+- [x] **Step 1: Write `docs/google-calendar-setup.md`** — **already written 2026-09-19**, see that file. Mohammad performs it himself before this phase starts; nothing here blocks on it except Step 6's verification.
 
 - [ ] **Step 2: Write `scripts/calendar-auth.mjs`**
 
