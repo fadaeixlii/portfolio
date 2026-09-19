@@ -24,6 +24,7 @@ export async function getAccessToken(): Promise<string> {
       grant_type: "refresh_token",
     }),
     cache: "no-store",
+    signal: AbortSignal.timeout(5000),
   });
 
   if (!res.ok) {
@@ -49,6 +50,7 @@ async function call<T>(path: string, init: RequestInit): Promise<T> {
       "Content-Type": "application/json",
     },
     cache: "no-store",
+    signal: AbortSignal.timeout(5000),
   });
   if (!res.ok) {
     throw new Error(`google ${path} failed: ${res.status} ${await res.text()}`);
@@ -148,7 +150,12 @@ export async function cancelEvent(eventId: string): Promise<void> {
   const token = await getAccessToken();
   const res = await fetch(
     `${API}/calendars/${encodeURIComponent(calendarId)}/events/${eventId}?sendUpdates=all`,
-    { method: "DELETE", headers: { Authorization: `Bearer ${token}` }, cache: "no-store" },
+    {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` },
+      cache: "no-store",
+      signal: AbortSignal.timeout(5000),
+    },
   );
   // 410 Gone means it is already deleted, which satisfies the intent.
   if (!res.ok && res.status !== 410) {

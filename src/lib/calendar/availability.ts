@@ -21,7 +21,13 @@ export async function getAvailability(from: Date, to: Date): Promise<Slot[]> {
       .select("start_at, end_at")
       .neq("status", "cancelled")
       .gte("start_at", from.toISOString())
-      .lte("start_at", to.toISOString()),
+      .lte("start_at", to.toISOString())
+      // postgrest-js retries a GET up to 3x with backoff on network errors,
+      // and only skips retry for an error literally named AbortError/ABORT_ERR
+      // — the TimeoutError our service-client fetch produces doesn't match,
+      // so without this a wedged host still takes ~4x the 5s fetch timeout,
+      // not 5s. This is what actually bounds the request.
+      .retry(false),
   ]);
 
   if (error) throw new Error(`bookings lookup failed: ${error.message}`);

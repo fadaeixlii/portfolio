@@ -27,7 +27,10 @@ async function loadBooking(token: string): Promise<Booking | null> {
     .from("bookings")
     .select("id, start_at, end_at, name, email, topic, notes, meet_url, status, google_event_id")
     .eq("id", id)
-    .single();
+    .single()
+    // See the comment in availability.ts: without this, a wedged Supabase
+    // host retries this GET ~3x past the 5s fetch timeout.
+    .retry(false);
   return (data as Booking | null) ?? null;
 }
 
