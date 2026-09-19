@@ -31,7 +31,7 @@
 
 **Files:**
 - Modify: none (git operations only)
-- Delete: `src/**`, `_docs/**`, `components.json`, `skills-lock.json`, `compass_artifact_*.md`, `portfolio-claude-code-kickoff.md`, `CLAUDE-CODE-PROMPTS.md`
+- Delete: `src/**`, `_docs/**`, `components.json`, `skills-lock.json`, `compass_artifact_*.md`, `portfolio-claude-code-kickoff.md`, `CLAUDE-CODE-PROMPTS.md`, `.claude/agents/**`, `.claude/skills/**`, `.claude/commands/**`
 
 **Interfaces:**
 - Consumes: nothing
@@ -68,11 +68,16 @@ Expected: the first prints v1 source paths; the second prints the tag on the rem
 ```bash
 git switch -c feat/v2
 git rm -r --quiet src _docs components.json skills-lock.json CLAUDE-CODE-PROMPTS.md portfolio-claude-code-kickoff.md
+# The v1 agents and skills mandate the old stack — Cloudflare Pages, shadcn,
+# the bone/ochre palette, a three-prompt workflow. Left in place they would
+# actively steer the rebuild wrong.
+git rm -r --quiet .claude/agents .claude/skills .claude/commands
 git rm --quiet compass_artifact_wf-055f5ea8-d433-448f-93ca-67bc0aca0a08_text_markdown.md
 mkdir -p src/app src/components src/content src/lib src/messages src/styles
 ```
 
-`supabase/`, `public/`, `docs/`, `.claude/` and all root config files are **kept**.
+`supabase/`, `public/`, `docs/`, `scripts/`, `.claude/settings*.json` and all root config
+files are **kept**. Only the v1 agent, skill and command definitions under `.claude/` go.
 
 - [ ] **Step 5: Commit**
 

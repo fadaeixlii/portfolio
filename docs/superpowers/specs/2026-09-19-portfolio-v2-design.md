@@ -361,12 +361,14 @@ no magic numbers elsewhere.
 | Dependency | State |
 |---|---|
 | Google Calendar | **working** — refresh token exchanges, scope includes write, `freeBusy` returns real busy blocks, and the slot engine yields 18 slots on a clear day |
-| Supabase | **project is gone** — `gmxarjxpsuwnpxobvruv.supabase.co` does not resolve. A free-tier project that stays paused is eventually deleted. A **new project** must be created and both migrations re-applied; there is nothing to reuse. |
-| Resend | **key is dead** — the API returns 401. A new key is needed before booking confirmations or the contact form can send. |
-| `NEXT_PUBLIC_SITE_URL` | still `https://fadaeixlii.com`; becomes `https://mohammadmkh.dev` |
+| Supabase | **working** — `contact_messages` returns 200 with the service key; `bookings` is absent as expected. The project resolves and responds. |
+| Resend | **key valid**, no verified domain yet — sandbox mode can only email the account owner. Verify `mohammadmkh.dev` in Resend before launch or booking confirmations will silently fail to reach visitors. |
+| `NEXT_PUBLIC_SITE_URL` | set to `https://mohammadmkh.dev` |
 
-None of these block Phases 1 or 2. Supabase is first needed in Phase 4 (bookings table)
-and Resend in Phase 4 (confirmation email).
+Nothing blocks any phase. Two carry-forwards: verify the domain in Resend once it is
+bought, and note that Mohammad's workstation resolves `supabase.co` through a VPN adapter
+(`fdfe:dcba:9876::2` / `172.19.0.2`) that returns NXDOMAIN — local DNS must point at
+`1.1.1.1` or `8.8.8.8`, or Supabase calls fail on his machine while working everywhere else.
 
 ```
 NEXT_PUBLIC_SITE_URL
