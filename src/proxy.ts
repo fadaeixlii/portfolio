@@ -6,7 +6,10 @@ export const proxy = createMiddleware(routing);
 export default proxy;
 
 export const config = {
-  // Everything except API routes, Next internals, admin, and files with an
-  // extension. `admin` is excluded because it is deliberately unlocalised.
-  matcher: "/((?!api|_next|_vercel|admin|.*\\..*).*)",
+  // Everything except API routes, Next internals, admin, auth, and files
+  // with an extension. `admin` and `auth` are excluded because both are
+  // deliberately unlocalised — running them through this middleware would
+  // redirect /auth/login to /en/auth/login, which doesn't exist and breaks
+  // the Supabase session cookie's expected path.
+  matcher: "/((?!api|_next|_vercel|admin|auth|.*\\..*).*)",
 };
