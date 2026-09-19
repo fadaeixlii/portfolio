@@ -76,6 +76,7 @@ Expected: FAIL — `Cannot find module '@/lib/motion'`.
 ```ts
 "use client";
 
+import { useSyncExternalStore } from "react";
 import { useReducedMotion } from "motion/react";
 
 /** Cubic-bezier tuples matching the --ease-* tokens in tokens.css. */
@@ -110,9 +111,25 @@ export const MOTION = {
 /**
  * True when motion is welcome. Everything spatial must check this and fall back
  * to an instant or opacity-only state.
+ *
+ * The mount gate is load-bearing, not ceremony. `useReducedMotion()` returns
+ * `null` during SSR, so a naive `!useReducedMotion()` yields `true` on the
+ * server and `false` on the first client render of a device that actually has
+ * reduced motion enabled — a hydration mismatch on every animated component,
+ * hitting precisely the people the feature protects. Reporting `true` until
+ * mounted costs nothing: `whileInView` animations have not fired at first
+ * paint, so no motion is ever shown to someone who asked for none.
  */
+const subscribe = () => () => {};
+
 export function useMotionSafe(): boolean {
-  return !useReducedMotion();
+  const mounted = useSyncExternalStore(
+    subscribe,
+    () => true,   // client, after hydration
+    () => false,  // server and first client render
+  );
+  const reduced = useReducedMotion();
+  return mounted ? !reduced : true;
 }
 ```
 
