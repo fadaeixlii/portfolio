@@ -1,4 +1,4 @@
-/* Hallmark · macrostructure: Bento Grid · tone: technical-austere · anchor hue: amber 78
+/* Hallmark · macrostructure: Bento Grid · tone: technical-austere · anchor hue: orange 52
  * The ONLY file permitted to author a raw colour value. Change the ramps in Layer 1
  * and every surface, both themes, follows.
  */
@@ -11,15 +11,18 @@
   --slate-400: oklch(64% 0.012 255);
   --slate-500: oklch(52% 0.014 255);
   --slate-700: oklch(32% 0.016 255);
-  --slate-800: oklch(25% 0.016 255);
-  --slate-850: oklch(20% 0.016 255);
-  --slate-900: oklch(15% 0.015 255);
-  --slate-950: oklch(11% 0.014 255);
+  --slate-800: oklch(23% 0.018 255);
+  --slate-850: oklch(18% 0.017 255);
+  --slate-900: oklch(13% 0.016 255);
+  --slate-950: oklch(9% 0.014 255);
 
-  --amber-400: oklch(86% 0.120 80);
-  --amber-500: oklch(80% 0.145 78);
-  --amber-600: oklch(70% 0.150 72);
-  --amber-700: oklch(62% 0.145 68);
+  /* The signal. Hue 50-58 is orange proper; amber (hue 75-85) read too gold.
+   * Kept warm against deliberately cool neutrals — that contrast is what makes
+   * the accent read as a signal rather than as decoration. */
+  --orange-400: oklch(76% 0.150 56);
+  --orange-500: oklch(68% 0.180 52);
+  --orange-600: oklch(60% 0.190 48);
+  --orange-700: oklch(52% 0.175 45);
 
   --red-500:   oklch(62% 0.190 25);
   --green-500: oklch(68% 0.150 150);
@@ -34,9 +37,9 @@
   --ink:            var(--slate-50);
   --ink-dim:        var(--slate-400);
   --hairline:       var(--slate-700);
-  --signal:         var(--amber-500);
+  --signal:         var(--orange-500);
   --signal-ink:     var(--slate-950);
-  --focus:          var(--amber-400);
+  --focus:          var(--orange-400);
   --error:          var(--red-500);
   --success:        var(--green-500);
 }
@@ -48,9 +51,9 @@
   --ink:            var(--slate-900);
   --ink-dim:        var(--slate-500);
   --hairline:       var(--slate-200);
-  --signal:         var(--amber-700);
+  --signal:         var(--orange-700);
   --signal-ink:     var(--slate-50);
-  --focus:          var(--amber-600);
+  --focus:          var(--orange-600);
 }
 
 :root {
