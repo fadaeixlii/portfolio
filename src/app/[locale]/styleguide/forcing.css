@@ -1,0 +1,39 @@
+/* Styleguide-only. Task 7 decision: real pseudo-classes drive Button in
+ * production, but a static page can't be hovered, focused and pressed at
+ * once — so each `.is-*` class here is paired with the selector it stands
+ * in for, mirroring the same declarations, never adding new ones. Nothing
+ * here is imported outside `src/app/[locale]/styleguide`. */
+
+.btn.is-hover.btn-signal,
+.btn-signal:hover {
+  filter: brightness(1.1);
+}
+
+.btn.is-hover.btn-outline,
+.btn-outline:hover {
+  border-color: var(--signal);
+  color: var(--signal);
+}
+
+.btn.is-hover.btn-ghost,
+.btn-ghost:hover {
+  color: var(--ink);
+}
+
+.btn.is-active,
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn.is-active.btn-signal,
+.btn-signal:active {
+  filter: brightness(0.95);
+}
+
+/* Mirrors the global :focus-visible rule in globals.css — instant, never
+ * transitioned. */
+.btn.is-focus,
+.btn:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
