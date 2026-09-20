@@ -68,3 +68,79 @@ export const SHOTS: Partial<Record<string, Shot>> = {
     alt: "3gaam study-resource platform interface",
   },
 };
+
+/**
+ * Store and product shots that show a project running, beside the single
+ * `SHOTS` hero. These are the publisher's own App Store and Play Store
+ * assets — already composed, already public, and safe to publish in a way a
+ * raw screenshot of a signed-in session is not.
+ *
+ * `aichat.png` is deliberately absent. It is a logged-in session: the
+ * account name, the weekly balance, the personal usage summary and a
+ * sidebar of real conversation titles including a client name and an
+ * invoice reference. That is the same class of leak that took
+ * `platform-desktop.png` out of `SHOTS`, and it is invisible to a text
+ * audit. See docs/decisions.md.
+ */
+export const GALLERIES: Partial<Record<string, Shot[]>> = {
+  aim2balance: [
+    {
+      src: "/images/projects/aim2balance/ios1.webp",
+      width: 230,
+      height: 498,
+      alt: "aim2balance iOS app showing the environmental impact of a conversation",
+    },
+    {
+      src: "/images/projects/aim2balance/ios2.webp",
+      width: 230,
+      height: 498,
+      alt: "aim2balance iOS app chat screen",
+    },
+    {
+      src: "/images/projects/aim2balance/android1.webp",
+      width: 810,
+      height: 1440,
+      alt: "aim2balance Android app store listing screen",
+    },
+    {
+      src: "/images/projects/aim2balance/android2.webp",
+      width: 784,
+      height: 1440,
+      alt: "aim2balance Android app showing restoration contributions",
+    },
+  ],
+  "ai-cost-extension": [
+    {
+      src: "/images/projects/aim2balance/aim2balance_plugin.png",
+      width: 378,
+      height: 603,
+      alt: "Browser extension panel breaking token cost down by AI platform",
+    },
+  ],
+  meshi: [
+    {
+      src: "/images/projects/meshi/IOS.webp",
+      width: 230,
+      height: 498,
+      alt: "Meshi iOS app restaurant list",
+    },
+    {
+      src: "/images/projects/meshi/IOS2.webp",
+      width: 230,
+      height: 498,
+      alt: "Meshi iOS app order screen",
+    },
+    {
+      src: "/images/projects/meshi/android1.webp",
+      width: 720,
+      height: 1280,
+      alt: "Meshi Android app location prompt",
+    },
+    {
+      src: "/images/projects/meshi/android2.webp",
+      width: 720,
+      height: 1280,
+      alt: "Meshi Android app restaurant browsing screen",
+    },
+  ],
+};

@@ -10,6 +10,15 @@ export const projectSchema = z.object({
   role: z.string(),
   stack: z.array(z.string()).min(1).max(8),
   href: z.string().url().optional(),
+  /**
+   * Extra places the thing actually ships — app stores, a company page.
+   * Separate from `href` so the primary link stays unambiguous and a project
+   * with no live site can still carry its store listings.
+   */
+  links: z
+    .array(z.object({ label: z.string(), href: z.string().url() }))
+    .max(4)
+    .default([]),
   featured: z.boolean().default(false),
 });
 

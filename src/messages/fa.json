@@ -16,7 +16,7 @@
     "selectLanguage": "زبان"
   },
   "sidebar": {
-    "available": "آمادهٔ پروژهٔ جدید",
+    "available": "آماده کار، استخدام و پروژه",
     "email": "ایمیل"
   },
   "notFound": {
@@ -88,7 +88,8 @@
       "outcome": "نتیجه",
       "liveLink": "مشاهده زنده",
       "next": "پروژه بعدی",
-      "back": "بازگشت به نمونه‌کارها"
+      "back": "بازگشت به نمونه‌کارها",
+      "gallery": "نماها"
     }
   },
   "experience": {

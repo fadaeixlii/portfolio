@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { SHOTS } from "@/content/shots";
+import { StackChip } from "@/components/stack/StackChip";
 import { Link } from "@/lib/i18n/navigation";
 import type { Project } from "@/content/schema";
 
@@ -49,14 +50,9 @@ export function ProjectCard({ project }: { project: Project }) {
           {project.summary}
         </p>
 
-        <div
-          dir="auto"
-          className="mt-auto flex flex-wrap gap-[var(--space-2)] pt-[var(--space-3)] text-[length:var(--text-xs)] uppercase tracking-wide text-dim"
-        >
+        <div className="mt-auto flex flex-wrap gap-[var(--space-2)] pt-[var(--space-3)]">
           {project.stack.slice(0, 4).map((item) => (
-            <span key={item} className="border-2 border-hairline px-2 py-0.5">
-              {item}
-            </span>
+            <StackChip key={item} name={item} size="sm" />
           ))}
         </div>
       </div>

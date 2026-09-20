@@ -1,29 +1,38 @@
 import type { StackGroup } from "@/content/schema";
-import { Surface } from "@/components/primitives/Surface";
 import { Stagger, StaggerItem } from "@/components/primitives/Reveal";
+import { StackChip } from "./StackChip";
 
 /**
- * Group name plus a bare wrapped word list. No icons, no proficiency bars,
- * no percentage ratings — a bar claiming "React 92%" is an invented metric.
+ * One full-width row per group: label on the inline start, chips wrapping
+ * across the rest.
+ *
+ * This replaced a three-column card grid. At the shell's content width each
+ * column was ~260px, which is narrower than two chips, so every group became
+ * a near-vertical stack and the columns ended up wildly different heights —
+ * "Frontend" finished half a screen above "Backend" with dead space under
+ * it. Rows let the chips use the full measure and put the group labels on a
+ * single scannable edge.
+ *
+ * `h3`, not `h2`: the page supplies the `h2` these sit under.
  */
 export function StackGrid({ groups }: { groups: StackGroup[] }) {
   return (
-    <Stagger className="grid grid-cols-1 gap-[var(--space-4)] sm:grid-cols-2 md:grid-cols-3">
+    <Stagger className="border-t-2 border-hairline">
       {groups.map((group) => (
         <StaggerItem key={group.name}>
-          <Surface
-            variant="flat"
-            className="flex h-full flex-col gap-[var(--space-3)] p-[var(--space-6)]"
-          >
-            <h2 dir="auto" className="font-display text-[length:var(--text-lg)] text-text">
+          <div className="grid gap-[var(--space-3)] border-b-2 border-hairline py-[var(--space-6)] md:grid-cols-[160px_1fr] md:gap-[var(--space-6)]">
+            <h3
+              dir="auto"
+              className="font-display text-[length:var(--text-sm)] font-semibold uppercase tracking-wide text-dim md:pt-[2px]"
+            >
               {group.name}
-            </h2>
-            <div dir="auto" className="flex flex-wrap gap-[var(--space-3)] text-[length:var(--text-sm)] text-dim">
+            </h3>
+            <div className="flex flex-wrap gap-[var(--space-2)]">
               {group.items.map((item) => (
-                <span key={item}>{item}</span>
+                <StackChip key={item} name={item} />
               ))}
             </div>
-          </Surface>
+          </div>
         </StaggerItem>
       ))}
     </Stagger>

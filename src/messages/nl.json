@@ -16,7 +16,7 @@
     "selectLanguage": "Taal"
   },
   "sidebar": {
-    "available": "Beschikbaar voor projecten",
+    "available": "Beschikbaar voor werk, indiensttreding en projecten",
     "email": "E-mail"
   },
   "notFound": {
@@ -88,7 +88,8 @@
       "outcome": "Resultaat",
       "liveLink": "Bekijk live",
       "next": "Volgend project",
-      "back": "Terug naar werk"
+      "back": "Terug naar werk",
+      "gallery": "Schermen"
     }
   },
   "experience": {

@@ -32,15 +32,18 @@ export function SiteAside() {
             alt=""
             fill
             sizes="288px"
-            className="object-cover [filter:var(--shot)]"
+            className="object-cover [filter:var(--portrait)]"
             priority
           />
         </div>
 
-        <p className="flex items-center gap-[var(--space-2)] text-[length:var(--text-xs)] font-semibold uppercase tracking-wide text-dim">
+        {/* `items-start` plus the nudge, not `items-center`: the label wraps to
+            two lines in every locale, and centring floats the dot into the gap
+            between them instead of marking the first line. */}
+        <p className="flex items-start gap-[var(--space-2)] text-[length:var(--text-xs)] font-semibold uppercase tracking-wide text-dim">
           <span
             aria-hidden
-            className="size-2 shrink-0 rounded-[var(--radius-full)] bg-signal"
+            className="mt-[0.45em] size-2 shrink-0 rounded-[var(--radius-full)] bg-signal"
           />
           <span dir="auto">{s("available")}</span>
         </p>

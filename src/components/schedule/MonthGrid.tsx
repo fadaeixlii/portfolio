@@ -152,7 +152,7 @@ export function MonthGrid({
                       disabled
                         ? "cursor-not-allowed text-dim opacity-40"
                         : "cursor-pointer text-text hover:border-signal hover:text-signal-text",
-                      selected && "border-signal bg-signal text-signal-ink",
+                      selected && "border-signal-fill bg-signal-fill text-signal-ink",
                     )}
                   >
                     {digits.format(day)}

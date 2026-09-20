@@ -31,6 +31,12 @@
   --orange-500: oklch(68.01% 0.209 31.5); /* #ff563c — dark signal */
   --orange-700: oklch(61.12% 0.225 31.5); /* #ec3013 — light signal */
   --orange-800: oklch(48.06% 0.185 31.4); /* #ae1800 — light signal-text */
+  /* Filled-control steps. White on --orange-500 is 3.16:1 and on --orange-700
+     is 4.20:1 — both under the 4.5 AA floor for the 11-12px labels these
+     buttons carry. L=58% is the lightest step where white clears it:
+     measured 4.76:1 dark, 4.80:1 light, painted and sampled, not estimated. */
+  --orange-600: oklch(58% 0.209 31.5);    /* #da3016 — dark button fill */
+  --orange-650: oklch(58% 0.225 31.5);    /* #e02000 — light button fill */
 
   --red-500:   oklch(62% 0.190 25);
   --green-500: oklch(68% 0.150 150);
@@ -41,6 +47,7 @@
    * uppercase label. Nothing short of true black clears it (measured
    * ceiling 5.00:1), so text-on-signal-fill gets its own step. */
   --black: oklch(0% 0 0);
+  --white: oklch(100% 0 0);
 
   /* ---- Layer 2 · semantic aliases · dark is the default -------------
    * Deliberately NOT named --color-*: that namespace belongs to Tailwind's
@@ -54,8 +61,11 @@
   --hairline:       color-mix(in oklch, var(--ink) 24%, transparent);
   --ghost:          color-mix(in oklch, var(--ink) 17%, transparent);
   --signal:         var(--orange-500);
+  --signal-fill:    var(--orange-600);
   --signal-text:    var(--orange-500);
-  --signal-ink:     var(--paper);
+  /* Buttons read white in both themes — one label colour, not a colour that
+     flips with the theme. Paired with --signal-fill, never --signal. */
+  --signal-ink:     var(--white);
   --focus:          var(--signal);
   --error:          var(--red-500);
   --success:        var(--green-500);
@@ -70,8 +80,9 @@
   --hairline:       color-mix(in oklch, var(--ink) 40%, transparent);
   --ghost:          color-mix(in oklch, var(--ink) 18%, transparent);
   --signal:         var(--orange-700);
+  --signal-fill:    var(--orange-650);
   --signal-text:    var(--orange-800);
-  --signal-ink:     var(--black);
+  --signal-ink:     var(--white);
   --focus:          var(--signal);
 }
 
@@ -132,9 +143,13 @@
   --ease-in: cubic-bezier(0.55, 0, 1, 0.45);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 
-  /* Every project screenshot and the portrait render through this — one
-   * place to switch it off. */
-  --shot: grayscale(1) contrast(1.06);
+  /* Project and work screenshots render in full colour — the products are
+     colourful and the grid is where that reads. `--shot` stays as the single
+     switch so it can be turned back in one place. */
+  --shot: none;
+  /* The portrait keeps the monochrome treatment: it is the one image that is
+     part of the layout's furniture rather than a product being shown. */
+  --portrait: grayscale(1) contrast(1.06);
 
   /* ---- Glass -------------------------------------------------------- */
   --glass-blur: 16px;              /* cost scales with radius; >20px is invisible */

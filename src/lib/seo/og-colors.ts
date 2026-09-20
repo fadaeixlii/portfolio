@@ -52,12 +52,17 @@ function tokensCss(): string {
   return cachedCss;
 }
 
-function readTokenColor(name: string): string {
+/** The same read, as raw channels — used by the brand-mark contrast solver. */
+export function readTokenRgb(name: string): [number, number, number] {
   const pattern = new RegExp(`--${name}:\\s*oklch\\(([\\d.]+)%\\s+([\\d.]+)\\s+([\\d.]+)\\)`);
   const match = pattern.exec(tokensCss());
   if (!match) throw new Error(`token --${name} not found in tokens.css`);
   const [, lPct, c, h] = match;
-  const [r, g, b] = oklchToRgb(Number(lPct) / 100, Number(c), Number(h));
+  return oklchToRgb(Number(lPct) / 100, Number(c), Number(h));
+}
+
+function readTokenColor(name: string): string {
+  const [r, g, b] = readTokenRgb(name);
   return `rgb(${r}, ${g}, ${b})`;
 }
 

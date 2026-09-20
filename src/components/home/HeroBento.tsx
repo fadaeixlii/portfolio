@@ -41,7 +41,7 @@ export function HeroBento() {
       <div className="flex flex-wrap items-center gap-[var(--space-4)]">
         <Link
           href="/schedule"
-          className="bg-signal px-[var(--space-6)] py-[var(--space-3)] text-[length:12px] font-semibold uppercase tracking-wide text-signal-ink transition-[filter] duration-[var(--dur-fast)] hover:brightness-110"
+          className="bg-signal-fill px-[var(--space-6)] py-[var(--space-3)] text-[length:12px] font-semibold uppercase tracking-wide text-signal-ink transition-[filter] duration-[var(--dur-fast)] hover:brightness-110"
         >
           {t("cta.heading")}
         </Link>

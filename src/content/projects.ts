@@ -22,6 +22,10 @@ export const projects: z.input<typeof projectSchema>[] = [
       "Stripe",
     ],
     href: "https://platform.aim2balance.ai",
+    links: [
+      { label: "App Store", href: "https://apps.apple.com/de/app/aim2balance-ai/id6765865070" },
+      { label: "Google Play", href: "https://play.google.com/store/apps/details?id=ai.aim2balance.app" },
+    ],
     featured: true,
   },
   {
@@ -72,7 +76,8 @@ export const projects: z.input<typeof projectSchema>[] = [
       "NestJS",
       "PostgreSQL",
     ],
-    href: "https://roofcast.io",
+    // roofcast.io is registered but not serving yet — no `href` until it is.
+    // A dead link on a portfolio is worse than no link.
     featured: true,
   },
   {
@@ -93,6 +98,10 @@ export const projects: z.input<typeof projectSchema>[] = [
       "Figma",
     ],
     href: "https://meshi.nl",
+    links: [
+      { label: "App Store", href: "https://apps.apple.com/us/app/meshi-plan-mealie-client/id6754854918" },
+      { label: "Google Play", href: "https://play.google.com/store/apps/details?id=nl.meshi.food" },
+    ],
     featured: false,
   },
   {

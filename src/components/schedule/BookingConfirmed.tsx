@@ -67,7 +67,7 @@ export function BookingConfirmed({
             rel="noopener noreferrer"
             className={
               "inline-flex h-11 items-center justify-center gap-2 rounded-[var(--radius-full)] " +
-              "bg-signal px-6 text-[length:var(--text-base)] font-medium text-signal-ink " +
+              "bg-signal-fill px-6 text-[length:var(--text-base)] font-medium text-signal-ink " +
               "transition-[transform,filter] duration-[var(--dur-fast)] ease-[var(--ease-out)] " +
               "hover:brightness-110 active:translate-y-px"
             }

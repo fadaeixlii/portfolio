@@ -16,7 +16,7 @@
     "selectLanguage": "Sprache"
   },
   "sidebar": {
-    "available": "Verfügbar für Projekte",
+    "available": "Verfügbar für Arbeit, Anstellung und Projekte",
     "email": "E-Mail"
   },
   "notFound": {
@@ -88,7 +88,8 @@
       "outcome": "Ergebnis",
       "liveLink": "Live ansehen",
       "next": "Nächstes Projekt",
-      "back": "Zurück zu den Arbeiten"
+      "back": "Zurück zu den Arbeiten",
+      "gallery": "Screens"
     }
   },
   "experience": {

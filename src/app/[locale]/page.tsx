@@ -188,7 +188,7 @@ export default function HomePage({
         <h2 className={`mt-[var(--space-4)] ${HEAD}`}>{t("cta.heading")}</h2>
         <Link
           href="/schedule"
-          className="mt-[var(--space-8)] inline-block bg-signal px-[var(--space-6)] py-[var(--space-3)] text-[length:12px] font-semibold uppercase tracking-wide text-signal-ink transition-[filter] duration-[var(--dur-fast)] hover:brightness-110"
+          className="mt-[var(--space-8)] inline-block bg-signal-fill px-[var(--space-6)] py-[var(--space-3)] text-[length:12px] font-semibold uppercase tracking-wide text-signal-ink transition-[filter] duration-[var(--dur-fast)] hover:brightness-110"
         >
           {t("cta.action")}
         </Link>

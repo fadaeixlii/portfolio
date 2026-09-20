@@ -19,6 +19,7 @@
   --color-hairline: var(--hairline);
   --color-signal: var(--signal);
   --color-signal-text: var(--signal-text);
+  --color-signal-fill: var(--signal-fill);
   --color-signal-ink: var(--signal-ink);
   --color-ghost: var(--ghost);
   --color-error: var(--error);
@@ -101,4 +102,20 @@
   [dir="rtl"] .headline-outline {
     -webkit-text-stroke-width: 1.5px;
   }
+}
+
+/* Brand marks on the stack chips.
+ *
+ * Both values are solved at build time (lib/brand-contrast.ts) for the
+ * smallest blend toward the theme's ink that clears 3:1 on that theme's
+ * paper. Emitting both and letting CSS choose means toggling the theme does
+ * not need a re-render, and a chip with no brand icon sets neither and falls
+ * back to the inherited ink.
+ */
+.stack-chip__mark {
+  color: var(--brand-dark, currentColor);
+}
+
+:root[data-theme="light"] .stack-chip__mark {
+  color: var(--brand-light, currentColor);
 }

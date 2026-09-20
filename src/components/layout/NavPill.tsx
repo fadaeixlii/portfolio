@@ -54,7 +54,7 @@ export function NavPill() {
         <Link
           href="/schedule"
           className={cn(
-            "bg-signal px-4 py-1.5",
+            "bg-signal-fill px-4 py-1.5",
             "text-[length:11px] font-semibold uppercase tracking-wide whitespace-nowrap text-signal-ink",
             "transition-[filter] duration-[var(--dur-fast)] hover:brightness-110",
           )}

@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { getProjects } from "@/content";
-import { SHOTS } from "@/content/shots";
+import { SHOTS, GALLERIES } from "@/content/shots";
+import { StackChip } from "@/components/stack/StackChip";
 import type { Project, CaseStudy } from "@/content/schema";
 import { Reveal } from "@/components/primitives/Reveal";
 import { Link } from "@/lib/i18n/navigation";
@@ -34,29 +35,31 @@ function Meta({ project, live }: { project: Project; live: string }) {
           {project.year}
         </dd>
       </div>
-      <div className="flex flex-col gap-1 border-b-2 border-hairline py-[var(--space-4)]">
-        <dt className={META_LABEL}>{t("stack")}</dt>
-        <dd
-          dir="auto"
-          className="flex flex-wrap gap-x-[var(--space-3)] gap-y-1 text-[length:var(--text-sm)] text-text"
-        >
-          {project.stack.map((item) => (
-            <span key={item}>{item}</span>
-          ))}
-        </dd>
-      </div>
-      {project.href ? (
+      {project.href || project.links.length > 0 ? (
         <div className="flex flex-col gap-1 border-b-2 border-hairline py-[var(--space-4)]">
           <dt className={META_LABEL}>{live}</dt>
-          <dd>
-            <a
-              href={project.href}
-              className="text-[length:var(--text-sm)] text-signal-text hover:underline"
-              target="_blank"
-              rel="noreferrer"
-            >
-              {project.href.replace(/^https?:\/\//, "")}
-            </a>
+          <dd className="flex flex-col gap-1">
+            {project.href ? (
+              <a
+                href={project.href}
+                className="text-[length:var(--text-sm)] text-signal-text hover:underline"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {project.href.replace(/^https?:\/\//, "")}
+              </a>
+            ) : null}
+            {project.links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-[length:var(--text-sm)] text-signal-text hover:underline"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {link.label}
+              </a>
+            ))}
           </dd>
         </div>
       ) : null}
@@ -76,6 +79,7 @@ export function CaseStudyLayout({
   const currentIndex = projects.findIndex((p) => p.slug === project.slug);
   const next = projects[(currentIndex + 1) % projects.length];
   const shot = SHOTS[project.slug];
+  const gallery = GALLERIES[project.slug] ?? [];
 
   return (
     <div className="flex flex-col gap-[var(--space-22)] px-[var(--space-6)] pt-[var(--space-24)] pb-[var(--space-22)]">
@@ -87,6 +91,18 @@ export function CaseStudyLayout({
           {project.name}
         </h1>
         <Meta project={project} live={t("liveLink")} />
+
+        {/* Stack on its own full-width row rather than crammed into a quarter
+            of the meta strip — eight chips in a 200px cell wrapped to six
+            lines and pushed the other three fields out of alignment. */}
+        <div className="grid gap-[var(--space-3)] border-b-2 border-hairline pb-[var(--space-6)] md:grid-cols-[160px_1fr] md:gap-[var(--space-6)]">
+          <h2 className={META_LABEL}>{t("stack")}</h2>
+          <div className="flex flex-wrap gap-[var(--space-2)]">
+            {project.stack.map((item) => (
+              <StackChip key={item} name={item} />
+            ))}
+          </div>
+        </div>
       </Reveal>
 
       {shot ? (
@@ -101,6 +117,44 @@ export function CaseStudyLayout({
               className="h-auto w-full [filter:var(--shot)]"
             />
           </div>
+        </Reveal>
+      ) : null}
+
+      {gallery.length > 0 ? (
+        <Reveal>
+          <h2 className={META_LABEL}>{t("gallery")}</h2>
+          {/* The publisher's own store assets, already composed and already
+              public. Scrolls on a phone rather than shrinking four portrait
+              screenshots into unreadable slivers. */}
+          {/* tabIndex on the scroller, not on each item: a horizontally
+              scrolling region whose children are plain images has no
+              focusable content, so a keyboard user cannot reach the shots
+              that are off-screen. axe flags this as
+              `scrollable-region-focusable`. It needs a name too, or the focus
+              stop is announced as nothing — but as `aria-label` on the <ul>,
+              not `role="group"`, which overrides the implicit list role and
+              orphans every <li> inside it. */}
+          <ul
+            tabIndex={0}
+            aria-label={t("gallery")}
+            className="mt-[var(--space-6)] flex snap-x snap-mandatory gap-[var(--space-4)] overflow-x-auto pb-[var(--space-3)]"
+          >
+            {gallery.map((item) => (
+              <li
+                key={item.src}
+                className="w-[210px] shrink-0 snap-start border-2 border-hairline sm:w-[240px]"
+              >
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  width={item.width}
+                  height={item.height}
+                  sizes="240px"
+                  className="h-auto w-full"
+                />
+              </li>
+            ))}
+          </ul>
         </Reveal>
       ) : null}
 
