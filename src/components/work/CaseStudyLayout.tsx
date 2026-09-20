@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 import { getProjects } from "@/content";
 import { SHOTS, GALLERIES } from "@/content/shots";
 import { StackChip } from "@/components/stack/StackChip";
+import { FigureReadout } from "./FigureReadout";
 import type { Project, CaseStudy } from "@/content/schema";
 import { Reveal } from "@/components/primitives/Reveal";
 import { Link } from "@/lib/i18n/navigation";
@@ -212,14 +213,15 @@ export function CaseStudyLayout({
 
       {caseStudy.figures.length > 0 ? (
         <Reveal className="flex flex-wrap gap-[var(--space-8)]">
-          {/* Readout-styled, not the animated <Readout>: figures here are
-              already-resolved strings ("4.2s → 2.9s"), not a single number
-              to count up to. */}
+          {/* Not the home page's <Readout>, which takes a number: these are
+              composed strings, so FigureReadout interpolates the number
+              inside them and leaves the units and the arrow alone. */}
           {caseStudy.figures.map((figure) => (
             <div key={figure.label} className="flex flex-col gap-1">
-              <span className="font-mono text-[length:var(--text-3xl)] tabular-nums text-signal-text">
-                {figure.value}
-              </span>
+              <FigureReadout
+                value={figure.value}
+                className="font-mono text-[length:var(--text-3xl)] tabular-nums text-signal-text"
+              />
               <span dir="auto" className="text-[length:var(--text-sm)] text-dim">
                 {figure.label}
               </span>

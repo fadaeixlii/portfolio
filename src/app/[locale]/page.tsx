@@ -9,6 +9,8 @@ import { HeroBento } from "@/components/home/HeroBento";
 import { MobilePortrait } from "@/components/home/MobilePortrait";
 import { StatRow } from "@/components/home/StatRow";
 import { StackGrid } from "@/components/stack/StackGrid";
+import { StackChip } from "@/components/stack/StackChip";
+import { StackMarquee } from "@/components/home/StackMarquee";
 import { Reveal } from "@/components/primitives/Reveal";
 import { Link } from "@/lib/i18n/navigation";
 
@@ -208,6 +210,15 @@ export default function HomePage({
           <Link href="/stack" className={VIEW_ALL}>
             {t("stack.viewAll")}
           </Link>
+        </div>
+        {/* One drifting row of everything, then the grouped list under it.
+            The marquee is the glance; the grid is the answer. */}
+        <div className="mt-[var(--space-8)]">
+          <StackMarquee label={t("stack.heading")}>
+            {stack.flatMap((group) =>
+              group.items.map((item) => <StackChip key={`${group.name}-${item}`} name={item} />),
+            )}
+          </StackMarquee>
         </div>
         <div className="mt-[var(--space-8)]">
           <StackGrid groups={stack} />

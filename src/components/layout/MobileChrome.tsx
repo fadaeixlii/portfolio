@@ -47,10 +47,6 @@ export function MobileChrome() {
   const current = params.locale as string;
   const [sheet, setSheet] = useState(false);
 
-  // A route change while the sheet is open would leave it covering the new
-  // page; the sheet is not part of the page it was opened from.
-  useEffect(() => setSheet(false), [pathname]);
-
   // Escape closes it, as it would any dialog.
   useEffect(() => {
     if (!sheet) return;
@@ -108,13 +104,17 @@ export function MobileChrome() {
                   key={locale}
                   type="button"
                   dir={locale === "fa" ? "rtl" : "ltr"}
-                  onClick={() =>
+                  onClick={() => {
+                    // Closed here rather than in an effect on `pathname`: the
+                    // sheet covers the tab bar, so its own buttons are the
+                    // only navigation that can happen while it is open.
+                    setSheet(false);
                     router.replace(
                       // @ts-expect-error pathname is a validated route string
                       { pathname, params },
                       { locale },
-                    )
-                  }
+                    );
+                  }}
                   className={cn(
                     "flex min-h-[56px] w-full items-center justify-between border-b-2 border-hairline px-[var(--space-5)] text-start",
                     on ? "text-signal-text" : "text-text",

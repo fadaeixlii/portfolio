@@ -1,10 +1,57 @@
 "use client";
 
 import { m } from "motion/react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { EASE, MOTION } from "@/lib/motion";
 import { Link } from "@/lib/i18n/navigation";
 import { useBootStage } from "./BootSequence";
+import { isRtl } from "@/lib/i18n/routing";
+
+/**
+ * One headline line, resolving a character at a time.
+ *
+ * Splitting is LTR-only and that is not a nicety: Arabic script shapes each
+ * letter from its neighbours, and wrapping every character in its own span
+ * severs the joins, so Farsi would render as disconnected letterforms. RTL
+ * keeps the whole line and fades it as a block.
+ *
+ * The characters are `aria-hidden` and the real text is on the parent's
+ * `aria-label`, or a screen reader would announce the line letter by letter.
+ * `-webkit-text-stroke` inherits, so the outlined line stays outlined.
+ */
+function SplitLine({
+  text,
+  className,
+  play,
+  delay = 0,
+}: {
+  text: string;
+  className: string;
+  play: boolean;
+  delay?: number;
+}) {
+  return (
+    <span className={className} aria-hidden>
+      {Array.from(text).map((char, i) => (
+        <m.span
+          key={`${char}-${i}`}
+          initial={false}
+          animate={play ? { opacity: 1, y: 0 } : { opacity: 0, y: "0.12em" }}
+          transition={{
+            duration: MOTION.dur.base,
+            ease: EASE.out,
+            delay: play ? delay + i * 0.022 : 0,
+          }}
+          // inline-block so y actually moves it; a plain span would not shift.
+          // The non-breaking space keeps word gaps from collapsing.
+          className="inline-block whitespace-pre"
+        >
+          {char === " " ? " " : char}
+        </m.span>
+      ))}
+    </span>
+  );
+}
 
 /**
  * The home hero. Two display lines — the first solid, the second outlined
@@ -15,6 +62,8 @@ import { useBootStage } from "./BootSequence";
 export function HeroBento() {
   const t = useTranslations("home.hero");
   const tSections = useTranslations("home.sections");
+  const locale = useLocale();
+  const rtl = isRtl(locale);
   const stage = useBootStage();
   const resolved = stage >= 3;
 
@@ -25,10 +74,30 @@ export function HeroBento() {
         animate={resolved ? { opacity: 1, y: 0 } : { opacity: 0.35, y: 6 }}
         transition={{ duration: MOTION.dur.slow, ease: EASE.out }}
         dir="auto"
+        aria-label={`${t("headline.line1")} ${t("headline.line2")}`}
         className="font-display text-[length:var(--text-display)] font-extrabold uppercase tracking-[var(--tracking-display)] leading-[var(--leading-display)]"
       >
-        <span className="block text-text">{t("headline.line1")}</span>
-        <span className="headline-outline block">{t("headline.line2")}</span>
+        {rtl ? (
+          <>
+            <span className="block text-text">{t("headline.line1")}</span>
+            <span className="headline-outline block">{t("headline.line2")}</span>
+          </>
+        ) : (
+          <>
+            <SplitLine
+              text={t("headline.line1")}
+              className="block text-text"
+              play={resolved}
+            />
+            <SplitLine
+              text={t("headline.line2")}
+              className="headline-outline block"
+              play={resolved}
+              // The outlined line trails the solid one rather than racing it.
+              delay={0.18}
+            />
+          </>
+        )}
       </m.h1>
 
       <p
