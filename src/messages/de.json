@@ -8,7 +8,9 @@
     "work": "Arbeiten",
     "experience": "Erfahrung",
     "stack": "Stack",
-    "schedule": "Termin buchen"
+    "schedule": "Termin buchen",
+    "primary": "Hauptnavigation",
+    "sections": "Bereiche"
   },
   "common": {
     "skipToContent": "Zum Inhalt springen",
@@ -36,7 +38,8 @@
       "location": "Athen, Griechenland",
       "headline": {
         "line1": "AI Engineer &",
-        "line2": "Full-Stack-Entwickler"
+        "line2": "Full-Stack",
+        "line3": "Entwickler"
       },
       "bio": "Ich baue die Teile, die funktionieren müssen: Billing-Pipelines, Model-Gateways, On-Chain-Settlement.",
       "cta": {
@@ -170,7 +173,9 @@
       "backHome": "Zurück zur Buchung",
       "cancel": "Termin stornieren",
       "cancelled": "Storniert. Der Termin ist wieder frei."
-    }
+    },
+    "line1": "Termin",
+    "line2": "buchen"
   },
   "contact": {
     "heading": "Kontakt aufnehmen",

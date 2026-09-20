@@ -29,12 +29,12 @@ export function NavPill() {
       <Surface
         as="nav"
         variant="flat"
-        aria-label={t("home")}
+        aria-label={t("primary")}
         /* 2px of padding, and every child stretches to the full inner
            height. The CTA used to sit inside the nav's own py-2, which left
            it floating in a band of surface rather than reading as part of
            the bar. */
-        className="pointer-events-auto flex max-w-[calc(100vw-2rem)] items-stretch justify-center p-[2px]"
+        className="pointer-events-auto flex max-w-[calc(100vw-2rem)] items-stretch justify-center"
       >
         {ROUTES.map(({ href, key }) => {
           const active = pathname === href;
@@ -60,7 +60,10 @@ export function NavPill() {
           className={cn(
             // Stretches edge to edge inside the 2px padding rather than
             // keeping its own vertical inset.
-            "flex items-center self-stretch bg-signal-fill px-[13px]",
+            // -my-[2px] pulls it over the bar's own 2px rule. `self-stretch`
+            // alone only fills the content box, which left the fill 2px short
+            // top and bottom with the rule showing through.
+            "-my-[2px] flex items-center self-stretch bg-signal-fill px-[13px]",
             "text-[length:11px] font-semibold uppercase tracking-wide whitespace-nowrap text-signal-ink",
             "transition-[filter] duration-[var(--dur-fast)] hover:brightness-110",
           )}

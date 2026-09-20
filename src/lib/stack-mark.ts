@@ -1,6 +1,7 @@
 import "server-only";
 import { brandIcon } from "@/lib/brand-icons";
 import { readableBrand } from "@/lib/brand-contrast";
+import { genericMark } from "@/lib/generic-marks";
 
 /**
  * A technology's brand mark, resolved to everything the view needs: the path
@@ -20,13 +21,24 @@ export type StackMark = {
   path: string;
   dark: string;
   light: string;
+  /** Stroked category glyph rather than a filled brand logo. */
+  stroke?: boolean;
 } | null;
 
 export function markFor(name: string): StackMark {
   const icon = brandIcon(name);
-  if (!icon) return null;
-  const { dark, light } = readableBrand(icon.hex);
-  return { path: icon.path, dark, light };
+  if (icon) {
+    const { dark, light } = readableBrand(icon.hex);
+    return { path: icon.path, dark, light };
+  }
+
+  // No brand mark: fall back to a category glyph in the ink colour rather
+  // than leaving the chip bare. It inherits `currentColor`, so it needs no
+  // contrast solving — see lib/generic-marks.ts for why these are generic.
+  const generic = genericMark(name);
+  return generic
+    ? { path: generic.path, dark: "currentColor", light: "currentColor", stroke: true }
+    : null;
 }
 
 /** The same, for a whole group listing — the shape `StackTabs` takes. */

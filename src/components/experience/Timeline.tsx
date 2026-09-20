@@ -27,7 +27,7 @@ export function Timeline({ entries }: { entries: ExperienceEntry[] }) {
               <span
                 aria-hidden
                 data-dot
-                className="absolute top-1.5 start-0 -ms-[4px] size-[10px] bg-signal"
+                className="absolute top-1.5 start-0 size-[10px] bg-signal"
               />
               <div className="flex flex-wrap items-baseline gap-[var(--space-3)]">
                 <span className="font-mono text-[length:var(--text-sm)] tabular-nums text-signal-text">

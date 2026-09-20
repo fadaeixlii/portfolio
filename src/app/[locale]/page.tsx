@@ -192,7 +192,7 @@ export default function HomePage({
           {experience.map((entry) => (
             <li
               key={entry.company}
-              className="border-b-2 border-hairline py-[var(--space-5)]"
+              className="border-b-2 border-hairline py-[var(--space-6)]"
             >
               <div className="flex flex-wrap items-baseline justify-between gap-x-[var(--space-4)] gap-y-1">
                 <h3

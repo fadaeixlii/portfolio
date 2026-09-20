@@ -8,7 +8,9 @@
     "work": "Werk",
     "experience": "Ervaring",
     "stack": "Stack",
-    "schedule": "Gesprek plannen"
+    "schedule": "Gesprek plannen",
+    "primary": "Hoofdnavigatie",
+    "sections": "Secties"
   },
   "common": {
     "skipToContent": "Naar inhoud",
@@ -36,7 +38,8 @@
       "location": "Athene, Griekenland",
       "headline": {
         "line1": "AI Engineer &",
-        "line2": "Full-Stack Developer"
+        "line2": "Full-Stack",
+        "line3": "Developer"
       },
       "bio": "Ik bouw de onderdelen die het moeten doen: billing pipelines, model gateways, on-chain afwikkeling.",
       "cta": {
@@ -170,7 +173,9 @@
       "backHome": "Terug naar boeken",
       "cancel": "Gesprek annuleren",
       "cancelled": "Geannuleerd. Het tijdstip is weer vrij."
-    }
+    },
+    "line1": "Plan",
+    "line2": "een gesprek"
   },
   "contact": {
     "heading": "Neem contact op",

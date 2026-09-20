@@ -8,7 +8,9 @@
     "work": "Έργα",
     "experience": "Εμπειρία",
     "stack": "Τεχνολογίες",
-    "schedule": "Κλείστε κλήση"
+    "schedule": "Κλείστε κλήση",
+    "primary": "Κύρια πλοήγηση",
+    "sections": "Ενότητες"
   },
   "common": {
     "skipToContent": "Μετάβαση στο περιεχόμενο",
@@ -36,7 +38,8 @@
       "location": "Αθήνα, Ελλάδα",
       "headline": {
         "line1": "Μηχανικός AI &",
-        "line2": "Full-Stack Developer"
+        "line2": "Full-Stack",
+        "line3": "Developer"
       },
       "bio": "Φτιάχνω τα κομμάτια που δεν επιτρέπεται να σπάσουν: χρεώσεις, model gateways, on-chain εκκαθάριση.",
       "cta": {
@@ -170,7 +173,9 @@
       "backHome": "Πίσω στην κράτηση",
       "cancel": "Ακύρωση κλήσης",
       "cancelled": "Ακυρώθηκε. Η ώρα είναι ξανά διαθέσιμη."
-    }
+    },
+    "line1": "Κλείσε",
+    "line2": "κλήση"
   },
   "contact": {
     "heading": "Επικοινωνία",

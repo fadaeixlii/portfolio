@@ -54,7 +54,18 @@ export function StackChip({
             size === "sm" ? "h-3 w-3" : "h-[14px] w-[14px]",
           )}
         >
-          <path d={mark.path} fill="currentColor" />
+          {mark.stroke ? (
+            <path
+              d={mark.path}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="square"
+              strokeLinejoin="miter"
+            />
+          ) : (
+            <path d={mark.path} fill="currentColor" />
+          )}
         </svg>
       ) : null}
       {name}

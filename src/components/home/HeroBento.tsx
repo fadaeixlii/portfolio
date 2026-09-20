@@ -74,27 +74,30 @@ export function HeroBento() {
         animate={resolved ? { opacity: 1, y: 0 } : { opacity: 0.35, y: 6 }}
         transition={{ duration: MOTION.dur.slow, ease: EASE.out }}
         dir="auto"
-        aria-label={`${t("headline.line1")} ${t("headline.line2")}`}
+        aria-label={`${t("headline.line1")} ${t("headline.line2")} ${t("headline.line3")}`}
         className="font-display text-[length:var(--text-3xl)] font-extrabold uppercase tracking-[var(--tracking-display)] leading-[var(--leading-display)] [overflow-wrap:normal]"
       >
         {rtl ? (
           <>
             <span className="block text-text">{t("headline.line1")}</span>
-            <span className="headline-outline block">{t("headline.line2")}</span>
+            <span className="block text-text">{t("headline.line2")}</span>
+            <span className="headline-outline block">{t("headline.line3")}</span>
           </>
         ) : (
           <>
-            <SplitLine
-              text={t("headline.line1")}
-              className="block text-text"
-              play={resolved}
-            />
+            <SplitLine text={t("headline.line1")} className="block text-text" play={resolved} />
             <SplitLine
               text={t("headline.line2")}
+              className="block text-text"
+              play={resolved}
+              delay={0.12}
+            />
+            <SplitLine
+              text={t("headline.line3")}
               className="headline-outline block"
               play={resolved}
-              // The outlined line trails the solid one rather than racing it.
-              delay={0.18}
+              // The outlined line trails the solid ones rather than racing them.
+              delay={0.24}
             />
           </>
         )}

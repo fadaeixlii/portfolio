@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import { setRequestLocale, getTranslations } from "next-intl/server";
-import { Reveal } from "@/components/primitives/Reveal";
+import { PageHead } from "@/components/layout/PageHead";
 import { buildMetadata } from "@/lib/seo/metadata";
 import type { Locale } from "@/lib/i18n/routing";
 
@@ -45,12 +45,7 @@ export default function SchedulePage({
       id="main"
       className="min-h-dvh px-[var(--space-6)] pt-[var(--shell-top)] pb-[var(--space-22)]"
     >
-      <Reveal as="h1" className="font-display text-[length:var(--text-4xl)] leading-[var(--leading-tight)]">
-        {t("heading")}
-      </Reveal>
-      <Reveal as="p" delay={0.05} className="mt-[var(--space-4)] max-w-[var(--measure)] text-dim">
-        {t("subheading")}
-      </Reveal>
+      <PageHead line1={t("line1")} line2={t("line2")} sub={t("subheading")} />
 
       <div className="mt-[var(--space-12)]">
         <Booker />

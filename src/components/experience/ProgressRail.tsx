@@ -68,7 +68,11 @@ export function ProgressRail({
     <div
       data-rail
       aria-hidden
-      className="absolute start-0 w-0.5 bg-hairline"
+      // start-[4px], not start-0: the 10px dots sit flush at the inline start,
+      // so their centre is 5px in and a 2px rule has to start at 4 to run
+      // through them. Pulling the dots out by -4px instead made them hang
+      // outside the container, which is the notch that showed at every node.
+      className="absolute start-[4px] w-0.5 bg-hairline"
       // Before measuring, draw nothing rather than a full-height rule that
       // would visibly snap to size on the first frame.
       style={span ? { top: span.top, height: span.height } : { top: 0, height: 0 }}

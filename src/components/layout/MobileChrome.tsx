@@ -132,7 +132,7 @@ export function MobileChrome() {
       ) : null}
 
       <nav
-        aria-label={t("home")}
+        aria-label={t("sections")}
         className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-5 border-t-2 border-hairline bg-paper pb-[env(safe-area-inset-bottom)]"
       >
         {TABS.map(({ href, key, d }) => {

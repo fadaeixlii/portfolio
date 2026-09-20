@@ -8,7 +8,9 @@
     "work": "Work",
     "experience": "Experience",
     "stack": "Stack",
-    "schedule": "Book a call"
+    "schedule": "Book a call",
+    "primary": "Primary",
+    "sections": "Sections"
   },
   "common": {
     "skipToContent": "Skip to content",
@@ -36,7 +38,8 @@
       "location": "Athens, Greece",
       "headline": {
         "line1": "AI Engineer &",
-        "line2": "Full-Stack Developer"
+        "line2": "Full-Stack",
+        "line3": "Developer"
       },
       "bio": "I build the parts that have to work: billing pipelines, model gateways, on-chain settlement.",
       "cta": {
@@ -170,7 +173,9 @@
       "backHome": "Back to booking",
       "cancel": "Cancel the call",
       "cancelled": "Cancelled. The slot is free again."
-    }
+    },
+    "line1": "Book",
+    "line2": "a call"
   },
   "contact": {
     "heading": "Get in touch",

@@ -44,6 +44,10 @@ const ALIASES: Record<string, string> = {
   "socket.io": "socket.io",
   "github actions": "github actions",
   motion: "framer",
+  // Filed under the parent brand: the toolkit and the extension platform
+  // have no separate mark, and the parent's is the one people recognise.
+  "redux toolkit": "redux",
+  "chrome extensions": "google chrome",
 };
 
 export function brandIcon(name: string): BrandIcon | null {
