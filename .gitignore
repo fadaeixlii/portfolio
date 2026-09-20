@@ -86,3 +86,6 @@ client_secret_*.json
 # Logged-in session screenshots — account name, balances, conversation
 # titles. Never publish. See docs/decisions.md.
 public/images/projects/**/aichat.png
+# Uncropped admin capture — the account strip carries a work email address.
+# The cropped `admin.png` beside it is the one that ships.
+public/images/projects/**/admin-aichat.png

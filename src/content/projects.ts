@@ -4,29 +4,79 @@ import type { projectSchema } from "./schema";
 /** Input type, not output: `featured` has a schema default, so it is optional here. */
 export const projects: z.input<typeof projectSchema>[] = [
   {
+    slug: "aim2balance-chat",
+    name: "aim2balance chat",
+    summary:
+      "The chat itself: pick a model, ask a question, and see the energy and water that answer cost underneath it.",
+    domain: "AI product",
+    year: 2026,
+    role: "AI Engineer & Full-Stack Developer",
+    stack: ["TypeScript", "React", "NestJS", "MongoDB", "LiteLLM"],
+    href: "https://platform.aim2balance.ai",
+    featured: true,
+  },
+  {
+    slug: "aim2balance-ios",
+    name: "aim2balance for iOS",
+    summary:
+      "The platform as a native iOS app, wrapped with Capacitor and shipped through App Store review.",
+    domain: "Mobile app",
+    year: 2026,
+    role: "Full-Stack Developer",
+    stack: ["Capacitor", "TypeScript", "React", "Xcode"],
+    links: [
+      { label: "App Store", href: "https://apps.apple.com/de/app/aim2balance-ai/id6765865070" },
+    ],
+    featured: false,
+  },
+  {
+    slug: "aim2balance-android",
+    name: "aim2balance for Android",
+    summary:
+      "The same build for Android, through Play Store review, sharing one codebase with the web platform.",
+    domain: "Mobile app",
+    year: 2026,
+    role: "Full-Stack Developer",
+    stack: ["Capacitor", "TypeScript", "React", "Gradle"],
+    links: [
+      { label: "Google Play", href: "https://play.google.com/store/apps/details?id=ai.aim2balance.app" },
+    ],
+    featured: false,
+  },
+  {
     slug: "aim2balance",
     name: "aim2balance.ai",
     summary:
-      "An EU-hosted AI chat service that pays for reforestation out of the energy each conversation uses.",
-    domain: "AI platform",
+      "The public site that explains the service, and the automation workflows behind sign-up and reporting.",
+    domain: "Website",
     year: 2026,
-    role: "AI Engineer & Full-Stack Developer",
-    stack: [
-      "TypeScript",
-      "Python",
-      "LiteLLM",
-      "LangGraph",
-      "NestJS",
-      "PostgreSQL",
-      "MongoDB",
-      "Stripe",
-    ],
-    href: "https://platform.aim2balance.ai",
-    links: [
-      { label: "App Store", href: "https://apps.apple.com/de/app/aim2balance-ai/id6765865070" },
-      { label: "Google Play", href: "https://play.google.com/store/apps/details?id=ai.aim2balance.app" },
-    ],
-    featured: true,
+    role: "Full-Stack Developer",
+    stack: ["TypeScript", "React", "Next.js", "Tailwind CSS"],
+    // The store listings belong to the iOS and Android entries now, not here.
+    href: "https://aim2balance.ai",
+    featured: false,
+  },
+  {
+    slug: "aim2balance-gateway",
+    name: "aim2balance model gateway",
+    summary:
+      "One API in front of three EU model providers, routing each request and metering what it spent.",
+    domain: "Infrastructure",
+    year: 2026,
+    role: "AI Engineer",
+    stack: ["LiteLLM", "Python", "FastAPI", "PostgreSQL", "Docker"],
+    featured: false,
+  },
+  {
+    slug: "aim2balance-admin",
+    name: "aim2balance admin panel",
+    summary:
+      "The operator console: users, organisations, model config, usage and the environmental ledger.",
+    domain: "Internal tool",
+    year: 2026,
+    role: "Full-Stack Developer",
+    stack: ["TypeScript", "React", "NestJS", "MongoDB", "Docker"],
+    featured: false,
   },
   {
     slug: "ai-cost-extension",

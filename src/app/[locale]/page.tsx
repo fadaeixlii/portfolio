@@ -2,7 +2,7 @@ import { use } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
-import { getFeaturedProjects, getExperience, getStack } from "@/content";
+import { getFeaturedProjects, getProjects, getExperience, getStack } from "@/content";
 import { SHOTS } from "@/content/shots";
 import { BootSequence } from "@/components/home/BootSequence";
 import { HeroBento } from "@/components/home/HeroBento";
@@ -50,7 +50,7 @@ export default function HomePage({
       </BootSequence>
 
       <Reveal as="section" className="mt-[var(--space-22)]">
-        <StatRow />
+        <StatRow shipped={getProjects().length} />
       </Reveal>
 
       <Reveal

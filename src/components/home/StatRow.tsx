@@ -11,20 +11,26 @@ import { useBootStage } from "./BootSequence";
  * "What must NOT be implemented" table in MODERNIST-SPEC.
  * Every number here has a source: .scratch/claims.md.
  */
-const STATS: { value: number; format: ReadoutFormat; key: string }[] = [
+const STATS = (shipped: number): { value: number; format: ReadoutFormat; key: string }[] => [
   { value: 2019, format: "year", key: "since" },
-  { value: 9, format: "int", key: "products" },
+  { value: shipped, format: "int", key: "products" },
   { value: 3, format: "int", key: "providers" },
 ];
 
-export function StatRow() {
+/**
+ * `shipped` is passed in rather than imported: this is a client component,
+ * and importing the project list here to read `.length` would ship every
+ * project's copy and stack to the browser for the sake of one integer. The
+ * server page already has the list.
+ */
+export function StatRow({ shipped }: { shipped: number }) {
   const t = useTranslations("home.stats");
   const stage = useBootStage();
   const counting = stage >= 2;
 
   return (
     <div className="grid grid-cols-1 border-t-2 border-hairline sm:grid-cols-3">
-      {STATS.map(({ value, format, key }, i) => (
+      {STATS(shipped).map(({ value, format, key }, i) => (
         <div
           key={key}
           className={cn(

@@ -32,6 +32,42 @@ export const SHOTS: Partial<Record<string, Shot>> = {
     height: 1080,
     alt: "aim2balance marketing landing page",
   },
+  "aim2balance-chat": {
+    // Cropped from a signed-in capture: the left rail carried conversation
+    // titles, a client name, an invoice reference, the wallet balance and the
+    // account row. Everything in this frame is product chrome.
+    src: "/images/projects/aim2balance/chat.png",
+    width: 1657,
+    height: 900,
+    alt: "aim2balance chat composer with the model picker and an environmental usage summary",
+  },
+  "aim2balance-ios": {
+    src: "/images/projects/aim2balance/ios1.webp",
+    width: 230,
+    height: 498,
+    alt: "aim2balance iOS app showing the environmental impact of a conversation",
+    fit: "contain",
+  },
+  "aim2balance-android": {
+    src: "/images/projects/aim2balance/android1.webp",
+    width: 810,
+    height: 1440,
+    alt: "aim2balance Android app store listing screen",
+    fit: "contain",
+  },
+  "aim2balance-gateway": {
+    src: "/images/projects/aim2balance/litellm.png",
+    width: 1905,
+    height: 905,
+    alt: "LiteLLM gateway console with routing, guardrails and usage sections",
+  },
+  "aim2balance-admin": {
+    // Cropped: the account strip at the foot carried a work email address.
+    src: "/images/projects/aim2balance/admin.png",
+    width: 1915,
+    height: 806,
+    alt: "aim2balance admin panel with accounts, usage, models and audit sections",
+  },
   "ai-cost-extension": {
     // The panel itself rather than a mockup: it is 378px wide in the browser,
     // so a laptop mockup would render it smaller than life and add furniture
@@ -100,7 +136,7 @@ export const SHOTS: Partial<Record<string, Shot>> = {
  * audit. See docs/decisions.md.
  */
 export const GALLERIES: Partial<Record<string, Shot[]>> = {
-  aim2balance: [
+  "aim2balance-ios": [
     {
       src: "/images/projects/aim2balance/ios1.webp",
       width: 230,
@@ -113,6 +149,8 @@ export const GALLERIES: Partial<Record<string, Shot[]>> = {
       height: 498,
       alt: "aim2balance iOS app chat screen",
     },
+  ],
+  "aim2balance-android": [
     {
       src: "/images/projects/aim2balance/android1.webp",
       width: 810,
