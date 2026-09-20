@@ -8,7 +8,7 @@ import { BootSequence } from "@/components/home/BootSequence";
 import { HeroBento } from "@/components/home/HeroBento";
 import { MobilePortrait } from "@/components/home/MobilePortrait";
 import { StatRow } from "@/components/home/StatRow";
-import { StackTabs } from "@/components/stack/StackTabs";
+import { StackRows } from "@/components/stack/StackRows";
 import { markGroups } from "@/lib/stack-mark";
 import { Reveal } from "@/components/primitives/Reveal";
 import { Link } from "@/lib/i18n/navigation";
@@ -230,7 +230,7 @@ export default function HomePage({
           </Link>
         </div>
         <div className="mt-[var(--space-8)]">
-          <StackTabs groups={markGroups(stack)} />
+          <StackRows groups={markGroups(stack)} />
         </div>
       </Reveal>
 

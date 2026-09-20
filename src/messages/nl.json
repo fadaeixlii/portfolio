@@ -50,7 +50,8 @@
         "one": "Bouwt productieklare AI-systemen van begin tot eind.",
         "two": "Bouwt full-stack producten, van database tot deploy."
       },
-      "zeroToOne": "Nul naar één"
+      "zeroWord": "Nul",
+      "oneWord": "Eén"
     },
     "stats": {
       "since": "sinds",

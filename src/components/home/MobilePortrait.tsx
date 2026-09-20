@@ -22,7 +22,10 @@ export async function MobilePortrait() {
         src="/images/portrait.jpg"
         alt=""
         fill
-        sizes="100vw"
+        // The block is `lg:hidden`, so above lg it is laid out at zero width
+        // and next/image warns that 100vw overstates it. Bounding the hint at
+        // the breakpoint tells the truth for both cases.
+        sizes="(min-width: 1024px) 1px, 100vw"
         className="object-cover [filter:var(--portrait)]"
         priority
       />

@@ -40,8 +40,37 @@ export async function GET(request: Request) {
       { headers: { "Cache-Control": "private, max-age=30" } },
     );
   } catch (error) {
-    console.error("availability failed", error);
+    // A one-line diagnosis, not the raw object: a DOMException prints all 25
+    // of its legacy constants, which buried the actual cause twice a page.
+    console.error(`availability failed: ${describeFailure(error)}`);
     // Degrade honestly — the UI shows "email me instead", never an empty month.
     return NextResponse.json({ error: "calendar_unavailable" }, { status: 503 });
   }
+}
+
+/**
+ * The three ways this realistically fails, named. Anything else prints its
+ * own message.
+ *
+ * `TimeoutError` here is almost always DNS: the Supabase host is behind
+ * Cloudflare and answers in well under a second when it resolves, so a
+ * five-second abort means the name never resolved — a VPN or corporate
+ * resolver swallowing it, not a slow database.
+ *
+ * `PGRST205` means the REST layer reached Postgres and found no such table,
+ * which means the migrations in supabase/migrations were never applied.
+ */
+export function describeFailure(error: unknown): string {
+  const message = error instanceof Error ? error.message : String(error);
+
+  if (error instanceof Error && error.name === "TimeoutError") {
+    return "request timed out before the host answered — usually DNS, check that the Supabase URL resolves from this machine";
+  }
+  if (message.includes("PGRST205") || message.includes("schema cache")) {
+    return "the bookings table does not exist — apply supabase/migrations";
+  }
+  if (message.includes("fetch failed")) {
+    return `network error reaching Supabase or Google: ${message}`;
+  }
+  return message;
 }

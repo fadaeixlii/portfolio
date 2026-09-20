@@ -50,7 +50,8 @@
         "one": "Ships production AI systems end to end.",
         "two": "Builds full-stack products, database to deploy."
       },
-      "zeroToOne": "Zero to one"
+      "zeroWord": "Zero",
+      "oneWord": "One"
     },
     "stats": {
       "since": "since",

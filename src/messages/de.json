@@ -50,7 +50,8 @@
         "one": "Baut produktionsreife KI-Systeme von Anfang bis Ende.",
         "two": "Baut Full-Stack-Produkte, von der Datenbank bis zum Deploy."
       },
-      "zeroToOne": "Null auf eins"
+      "zeroWord": "Null",
+      "oneWord": "Eins"
     },
     "stats": {
       "since": "seit",

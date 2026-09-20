@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { getStack } from "@/content";
-import { StackTabs } from "@/components/stack/StackTabs";
+import { StackRows } from "@/components/stack/StackRows";
 import { markGroups } from "@/lib/stack-mark";
 import { PageHead } from "@/components/layout/PageHead";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -43,7 +43,7 @@ export default function StackPage({
       <PageHead line1={t("line1")} line2={t("line2")} sub={t("subheading")} />
 
       <div className="mt-[var(--space-22)]">
-        <StackTabs groups={markGroups(groups)} />
+        <StackRows groups={markGroups(groups)} />
       </div>
     </main>
   );
