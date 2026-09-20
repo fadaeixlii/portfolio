@@ -82,3 +82,7 @@ client_secret_*.json
 # SDD scratch (per-plan workspaces)
 .superpowers/
 .scratch/
+
+# Logged-in session screenshots — account name, balances, conversation
+# titles. Never publish. See docs/decisions.md.
+public/images/projects/**/aichat.png
