@@ -1,22 +1,30 @@
+# Postgres for the portfolio's own data: bookings and contact messages.
+#
+# Replaces Supabase, which was two services in one — a database and an auth
+# provider. The database moves here; the admin login moved to a signed cookie
+# (see src/lib/auth.ts), which is the right size for a site with one admin.
+#
+# Port 5433, not 5432: this machine already runs postgres:16 and pgvector on
+# the default port for other projects.
 services:
-  portfolio:
-    build: .
+  db:
+    image: postgres:17-alpine
+    container_name: portfolio_db
     restart: unless-stopped
-    env_file: .env.production
-    expose: ["3000"]
-    networks: [web]
-
-  caddy:
-    image: caddy:2-alpine
-    restart: unless-stopped
-    ports: ["80:80", "443:443"]
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-portfolio}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env.local}
+      POSTGRES_DB: ${POSTGRES_DB:-portfolio}
+    ports:
+      - "${POSTGRES_PORT:-5433}:5432"
     volumes:
-      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
-      - /etc/ssl/cloudflare:/etc/ssl/cloudflare:ro
-      - caddy_data:/data
-    networks: [web]
+      - portfolio_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      # The app's first query should not race the server's first boot.
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-portfolio} -d ${POSTGRES_DB:-portfolio}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
 
-networks:
-  web:
 volumes:
-  caddy_data:
+  portfolio_pgdata:

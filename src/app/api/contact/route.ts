@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { contactSchema } from "@/lib/validation/contact";
-import { createServiceClient } from "@/lib/supabase/service";
+import { sql } from "@/lib/db";
 import { sendContactEmail } from "@/lib/email/contact";
 import { clientIp } from "@/lib/http/client-ip";
 
@@ -23,37 +23,37 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  const supabase = createServiceClient();
   const ip = clientIp(request);
   const since = new Date(Date.now() - 86_400_000).toISOString();
 
-  // .retry(false): postgrest-js's own retry doesn't back off for our fetch
-  // timeout's TimeoutError, so without it a wedged Supabase host takes ~4x
-  // the 5s fetch timeout, not 5s. See the comment in service.ts.
-  const { count, error: countError } = await supabase
-    .from("contact_messages")
-    .select("id", { count: "exact", head: true })
-    .eq("ip", ip)
-    .gte("created_at", since)
-    .retry(false);
-  // A failed count must not read as "zero messages" — that would let the
-  // limiter fail open. Treat it as a failed request instead.
-  if (countError) {
-    console.error("contact rate limit check failed", countError);
+  // A failed count must never read as "zero messages", or the limiter fails
+  // open; the throw is caught below and answers 503.
+  try {
+    const [{ count }] = await sql<{ count: string }[]>`
+      select count(*)::int as count from contact_messages
+      where ip = ${ip} and created_at >= ${since}
+    `;
+    if (Number(count) >= MAX_MESSAGES_PER_IP_PER_DAY) {
+      return NextResponse.json({ error: "rate_limited" }, { status: 429 });
+    }
+  } catch (error) {
+    console.error("contact rate limit check failed", error);
     return NextResponse.json({ error: "server" }, { status: 503 });
   }
-  if ((count ?? 0) >= MAX_MESSAGES_PER_IP_PER_DAY) {
-    return NextResponse.json({ error: "rate_limited" }, { status: 429 });
-  }
 
-  const { data: row, error: insertError } = await supabase
-    .from("contact_messages")
-    .insert({ name: input.name, email: input.email, message: input.message, ip })
-    .select("id")
-    .single();
-
-  if (insertError) {
-    console.error("contact insert failed", insertError);
+  let row: { id: string };
+  try {
+    [row] = await sql<{ id: string }[]>`
+      insert into contact_messages ${sql({
+        name: input.name,
+        email: input.email,
+        message: input.message,
+        ip,
+      })}
+      returning id
+    `;
+  } catch (error) {
+    console.error("contact insert failed", error);
     return NextResponse.json({ error: "server" }, { status: 500 });
   }
 

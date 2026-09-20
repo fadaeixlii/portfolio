@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { createServerClient } from "@/lib/supabase/server";
+import { isSignedIn } from "@/lib/auth";
 import { UnlocalisedShell } from "@/components/layout/UnlocalisedShell";
 
 export const metadata: Metadata = {
@@ -12,18 +12,10 @@ export default async function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const supabase = await createServerClient();
-  const { data } = await supabase.auth.getUser();
-  // getUser() revalidates against the auth server; getSession() trusts a
-  // cookie a client could have forged.
-  const allowlist = (process.env.ADMIN_EMAILS ?? "")
-    .split(",")
-    .map((email) => email.trim().toLowerCase())
-    .filter(Boolean);
-  const email = data.user?.email?.toLowerCase();
-  // Signed in but not on the allowlist gets the same redirect as signed-out —
-  // never a "forbidden" page, which would confirm the route exists.
-  if (!email || !allowlist.includes(email)) redirect("/auth/login");
+  // Signed out and "signed in but not allowed" take the same exit — a
+  // distinct forbidden page would confirm the route exists. The allowlist
+  // itself is enforced at login; this only asks whether the cookie is valid.
+  if (!(await isSignedIn())) redirect("/auth/login");
 
   return (
     <UnlocalisedShell>

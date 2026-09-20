@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { createServiceClient } from "@/lib/supabase/service";
+import { sql } from "@/lib/db";
 import { Surface } from "@/components/primitives/Surface";
 import { Hairline } from "@/components/primitives/Hairline";
 
@@ -12,16 +12,12 @@ type ContactMessage = {
 };
 
 async function loadMessages(): Promise<ContactMessage[]> {
-  const supabase = createServiceClient();
-  const { data, error } = await supabase
-    .from("contact_messages")
-    .select("id, name, email, message, created_at")
-    .order("created_at", { ascending: false })
-    // See src/lib/supabase/service.ts — without this a wedged Supabase host
-    // retries past the 5s fetch timeout instead of failing at it.
-    .retry(false);
-  if (error) throw new Error(`contact_messages lookup failed: ${error.message}`);
-  return (data as ContactMessage[] | null) ?? [];
+  const rows = await sql<ContactMessage[]>`
+    select id, name, email, message, created_at
+    from contact_messages
+    order by created_at desc
+  `;
+  return rows;
 }
 
 const formatReceived = (iso: string) =>

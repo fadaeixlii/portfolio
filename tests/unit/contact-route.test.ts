@@ -1,37 +1,32 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
-// Pure branching on a mocked Supabase response — no network, no real Resend
-// call. Covers: honeypot -> 200 without an insert, rate limit -> 429, and
-// insert failure -> 500. Mirrors tests/unit/book-route.test.ts.
+// Pure branching on a mocked database — no network, no real Resend call.
+// Covers: honeypot -> 200 without an insert, rate limit -> 429, a count
+// query that errors -> 503 (the limiter must fail closed), and an insert
+// failure -> 500. Mirrors tests/unit/book-route.test.ts.
 
 const sendContactEmailMock = vi.fn();
-const fromMock = vi.fn();
 
 vi.mock("@/lib/email/contact", () => ({
   sendContactEmail: (...args: unknown[]) => sendContactEmailMock(...args),
 }));
-vi.mock("@/lib/supabase/service", () => ({
-  createServiceClient: () => ({ from: (...args: unknown[]) => fromMock(...args) }),
-}));
+/** Every `sql`...`` call, in order, as joined query text. */
+const queries: string[] = [];
+/** Queued results, one per `sql` call. A thrown value rejects instead. */
+let results: unknown[] = [];
 
-type QueryResult = { count?: number | null; data?: unknown; error?: unknown };
-
-/** Chainable stand-in for a Supabase query builder — every filter method
- *  returns itself, resolving to `result` whether the caller awaits it
- *  directly (the count query) or calls `.single()` (the insert). */
-function makeBuilder(result: QueryResult) {
-  const builder: Record<string, unknown> = {};
-  const chain = () => builder;
-  builder.select = vi.fn(chain);
-  builder.insert = vi.fn(chain);
-  builder.eq = vi.fn(chain);
-  builder.gte = vi.fn(chain);
-  builder.retry = vi.fn(chain);
-  builder.single = vi.fn(() => Promise.resolve(result));
-  builder.then = (resolve: (v: QueryResult) => void, reject?: (e: unknown) => void) =>
-    Promise.resolve(result).then(resolve, reject);
-  return builder;
-}
+vi.mock("@/lib/db", () => {
+  const sql = (strings: TemplateStringsArray | Record<string, unknown>) => {
+    if (!Array.isArray((strings as TemplateStringsArray).raw)) {
+      return { __columns: strings };
+    }
+    queries.push((strings as TemplateStringsArray).join("?").replace(/\s+/g, " ").trim());
+    const next = results.shift();
+    if (next instanceof Error) return Promise.reject(next);
+    return Promise.resolve(next ?? []);
+  };
+  return { sql, isUniqueViolation: () => false };
+});
 
 function contactRequest(overrides: Record<string, unknown> = {}) {
   return new Request("http://localhost/api/contact", {
@@ -48,7 +43,8 @@ function contactRequest(overrides: Record<string, unknown> = {}) {
 }
 
 beforeEach(() => {
-  fromMock.mockReset();
+  queries.length = 0;
+  results = [];
   sendContactEmailMock.mockReset();
 });
 
@@ -60,7 +56,7 @@ describe("POST /api/contact", () => {
 
     expect(res.status).toBe(200);
     await expect(res.json()).resolves.toEqual({ ok: true });
-    expect(fromMock).not.toHaveBeenCalled();
+    expect(queries).toHaveLength(0);
     expect(sendContactEmailMock).not.toHaveBeenCalled();
   });
 
@@ -74,13 +70,13 @@ describe("POST /api/contact", () => {
     const res = await POST(contactRequest({ message: "short" }));
 
     expect(res.status).toBe(400);
-    expect(fromMock).not.toHaveBeenCalled();
+    expect(queries).toHaveLength(0);
   });
 
   it("rate limits at the IP cap without inserting", async () => {
     const { POST } = await import("@/app/api/contact/route");
 
-    fromMock.mockReturnValueOnce(makeBuilder({ count: 5 })); // ip cap query
+    results = [[{ count: 5 }]]; // ip cap query says the cap is reached
 
     const res = await POST(contactRequest());
 
@@ -92,26 +88,22 @@ describe("POST /api/contact", () => {
   it("503s and never emails when the rate-limit count query errors", async () => {
     // A failed count must not read as "zero messages" — that would let the
     // limiter fail open, allowing unlimited submissions. This is the
-    // regression case: count comes back null alongside a Supabase error.
+    // regression case: count comes back null alongside a database error.
     const { POST } = await import("@/app/api/contact/route");
 
-    fromMock.mockReturnValueOnce(
-      makeBuilder({ count: null, error: { message: "connection reset" } }),
-    ); // ip cap query fails
+    results = [new Error("connection reset")]; // ip cap query fails
 
     const res = await POST(contactRequest());
 
     expect(res.status).toBe(503);
-    expect(fromMock).toHaveBeenCalledTimes(1);
+    expect(queries.some((q) => q.includes("insert into"))).toBe(false);
     expect(sendContactEmailMock).not.toHaveBeenCalled();
   });
 
   it("500s and never emails when the insert fails", async () => {
     const { POST } = await import("@/app/api/contact/route");
 
-    fromMock
-      .mockReturnValueOnce(makeBuilder({ count: 0 })) // ip cap
-      .mockReturnValueOnce(makeBuilder({ data: null, error: { message: "boom" } })); // insert
+    results = [[{ count: 0 }], new Error("boom")]; // ip cap ok, insert fails
 
     const res = await POST(contactRequest());
 
@@ -122,9 +114,7 @@ describe("POST /api/contact", () => {
   it("stores the message, emails the owner, and returns 200 on success", async () => {
     const { POST } = await import("@/app/api/contact/route");
 
-    fromMock
-      .mockReturnValueOnce(makeBuilder({ count: 0 })) // ip cap
-      .mockReturnValueOnce(makeBuilder({ data: { id: "row-1" }, error: null })); // insert
+    results = [[{ count: 0 }], [{ id: "row-1" }]]; // ip cap ok, insert returns the row
     sendContactEmailMock.mockResolvedValueOnce(undefined);
 
     const res = await POST(contactRequest());

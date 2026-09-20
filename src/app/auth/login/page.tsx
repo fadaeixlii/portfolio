@@ -4,15 +4,16 @@ import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { Field } from "@/components/primitives/Field";
 import { Button } from "@/components/primitives/Button";
-import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
 
 /**
- * Email + password, not magic-link: there is exactly one admin account (no
- * public sign-up), and a link means also standing up a callback route and
- * an email-deliverability dependency neither buys anything here. Signing in
- * client-side is enough — `@supabase/ssr`'s browser client writes the
- * session to cookies, so the very next request already carries it and the
- * server-side `auth.getUser()` gate in admin/layout.tsx sees it.
+ * Email + password. There is exactly one admin account and no public
+ * sign-up, so a magic link would mean a callback route and a mail-delivery
+ * dependency for a form one person uses.
+ *
+ * The POST returns an httpOnly cookie, so the very next request already
+ * carries the session and the server-side check in admin/layout.tsx sees it.
+ * Every failure shows the same message: distinguishing "unknown email" from
+ * "wrong password" tells an attacker which addresses exist.
  */
 export default function LoginPage() {
   const router = useRouter();
@@ -26,9 +27,12 @@ export default function LoginPage() {
     setError(null);
     setLoading(true);
     try {
-      const supabase = createSupabaseBrowserClient();
-      const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
-      if (signInError) {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+      if (!res.ok) {
         setError("Wrong email or password.");
         return;
       }

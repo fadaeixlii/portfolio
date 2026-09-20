@@ -49,28 +49,32 @@ export async function GET(request: Request) {
 }
 
 /**
- * The three ways this realistically fails, named. Anything else prints its
- * own message.
+ * The ways this realistically fails, named.
  *
- * `TimeoutError` here is almost always DNS: the Supabase host is behind
- * Cloudflare and answers in well under a second when it resolves, so a
- * five-second abort means the name never resolved — a VPN or corporate
- * resolver swallowing it, not a slow database.
- *
- * `PGRST205` means the REST layer reached Postgres and found no such table,
- * which means the migrations in supabase/migrations were never applied.
+ * The database is Postgres in a container now, so the failure modes are the
+ * container's, not a hosted service's: not running, not migrated, or not
+ * answering. Each one has a different fix and the log should say which.
  */
 export function describeFailure(error: unknown): string {
   const message = error instanceof Error ? error.message : String(error);
+  const code = (error as { code?: string } | null)?.code;
 
-  if (error instanceof Error && error.name === "TimeoutError") {
-    return "request timed out before the host answered — usually DNS, check that the Supabase URL resolves from this machine";
+  if (code === "ECONNREFUSED" || message.includes("ECONNREFUSED")) {
+    return "nothing is listening on DATABASE_URL — start the database with `pnpm db:up`";
   }
-  if (message.includes("PGRST205") || message.includes("schema cache")) {
-    return "the bookings table does not exist — apply supabase/migrations";
+  if (code === "42P01" || message.includes("does not exist")) {
+    return "the bookings table is missing — run `pnpm db:migrate`";
+  }
+  // Which half timed out is carried in the message, because both can and a
+  // bare TimeoutError names neither.
+  if (message.startsWith("calendar free/busy failed")) {
+    return `Google Calendar did not answer: ${message}`;
+  }
+  if (message.startsWith("bookings lookup failed")) {
+    return `the database did not answer: ${message}`;
   }
   if (message.includes("fetch failed")) {
-    return `network error reaching Supabase or Google: ${message}`;
+    return `network error reaching Google Calendar: ${message}`;
   }
   return message;
 }

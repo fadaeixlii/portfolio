@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { verifyBookingToken } from "@/lib/calendar/token";
-import { createServiceClient } from "@/lib/supabase/service";
+import { sql } from "@/lib/db";
 import { cancelEvent } from "@/lib/calendar/google";
 
 export const dynamic = "force-dynamic";
@@ -22,16 +22,13 @@ type Booking = {
 async function loadBooking(token: string): Promise<Booking | null> {
   const id = verifyBookingToken(token);
   if (!id) return null;
-  const supabase = createServiceClient();
-  const { data } = await supabase
-    .from("bookings")
-    .select("id, start_at, end_at, name, email, topic, notes, meet_url, status, google_event_id")
-    .eq("id", id)
-    .single()
-    // See the comment in availability.ts: without this, a wedged Supabase
-    // host retries this GET ~3x past the 5s fetch timeout.
-    .retry(false);
-  return (data as Booking | null) ?? null;
+  const [row] = await sql<Booking[]>`
+    select id, start_at, end_at, name, email, topic, notes, meet_url, status,
+           google_event_id
+    from bookings
+    where id = ${id}
+  `;
+  return row ?? null;
 }
 
 export async function GET(
@@ -76,7 +73,6 @@ export async function DELETE(
     }
   }
 
-  const supabase = createServiceClient();
-  await supabase.from("bookings").update({ status: "cancelled" }).eq("id", booking.id);
+  await sql`update bookings set status = 'cancelled' where id = ${booking.id}`;
   return new NextResponse(null, { status: 204 });
 }

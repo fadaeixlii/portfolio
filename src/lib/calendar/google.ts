@@ -4,6 +4,19 @@ import type { Busy } from "./slots";
 const TOKEN_URL = "https://oauth2.googleapis.com/token";
 const API = "https://www.googleapis.com/calendar/v3";
 
+/**
+ * Google's ceiling, deliberately higher than the database's 5s. The database
+ * is a container on loopback that answers in tens of milliseconds; Google is
+ * a third party over the open internet, and over a VPN the token exchange
+ * alone was measured at 5.4s — right on the old 5s abort, so availability
+ * failed intermittently for no reason the log could explain.
+ *
+ * The booker still degrades to the email fallback if this is exceeded; the
+ * cost of a longer ceiling is a slower fallback, and the cost of too short a
+ * one is a fallback that appears when nothing is actually wrong.
+ */
+const GOOGLE_TIMEOUT_MS = 12_000;
+
 let cached: { token: string; expiresAt: number } | null = null;
 
 /**
@@ -24,7 +37,7 @@ export async function getAccessToken(): Promise<string> {
       grant_type: "refresh_token",
     }),
     cache: "no-store",
-    signal: AbortSignal.timeout(5000),
+    signal: AbortSignal.timeout(GOOGLE_TIMEOUT_MS),
   });
 
   if (!res.ok) {
@@ -50,7 +63,7 @@ async function call<T>(path: string, init: RequestInit): Promise<T> {
       "Content-Type": "application/json",
     },
     cache: "no-store",
-    signal: AbortSignal.timeout(5000),
+    signal: AbortSignal.timeout(GOOGLE_TIMEOUT_MS),
   });
   if (!res.ok) {
     throw new Error(`google ${path} failed: ${res.status} ${await res.text()}`);
@@ -129,7 +142,7 @@ export async function cancelEvent(eventId: string): Promise<void> {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` },
       cache: "no-store",
-      signal: AbortSignal.timeout(5000),
+      signal: AbortSignal.timeout(GOOGLE_TIMEOUT_MS),
     },
   );
   // 410 Gone means it is already deleted, which satisfies the intent.

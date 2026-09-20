@@ -3,25 +3,29 @@ import { describeFailure } from "@/app/api/availability/route";
 
 /**
  * The booker degrades to "email me instead" whenever availability fails, so
- * the only way anyone learns *why* is this log line. It has been wrong twice
- * in practice — once printing a DOMException's 25 legacy constants and
- * burying the cause, and once reading as a Supabase outage when the project
- * was healthy and only the local resolver was broken.
+ * the only way anyone learns *why* is this log line. It has been wrong in
+ * practice — printing a DOMException's 25 legacy constants with the cause
+ * buried in them — and each failure now has a different fix, so naming the
+ * wrong one sends someone to the wrong place.
  */
 describe("describeFailure", () => {
-  it("names DNS for an abort, not a slow database", () => {
-    const timeout = new Error("The operation was aborted due to timeout");
-    timeout.name = "TimeoutError";
-    expect(describeFailure(timeout)).toMatch(/DNS/);
-    // The distinction that matters: this is not the host being down.
-    expect(describeFailure(timeout)).not.toMatch(/outage|down/i);
+  it("tells you to start the database when nothing is listening", () => {
+    const refused = Object.assign(new Error("connect ECONNREFUSED 127.0.0.1:5433"), {
+      code: "ECONNREFUSED",
+    });
+    expect(describeFailure(refused)).toMatch(/db:up/);
   });
 
-  it("names the unapplied migrations when the table is absent", () => {
-    const missing = new Error(
-      `bookings lookup failed: Could not find the table 'public.bookings' in the schema cache (PGRST205)`,
-    );
-    expect(describeFailure(missing)).toMatch(/migrations/);
+  it("tells you to migrate when the table is absent", () => {
+    const missing = Object.assign(new Error('relation "bookings" does not exist'), {
+      code: "42P01",
+    });
+    expect(describeFailure(missing)).toMatch(/db:migrate/);
+  });
+
+  it("does not confuse the two — they have different fixes", () => {
+    const refused = Object.assign(new Error("x"), { code: "ECONNREFUSED" });
+    expect(describeFailure(refused)).not.toMatch(/migrate/);
   });
 
   it("passes anything else through rather than guessing", () => {

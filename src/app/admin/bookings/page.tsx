@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { createServiceClient } from "@/lib/supabase/service";
+import { sql } from "@/lib/db";
 import { signBookingToken } from "@/lib/calendar/token";
 import { SCHEDULE_CONFIG } from "@/lib/calendar/config";
 import { Surface } from "@/components/primitives/Surface";
@@ -18,16 +18,12 @@ type Booking = {
 };
 
 async function loadBookings(): Promise<Booking[]> {
-  const supabase = createServiceClient();
-  const { data, error } = await supabase
-    .from("bookings")
-    .select("id, start_at, name, email, topic, status, meet_url, visitor_tz")
-    .order("start_at", { ascending: false })
-    // See src/lib/supabase/service.ts — without this a wedged Supabase host
-    // retries past the 5s fetch timeout instead of failing at it.
-    .retry(false);
-  if (error) throw new Error(`bookings lookup failed: ${error.message}`);
-  return (data as Booking[] | null) ?? [];
+  const rows = await sql<Booking[]>`
+    select id, start_at, name, email, topic, status, meet_url, visitor_tz
+    from bookings
+    order by start_at desc
+  `;
+  return rows;
 }
 
 function formatIn(iso: string, timeZone: string): string {
