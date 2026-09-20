@@ -25,7 +25,7 @@ export function NavPill() {
   const pathname = usePathname();
 
   return (
-    <div className="pointer-events-none fixed inset-x-0 top-4 z-50 flex justify-center px-4">
+    <div className="pointer-events-none fixed inset-x-0 top-4 z-50 hidden justify-center px-4 lg:flex">
       <Surface
         as="nav"
         variant="flat"

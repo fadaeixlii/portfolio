@@ -82,8 +82,25 @@ test("the identity column sticks beside the content and stacks below it", async 
   expect(stuck!.y).toBeCloseTo(shellTop, 0);
   expect(stuck!.y).toBeCloseTo(restY, 0);
 
+  // Below `lg` the identity card is gone, not restacked: the phone gets the
+  // full-bleed portrait as the opening instead, and the name it used to
+  // carry moves into the mobile header.
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/en");
-  const narrow = await boxes();
-  expect(narrow.aside.y).toBeGreaterThan(narrow.main.y + narrow.main.height - 1);
+  await expect(page.locator("aside")).toBeHidden();
+
+  const portrait = page.locator("main img[src*='portrait']").first();
+  await expect(portrait).toBeVisible();
+  const shot = (await portrait.boundingBox())!;
+  // Full-bleed: it meets both screen edges rather than sitting in the gutter.
+  expect(shot.x).toBeLessThanOrEqual(1);
+  expect(shot.width).toBeCloseTo(390, 0);
+
+  // It is the first thing on the page, above the headline.
+  const h1 = (await page.locator("main h1").first().boundingBox())!;
+  expect(shot.y).toBeLessThan(h1.y);
+
+  // The tab bar is pinned to the bottom edge and clears the content.
+  const tabs = (await page.locator("nav").last().boundingBox())!;
+  expect(Math.round(tabs.y + tabs.height)).toBeCloseTo(844, 0);
 });

@@ -24,7 +24,7 @@ export function SiteAside() {
   const s = useTranslations("sidebar");
 
   return (
-    <aside className="order-2 w-full min-w-0 px-[var(--space-6)] pb-[var(--space-22)] lg:sticky lg:top-[var(--shell-top)] lg:order-1 lg:mt-[var(--shell-top)] lg:w-auto lg:max-w-[320px] lg:flex-[0_1_320px]">
+    <aside className="order-2 hidden w-full min-w-0 px-[var(--space-6)] pb-[var(--space-22)] lg:block lg:sticky lg:top-[var(--shell-top)] lg:order-1 lg:mt-[var(--shell-top)] lg:w-auto lg:max-w-[320px] lg:flex-[0_1_320px]">
       {/* No padding on the card: the portrait runs edge to edge against the
           2px rule, and only the text below it is inset. */}
       <div className="mx-auto flex max-w-[320px] flex-col border-2 border-hairline bg-surface">

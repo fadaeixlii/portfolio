@@ -3,11 +3,12 @@
 import { useSyncExternalStore } from "react";
 import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
+import { cn } from "@/lib/cn";
 import { Moon, Sun } from "lucide-react";
 
 const emptySubscribe = () => () => {};
 
-export function ThemeToggle() {
+export function ThemeToggle({ className }: { className?: string } = {}) {
   const { resolvedTheme, setTheme } = useTheme();
   // Client-only flag without a setState-in-effect: false on the server and
   // the first client render (so SSR and hydration markup agree), true after.
@@ -25,7 +26,11 @@ export function ThemeToggle() {
       type="button"
       aria-label={t("toggleTheme")}
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="grid size-9 place-items-center rounded-full text-dim transition-[color] duration-[var(--dur-fast)] hover:text-text"
+      className={cn(
+        "grid place-items-center text-dim transition-[color] duration-[var(--dur-fast)] hover:text-text",
+        // The mobile header overrides the pill shape and the fixed size.
+        className ?? "size-9 rounded-full",
+      )}
     >
       {/* Render a stable icon until mounted so SSR and client markup agree. */}
       {mounted && !isDark ? (

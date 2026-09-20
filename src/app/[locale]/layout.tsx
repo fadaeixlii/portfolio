@@ -10,6 +10,7 @@ import { MotionProvider } from "@/components/layout/MotionProvider";
 import { GlassFilter } from "@/components/primitives/GlassFilter";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { NavPill } from "@/components/layout/NavPill";
+import { MobileChrome } from "@/components/layout/MobileChrome";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteAside } from "@/components/layout/SiteAside";
 import "@/styles/globals.css";
@@ -66,7 +67,12 @@ export default async function LocaleLayout({
             <MotionProvider>
               {/* Skip link — the first tabbable thing on every page. */}
               <SkipLink />
+              {/* Two chromes, one at a time: the bordered nav box from `lg`
+                  up, the header-plus-tab-bar below it. Both render, and CSS
+                  picks — a JS breakpoint check would mean a hydration
+                  mismatch and a flash of the wrong one. */}
               <NavPill />
+              <MobileChrome />
               {/* The shell: sticky identity column beside the page.
                   `items-start` is load-bearing — a stretched flex item is
                   already full height and `position: sticky` has nothing to
@@ -74,7 +80,7 @@ export default async function LocaleLayout({
                   each side brings its own, so a page never pays for it twice.
                   Content is first in the DOM and `order` moves the aside to
                   the inline start from `lg` up. */}
-              <div className="mx-auto flex max-w-[1180px] flex-wrap items-start">
+              <div className="mx-auto flex max-w-[1180px] flex-wrap items-start pb-[84px] lg:pb-0">
                 <div className="order-1 w-full min-w-0 lg:order-2 lg:w-auto lg:flex-[999_1_480px]">
                   {children}
                 </div>

@@ -6,6 +6,7 @@ import { getFeaturedProjects, getProjects, getExperience, getStack } from "@/con
 import { SHOTS } from "@/content/shots";
 import { BootSequence } from "@/components/home/BootSequence";
 import { HeroBento } from "@/components/home/HeroBento";
+import { MobilePortrait } from "@/components/home/MobilePortrait";
 import { StatRow } from "@/components/home/StatRow";
 import { StackGrid } from "@/components/stack/StackGrid";
 import { Reveal } from "@/components/primitives/Reveal";
@@ -46,6 +47,8 @@ export default function HomePage({
       id="main"
       className="min-h-dvh px-[var(--space-6)] pt-[var(--shell-top)] pb-[var(--space-22)]"
     >
+      <MobilePortrait />
+
       <BootSequence>
         <HeroBento />
       </BootSequence>
