@@ -55,11 +55,32 @@ test("the identity column sticks beside the content and stacks below it", async 
   // Inline start of the content, not above it.
   expect(wide.aside.x).toBeLessThan(wide.main.x);
 
+  // Where the column starts, before any scrolling.
+  const restY = (await page.locator("aside").boundingBox())!.y;
+
   await page.evaluate(() => window.scrollTo(0, 1200));
   await page.waitForTimeout(300);
   const stuck = await page.locator("aside").boundingBox();
-  // Pinned under the nav rather than scrolled away with the page.
-  expect(stuck!.y).toBeCloseTo(86, 0);
+
+  // Read --shell-top rather than repeating its value: the page heading, the
+  // aside's offset and its sticky top all come from that one token, and a
+  // literal here would have to be edited every time the token moves.
+  const shellTop = await page.evaluate(() => {
+    const raw = getComputedStyle(document.documentElement)
+      .getPropertyValue("--shell-top")
+      .trim();
+    const probe = document.createElement("div");
+    probe.style.height = raw;
+    document.body.append(probe);
+    const px = probe.getBoundingClientRect().height;
+    probe.remove();
+    return px;
+  });
+
+  // Pinned at the token, and — because the offset and the sticky top are the
+  // same value — it never moved at all.
+  expect(stuck!.y).toBeCloseTo(shellTop, 0);
+  expect(stuck!.y).toBeCloseTo(restY, 0);
 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/en");

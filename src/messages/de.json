@@ -71,6 +71,12 @@
         "heading": "Haben Sie ein Projekt im Kopf?",
         "action": "Termin buchen"
       }
+    },
+    "about": {
+      "heading": "Über mich",
+      "body": "Ich baue seit 2019 fürs Web, meist die Teile, bei denen ein Produkt nicht scheitern darf: was Menschen berechnet wird, was ein Modell im Betrieb kostet, was on-chain abgerechnet wird. Zuletzt hieß das KI-Systeme von Anfang bis Ende — ein Gateway über drei EU-Anbieter, Messung und die Abrechnung dahinter.",
+      "cv": "Lebenslauf herunterladen",
+      "cvNote": "PDF, eine Seite"
     }
   },
   "work": {

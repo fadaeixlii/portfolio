@@ -53,7 +53,13 @@ export default async function LocaleLayout({
       className={fontVariables}
       suppressHydrationWarning
     >
-      <body>
+      {/* Grammarly and similar extensions write `data-gr-ext-installed` and
+          `data-new-gr-c-s-check-loaded` onto <body> before React hydrates,
+          which React reports as a hydration mismatch the app cannot fix.
+          Suppressing on <html> alone does not cover it — the attributes land
+          on <body>. This suppresses attribute diffs one level deep only, so a
+          real mismatch inside the tree still reports. */}
+      <body suppressHydrationWarning>
         <GlassFilter />
         <ThemeProvider>
           <NextIntlClientProvider>

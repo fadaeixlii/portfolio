@@ -30,6 +30,7 @@ export default function HomePage({
 
   const t = useTranslations("home.sections");
   const tHero = useTranslations("home.hero");
+  const tAbout = useTranslations("home.about");
   const featured = getFeaturedProjects();
   const experience = getExperience().slice(0, 3);
   const stack = getStack();
@@ -43,11 +44,35 @@ export default function HomePage({
   return (
     <main
       id="main"
-      className="min-h-dvh px-[var(--space-6)] pt-[var(--space-32)] pb-[var(--space-22)]"
+      className="min-h-dvh px-[var(--space-6)] pt-[var(--shell-top)] pb-[var(--space-22)]"
     >
       <BootSequence>
         <HeroBento />
       </BootSequence>
+
+      {/* About sits directly under the headline: the hero is two lines, and a
+          visitor who wants more than that should not have to scroll past the
+          stats to find it. */}
+      <Reveal as="section" className="mt-[var(--space-22)] grid gap-[var(--space-6)] border-t-2 border-hairline pt-[var(--space-8)] md:grid-cols-[160px_1fr] md:gap-[var(--space-6)]">
+        <h2 className="text-[length:var(--text-xs)] font-semibold uppercase tracking-wide text-dim">
+          {tAbout("heading")}
+        </h2>
+        <div className="flex flex-col items-start gap-[var(--space-6)]">
+          <p dir="auto" className="max-w-[var(--measure)] text-[length:var(--text-lg)] text-text">
+            {tAbout("body")}
+          </p>
+          <a
+            href="/cv/Mohammad-M-Khani-AI-Engineer.pdf"
+            download
+            className="inline-flex items-center gap-[var(--space-3)] border-2 border-hairline px-[var(--space-5)] py-[var(--space-3)] text-[length:12px] font-semibold uppercase tracking-wide text-text transition-[border-color,color] duration-[var(--dur-fast)] hover:border-signal hover:text-signal-text"
+          >
+            {tAbout("cv")}
+            <span aria-hidden className="font-mono text-[length:11px] text-dim">
+              {tAbout("cvNote")}
+            </span>
+          </a>
+        </div>
+      </Reveal>
 
       <Reveal as="section" className="mt-[var(--space-22)]">
         <StatRow shipped={getProjects().length} />
@@ -144,19 +169,30 @@ export default function HomePage({
           {experience.map((entry) => (
             <li
               key={entry.company}
-              className="flex flex-wrap items-baseline justify-between gap-x-[var(--space-4)] gap-y-1 border-b-2 border-hairline py-[var(--space-4)]"
+              className="border-b-2 border-hairline py-[var(--space-5)]"
             >
-              <h3
+              <div className="flex flex-wrap items-baseline justify-between gap-x-[var(--space-4)] gap-y-1">
+                <h3
+                  dir="auto"
+                  className="font-display text-[length:var(--text-lg)] font-extrabold uppercase tracking-[var(--tracking-display)] text-text"
+                >
+                  {entry.company}
+                </h3>
+                <p dir="auto" className="text-[length:var(--text-sm)] text-dim">
+                  {entry.role}
+                </p>
+                <p dir="auto" className="text-[length:var(--text-sm)] text-dim">
+                  {entry.period}
+                </p>
+              </div>
+              {/* The summary, clamped: a company name and a date range say
+                  where he was, not what he did. Two lines is enough to decide
+                  whether to open the full timeline. */}
+              <p
                 dir="auto"
-                className="font-display text-[length:var(--text-lg)] font-extrabold uppercase tracking-[var(--tracking-display)] text-text"
+                className="mt-[var(--space-3)] line-clamp-2 max-w-[var(--measure)] text-[length:var(--text-sm)] text-dim"
               >
-                {entry.company}
-              </h3>
-              <p dir="auto" className="text-[length:var(--text-sm)] text-dim">
-                {entry.role}
-              </p>
-              <p dir="auto" className="text-[length:var(--text-sm)] text-dim">
-                {entry.period}
+                {entry.summary}
               </p>
             </li>
           ))}

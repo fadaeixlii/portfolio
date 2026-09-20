@@ -97,7 +97,7 @@ export default function StyleguidePage({
     // page inside an already-centred column.
     <main
       id="main"
-      className="flex flex-col gap-[var(--space-22)] px-[var(--space-6)] pt-[var(--space-24)] pb-[var(--space-22)]"
+      className="flex flex-col gap-[var(--space-22)] px-[var(--space-6)] pt-[var(--shell-top)] pb-[var(--space-22)]"
     >
       <h1 className="font-display text-[length:var(--text-4xl)] font-extrabold uppercase leading-[var(--leading-display)] tracking-[var(--tracking-display)]">
         Styleguide

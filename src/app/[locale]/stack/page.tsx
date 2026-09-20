@@ -37,7 +37,7 @@ export default function StackPage({
   return (
     <main
       id="main"
-      className="min-h-dvh px-[var(--space-6)] pt-[var(--space-24)] pb-[var(--space-22)]"
+      className="min-h-dvh px-[var(--space-6)] pt-[var(--shell-top)] pb-[var(--space-22)]"
     >
       <PageHead line1={t("line1")} line2={t("line2")} sub={t("subheading")} />
 

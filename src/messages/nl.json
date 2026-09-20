@@ -71,6 +71,12 @@
         "heading": "Een project in gedachten?",
         "action": "Gesprek plannen"
       }
+    },
+    "about": {
+      "heading": "Over mij",
+      "body": "Ik bouw sinds 2019 voor het web, vooral de onderdelen waarin een product niet mag falen: wat mensen betalen, wat een model kost om te draaien, wat on-chain wordt afgerekend. De laatste tijd betekent dat AI-systemen van begin tot eind — een gateway over drie EU-aanbieders, meting en de facturatie daarachter.",
+      "cv": "CV downloaden",
+      "cvNote": "PDF, één pagina"
     }
   },
   "work": {

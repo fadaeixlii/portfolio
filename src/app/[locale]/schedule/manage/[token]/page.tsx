@@ -13,7 +13,7 @@ export default function ManageBookingPage({
   return (
     <main
       id="main"
-      className="mx-auto min-h-dvh max-w-xl px-[var(--space-6)] pt-[var(--space-32)] pb-[var(--space-24)]"
+      className="mx-auto min-h-dvh max-w-xl px-[var(--space-6)] pt-[var(--shell-top)] pb-[var(--space-24)]"
     >
       <ManageBooking token={token} />
     </main>

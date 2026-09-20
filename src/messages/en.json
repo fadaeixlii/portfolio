@@ -71,6 +71,12 @@
         "heading": "Have a project in mind?",
         "action": "Book a call"
       }
+    },
+    "about": {
+      "heading": "About",
+      "body": "I have been building for the web since 2019, mostly the parts a product cannot fail at: what people are charged, what a model costs to run, what settles on-chain. Lately that has meant AI systems end to end — a gateway over three EU providers, metering, and the billing behind it.",
+      "cv": "Download CV",
+      "cvNote": "PDF, one page"
     }
   },
   "work": {

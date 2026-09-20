@@ -82,7 +82,7 @@ export function CaseStudyLayout({
   const gallery = GALLERIES[project.slug] ?? [];
 
   return (
-    <div className="flex flex-col gap-[var(--space-22)] px-[var(--space-6)] pt-[var(--space-24)] pb-[var(--space-22)]">
+    <div className="flex flex-col gap-[var(--space-22)] px-[var(--space-6)] pt-[var(--shell-top)] pb-[var(--space-22)]">
       <Reveal as="header" className="flex flex-col gap-[var(--space-8)]">
         <h1
           dir="auto"
