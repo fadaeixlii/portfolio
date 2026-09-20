@@ -31,7 +31,7 @@ test("theme toggle flips data-theme and survives reload", async ({ page }) => {
   await page.goto("/en");
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
 
-  await page.getByRole("button", { name: /switch theme/i }).click();
+  await page.getByRole("button", { name: /switch theme/i }).filter({ visible: true }).click();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
 
   await page.reload();
@@ -43,7 +43,7 @@ test("paper colour actually changes between themes", async ({ page }) => {
   const dark = await page.evaluate(
     () => getComputedStyle(document.body).backgroundColor,
   );
-  await page.getByRole("button", { name: /switch theme/i }).click();
+  await page.getByRole("button", { name: /switch theme/i }).filter({ visible: true }).click();
   const light = await page.evaluate(
     () => getComputedStyle(document.body).backgroundColor,
   );
@@ -67,7 +67,7 @@ test.describe("nav pill stays on screen", () => {
       // The two ends of the pill must actually be reachable.
       await expect(page.getByRole("link", { name: "Home" })).toBeInViewport();
       await expect(
-        page.getByRole("button", { name: /switch theme/i }),
+        page.getByRole("button", { name: /switch theme/i }).filter({ visible: true }),
       ).toBeInViewport();
     });
   }

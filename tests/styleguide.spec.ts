@@ -34,7 +34,7 @@ for (const locale of ["en", "fa"] as const) {
       );
       await page.goto(`/${locale}/styleguide`);
       if (theme === "light") {
-        await page.getByRole("button", { name: /switch theme|تغییر پوسته/i }).click();
+        await page.getByRole("button", { name: /switch theme|تغییر پوسته/i }).filter({ visible: true }).click();
       }
       await revealEverything(page);
       // Motion must settle or the snapshot is a coin flip.

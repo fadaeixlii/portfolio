@@ -35,8 +35,8 @@
       "role": "Μηχανικός AI & Full-Stack Developer",
       "location": "Αθήνα, Ελλάδα",
       "headline": {
-        "line1": "Μηχανικός AI.",
-        "line2": "Από το μηδέν στο ένα."
+        "line1": "Μηχανικός AI &",
+        "line2": "Full-Stack Developer"
       },
       "bio": "Φτιάχνω τα κομμάτια που δεν επιτρέπεται να σπάσουν: χρεώσεις, model gateways, on-chain εκκαθάριση.",
       "cta": {
@@ -46,7 +46,8 @@
       "capabilities": {
         "one": "Παραδίδει συστήματα AI έτοιμα για παραγωγή, από άκρη σε άκρη.",
         "two": "Χτίζει full-stack προϊόντα, από τη βάση δεδομένων έως το deploy."
-      }
+      },
+      "zeroToOne": "Από το μηδέν στο ένα"
     },
     "stats": {
       "since": "από",

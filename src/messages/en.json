@@ -35,8 +35,8 @@
       "role": "AI Engineer & Full-Stack Developer",
       "location": "Athens, Greece",
       "headline": {
-        "line1": "AI engineer.",
-        "line2": "Zero to one."
+        "line1": "AI Engineer &",
+        "line2": "Full-Stack Developer"
       },
       "bio": "I build the parts that have to work: billing pipelines, model gateways, on-chain settlement.",
       "cta": {
@@ -46,7 +46,8 @@
       "capabilities": {
         "one": "Ships production AI systems end to end.",
         "two": "Builds full-stack products, database to deploy."
-      }
+      },
+      "zeroToOne": "Zero to one"
     },
     "stats": {
       "since": "since",

@@ -45,7 +45,7 @@ for (const locale of ["en", "fa"] as const) {
         // Drive the real control. Setting the attribute by hand works until
         // next-themes rehydrates and overwrites it, which makes this flaky.
         if (theme === "light") {
-          await page.getByRole("button", { name: /switch theme|تغییر پوسته/i }).click();
+          await page.getByRole("button", { name: /switch theme|تغییر پوسته/i }).filter({ visible: true }).click();
           await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
         }
         // /schedule paints after an availability fetch — wait it out rather

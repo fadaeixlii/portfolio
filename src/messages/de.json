@@ -35,8 +35,8 @@
       "role": "KI-Ingenieur & Full-Stack-Entwickler",
       "location": "Athen, Griechenland",
       "headline": {
-        "line1": "AI Engineer.",
-        "line2": "Null auf eins."
+        "line1": "AI Engineer &",
+        "line2": "Full-Stack-Entwickler"
       },
       "bio": "Ich baue die Teile, die funktionieren müssen: Billing-Pipelines, Model-Gateways, On-Chain-Settlement.",
       "cta": {
@@ -46,7 +46,8 @@
       "capabilities": {
         "one": "Baut produktionsreife KI-Systeme von Anfang bis Ende.",
         "two": "Baut Full-Stack-Produkte, von der Datenbank bis zum Deploy."
-      }
+      },
+      "zeroToOne": "Null auf eins"
     },
     "stats": {
       "since": "seit",

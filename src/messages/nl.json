@@ -35,8 +35,8 @@
       "role": "AI Engineer & Full-Stack Developer",
       "location": "Athene, Griekenland",
       "headline": {
-        "line1": "AI engineer.",
-        "line2": "Nul naar één."
+        "line1": "AI Engineer &",
+        "line2": "Full-Stack Developer"
       },
       "bio": "Ik bouw de onderdelen die het moeten doen: billing pipelines, model gateways, on-chain afwikkeling.",
       "cta": {
@@ -46,7 +46,8 @@
       "capabilities": {
         "one": "Bouwt productieklare AI-systemen van begin tot eind.",
         "two": "Bouwt full-stack producten, van database tot deploy."
-      }
+      },
+      "zeroToOne": "Nul naar één"
     },
     "stats": {
       "since": "sinds",

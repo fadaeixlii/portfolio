@@ -8,9 +8,8 @@ import { BootSequence } from "@/components/home/BootSequence";
 import { HeroBento } from "@/components/home/HeroBento";
 import { MobilePortrait } from "@/components/home/MobilePortrait";
 import { StatRow } from "@/components/home/StatRow";
-import { StackGrid } from "@/components/stack/StackGrid";
-import { StackChip } from "@/components/stack/StackChip";
-import { StackMarquee } from "@/components/home/StackMarquee";
+import { StackTabs } from "@/components/stack/StackTabs";
+import { markGroups } from "@/lib/stack-mark";
 import { Reveal } from "@/components/primitives/Reveal";
 import { Link } from "@/lib/i18n/navigation";
 
@@ -66,16 +65,35 @@ export default function HomePage({
           <p dir="auto" className="max-w-[var(--measure)] text-[length:var(--text-lg)] text-text">
             {tAbout("body")}
           </p>
-          <a
-            href="/cv/Mohammad-M-Khani-AI-Engineer.pdf"
-            download
-            className="inline-flex items-center gap-[var(--space-3)] border-2 border-hairline px-[var(--space-5)] py-[var(--space-3)] text-[length:12px] font-semibold uppercase tracking-wide text-text transition-[border-color,color] duration-[var(--dur-fast)] hover:border-signal hover:text-signal-text"
-          >
-            {tAbout("cv")}
-            <span aria-hidden className="font-mono text-[length:11px] text-dim">
+          {/* A download is an action, so it looks like the other primary
+              action on the page rather than a bordered box of grey text. The
+              note sits under it instead of inside it, where it was competing
+              with the label. */}
+          <div className="flex flex-col gap-[var(--space-2)]">
+            <a
+              href="/cv/Mohammad-M-Khani-AI-Engineer.pdf"
+              download
+              className="group inline-flex items-center gap-[var(--space-3)] self-start bg-signal-fill px-[var(--space-6)] py-[var(--space-4)] text-[length:12px] font-semibold uppercase tracking-wide text-signal-ink transition-[filter] duration-[var(--dur-fast)] hover:brightness-110"
+            >
+              <svg
+                viewBox="0 0 16 16"
+                aria-hidden
+                className="size-4 shrink-0 transition-transform duration-[var(--dur-fast)] group-hover:translate-y-0.5"
+              >
+                <path
+                  d="M8 1v9M4 7l4 4 4-4M2 14h12"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="square"
+                />
+              </svg>
+              {tAbout("cv")}
+            </a>
+            <span dir="auto" className="font-mono text-[length:11px] uppercase tracking-wide text-dim">
               {tAbout("cvNote")}
             </span>
-          </a>
+          </div>
         </div>
       </Reveal>
 
@@ -211,17 +229,8 @@ export default function HomePage({
             {t("stack.viewAll")}
           </Link>
         </div>
-        {/* One drifting row of everything, then the grouped list under it.
-            The marquee is the glance; the grid is the answer. */}
         <div className="mt-[var(--space-8)]">
-          <StackMarquee label={t("stack.heading")}>
-            {stack.flatMap((group) =>
-              group.items.map((item) => <StackChip key={`${group.name}-${item}`} name={item} />),
-            )}
-          </StackMarquee>
-        </div>
-        <div className="mt-[var(--space-8)]">
-          <StackGrid groups={stack} />
+          <StackTabs groups={markGroups(stack)} />
         </div>
       </Reveal>
 

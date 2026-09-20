@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { SHOTS } from "@/content/shots";
 import { StackChip } from "@/components/stack/StackChip";
+import { markFor } from "@/lib/stack-mark";
 import { Link } from "@/lib/i18n/navigation";
 import { cn } from "@/lib/cn";
 import { MagneticCard } from "./MagneticCard";
@@ -68,7 +69,7 @@ export function ProjectCard({ project }: { project: Project }) {
 
           <div className="mt-auto flex flex-wrap gap-[var(--space-2)] pt-[var(--space-3)]">
             {project.stack.slice(0, 4).map((item) => (
-              <StackChip key={item} name={item} size="sm" />
+              <StackChip key={item} name={item} mark={markFor(item)} size="sm" />
             ))}
           </div>
         </div>

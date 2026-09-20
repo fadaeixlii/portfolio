@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 import { getProjects } from "@/content";
 import { SHOTS, GALLERIES } from "@/content/shots";
 import { StackChip } from "@/components/stack/StackChip";
+import { markFor } from "@/lib/stack-mark";
 import { FigureReadout } from "./FigureReadout";
 import type { Project, CaseStudy } from "@/content/schema";
 import { Reveal } from "@/components/primitives/Reveal";
@@ -100,7 +101,7 @@ export function CaseStudyLayout({
           <h2 className={META_LABEL}>{t("stack")}</h2>
           <div className="flex flex-wrap gap-[var(--space-2)]">
             {project.stack.map((item) => (
-              <StackChip key={item} name={item} />
+              <StackChip key={item} name={item} mark={markFor(item)} />
             ))}
           </div>
         </div>

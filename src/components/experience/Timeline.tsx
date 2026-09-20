@@ -26,6 +26,7 @@ export function Timeline({ entries }: { entries: ExperienceEntry[] }) {
             <div className="relative ps-[var(--space-8)]">
               <span
                 aria-hidden
+                data-dot
                 className="absolute top-1.5 start-0 -ms-[4px] size-[10px] bg-signal"
               />
               <div className="flex flex-wrap items-baseline gap-[var(--space-3)]">

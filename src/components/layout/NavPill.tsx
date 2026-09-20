@@ -30,7 +30,11 @@ export function NavPill() {
         as="nav"
         variant="flat"
         aria-label={t("home")}
-        className="pointer-events-auto flex max-w-[calc(100vw-2rem)] flex-wrap items-center justify-center gap-x-1 gap-y-2 px-3 py-2"
+        /* 2px of padding, and every child stretches to the full inner
+           height. The CTA used to sit inside the nav's own py-2, which left
+           it floating in a band of surface rather than reading as part of
+           the bar. */
+        className="pointer-events-auto flex max-w-[calc(100vw-2rem)] items-stretch justify-center p-[2px]"
       >
         {ROUTES.map(({ href, key }) => {
           const active = pathname === href;
@@ -40,7 +44,7 @@ export function NavPill() {
               href={href}
               aria-current={active ? "page" : undefined}
               className={cn(
-                "px-3 py-1.5",
+                "flex items-center px-[13px] py-[9px]",
                 "text-[length:11px] font-semibold uppercase tracking-wide whitespace-nowrap",
                 "transition-[color] duration-[var(--dur-fast)]",
                 active ? "text-text" : "text-dim hover:text-text",
@@ -54,7 +58,9 @@ export function NavPill() {
         <Link
           href="/schedule"
           className={cn(
-            "bg-signal-fill px-4 py-1.5",
+            // Stretches edge to edge inside the 2px padding rather than
+            // keeping its own vertical inset.
+            "flex items-center self-stretch bg-signal-fill px-[13px]",
             "text-[length:11px] font-semibold uppercase tracking-wide whitespace-nowrap text-signal-ink",
             "transition-[filter] duration-[var(--dur-fast)] hover:brightness-110",
           )}
@@ -62,10 +68,14 @@ export function NavPill() {
           {t("schedule")}
         </Link>
 
-        <Hairline orientation="vertical" className="mx-1 h-5" />
+        {/* Full height, not a centred 20px stub: a fixed-height rule inside
+            a stretched row never lines up with the items either side of it. */}
+        <Hairline orientation="vertical" className="mx-[6px] self-stretch" />
 
-        <LocaleSwitch />
-        <ThemeToggle />
+        <div className="flex items-center">
+          <LocaleSwitch />
+        </div>
+        <ThemeToggle className="grid size-9 place-items-center self-stretch" />
       </Surface>
     </div>
   );

@@ -75,7 +75,7 @@ export function HeroBento() {
         transition={{ duration: MOTION.dur.slow, ease: EASE.out }}
         dir="auto"
         aria-label={`${t("headline.line1")} ${t("headline.line2")}`}
-        className="font-display text-[length:var(--text-display)] font-extrabold uppercase tracking-[var(--tracking-display)] leading-[var(--leading-display)]"
+        className="font-display text-[length:var(--text-3xl)] font-extrabold uppercase tracking-[var(--tracking-display)] leading-[var(--leading-display)] [overflow-wrap:normal]"
       >
         {rtl ? (
           <>
@@ -99,6 +99,35 @@ export function HeroBento() {
           </>
         )}
       </m.h1>
+
+      {/* The arrow is the claim, so the numerals carry it and the words sit
+          beside them for anyone the glyphs do not reach. */}
+      <p className="flex items-center gap-[var(--space-3)]">
+        <span className="flex items-center gap-[var(--space-2)] border-2 border-hairline px-[var(--space-4)] py-[var(--space-2)]">
+          <span className="font-mono text-[length:var(--text-xl)] tabular-nums leading-none text-dim">
+            0
+          </span>
+          <svg
+            viewBox="0 0 24 12"
+            aria-hidden
+            className="h-3 w-6 shrink-0 text-signal-text rtl:-scale-x-100"
+          >
+            <path
+              d="M0 6h20M15 1l5 5-5 5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="square"
+            />
+          </svg>
+          <span className="font-mono text-[length:var(--text-xl)] tabular-nums leading-none text-text">
+            1
+          </span>
+        </span>
+        <span dir="auto" className="text-[length:var(--text-sm)] uppercase tracking-wide text-dim">
+          {t("zeroToOne")}
+        </span>
+      </p>
 
       <p
         dir="auto"

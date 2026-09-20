@@ -1,29 +1,31 @@
-import { brandIcon } from "@/lib/brand-icons";
-import { readableBrand } from "@/lib/brand-contrast";
+import type { StackMark } from "@/lib/stack-mark";
 import { cn } from "@/lib/cn";
 
 /**
  * One technology, as a bordered chip carrying its brand mark.
  *
- * The brand hex is never painted raw — see `lib/brand-contrast.ts` for why
- * #000000 and #06B6D4 both need solving. Both theme-safe values are emitted
- * as custom properties and CSS picks per theme, so the mark stays correct
- * when the theme is toggled without a re-render.
+ * Presentational only — it takes the resolved mark rather than looking one
+ * up, so a client component can render it. Resolution needs `node:fs` (the
+ * contrast solver reads the paper colours out of tokens.css) and the whole
+ * simple-icons package, neither of which belongs in a browser bundle. See
+ * `lib/stack-mark.ts`.
+ *
+ * Both theme-safe colours ship as custom properties and CSS picks per theme,
+ * so toggling the theme needs no re-render.
  *
  * No proficiency bar and no percentage: a bar reading "React 92%" is an
  * invented metric.
  */
 export function StackChip({
   name,
+  mark,
   size = "md",
 }: {
   name: string;
+  mark?: StackMark;
   /** `sm` is for the work-grid cards, where six chips share a card. */
   size?: "sm" | "md";
 }) {
-  const icon = brandIcon(name);
-  const brand = icon ? readableBrand(icon.hex) : null;
-
   return (
     <span
       dir="auto"
@@ -34,15 +36,15 @@ export function StackChip({
           : "gap-[var(--space-2)] px-[var(--space-3)] py-[var(--space-1)] text-[length:var(--text-xs)]",
       )}
       style={
-        brand
+        mark
           ? ({
-              "--brand-dark": brand.dark,
-              "--brand-light": brand.light,
+              "--brand-dark": mark.dark,
+              "--brand-light": mark.light,
             } as React.CSSProperties)
           : undefined
       }
     >
-      {icon ? (
+      {mark ? (
         <svg
           viewBox="0 0 24 24"
           aria-hidden="true"
@@ -52,7 +54,7 @@ export function StackChip({
             size === "sm" ? "h-3 w-3" : "h-[14px] w-[14px]",
           )}
         >
-          <path d={icon.path} fill="currentColor" />
+          <path d={mark.path} fill="currentColor" />
         </svg>
       ) : null}
       {name}

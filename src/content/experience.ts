@@ -52,7 +52,7 @@ export const experience: z.input<typeof experienceSchema>[] = [
     role: "Senior Frontend Developer",
     startYear: 2024,
     period: "Sep 2024 — Feb 2025",
-    location: "On-site, Iran",
+    location: "Remote, Turkey",
     summary:
       "Built a real-estate web app with crypto payment and token creation in Next.js and TypeScript. Shipped a generic data hook and a CRUD table so new screens took less code.",
     products: ["Property DApp"],
@@ -72,7 +72,7 @@ export const experience: z.input<typeof experienceSchema>[] = [
     role: "Senior Frontend Developer",
     startYear: 2022,
     period: "Nov 2022 — Aug 2024",
-    location: "On-site, Iran",
+    location: "On-site",
     summary:
       "Delivered a crypto exchange web app with live charts, order management and WebSocket market data. A PWA caching layer took page load from 4.2s to 2.9s, and a shared component library cut the feature cycle from 8 days to 5.",
     products: ["Trading platform", "Component library"],
@@ -93,7 +93,7 @@ export const experience: z.input<typeof experienceSchema>[] = [
     role: "Frontend Developer",
     startYear: 2020,
     period: "Mar 2020 — Sep 2022",
-    location: "On-site, Iran",
+    location: "On-site",
     summary:
       "Built a personality-assessment platform for the academy's students, used by 5,000+ people. Tuned the Webpack build so the test opened faster on slow connections.",
     products: ["Assessment platform", "Design system"],
@@ -112,7 +112,7 @@ export const experience: z.input<typeof experienceSchema>[] = [
     role: "Frontend Developer",
     startYear: 2019,
     period: "Feb 2019 — Feb 2020",
-    location: "On-site, Iran",
+    location: "On-site",
     summary:
       "Launched an AI-driven study-resource platform in React and TypeScript. Fixed the GraphQL schema and resolver bugs that were blocking the team.",
     products: ["Study-resource platform"],
