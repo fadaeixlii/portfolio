@@ -107,14 +107,24 @@ export function CaseStudyLayout({
 
       {shot ? (
         <Reveal>
-          <div className="relative overflow-hidden border-2 border-hairline">
+          <div
+            className={
+              shot.fit === "contain"
+                ? "flex justify-center overflow-hidden border-2 border-hairline bg-surface py-[var(--space-8)]"
+                : "relative overflow-hidden border-2 border-hairline"
+            }
+          >
             <Image
               src={shot.src}
               alt={shot.alt}
               width={shot.width}
               height={shot.height}
-              sizes="(min-width: 1024px) 64rem, 100vw"
-              className="h-auto w-full [filter:var(--shot)]"
+              sizes={shot.fit === "contain" ? "378px" : "(min-width: 1024px) 64rem, 100vw"}
+              className={
+                shot.fit === "contain"
+                  ? "h-auto w-[378px] max-w-full border-2 border-hairline [filter:var(--shot)]"
+                  : "h-auto w-full [filter:var(--shot)]"
+              }
             />
           </div>
         </Reveal>
@@ -142,15 +152,17 @@ export function CaseStudyLayout({
             {gallery.map((item) => (
               <li
                 key={item.src}
-                className="w-[210px] shrink-0 snap-start border-2 border-hairline sm:w-[240px]"
+                // Fixed 9:16 box, not intrinsic height: the iOS assets are
+                // 230x498 and the Android ones 720x1280, so at a shared width
+                // they render 80px apart and the row bottoms out ragged.
+                className="relative aspect-[9/16] w-[210px] shrink-0 snap-start overflow-hidden border-2 border-hairline bg-surface sm:w-[240px]"
               >
                 <Image
                   src={item.src}
                   alt={item.alt}
-                  width={item.width}
-                  height={item.height}
+                  fill
                   sizes="240px"
-                  className="h-auto w-full"
+                  className="object-cover object-top"
                 />
               </li>
             ))}

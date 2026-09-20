@@ -4,6 +4,13 @@ export type Shot = {
   width: number;
   height: number;
   alt: string;
+  /**
+   * `cover` crops to fill the card, which is right for a wide screenshot.
+   * `contain` letterboxes instead — a portrait shot (a phone, an extension
+   * panel) cropped to 16:10 shows a meaningless horizontal strip of its top
+   * edge. Defaults to `cover`.
+   */
+  fit?: "cover" | "contain";
 };
 
 /**
@@ -24,6 +31,16 @@ export const SHOTS: Partial<Record<string, Shot>> = {
     width: 1920,
     height: 1080,
     alt: "aim2balance marketing landing page",
+  },
+  "ai-cost-extension": {
+    // The panel itself rather than a mockup: it is 378px wide in the browser,
+    // so a laptop mockup would render it smaller than life and add furniture
+    // that is not part of the product.
+    src: "/images/projects/aim2balance/aim2balance_plugin.png",
+    width: 378,
+    height: 603,
+    alt: "Browser extension panel breaking token cost down by AI platform",
+    fit: "contain",
   },
   jeofferte: {
     src: "/images/projects/jeofferte/landing.png",

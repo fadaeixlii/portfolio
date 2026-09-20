@@ -2,6 +2,7 @@ import Image from "next/image";
 import { SHOTS } from "@/content/shots";
 import { StackChip } from "@/components/stack/StackChip";
 import { Link } from "@/lib/i18n/navigation";
+import { cn } from "@/lib/cn";
 import type { Project } from "@/content/schema";
 
 /**
@@ -19,13 +20,23 @@ export function ProjectCard({ project }: { project: Project }) {
       className="group flex h-full flex-col border-2 border-hairline transition-[border-color] duration-[var(--dur-fast)] hover:border-signal"
     >
       {shot ? (
-        <div className="relative aspect-[16/10] w-full overflow-hidden border-b-2 border-hairline">
+        <div
+          className={cn(
+            "relative aspect-[16/10] w-full overflow-hidden border-b-2 border-hairline",
+            // A letterboxed portrait needs something behind it; a cropped
+            // wide shot fills its box and never shows the backdrop.
+            shot.fit === "contain" && "bg-surface",
+          )}
+        >
           <Image
             src={shot.src}
             alt=""
             fill
             sizes="(min-width: 768px) 420px, 100vw"
-            className="object-cover object-top [filter:var(--shot)]"
+            className={cn(
+              "[filter:var(--shot)]",
+              shot.fit === "contain" ? "object-contain p-[var(--space-3)]" : "object-cover object-top",
+            )}
           />
         </div>
       ) : null}
