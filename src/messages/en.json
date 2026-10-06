@@ -29,7 +29,8 @@
   "footer": {
     "statement": "Systems that count what they cost.",
     "cta": "Book a call",
-    "remote": "Remote"
+    "remote": "Remote",
+    "privacy": "Privacy"
   },
   "home": {
     "hero": {
@@ -203,6 +204,47 @@
       "heading": "Or reach me directly",
       "email": "Email",
       "github": "GitHub"
+    }
+  },
+  "privacy": {
+    "heading": "Privacy",
+    "line1": "Privacy",
+    "line2": "Policy",
+    "subheading": "What this site collects, why, and who else sees it.",
+    "updated": "Last updated: <date>6 October 2026</date>",
+    "who": {
+      "title": "Who runs this site",
+      "body": "Mohammad M. Khani, based in Athens, Greece, runs this site and is responsible for the data described here. For anything about your data, email <link>{email}</link>."
+    },
+    "browsing": {
+      "title": "Just browsing",
+      "body": "No analytics, no ads, no tracking scripts. Fonts are served from this site, not from a third party.",
+      "cloudflare": "Every request passes through Cloudflare, which sits in front of the server as a proxy and CDN. Cloudflare processes your IP address to deliver the page."
+    },
+    "device": {
+      "title": "What is stored in your browser",
+      "theme": "Your light or dark theme choice, in local storage.",
+      "intro": "A flag in session storage, so the home page's intro animation plays once per visit.",
+      "locale": "A cookie that remembers your language. It is set only when that differs from your browser's language, and cleared when you close the browser.",
+      "note": "None of these identify you. The only login cookie on the site belongs to the owner's admin area and is never set for visitors."
+    },
+    "contact": {
+      "title": "If you send a message",
+      "body": "The contact form stores your name, email address, message and IP address in a database on this site's own server. The IP address is used to limit each address to five messages a day. Your name, email and message are also emailed to Mohammad through Resend, an email delivery service, so Mohammad can reply."
+    },
+    "booking": {
+      "title": "If you book a call",
+      "stored": "The booking form stores your name, email address, the time you chose, your topic and notes if you add them, your language and time zone, and your IP address in the same database. The IP address and email are used to limit bookings per day.",
+      "calendar": "It then creates an event with a Google Meet link on Mohammad's Google Calendar and adds you as a guest. Google receives your name, email, topic and notes, and sends you the invitation.",
+      "email": "A confirmation with a calendar file is emailed to you through Resend, and Mohammad is emailed your name, email, chosen time, topic and notes. Cancelling with the link in that email deletes the calendar event and marks the booking as cancelled."
+    },
+    "retention": {
+      "title": "How long it is kept",
+      "body": "Messages and bookings are kept until they are no longer needed, and deleted when you ask. Nothing is deleted automatically."
+    },
+    "rights": {
+      "title": "Your rights",
+      "body": "Under the GDPR you can ask to see the data held about you, have it corrected or deleted, or object to its use. Email <link>{email}</link>. If you think your data has been mishandled, you can complain to the Hellenic Data Protection Authority."
     }
   }
 }

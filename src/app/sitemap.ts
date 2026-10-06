@@ -3,7 +3,7 @@ import { routing } from "@/lib/i18n/routing";
 import { getProjects } from "@/content";
 import { SITE_URL } from "@/lib/seo/metadata";
 
-const STATIC = ["", "/work", "/experience", "/stack", "/schedule", "/contact"];
+const STATIC = ["", "/work", "/experience", "/stack", "/schedule", "/contact", "/privacy"];
 
 /** /styleguide, /admin and /auth are deliberately absent — dev tooling and
  *  a private admin tool, neither meant for a search index. robots.ts

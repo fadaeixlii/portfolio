@@ -29,7 +29,8 @@
   "footer": {
     "statement": "Systemen die meten wat ze kosten.",
     "cta": "Gesprek plannen",
-    "remote": "Op afstand"
+    "remote": "Op afstand",
+    "privacy": "Privacy"
   },
   "home": {
     "hero": {
@@ -203,6 +204,47 @@
       "heading": "Of neem direct contact op",
       "email": "E-mail",
       "github": "GitHub"
+    }
+  },
+  "privacy": {
+    "heading": "Privacy",
+    "line1": "Privacy",
+    "line2": "Beleid",
+    "subheading": "Wat deze site verzamelt, waarom, en wie het nog meer ziet.",
+    "updated": "Laatst bijgewerkt: <date>6 oktober 2026</date>",
+    "who": {
+      "title": "Wie deze site beheert",
+      "body": "Mohammad M. Khani, gevestigd in Athene, Griekenland, beheert deze site en is verantwoordelijk voor de gegevens die hier worden beschreven. Voor alles over je gegevens: mail <link>{email}</link>."
+    },
+    "browsing": {
+      "title": "Gewoon rondkijken",
+      "body": "Geen analytics, geen advertenties, geen trackingscripts. Lettertypen worden door deze site zelf geleverd, niet door een derde partij.",
+      "cloudflare": "Elk verzoek loopt via Cloudflare, dat als proxy en CDN vóór de server staat. Cloudflare verwerkt je IP-adres om de pagina te leveren."
+    },
+    "device": {
+      "title": "Wat er in je browser wordt opgeslagen",
+      "theme": "Je keuze voor een licht of donker thema, in local storage.",
+      "intro": "Een markering in session storage, zodat de intro-animatie van de homepage één keer per bezoek speelt.",
+      "locale": "Een cookie die je taal onthoudt. Die wordt alleen gezet als je taal afwijkt van die van je browser, en gewist wanneer je de browser sluit.",
+      "note": "Geen hiervan identificeert jou. De enige inlogcookie op de site hoort bij het beheergedeelte van de eigenaar en wordt nooit voor bezoekers gezet."
+    },
+    "contact": {
+      "title": "Als je een bericht stuurt",
+      "body": "Het contactformulier slaat je naam, e-mailadres, bericht en IP-adres op in een database op de eigen server van deze site. Het IP-adres wordt gebruikt om elk adres te beperken tot vijf berichten per dag. Je naam, e-mailadres en bericht worden ook via Resend, een e-maildienst, naar Mohammad gestuurd, zodat hij kan antwoorden."
+    },
+    "booking": {
+      "title": "Als je een gesprek plant",
+      "stored": "Het boekingsformulier slaat je naam, e-mailadres, het gekozen tijdstip, je onderwerp en notities (als je die invult), je taal en tijdzone en je IP-adres op in dezelfde database. Het IP-adres en e-mailadres worden gebruikt om het aantal boekingen per dag te beperken.",
+      "calendar": "Daarna wordt er een afspraak met een Google Meet-link aangemaakt in de Google Agenda van Mohammad, met jou als gast. Google ontvangt je naam, e-mailadres, onderwerp en notities, en stuurt je de uitnodiging.",
+      "email": "Via Resend krijg je een bevestiging met een agendabestand, en Mohammad krijgt per e-mail je naam, e-mailadres, het gekozen tijdstip, onderwerp en notities. Annuleer je via de link in die e-mail, dan wordt de agenda-afspraak verwijderd en de boeking als geannuleerd gemarkeerd."
+    },
+    "retention": {
+      "title": "Hoe lang het bewaard wordt",
+      "body": "Berichten en boekingen worden bewaard tot ze niet meer nodig zijn, en verwijderd als je erom vraagt. Er wordt niets automatisch verwijderd."
+    },
+    "rights": {
+      "title": "Je rechten",
+      "body": "Onder de AVG kun je inzage vragen in de gegevens die over je worden bewaard, ze laten corrigeren of verwijderen, of bezwaar maken tegen het gebruik ervan. Mail <link>{email}</link>. Denk je dat er verkeerd met je gegevens is omgegaan, dan kun je een klacht indienen bij de Griekse toezichthouder, de Hellenic Data Protection Authority."
     }
   }
 }

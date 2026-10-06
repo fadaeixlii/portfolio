@@ -72,6 +72,12 @@ export function SiteFooter() {
             >
               LinkedIn
             </a>
+            <Link
+              href="/privacy"
+              className="text-[length:12px] font-semibold uppercase tracking-wide text-dim hover:text-text"
+            >
+              {t("privacy")}
+            </Link>
             <p className="text-[length:12px] text-dim">© 2026</p>
           </div>
         </div>

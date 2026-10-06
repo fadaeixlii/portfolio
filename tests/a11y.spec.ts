@@ -28,6 +28,7 @@ const ROUTES = [
   "/stack",
   "/schedule",
   "/contact",
+  "/privacy",
   "/styleguide",
 ] as const;
 

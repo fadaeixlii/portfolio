@@ -29,7 +29,8 @@
   "footer": {
     "statement": "Systeme, die messen, was sie kosten.",
     "cta": "Termin buchen",
-    "remote": "Remote"
+    "remote": "Remote",
+    "privacy": "Datenschutz"
   },
   "home": {
     "hero": {
@@ -203,6 +204,47 @@
       "heading": "Oder direkt erreichen",
       "email": "E-Mail",
       "github": "GitHub"
+    }
+  },
+  "privacy": {
+    "heading": "Datenschutz",
+    "line1": "Datenschutz",
+    "line2": "Erklärung",
+    "subheading": "Was diese Website erfasst, wozu, und wer es sonst noch sieht.",
+    "updated": "Zuletzt aktualisiert: <date>6. Oktober 2026</date>",
+    "who": {
+      "title": "Wer diese Website betreibt",
+      "body": "Mohammad M. Khani mit Sitz in Athen, Griechenland, betreibt diese Website und ist für die hier beschriebenen Daten verantwortlich. Bei Fragen zu Ihren Daten schreiben Sie an <link>{email}</link>."
+    },
+    "browsing": {
+      "title": "Beim Besuch der Website",
+      "body": "Keine Analyse-Tools, keine Werbung, keine Tracking-Skripte. Schriften werden von dieser Website ausgeliefert, nicht von Dritten.",
+      "cloudflare": "Jede Anfrage läuft über Cloudflare, das als Proxy und CDN vor dem Server sitzt. Cloudflare verarbeitet dabei Ihre IP-Adresse, um die Seite auszuliefern."
+    },
+    "device": {
+      "title": "Was in Ihrem Browser gespeichert wird",
+      "theme": "Ihre Wahl zwischen hellem und dunklem Design, im Local Storage.",
+      "intro": "Ein Vermerk im Session Storage, damit die Intro-Animation der Startseite nur einmal pro Besuch läuft.",
+      "locale": "Ein Cookie, das sich Ihre Sprache merkt. Es wird nur gesetzt, wenn diese von der Sprache Ihres Browsers abweicht, und beim Schließen des Browsers gelöscht.",
+      "note": "Nichts davon identifiziert Sie. Das einzige Login-Cookie der Website gehört zum Admin-Bereich des Betreibers und wird für Besucher nie gesetzt."
+    },
+    "contact": {
+      "title": "Wenn Sie eine Nachricht senden",
+      "body": "Das Kontaktformular speichert Ihren Namen, Ihre E-Mail-Adresse, Ihre Nachricht und Ihre IP-Adresse in einer Datenbank auf dem eigenen Server dieser Website. Die IP-Adresse dient dazu, jede Adresse auf fünf Nachrichten pro Tag zu begrenzen. Name, E-Mail-Adresse und Nachricht werden außerdem über Resend, einen E-Mail-Versanddienst, an Mohammad geschickt, damit er antworten kann."
+    },
+    "booking": {
+      "title": "Wenn Sie einen Termin buchen",
+      "stored": "Das Buchungsformular speichert Ihren Namen, Ihre E-Mail-Adresse, den gewählten Termin, Thema und Notizen (falls angegeben), Ihre Sprache und Zeitzone sowie Ihre IP-Adresse in derselben Datenbank. IP-Adresse und E-Mail-Adresse dienen dazu, Buchungen pro Tag zu begrenzen.",
+      "calendar": "Anschließend wird in Mohammads Google Kalender ein Termin mit Google-Meet-Link angelegt, zu dem Sie als Gast eingeladen werden. Google erhält Ihren Namen, Ihre E-Mail-Adresse, Thema und Notizen und schickt Ihnen die Einladung.",
+      "email": "Über Resend erhalten Sie eine Bestätigung mit Kalenderdatei, und Mohammad erhält per E-Mail Ihren Namen, Ihre E-Mail-Adresse, den Termin, Thema und Notizen. Wenn Sie über den Link in dieser E-Mail absagen, wird der Kalendertermin gelöscht und die Buchung als storniert markiert."
+    },
+    "retention": {
+      "title": "Wie lange Daten gespeichert werden",
+      "body": "Nachrichten und Buchungen werden aufbewahrt, bis sie nicht mehr benötigt werden, und auf Anfrage gelöscht. Eine automatische Löschung gibt es nicht."
+    },
+    "rights": {
+      "title": "Ihre Rechte",
+      "body": "Nach der DSGVO können Sie Auskunft über die zu Ihnen gespeicherten Daten verlangen, sie berichtigen oder löschen lassen oder ihrer Verwendung widersprechen. Schreiben Sie an <link>{email}</link>. Wenn Sie meinen, dass mit Ihren Daten nicht richtig umgegangen wurde, können Sie sich bei der griechischen Datenschutzbehörde (Hellenic Data Protection Authority) beschweren."
     }
   }
 }
