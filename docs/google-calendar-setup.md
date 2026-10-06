@@ -65,17 +65,18 @@ one user.
 3. Enter the Gmail address whose calendar you want to book — `mmohammadkhani408@gmail.com`.
 4. Click **Save**.
 
-Leave **Publishing status** as **Testing**. Do not click "Publish app".
+Testing is fine while you build. **Before launch, publish the app** — see
+[`launch-checklist.md`](./launch-checklist.md) §2.
 
-> **Why stay in Testing?** Publishing sends the app for Google's verification review, which
-> takes weeks and exists to protect other people's data. Your app has exactly one user — you.
-> Testing mode is the correct setting, not a shortcut.
+> **Why publish?** A refresh token issued while the app is in **Testing** expires **seven days
+> after it is issued, whether or not it is used** (Google's rule for external apps requesting
+> more than basic profile scopes). An earlier version of this doc said constant use kept it
+> alive; it does not. Publishing without verification is allowed: the app goes to production
+> as *unverified*, which only means its one user — you — clicks through a warning at consent.
+> Verification is a separate, optional review.
 >
-> **The one cost:** a refresh token issued in Testing mode can expire after **seven days** if
-> unused. In practice a live booking page uses it constantly and it keeps working. If bookings
-> ever stop, re-run Step 6. The site's health check surfaces this and shows visitors an
-> "email me instead" panel rather than an empty calendar, so a dead token never looks like
-> "no availability".
+> The site's health check surfaces a dead token and shows visitors an "email me instead"
+> panel rather than an empty calendar, so a dead token never looks like "no availability".
 
 ---
 
