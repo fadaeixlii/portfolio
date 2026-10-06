@@ -6,15 +6,21 @@ on:
     workflows: [quality]
     types: [completed]
     branches: [main]
+  workflow_dispatch:
+
+# Two deploys must never interleave their `docker load` and restart.
+concurrency:
+  group: deploy
+  cancel-in-progress: false
 
 jobs:
   # Secrets are not readable from an `if:` on the job itself, so this step
-  # decides and the deploy job keys off its output. Until the VPS exists, the
-  # deploy simply skips — a workflow that fails red on every push trains people
-  # to ignore it, and then it hides a real failure.
+  # decides and the deploy job keys off its output. Without the secrets the
+  # deploy skips rather than failing red on every push — a workflow that is
+  # always red trains people to ignore it, and then it hides a real failure.
   check-config:
     runs-on: ubuntu-latest
-    if: github.event.workflow_run.conclusion == 'success'
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     outputs:
       configured: ${{ steps.probe.outputs.configured }}
     steps:
@@ -24,25 +30,47 @@ jobs:
             echo "configured=true" >> "$GITHUB_OUTPUT"
           else
             echo "configured=false" >> "$GITHUB_OUTPUT"
-            echo "::notice::Deploy skipped — set VPS_HOST, VPS_USER and VPS_SSH_KEY to enable it. See docs/launch-checklist.md."
+            echo "::notice::Deploy skipped — set VPS_HOST, VPS_USER and VPS_SSH_KEY to enable it. See docs/deployment.md."
           fi
 
   deploy:
     needs: check-config
     if: needs.check-config.outputs.configured == 'true'
     runs-on: ubuntu-latest
+    env:
+      # The commit quality actually tested, not whatever main points at now.
+      SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+      TARGET: ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}
     steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.SHA }}
+
+      # Built here, not on the VPS: the box has 4 GB shared with two other
+      # stacks, and `next build` there would starve the career-ops bot.
+      - name: Build image
+        run: docker build --build-arg NEXT_PUBLIC_SITE_URL=https://fadaeixlii.dev -t "portfolio:$SHA" .
+
       - uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
 
-      - name: Deploy
+      - name: Trust the VPS host key
+        run: ssh-keyscan -H "${{ secrets.VPS_HOST }}" >> ~/.ssh/known_hosts
+
+      # Streamed over the SSH connection the deploy already has — no registry,
+      # so no pull token has to live on the VPS.
+      - name: Ship image
+        run: docker save "portfolio:$SHA" | gzip | ssh "$TARGET" 'gunzip | docker load'
+
+      - name: Ship compose and Caddy site files
         run: |
-          ssh -o StrictHostKeyChecking=accept-new ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} '
-            set -e
-            cd /srv/portfolio
-            git fetch --all && git reset --hard origin/main
-            docker compose build portfolio
-            docker compose up -d
-            docker image prune -f
-          '
+          ssh "$TARGET" 'mkdir -p ~/portfolio ~/caddy-sites'
+          scp docker-compose.prod.yml "$TARGET:portfolio/compose.yaml"
+          scp deploy/fadaeixlii.dev.caddy "$TARGET:caddy-sites/fadaeixlii.dev.caddy"
+
+      - name: Migrate, restart, reload Caddy
+        run: ssh "$TARGET" "SHA=$SHA sh -s" < deploy/remote-deploy.sh
+
+      - name: Public URL answers
+        run: curl -fsS -o /dev/null --retry 10 --retry-delay 6 --retry-all-errors https://fadaeixlii.dev/en

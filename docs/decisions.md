@@ -1,7 +1,10 @@
 # Decisions
 
 - **2026-09-19 · Own VPS behind Cloudflare, not Vercel.** The box already runs `job` and `outreach`, so the marginal cost is zero and the deploy pattern exists. Cloudflare's free proxy supplies the edge cache, TLS and DDoS protection that a single-region origin cannot. The v1 Cloudflare Pages adapter was never actually installed — that doc was all TODOs.
-- **2026-09-19 · Domain `mohammadmkh.dev`.** Matches the GitHub handle. `.dev` is HSTS-preloaded, so HTTPS is not optional.
+- **2026-09-19 · Domain `mohammadmkh.dev`.** Superseded 2026-10-06 — never bought. `.dev` is HSTS-preloaded, so HTTPS is not optional.
+- **2026-10-06 · Domain `fadaeixlii.dev`, registered at Cloudflare.** Matches the GitHub handle. `.dev` is HSTS-preloaded, so HTTPS is not optional. Cloudflare is registrar, DNS and proxy in one account; the origin uses a 15-year Cloudflare origin certificate under Full (strict).
+- **2026-10-06 · The image is built in GitHub Actions and streamed to the VPS (`docker save | ssh docker load`), not built on the box and not pushed to a registry.** The VPS has 4 GB shared with two other stacks and was already deep in swap, so a `next build` there risks the career-ops bot. A registry would need a pull token stored on the VPS; streaming needs only the SSH key the deploy already has.
+- **2026-10-06 · The portfolio has no reverse proxy of its own.** `outreach`'s Caddy already holds 80/443, so it imports `~/caddy-sites/*.caddy` and joins an `edge` network shared only with the portfolio container. The portfolio deploy ships its site file there and reloads that Caddy.
 - **2026-09-19 · Booking window 09:00–18:00 `Asia/Tehran`, Mon–Fri.** 08:00–16:00 would have ended at 13:30 Berlin, making every European afternoon unbookable on a site whose entire job is getting a call booked.
 - **2026-09-19 · No `googleapis` package.** Three `fetch` calls replace a ~2 MB dependency.
 - **2026-09-19 · Content as typed TS, not MDX.** With the blog cut, MDX earned nothing and cost three dependencies.

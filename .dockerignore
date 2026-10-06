@@ -1,0 +1,25 @@
+# Secrets never enter the build context. `COPY . .` would otherwise ship
+# .env.local and the Google OAuth client file into an image layer.
+.env*
+client_secret_*.json
+
+# Rebuilt inside the image, and the host's copies are the wrong platform.
+node_modules
+.next
+
+.git
+.github
+.claude
+.agents
+.superpowers
+.hallmark
+.design-import
+.scratch
+_content-inbox
+_drafts
+docs
+tests
+test-results
+playwright-report
+.lighthouseci
+supabase

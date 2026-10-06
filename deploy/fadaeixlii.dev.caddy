@@ -1,13 +1,23 @@
+# Imported by outreach's Caddy, which owns ports 80/443 on the VPS:
+# its Caddyfile ends in `import /etc/caddy/sites/*.caddy`, and ~/caddy-sites on
+# the host is mounted there. The deploy workflow copies this file in and
+# reloads that Caddy. `portfolio` resolves over the shared `edge` network.
+#
+# TLS is a Cloudflare origin certificate (15 years, apex + wildcard), not
+# Let's Encrypt: Cloudflare proxies every request under Full (strict), so the
+# origin only ever has to satisfy Cloudflare. Both files sit in
+# ~/caddy-sites/certs/, mode 600.
+#
 # Apex serves the site. www redirects to it — one canonical host, so search
 # engines and analytics do not split the domain in two.
 
-www.mohammadmkh.dev {
-	tls /etc/ssl/cloudflare/origin.pem /etc/ssl/cloudflare/origin.key
-	redir https://mohammadmkh.dev{uri} permanent
+www.fadaeixlii.dev {
+	tls /etc/caddy/sites/certs/fadaeixlii.dev.pem /etc/caddy/sites/certs/fadaeixlii.dev.key
+	redir https://fadaeixlii.dev{uri} permanent
 }
 
-mohammadmkh.dev {
-	tls /etc/ssl/cloudflare/origin.pem /etc/ssl/cloudflare/origin.key
+fadaeixlii.dev {
+	tls /etc/caddy/sites/certs/fadaeixlii.dev.pem /etc/caddy/sites/certs/fadaeixlii.dev.key
 	encode zstd gzip
 	# Cloudflare's edge IPs are the only thing allowed to set/append
 	# x-forwarded-for here; clientIp() (src/lib/http/client-ip.ts) still
@@ -23,6 +33,7 @@ mohammadmkh.dev {
 		X-Content-Type-Options nosniff
 		Referrer-Policy strict-origin-when-cross-origin
 		X-Frame-Options DENY
+		-Server
 	}
 
 	# Next.js fingerprints these filenames, so they can be cached hard.

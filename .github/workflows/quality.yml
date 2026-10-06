@@ -7,13 +7,9 @@ on:
 
 env:
   # Dummy public values so the non-Lighthouse gates need no repo secrets.
-  # Tests mock Supabase/Google/Resend; only `next build` inlines these, and
+  # Tests mock Postgres/Google/Resend; only `next build` inlines these, and
   # it never dials out to them.
   NEXT_PUBLIC_SITE_URL: http://localhost:3000
-  NEXT_PUBLIC_SUPABASE_URL: https://ci-dummy.supabase.co
-  NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ci-dummy-publishable-key
-  NEXT_PUBLIC_SUPABASE_PROJECT_REF: ci-dummy
-  SUPABASE_SECRET_KEY: ci-dummy-secret-key
   ADMIN_EMAILS: ci-dummy@example.com
   CONTACT_TO_EMAIL: ci-dummy@example.com
   CONTACT_FROM_EMAIL: "Portfolio <onboarding@resend.dev>"

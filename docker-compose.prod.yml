@@ -1,0 +1,58 @@
+# Production. The deploy copies this to ~/portfolio/compose.yaml on the VPS,
+# next to ~/portfolio/.env (mode 600) — the names compose picks up on its own,
+# so a bare `docker compose logs` works there. The local-dev database is
+# docker-compose.yml; this file is never used on a laptop.
+#
+# The image is built in GitHub Actions and streamed in with `docker load`
+# (see .github/workflows/deploy.yml), so there is no `build:` here — the VPS
+# never runs `next build`. Nothing publishes a port: outreach's Caddy reaches
+# the app over the `edge` network, and Postgres is reachable only from the app.
+services:
+  portfolio:
+    image: portfolio:latest
+    restart: unless-stopped
+    env_file: [.env]
+    environment:
+      DATABASE_URL: postgres://${POSTGRES_USER:-portfolio}:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}@db:5432/${POSTGRES_DB:-portfolio}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks: [default, edge]
+    # The box is 4 GB shared with career-ops and outreach; a runaway here must
+    # not take the job bot down with it.
+    mem_limit: 512m
+    healthcheck:
+      # 127.0.0.1, not localhost: busybox wget tries ::1 first and the
+      # standalone server listens on IPv4 only.
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/robots.txt"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-portfolio}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: ${POSTGRES_DB:-portfolio}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    mem_limit: 256m
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+networks:
+  # Created by outreach's compose file (its Caddy joins it). Only Caddy and
+  # this app are on it, so the portfolio cannot reach the outreach dashboard.
+  edge:
+    name: edge
+    external: true
+
+volumes:
+  # Bookings and contact messages. Never prune volumes on this box.
+  pgdata:

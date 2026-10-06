@@ -7,7 +7,7 @@
 //
 //   pnpm db:migrate
 
-import { readFileSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import postgres from "postgres";
@@ -16,9 +16,11 @@ const here = dirname(fileURLToPath(import.meta.url));
 const dir = join(here, "..", "db", "migrations");
 
 // Read .env.local the same way the app does, so `pnpm db:migrate` needs no
-// exported environment.
+// exported environment. The production container has no .env.local —
+// DATABASE_URL arrives from compose's env_file there.
 const envPath = join(here, "..", ".env.local");
-for (const line of readFileSync(envPath, "utf8").split("\n")) {
+const envLines = existsSync(envPath) ? readFileSync(envPath, "utf8").split("\n") : [];
+for (const line of envLines) {
   if (!line.includes("=") || line.trimStart().startsWith("#")) continue;
   const i = line.indexOf("=");
   const key = line.slice(0, i).trim();
@@ -27,7 +29,7 @@ for (const line of readFileSync(envPath, "utf8").split("\n")) {
 
 const url = process.env.DATABASE_URL;
 if (!url) {
-  console.error("DATABASE_URL is not set (looked in .env.local)");
+  console.error("DATABASE_URL is not set (looked in the environment and .env.local)");
   process.exit(1);
 }
 
