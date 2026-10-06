@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
+import Image from "next/image";
 import { Link, usePathname, useRouter } from "@/lib/i18n/navigation";
 import { locales } from "@/lib/i18n/routing";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
@@ -59,12 +60,14 @@ export function MobileChrome() {
     <div className="lg:hidden">
       <header className="sticky top-0 z-40 flex h-14 items-center justify-between gap-2 border-b-2 border-hairline bg-paper px-[var(--space-4)]">
         <Link href="/" className="flex min-w-0 items-center gap-[var(--space-3)]">
-          <span
-            aria-hidden
-            className="flex size-[30px] shrink-0 items-center justify-center bg-signal-fill text-[length:12px] font-extrabold text-signal-ink"
-          >
-            MK
-          </span>
+          <Image
+            src="/brand/mark.png"
+            alt=""
+            width={30}
+            height={30}
+            priority
+            className="size-[30px] shrink-0"
+          />
           <span dir="auto" className="truncate text-[length:13px] font-extrabold text-text">
             {tHero("name")}
           </span>

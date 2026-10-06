@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/lib/i18n/navigation";
 import { Surface } from "@/components/primitives/Surface";
@@ -36,6 +37,22 @@ export function NavPill() {
            the bar. */
         className="pointer-events-auto flex max-w-[calc(100vw-2rem)] items-stretch justify-center"
       >
+        {/* The brand mark, flush with the bar's 2px rule like the CTA. A
+            second link home, so it is hidden from assistive tech and the tab
+            order — "Home" right after it already carries the meaning. */}
+        <Link
+          href="/"
+          tabIndex={-1}
+          aria-hidden
+          /* An explicit width, not aspect-square: flex sizes the bar from its
+             children's intrinsic widths, and an aspect-ratio box contributes
+             none there — the bar came out 40px short and the theme toggle at
+             the far end was squeezed to 16px, failing WCAG target size. */
+          className="relative -my-[2px] -ms-[2px] w-10 shrink-0 self-stretch"
+        >
+          <Image src="/brand/mark.png" alt="" fill sizes="40px" priority className="object-cover" />
+        </Link>
+
         {ROUTES.map(({ href, key }) => {
           const active = pathname === href;
           return (
