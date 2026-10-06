@@ -243,3 +243,29 @@ test("the month grid stays keyboard-reachable after paging from a 31-day month",
 
   await expect(page.locator('table button[tabindex="0"]')).toHaveCount(1);
 });
+
+// The host clock shown to visitors is Athens (the public location), never the
+// Tehran clock the slots are generated against. A visitor in New York makes
+// all three clocks differ, so the assertions can tell them apart.
+test.describe("host time shown to a visitor elsewhere", () => {
+  test.use({ timezoneId: "America/New_York" });
+
+  test("is Athens, not Tehran", async ({ page }) => {
+    const [iso] = futureSlotIsos(1);
+    const fmt = (timeZone: string) =>
+      new Intl.DateTimeFormat("en", { hour: "numeric", minute: "2-digit", timeZone }).format(new Date(iso));
+    await mockHealth(page);
+    await mockAvailability(page, { slots: [iso] });
+
+    await page.goto("/en/schedule");
+    await firstOpenDay(page).click();
+    const slot = firstSlotLabel(page);
+    await expect(slot).toContainText(fmt("Europe/Athens"));
+    await expect(slot).not.toContainText(fmt("Asia/Tehran"));
+
+    await slot.click();
+    await page.getByRole("button", { name: "Continue" }).click();
+    await expect(page.getByText("Mohammad's time, Athens:")).toBeVisible();
+    await expect(page.getByText(/Tehran/)).toHaveCount(0);
+  });
+});

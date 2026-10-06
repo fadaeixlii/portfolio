@@ -3,8 +3,13 @@
  * calendar subsystem.
  */
 export const SCHEDULE_CONFIG = {
-  /** Mohammad's wall clock. Slots are generated against this, not UTC. */
+  /** Mohammad's wall clock. Slots are generated against this, not UTC.
+   *  Never named to visitors — see displayTimeZone. */
   timeZone: "Asia/Tehran",
+  /** The host time shown to visitors beside their own ("Mohammad's time,
+   *  Athens"). The public location is Greece. The admin page still shows
+   *  Tehran. */
+  displayTimeZone: "Europe/Athens",
   /** 09:00–18:00 inclusive of the start, exclusive of the end.
    *  In Berlin winter that reads 06:30–15:30, which covers a European
    *  founder's working morning and most of their afternoon. */

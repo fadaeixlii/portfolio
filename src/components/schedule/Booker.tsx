@@ -258,7 +258,7 @@ export function Booker() {
         hostLabel: new Intl.DateTimeFormat(locale, {
           hour: "numeric",
           minute: "2-digit",
-          timeZone: SCHEDULE_CONFIG.timeZone,
+          timeZone: SCHEDULE_CONFIG.displayTimeZone,
         }).format(new Date(iso)),
       }));
   }, [selectedDate, entry, timeZone, locale]);
@@ -457,7 +457,7 @@ export function Booker() {
         }).format(new Date(selectedSlot))
       : "";
     const hostTime = selectedSlot
-      ? new Intl.DateTimeFormat(locale, { timeStyle: "short", timeZone: SCHEDULE_CONFIG.timeZone }).format(
+      ? new Intl.DateTimeFormat(locale, { timeStyle: "short", timeZone: SCHEDULE_CONFIG.displayTimeZone }).format(
           new Date(selectedSlot),
         )
       : "";
