@@ -28,7 +28,7 @@ describe("buildIcs", () => {
     expect(lines.at(-2)).toBe("END:VCALENDAR");
     expect(ics).toContain("BEGIN:VEVENT\r\n");
     expect(ics).toContain("END:VEVENT\r\n");
-    expect(ics).toContain(`UID:${BOOKING.id}@mohammadmkh.dev\r\n`);
+    expect(ics).toContain(`UID:${BOOKING.id}@fadaeixlii.dev\r\n`);
     expect(ics).toContain("DTSTART:20261005T053000Z\r\n");
     expect(ics).toContain("DTEND:20261005T060000Z\r\n");
     expect(ics).toMatch(/DTSTAMP:\d{8}T\d{6}Z\r\n/);

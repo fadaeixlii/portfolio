@@ -9,7 +9,7 @@
 
 ## 1. What this is
 
-A complete rebuild of the portfolio at **`mohammadmkh.dev`** from an empty `src/`. The current site stays
+A complete rebuild of the portfolio at **`fadaeixlii.dev`** from an empty `src/`. The current site stays
 reachable as an archive tag and branch; nothing is deleted from history.
 
 The brief pinned a visual reference — [`sawad.framer.website`](https://sawad.framer.website/) —
@@ -362,8 +362,8 @@ no magic numbers elsewhere.
 |---|---|
 | Google Calendar | **working** — refresh token exchanges, scope includes write, `freeBusy` returns real busy blocks, and the slot engine yields 18 slots on a clear day |
 | Supabase | **working** — `contact_messages` returns 200 with the service key; `bookings` is absent as expected. The project resolves and responds. |
-| Resend | **key valid**, no verified domain yet — sandbox mode can only email the account owner. Verify `mohammadmkh.dev` in Resend before launch or booking confirmations will silently fail to reach visitors. |
-| `NEXT_PUBLIC_SITE_URL` | set to `https://mohammadmkh.dev` |
+| Resend | **key valid**, no verified domain yet — sandbox mode can only email the account owner. Verify `fadaeixlii.dev` in Resend before launch or booking confirmations will silently fail to reach visitors. |
+| `NEXT_PUBLIC_SITE_URL` | set to `https://fadaeixlii.dev` |
 
 Nothing blocks any phase. Two carry-forwards: verify the domain in Resend once it is
 bought, and note that Mohammad's workstation resolves `supabase.co` through a VPN adapter
@@ -408,7 +408,7 @@ from the CVs, and the CV wins every conflict.
 | First name | Mohammad |
 | Surname | MohammadKhani |
 | Full name (formal contexts only) | Mohammad MohammadKhani |
-| Domain | `mohammadmkh.dev` |
+| Domain | `fadaeixlii.dev` |
 | LinkedIn | `/in/mohammadmkh` |
 | Email | `mmohammadkhani408@gmail.com` |
 | Location | Athens, Greece · EU Citizen (Greek passport) |

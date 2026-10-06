@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { routing, type Locale } from "@/lib/i18n/routing";
 
 const SITE_NAME = "Mohammad M. Khani";
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mohammadmkh.dev";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fadaeixlii.dev";
 
 /**
  * Every page calls this — no page hand-rolls its own `<meta>`. `path` is

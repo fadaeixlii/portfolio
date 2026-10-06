@@ -1,4 +1,4 @@
-# mohammadmkh.dev — v2
+# fadaeixlii.dev — v2
 
 Personal portfolio of Mohammad MKH. Public, production, client-facing.
 Source of truth: `docs/superpowers/specs/2026-09-19-portfolio-v2-design.md`.
@@ -13,12 +13,12 @@ fifteen seconds and books a call. Every page feeds `/schedule`.
 - Next.js 16 App Router · React 19 · React Compiler · TypeScript 5.9 strict
 - Tailwind CSS v4, CSS-first `@theme inline` — no `tailwind.config.ts`
 - Motion v12: `import { motion } from 'motion/react'` — **never** `framer-motion`
-- `next-intl` (en · de · nl · fa) · `next-themes` (`data-theme`)
-- Supabase via `@supabase/ssr` — contact messages and bookings only
+- `next-intl` (en · de · nl · fa · el) · `next-themes` (`data-theme`)
+- Postgres 17 in Docker via the `postgres` driver — contact messages and bookings only
 - Google Calendar REST v3 through `fetch` — no `googleapis` package
 - Archivo (display) · Vazirmatn (body, Latin + Arabic) · JetBrains Mono (numerals only)
 - pnpm. Never npm, never yarn.
-- Host: own VPS, Docker + Caddy, Cloudflare proxy in front. Domain `mohammadmkh.dev`.
+- Host: own VPS, Docker + Caddy, Cloudflare proxy in front. Domain `fadaeixlii.dev`.
 
 ## Non-negotiable
 

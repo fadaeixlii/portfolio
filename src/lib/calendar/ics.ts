@@ -44,11 +44,11 @@ export function buildIcs(booking: IcsBooking): string {
   const lines = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//mohammadmkh.dev//booking//EN",
+    "PRODID:-//fadaeixlii.dev//booking//EN",
     "CALSCALE:GREGORIAN",
     "METHOD:PUBLISH",
     "BEGIN:VEVENT",
-    `UID:${booking.id}@mohammadmkh.dev`,
+    `UID:${booking.id}@fadaeixlii.dev`,
     `DTSTAMP:${toIcsDate(new Date().toISOString())}`,
     `DTSTART:${toIcsDate(booking.start_at)}`,
     `DTEND:${toIcsDate(booking.end_at)}`,

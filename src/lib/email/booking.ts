@@ -16,7 +16,7 @@ const SUBJECT: Record<string, string> = {
 };
 
 function manageUrl(token: string, locale: string): string {
-  const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mohammadmkh.dev";
+  const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fadaeixlii.dev";
   return `${base}/${locale}/schedule/manage/${token}`;
 }
 
