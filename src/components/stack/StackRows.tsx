@@ -13,20 +13,27 @@ type MarkedGroup = { name: string; items: { name: string; mark: StackMark }[] };
  * hunt for it. Rows show everything at once and still scan, because the
  * labels sit on one edge.
  *
- * `h3`, not `h2`: the page supplies the `h2` these sit under.
+ * Group labels are `h3` under the home page's "Stack" `h2`; /stack has no
+ * `h2`, so it passes `heading="h2"` rather than skip a level after its `h1`.
  */
-export function StackRows({ groups }: { groups: MarkedGroup[] }) {
+export function StackRows({
+  groups,
+  heading: Heading = "h3",
+}: {
+  groups: MarkedGroup[];
+  heading?: "h2" | "h3";
+}) {
   return (
     <Stagger className="border-t-2 border-hairline">
       {groups.map((group) => (
         <StaggerItem key={group.name}>
           <div className="grid gap-[var(--space-3)] border-b-2 border-hairline py-[var(--space-6)] md:grid-cols-[160px_1fr] md:gap-[var(--space-6)]">
-            <h3
+            <Heading
               dir="auto"
               className="font-display text-[length:var(--text-sm)] font-semibold uppercase tracking-wide text-dim md:pt-[2px]"
             >
               {group.name}
-            </h3>
+            </Heading>
             <div className="flex flex-wrap gap-[var(--space-2)]">
               {group.items.map((item) => (
                 <StackChip key={item.name} name={item.name} mark={item.mark} />

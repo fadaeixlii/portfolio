@@ -49,12 +49,12 @@ export function ProjectCard({ project }: { project: Project }) {
 
         <div className="flex flex-1 flex-col gap-[var(--space-3)] p-[var(--space-6)]">
           <div className="flex flex-wrap items-baseline justify-between gap-[var(--space-3)]">
-            <h3
+            <h2
               dir="auto"
               className="font-display text-[length:var(--text-xl)] font-extrabold uppercase leading-[var(--leading-tight)] tracking-[var(--tracking-display)] text-text"
             >
               {project.name}
-            </h3>
+            </h2>
             <span className="font-mono text-[length:var(--text-sm)] tabular-nums text-dim">
               {project.year}
             </span>

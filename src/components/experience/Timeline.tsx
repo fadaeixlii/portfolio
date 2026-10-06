@@ -37,12 +37,12 @@ export function Timeline({ entries }: { entries: ExperienceEntry[] }) {
                   {entry.location}
                 </span>
               </div>
-              <h3
+              <h2
                 dir="auto"
                 className="mt-1 font-display text-[length:var(--text-2xl)] font-extrabold uppercase leading-[var(--leading-tight)] tracking-[var(--tracking-display)] text-text"
               >
                 {entry.company}
-              </h3>
+              </h2>
               <p dir="auto" className="text-[length:var(--text-sm)] text-dim">
                 {entry.role}
               </p>

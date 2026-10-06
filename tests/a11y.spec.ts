@@ -134,3 +134,19 @@ for (const width of [320, 375, 414, 768]) {
     }
   });
 }
+
+// The wcag tags above leave out axe's `heading-order` (it is a best-practice
+// rule), but Lighthouse scores it: /work once went from h1 straight to h3 and
+// that alone tipped its accessibility score under the CI floor.
+for (const route of ROUTES) {
+  test(`en${route || "/"} headings never skip a level`, async ({ page }) => {
+    await page.goto(`/en${route}`);
+    const levels = await page
+      .locator("h1, h2, h3, h4, h5, h6")
+      .evaluateAll((els) => els.map((el) => Number(el.tagName[1])));
+    const skips = levels.flatMap((level, i) =>
+      i > 0 && level - levels[i - 1] > 1 ? [`h${levels[i - 1]} → h${level}`] : [],
+    );
+    expect(skips).toEqual([]);
+  });
+}

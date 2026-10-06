@@ -43,7 +43,7 @@ export default function StackPage({
       <PageHead line1={t("line1")} line2={t("line2")} sub={t("subheading")} />
 
       <div className="mt-[var(--space-22)]">
-        <StackRows groups={markGroups(groups)} />
+        <StackRows groups={markGroups(groups)} heading="h2" />
       </div>
     </main>
   );
