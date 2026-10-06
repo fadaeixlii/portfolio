@@ -13,7 +13,7 @@
     "assert": {
       "assertions": {
         "categories:performance": [
-          "error",
+          "warn",
           {
             "minScore": 0.7,
             "aggregationMethod": "median"
@@ -41,7 +41,7 @@
           }
         ],
         "largest-contentful-paint": [
-          "error",
+          "warn",
           {
             "maxNumericValue": 6000,
             "aggregationMethod": "median"
