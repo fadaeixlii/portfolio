@@ -53,6 +53,11 @@ export const SHOP_RULES = {
   maxOrdersPerIpPerDay: 10,
   /** Buyers retry while confirmations land, so this is looser than orders. */
   maxVerifiesPerIpPerDay: 30,
+  /** Visits + WhatsApp taps one visitor can log per day; reloads past it are ignored. */
+  maxEventsPerVisitorPerDay: 20,
+  /** Visit and WhatsApp alert emails per day. Resend's free plan sends 100 a
+   *  day, and sale emails must still get through. */
+  maxAlertEmailsPerDay: 50,
   maxDownloads: 5,
   downloadDays: 14,
   /** A payment may predate its order by this much (clock skew, or the buyer

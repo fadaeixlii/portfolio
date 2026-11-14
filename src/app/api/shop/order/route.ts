@@ -1,7 +1,8 @@
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import { z } from "zod";
 import { sql } from "@/lib/db";
 import { clientIp } from "@/lib/http/client-ip";
+import { sendShopAlertEmail } from "@/lib/email/shop";
 import { SHOP_CHAINS, SHOP_PRODUCTS, SHOP_RULES, type ProductId } from "@/content/shop";
 
 export const dynamic = "force-dynamic";
@@ -64,10 +65,22 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "server" }, { status: 500 });
   }
 
+  const shown = String(amount / 10 ** token.decimals);
+  // Never throws, and runs after the buyer already has the address.
+  after(() =>
+    sendShopAlertEmail({
+      kind: "order",
+      productId: input.productId,
+      chain: input.chain,
+      token: input.token,
+      amount: shown,
+    }),
+  );
+
   return NextResponse.json({
     orderId: row.id,
     address: chain.wallet,
-    amount: String(amount / 10 ** token.decimals),
+    amount: shown,
     token: input.token,
     chain: input.chain,
   });

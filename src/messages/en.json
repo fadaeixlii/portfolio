@@ -218,7 +218,7 @@
     },
     "browsing": {
       "title": "Just browsing",
-      "body": "No analytics, no ads, no tracking scripts. Fonts are served from this site, not from a third party.",
+      "body": "No ads, no third-party analytics and no tracking cookies. Fonts are served from this site, not from a third party. Skill pages count visits on this server only (see “If you buy a skill”).",
       "cloudflare": "Every request passes through Cloudflare, which sits in front of the server as a proxy and CDN. Cloudflare processes your IP address to deliver the page."
     },
     "device": {
@@ -241,6 +241,7 @@
     "shop": {
       "title": "If you buy a skill",
       "stored": "Starting a purchase stores an order in the same database: the product, the network and token you picked, the amount, the receiving address, the time and your IP address. The IP address limits orders and payment checks per day. When you paste a transaction hash it is stored with the order, together with a scrambled (hashed) copy of your download link.",
+      "visits": "Opening a skill page counts one visit in the same database: a scrambled (hashed) visitor code made from your IP address that changes every day (the IP address itself is not stored for a visit), the name of the site that sent you, like instagram.com, the page language and the time. A tap on the WhatsApp button is counted the same way. Mohammad gets an email through Resend when someone opens the page, taps WhatsApp or starts an order, with these counts and nothing that names you.",
       "chain": "To check the payment, the server looks the transaction up on a public Ethereum node (PublicNode) or Tron node (TronGrid). The transfer itself, including the wallet you paid from, is public on the blockchain anyway. Mohammad is emailed the order and the transaction hash through Resend.",
       "whatsapp": "If you message on WhatsApp instead, WhatsApp handles that conversation under its own terms."
     },
