@@ -218,7 +218,7 @@
     },
     "browsing": {
       "title": "Gewoon rondkijken",
-      "body": "Geen analytics, geen advertenties, geen trackingscripts. Lettertypen worden door deze site zelf geleverd, niet door een derde partij.",
+      "body": "Geen advertenties, geen analytics van derden en geen trackingcookies. Lettertypen worden door deze site zelf geleverd, niet door een derde partij. Skill-pagina's tellen bezoeken alleen op deze server (zie ‘Als je een skill koopt’).",
       "cloudflare": "Elk verzoek loopt via Cloudflare, dat als proxy en CDN vóór de server staat. Cloudflare verwerkt je IP-adres om de pagina te leveren."
     },
     "device": {
@@ -241,6 +241,7 @@
     "shop": {
       "title": "Als je een skill koopt",
       "stored": "Een gestarte aankoop slaat een bestelling op in dezelfde database: het product, het gekozen netwerk en de token, het bedrag, het ontvangstadres, het tijdstip en je IP-adres. Het IP-adres beperkt bestellingen en betalingscontroles per dag. Als je een transactiehash plakt, wordt die bij de bestelling opgeslagen, samen met een versleutelde (gehashte) kopie van je downloadlink.",
+      "visits": "Een skill-pagina openen telt één bezoek in dezelfde database: een versleutelde (gehashte) bezoekerscode op basis van je IP-adres die elke dag verandert (het IP-adres zelf wordt voor een bezoek niet opgeslagen), de naam van de site waar je vandaan komt, zoals instagram.com, de taal van de pagina en het tijdstip. Een tik op de WhatsApp-knop wordt op dezelfde manier geteld. Mohammad krijgt via Resend een e-mail als iemand de pagina opent, op WhatsApp tikt of een bestelling start, met deze aantallen en niets dat jou noemt.",
       "chain": "Om de betaling te controleren zoekt de server de transactie op bij een openbare Ethereum-node (PublicNode) of Tron-node (TronGrid). De overboeking zelf, inclusief de wallet waarmee je betaalde, is toch al openbaar op de blockchain. Mohammad krijgt de bestelling en de transactiehash per e-mail via Resend.",
       "whatsapp": "Als je in plaats daarvan via WhatsApp een bericht stuurt, verwerkt WhatsApp dat gesprek onder zijn eigen voorwaarden."
     },

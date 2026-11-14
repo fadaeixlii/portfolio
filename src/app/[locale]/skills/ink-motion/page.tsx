@@ -6,6 +6,7 @@ import { PageHead } from "@/components/layout/PageHead";
 import { Reveal } from "@/components/primitives/Reveal";
 import { Checkout } from "@/components/shop/Checkout";
 import { ResultVideo } from "@/components/shop/ResultVideo";
+import { TrackVisit, WhatsAppLink } from "@/components/shop/Track";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { cn } from "@/lib/cn";
 import type { Locale } from "@/lib/i18n/routing";
@@ -77,6 +78,7 @@ export default function InkMotionPage({
       id="main"
       className="min-h-dvh px-[var(--space-6)] pt-[var(--shell-top)] pb-[var(--space-22)]"
     >
+      <TrackVisit productId="ink-motion" />
       <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-[var(--space-12)] lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)]">
         <div className="min-w-0">
           <PageHead line1={t("line1")} line2={t("line2")} sub={t("sub")} />
@@ -85,12 +87,13 @@ export default function InkMotionPage({
             <a href="#buy" className={cn(BTN, "bg-signal-fill text-signal-ink hover:brightness-110")}>
               {t("buyCta")}
             </a>
-            <a
+            <WhatsAppLink
+              productId="ink-motion"
               href={whatsapp}
               className={cn(BTN, "border border-hairline text-text hover:border-signal hover:text-signal-text")}
             >
               {t("whatsappCta")}
-            </a>
+            </WhatsAppLink>
           </Reveal>
         </div>
         <ResultVideo name="demo" label={t("results.demo")} priority className="w-full max-w-[22rem] justify-self-center" />
@@ -154,12 +157,13 @@ export default function InkMotionPage({
         <div>
           <h2 id="buy-heading" className={H2}>{t("buy.heading")}</h2>
           <p dir="auto" className={SUB}>{t("buy.sub")}</p>
-          <a
+          <WhatsAppLink
+            productId="ink-motion"
             href={whatsapp}
             className={cn(BTN, "mt-[var(--space-6)] border border-hairline text-text hover:border-signal hover:text-signal-text")}
           >
             {t("whatsappCta")}
-          </a>
+          </WhatsAppLink>
         </div>
         <div className="border border-hairline bg-surface p-[var(--space-6)]">
           <Checkout productId="ink-motion" />

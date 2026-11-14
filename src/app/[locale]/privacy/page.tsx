@@ -99,6 +99,7 @@ export default function PrivacyPage({
         <section>
           <h2 dir="auto" className={H2}>{t("shop.title")}</h2>
           <p dir="auto" className={P}>{t("shop.stored")}</p>
+          <p dir="auto" className={P}>{t("shop.visits")}</p>
           <p dir="auto" className={P}>{t("shop.chain")}</p>
           <p dir="auto" className={P}>{t("shop.whatsapp")}</p>
         </section>
