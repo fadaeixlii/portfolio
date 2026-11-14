@@ -89,3 +89,6 @@ public/images/projects/**/aichat.png
 # Uncropped admin capture — the account strip carries a work email address.
 # The cropped `admin.png` beside it is the one that ships.
 public/images/projects/**/admin-aichat.png
+
+# paid skill files: on the VPS only (~/portfolio/shop, mounted by docker-compose.prod.yml); the repo is public
+private/shop/*.zip

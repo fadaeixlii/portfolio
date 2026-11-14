@@ -47,7 +47,7 @@ export default function PrivacyPage({
   };
 
   // Every claim in the `privacy` messages describes code: src/app/api/{contact,
-  // book,booking}, src/lib/email, src/lib/calendar, db/migrations, proxy.ts.
+  // book,booking,shop}, src/lib/email, src/lib/calendar, src/lib/shop, db/migrations, proxy.ts.
   // Change what that code collects or who it sends to, change this copy.
   return (
     <main
@@ -94,6 +94,13 @@ export default function PrivacyPage({
           <p dir="auto" className={P}>{t("booking.stored")}</p>
           <p dir="auto" className={P}>{t("booking.calendar")}</p>
           <p dir="auto" className={P}>{t("booking.email")}</p>
+        </section>
+
+        <section>
+          <h2 dir="auto" className={H2}>{t("shop.title")}</h2>
+          <p dir="auto" className={P}>{t("shop.stored")}</p>
+          <p dir="auto" className={P}>{t("shop.chain")}</p>
+          <p dir="auto" className={P}>{t("shop.whatsapp")}</p>
         </section>
 
         <section>
