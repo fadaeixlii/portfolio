@@ -211,7 +211,7 @@
     "line1": "Datenschutz",
     "line2": "Erklärung",
     "subheading": "Was diese Website erfasst, wozu, und wer es sonst noch sieht.",
-    "updated": "Zuletzt aktualisiert: <date>6. Oktober 2026</date>",
+    "updated": "Zuletzt aktualisiert: <date>14. November 2026</date>",
     "who": {
       "title": "Wer diese Website betreibt",
       "body": "Mohammad M. Khani mit Sitz in Athen, Griechenland, betreibt diese Website und ist für die hier beschriebenen Daten verantwortlich. Bei Fragen zu Ihren Daten schreiben Sie an <link>{email}</link>."
@@ -238,6 +238,12 @@
       "calendar": "Anschließend wird in Mohammads Google Kalender ein Termin mit Google-Meet-Link angelegt, zu dem Sie als Gast eingeladen werden. Google erhält Ihren Namen, Ihre E-Mail-Adresse, Thema und Notizen und schickt Ihnen die Einladung.",
       "email": "Über Resend erhalten Sie eine Bestätigung mit Kalenderdatei, und Mohammad erhält per E-Mail Ihren Namen, Ihre E-Mail-Adresse, den Termin, Thema und Notizen. Wenn Sie über den Link in dieser E-Mail absagen, wird der Kalendertermin gelöscht und die Buchung als storniert markiert."
     },
+    "shop": {
+      "title": "Wenn du einen Skill kaufst",
+      "stored": "Ein begonnener Kauf speichert eine Bestellung in derselben Datenbank: das Produkt, das gewählte Netzwerk und den Token, den Betrag, die Empfangsadresse, die Uhrzeit und deine IP-Adresse. Die IP-Adresse begrenzt Bestellungen und Zahlungsprüfungen pro Tag. Wenn du einen Transaktions-Hash einfügst, wird er mit der Bestellung gespeichert, zusammen mit einer verschlüsselten (gehashten) Kopie deines Download-Links.",
+      "chain": "Um die Zahlung zu prüfen, sucht der Server die Transaktion auf einem öffentlichen Ethereum-Knoten (PublicNode) oder Tron-Knoten (TronGrid). Die Überweisung selbst, samt der Wallet, von der du bezahlt hast, ist auf der Blockchain ohnehin öffentlich. Mohammad bekommt die Bestellung und den Transaktions-Hash per E-Mail über Resend.",
+      "whatsapp": "Wenn du stattdessen über WhatsApp schreibst, verarbeitet WhatsApp dieses Gespräch nach eigenen Bedingungen."
+    },
     "retention": {
       "title": "Wie lange Daten gespeichert werden",
       "body": "Nachrichten und Buchungen werden aufbewahrt, bis sie nicht mehr benötigt werden, und auf Anfrage gelöscht. Eine automatische Löschung gibt es nicht."
@@ -245,6 +251,113 @@
     "rights": {
       "title": "Ihre Rechte",
       "body": "Nach der DSGVO können Sie Auskunft über die zu Ihnen gespeicherten Daten verlangen, sie berichtigen oder löschen lassen oder ihrer Verwendung widersprechen. Schreiben Sie an <link>{email}</link>. Wenn Sie meinen, dass mit Ihren Daten nicht richtig umgegangen wurde, können Sie sich bei der griechischen Datenschutzbehörde (Hellenic Data Protection Authority) beschweren."
+    }
+  },
+  "shop": {
+    "price": "Preis: {amount} USD in Stablecoins, etwa {eur} EUR.",
+    "network": "Netzwerk",
+    "networks": {
+      "eth": "Ethereum (ERC-20)",
+      "tron": "Tron (TRC-20)"
+    },
+    "token": "Token",
+    "start": "Zahlungsdetails anzeigen",
+    "amount": "Betrag",
+    "address": "Adresse",
+    "copy": "Kopieren",
+    "copied": "Kopiert",
+    "sendNote": "Senden Sie mindestens diesen Betrag in {token} über {network} an genau diese Adresse. Eine Überweisung über ein anderes Netzwerk oder in einem anderen Token kann nicht zugeordnet werden.",
+    "txHash": "Transaktions-Hash",
+    "txHashHint": "Kopieren Sie nach der Überweisung den Hash aus Ihrer Wallet oder dem Block-Explorer.",
+    "verify": "Zahlung prüfen",
+    "paid": "Zahlung bestätigt. Vielen Dank.",
+    "download": "Herunterladen",
+    "downloadNote": "Der Link funktioniert {max}-mal innerhalb von {days} Tagen. Bewahren Sie die Datei sicher auf.",
+    "errors": {
+      "invalid": "Etwas an der Anfrage war ungültig. Laden Sie die Seite neu und versuchen Sie es erneut.",
+      "invalid_hash": "Das sieht nicht wie ein Transaktions-Hash in diesem Netzwerk aus.",
+      "order_not_found": "Diese Bestellung existiert nicht mehr. Laden Sie die Seite neu und beginnen Sie von vorn.",
+      "already_used": "Diese Transaktion wurde bereits für einen Download verwendet.",
+      "not_found": "Transaktion noch nicht gefunden. Wenn Sie sie gerade gesendet haben, warten Sie eine Minute und versuchen Sie es erneut.",
+      "not_confirmed_yet": "Zahlung gefunden, sie wartet auf Bestätigungen. Versuchen Sie es in einer Minute erneut.",
+      "wrong_recipient": "Diese Transaktion zahlt nicht an die obige Adresse.",
+      "wrong_token": "Diese Transaktion sendet einen anderen Token. Wählen Sie den gesendeten Token und versuchen Sie es erneut.",
+      "amount_too_low": "Der erhaltene Betrag liegt unter dem Preis. Schicken Sie mir den Transaktions-Hash per E-Mail, dann kläre ich das.",
+      "tx_failed": "Diese Transaktion ist on-chain fehlgeschlagen, es ist keine Zahlung eingegangen.",
+      "before_order": "Diese Transaktion wurde gesendet, bevor diese Bestellung erstellt wurde.",
+      "rpc_error": "Das Netzwerk ist gerade nicht erreichbar. Versuchen Sie es in einer Minute erneut.",
+      "rate_limited": "Zu viele Versuche heute. Versuchen Sie es morgen erneut oder schreiben Sie mir direkt eine E-Mail.",
+      "server": "Auf dem Server ist etwas schiefgelaufen. Versuchen Sie es erneut oder schreiben Sie mir direkt eine E-Mail.",
+      "network": "Die Anfrage ist fehlgeschlagen. Prüfen Sie Ihre Verbindung und versuchen Sie es erneut."
+    }
+  },
+  "inkMotion": {
+    "metaTitle": "Ink Motion: ein Claude-Code-Skill für gemalte Videos",
+    "metaDescription": "Claude malt jede Szene mit Code und bewegt sie wie ein Video. Eine Idee rein, ein Hochformat-MP4 raus. 5 EUR.",
+    "line1": "Ink Motion",
+    "line2": "Gemalte Videos",
+    "sub": "Ein Claude-Code-Skill. Claude malt jede Szene mit Code und bewegt sie wie ein echtes Video: eine Idee rein, ein MP4 im Hochformat raus. Kein Bildmodell, kein Videomodell.",
+    "price": "5 EUR, einmalige Zahlung",
+    "buyCta": "Mit Krypto kaufen",
+    "whatsappCta": "Schreib mir auf WhatsApp",
+    "whatsappText": "Hallo Mohammad, ich möchte den Skill Ink Motion kaufen.",
+    "results": {
+      "heading": "Was es gemacht hat",
+      "sub": "Echte Ergebnisse von Claude mit diesem Skill. Jedes Bild ist Code.",
+      "demo": "Alles zusammen",
+      "lighthouse": "Holzschnitt-Sturm",
+      "fox": "Bleiglas",
+      "ferry": "Tuschmalerei",
+      "neon": "Neonregen",
+      "opener": "3D-Nacht-Opener"
+    },
+    "how": {
+      "heading": "So funktioniert es",
+      "brief": {
+        "title": "Du schreibst eine Idee",
+        "body": "Claude macht daraus drei bis sechs Szenen: je ein Bild, ein paar Wörter und ein Objekt."
+      },
+      "paint": {
+        "title": "Claude malt jede Szene",
+        "body": "Mit Code, in einem von 83 Stilen, Schicht für Schicht: zuerst der Himmel, zuletzt die Details."
+      },
+      "move": {
+        "title": "Die Szenen bewegen sich",
+        "body": "Jedes Bild malt sich selbst, eine Tuschelinie führt die Kamera zur nächsten Szene, Wörter kippen herein und 3D-Objekte fallen auf die Linie."
+      },
+      "render": {
+        "title": "Du bekommst ein MP4",
+        "body": "Jedes Bild wird aufgenommen, 30 pro Sekunde, als 1080 x 1920 Video, fertig für ein Reel."
+      }
+    },
+    "inside": {
+      "heading": "Was du bekommst",
+      "skill": "Die Skill-Datei, der Claude Schritt für Schritt folgt",
+      "stage": "Die Bühne: Tuschelinie, Kamera, Wörter, 3D-Objekte und das Einmalen",
+      "scripts": "Skripte, die Bilder in Schichten zerlegen und das MP4 aufnehmen",
+      "painter": "Die Malbibliothek mit allen 83 Stilen",
+      "examples": "Die Beispielszenen von dieser Seite"
+    },
+    "needs": {
+      "heading": "Du brauchst",
+      "body": "Claude Code, Python 3.10 oder neuer mit numpy und Pillow, Node 18 oder neuer, Google Chrome und ffmpeg. Windows, macOS oder Linux."
+    },
+    "credits": {
+      "heading": "Basiert auf",
+      "body": "Zwei freien Skills unter MIT-Lizenz, deren Lizenzen im Download liegen: <drawing>Claude Drawing</drawing> von cloveric für das Malen und die Bewegungsregeln von <bang>Bang Motion</bang> von Bang Tutorial."
+    },
+    "buy": {
+      "heading": "Ink Motion holen",
+      "sub": "Bezahle mit USDT oder USDC und lade es direkt hier herunter, oder schreib mir auf WhatsApp, um anders zu bezahlen."
+    },
+    "faq": {
+      "heading": "Fragen",
+      "q1": "Wie bekomme ich die Datei nach dem Bezahlen?",
+      "a1": "Füge den Transaktions-Hash oben ins Formular ein. Sobald das Netzwerk die Zahlung bestätigt, erscheint hier ein Download-Link.",
+      "q2": "Ich habe meinen Download-Link verloren.",
+      "a2": "Schreib mir auf WhatsApp mit dem Transaktions-Hash, dann schicke ich dir einen neuen.",
+      "q3": "Nutzt es ein Bild- oder Videomodell?",
+      "a3": "Nein. Claude schreibt den Code, der jedes Bild malt und bewegt. Nichts kommt aus einem Bild- oder Videomodell."
     }
   }
 }

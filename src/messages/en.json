@@ -211,7 +211,7 @@
     "line1": "Privacy",
     "line2": "Policy",
     "subheading": "What this site collects, why, and who else sees it.",
-    "updated": "Last updated: <date>6 October 2026</date>",
+    "updated": "Last updated: <date>14 November 2026</date>",
     "who": {
       "title": "Who runs this site",
       "body": "Mohammad M. Khani, based in Athens, Greece, runs this site and is responsible for the data described here. For anything about your data, email <link>{email}</link>."
@@ -238,6 +238,12 @@
       "calendar": "It then creates an event with a Google Meet link on Mohammad's Google Calendar and adds you as a guest. Google receives your name, email, topic and notes, and sends you the invitation.",
       "email": "A confirmation with a calendar file is emailed to you through Resend, and Mohammad is emailed your name, email, chosen time, topic and notes. Cancelling with the link in that email deletes the calendar event and marks the booking as cancelled."
     },
+    "shop": {
+      "title": "If you buy a skill",
+      "stored": "Starting a purchase stores an order in the same database: the product, the network and token you picked, the amount, the receiving address, the time and your IP address. The IP address limits orders and payment checks per day. When you paste a transaction hash it is stored with the order, together with a scrambled (hashed) copy of your download link.",
+      "chain": "To check the payment, the server looks the transaction up on a public Ethereum node (PublicNode) or Tron node (TronGrid). The transfer itself, including the wallet you paid from, is public on the blockchain anyway. Mohammad is emailed the order and the transaction hash through Resend.",
+      "whatsapp": "If you message on WhatsApp instead, WhatsApp handles that conversation under its own terms."
+    },
     "retention": {
       "title": "How long it is kept",
       "body": "Messages and bookings are kept until they are no longer needed, and deleted when you ask. Nothing is deleted automatically."
@@ -245,6 +251,113 @@
     "rights": {
       "title": "Your rights",
       "body": "Under the GDPR you can ask to see the data held about you, have it corrected or deleted, or object to its use. Email <link>{email}</link>. If you think your data has been mishandled, you can complain to the Hellenic Data Protection Authority."
+    }
+  },
+  "shop": {
+    "price": "Price: {amount} USD in stablecoins, about {eur} EUR.",
+    "network": "Network",
+    "networks": {
+      "eth": "Ethereum (ERC-20)",
+      "tron": "Tron (TRC-20)"
+    },
+    "token": "Token",
+    "start": "Show payment details",
+    "amount": "Amount",
+    "address": "Address",
+    "copy": "Copy",
+    "copied": "Copied",
+    "sendNote": "Send at least this amount of {token} on {network} to exactly this address. A transfer on another network or in another token cannot be matched.",
+    "txHash": "Transaction hash",
+    "txHashHint": "Once the transfer is sent, copy its hash from your wallet or the block explorer.",
+    "verify": "Verify payment",
+    "paid": "Payment confirmed. Thank you.",
+    "download": "Download",
+    "downloadNote": "The link works {max} times within {days} days. Keep the file somewhere safe.",
+    "errors": {
+      "invalid": "Something in the request was not valid. Reload the page and try again.",
+      "invalid_hash": "That does not look like a transaction hash on this network.",
+      "order_not_found": "This order no longer exists. Reload the page and start again.",
+      "already_used": "This transaction has already been used for a download.",
+      "not_found": "Transaction not found yet. If you just sent it, wait a minute and try again.",
+      "not_confirmed_yet": "Payment found, waiting for confirmations. Try again in a minute.",
+      "wrong_recipient": "This transaction does not pay the address above.",
+      "wrong_token": "This transaction sends a different token. Pick the token you sent and try again.",
+      "amount_too_low": "The amount received is lower than the price. Email me the transaction hash and I will sort it out.",
+      "tx_failed": "This transaction failed on chain, so no payment arrived.",
+      "before_order": "This transaction was sent before this order was created.",
+      "rpc_error": "The network could not be reached just now. Try again in a minute.",
+      "rate_limited": "Too many attempts today. Try again tomorrow, or email me directly.",
+      "server": "Something went wrong on the server. Try again, or email me directly.",
+      "network": "The request failed. Check your connection and try again."
+    }
+  },
+  "inkMotion": {
+    "metaTitle": "Ink Motion: a Claude Code skill for painted videos",
+    "metaDescription": "Claude paints every scene with code and moves it like a video. One idea in, a vertical MP4 out. 5 EUR.",
+    "line1": "Ink Motion",
+    "line2": "Painted videos",
+    "sub": "A Claude Code skill. Claude paints every scene with code, then moves it like a real video: one idea in, a vertical MP4 out. No image model, no video model.",
+    "price": "5 EUR, one payment",
+    "buyCta": "Buy with crypto",
+    "whatsappCta": "Message me on WhatsApp",
+    "whatsappText": "Hi Mohammad, I'd like to buy the Ink Motion skill.",
+    "results": {
+      "heading": "What it made",
+      "sub": "Real output from Claude with this skill. Every frame is code.",
+      "demo": "All of it together",
+      "lighthouse": "Woodblock storm",
+      "fox": "Stained glass",
+      "ferry": "Ink wash",
+      "neon": "Neon rain",
+      "opener": "3D night opener"
+    },
+    "how": {
+      "heading": "How it works",
+      "brief": {
+        "title": "You write one idea",
+        "body": "Claude turns it into three to six scenes: a picture, a few words and a prop for each."
+      },
+      "paint": {
+        "title": "Claude paints each scene",
+        "body": "With code, in one of 83 styles, layer by layer: the sky first, the details last."
+      },
+      "move": {
+        "title": "The scenes move",
+        "body": "Each picture paints itself in, an ink line carries the camera to the next scene, words tip in and 3D props drop onto the line."
+      },
+      "render": {
+        "title": "You get an MP4",
+        "body": "Every frame is recorded, 30 a second, into a 1080 x 1920 video ready for a reel."
+      }
+    },
+    "inside": {
+      "heading": "What you get",
+      "skill": "The skill file Claude follows, step by step",
+      "stage": "The stage: ink line, camera, words, 3D props and the paint-in",
+      "scripts": "Scripts that cut paintings into layers and record the MP4",
+      "painter": "The painting library with all 83 styles",
+      "examples": "The example scenes from this page"
+    },
+    "needs": {
+      "heading": "You need",
+      "body": "Claude Code, Python 3.10 or newer with numpy and Pillow, Node 18 or newer, Google Chrome and ffmpeg. Windows, macOS or Linux."
+    },
+    "credits": {
+      "heading": "Built on",
+      "body": "Two free, MIT-licensed skills, with their licences inside the download: <drawing>Claude Drawing</drawing> by cloveric for the painting, and the motion rules of <bang>Bang Motion</bang> by Bang Tutorial."
+    },
+    "buy": {
+      "heading": "Get Ink Motion",
+      "sub": "Pay with USDT or USDC and download it right here, or message me on WhatsApp to pay another way."
+    },
+    "faq": {
+      "heading": "Questions",
+      "q1": "How do I get the file after paying?",
+      "a1": "Paste the transaction hash in the form above. Once the network confirms the payment, a download link appears on this page.",
+      "q2": "I lost my download link.",
+      "a2": "Message me on WhatsApp with the transaction hash and I'll send a new one.",
+      "q3": "Does it use an image or video model?",
+      "a3": "No. Claude writes the code that paints each picture and moves it. Nothing comes from an image or video model."
     }
   }
 }

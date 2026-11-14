@@ -21,6 +21,9 @@ RUN addgroup -g 1001 nodejs && adduser -u 1001 -G nodejs -S nextjs
 COPY --from=build --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=build --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=build --chown=nextjs:nodejs /app/public ./public
+# Shop downloads, served only through /api/shop/download/<token>. Not under
+# public/, so there is no URL that reaches them without a paid order.
+COPY --from=build --chown=nextjs:nodejs /app/private/shop ./private/shop
 # The migration runner, for `docker compose run --rm portfolio node
 # scripts/migrate.mjs` on every deploy. Next may bundle the `postgres` driver
 # into server chunks rather than leave it in the traced node_modules, so the

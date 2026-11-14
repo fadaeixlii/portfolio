@@ -211,7 +211,7 @@
     "line1": "Privacy",
     "line2": "Beleid",
     "subheading": "Wat deze site verzamelt, waarom, en wie het nog meer ziet.",
-    "updated": "Laatst bijgewerkt: <date>6 oktober 2026</date>",
+    "updated": "Laatst bijgewerkt: <date>14 november 2026</date>",
     "who": {
       "title": "Wie deze site beheert",
       "body": "Mohammad M. Khani, gevestigd in Athene, Griekenland, beheert deze site en is verantwoordelijk voor de gegevens die hier worden beschreven. Voor alles over je gegevens: mail <link>{email}</link>."
@@ -238,6 +238,12 @@
       "calendar": "Daarna wordt er een afspraak met een Google Meet-link aangemaakt in de Google Agenda van Mohammad, met jou als gast. Google ontvangt je naam, e-mailadres, onderwerp en notities, en stuurt je de uitnodiging.",
       "email": "Via Resend krijg je een bevestiging met een agendabestand, en Mohammad krijgt per e-mail je naam, e-mailadres, het gekozen tijdstip, onderwerp en notities. Annuleer je via de link in die e-mail, dan wordt de agenda-afspraak verwijderd en de boeking als geannuleerd gemarkeerd."
     },
+    "shop": {
+      "title": "Als je een skill koopt",
+      "stored": "Een gestarte aankoop slaat een bestelling op in dezelfde database: het product, het gekozen netwerk en de token, het bedrag, het ontvangstadres, het tijdstip en je IP-adres. Het IP-adres beperkt bestellingen en betalingscontroles per dag. Als je een transactiehash plakt, wordt die bij de bestelling opgeslagen, samen met een versleutelde (gehashte) kopie van je downloadlink.",
+      "chain": "Om de betaling te controleren zoekt de server de transactie op bij een openbare Ethereum-node (PublicNode) of Tron-node (TronGrid). De overboeking zelf, inclusief de wallet waarmee je betaalde, is toch al openbaar op de blockchain. Mohammad krijgt de bestelling en de transactiehash per e-mail via Resend.",
+      "whatsapp": "Als je in plaats daarvan via WhatsApp een bericht stuurt, verwerkt WhatsApp dat gesprek onder zijn eigen voorwaarden."
+    },
     "retention": {
       "title": "Hoe lang het bewaard wordt",
       "body": "Berichten en boekingen worden bewaard tot ze niet meer nodig zijn, en verwijderd als je erom vraagt. Er wordt niets automatisch verwijderd."
@@ -245,6 +251,113 @@
     "rights": {
       "title": "Je rechten",
       "body": "Onder de AVG kun je inzage vragen in de gegevens die over je worden bewaard, ze laten corrigeren of verwijderen, of bezwaar maken tegen het gebruik ervan. Mail <link>{email}</link>. Denk je dat er verkeerd met je gegevens is omgegaan, dan kun je een klacht indienen bij de Griekse toezichthouder, de Hellenic Data Protection Authority."
+    }
+  },
+  "shop": {
+    "price": "Prijs: {amount} USD in stablecoins, ongeveer {eur} EUR.",
+    "network": "Netwerk",
+    "networks": {
+      "eth": "Ethereum (ERC-20)",
+      "tron": "Tron (TRC-20)"
+    },
+    "token": "Token",
+    "start": "Betaalgegevens tonen",
+    "amount": "Bedrag",
+    "address": "Adres",
+    "copy": "Kopiëren",
+    "copied": "Gekopieerd",
+    "sendNote": "Stuur minstens dit bedrag in {token} via {network} naar precies dit adres. Een overboeking via een ander netwerk of in een andere token kan niet worden gekoppeld.",
+    "txHash": "Transactiehash",
+    "txHashHint": "Kopieer na de overboeking de hash uit je wallet of de block explorer.",
+    "verify": "Betaling controleren",
+    "paid": "Betaling bevestigd. Dank je wel.",
+    "download": "Downloaden",
+    "downloadNote": "De link werkt {max} keer binnen {days} dagen. Bewaar het bestand op een veilige plek.",
+    "errors": {
+      "invalid": "Er klopte iets niet aan het verzoek. Herlaad de pagina en probeer het opnieuw.",
+      "invalid_hash": "Dat lijkt geen transactiehash op dit netwerk.",
+      "order_not_found": "Deze bestelling bestaat niet meer. Herlaad de pagina en begin opnieuw.",
+      "already_used": "Deze transactie is al gebruikt voor een download.",
+      "not_found": "Transactie nog niet gevonden. Heb je hem net verstuurd, wacht dan een minuut en probeer het opnieuw.",
+      "not_confirmed_yet": "Betaling gevonden, wacht op bevestigingen. Probeer het over een minuut opnieuw.",
+      "wrong_recipient": "Deze transactie betaalt niet aan het adres hierboven.",
+      "wrong_token": "Deze transactie stuurt een andere token. Kies de token die je hebt gestuurd en probeer het opnieuw.",
+      "amount_too_low": "Het ontvangen bedrag is lager dan de prijs. Mail me de transactiehash, dan los ik het op.",
+      "tx_failed": "Deze transactie is on-chain mislukt, er is dus geen betaling binnengekomen.",
+      "before_order": "Deze transactie is verstuurd voordat deze bestelling werd aangemaakt.",
+      "rpc_error": "Het netwerk is nu even niet bereikbaar. Probeer het over een minuut opnieuw.",
+      "rate_limited": "Te veel pogingen vandaag. Probeer het morgen opnieuw of mail me direct.",
+      "server": "Er ging iets mis op de server. Probeer het opnieuw of mail me direct.",
+      "network": "De aanvraag is mislukt. Controleer je verbinding en probeer het opnieuw."
+    }
+  },
+  "inkMotion": {
+    "metaTitle": "Ink Motion: een Claude Code-skill voor geschilderde video's",
+    "metaDescription": "Claude schildert elke scène met code en beweegt die als een video. Eén idee erin, een staande MP4 eruit. 5 EUR.",
+    "line1": "Ink Motion",
+    "line2": "Geschilderde video's",
+    "sub": "Een Claude Code-skill. Claude schildert elke scène met code en beweegt die als een echte video: één idee erin, een staande MP4 eruit. Geen beeldmodel, geen videomodel.",
+    "price": "5 EUR, eenmalig",
+    "buyCta": "Koop met crypto",
+    "whatsappCta": "Stuur me een WhatsApp",
+    "whatsappText": "Hoi Mohammad, ik wil de Ink Motion-skill kopen.",
+    "results": {
+      "heading": "Wat het maakte",
+      "sub": "Echte output van Claude met deze skill. Elk beeld is code.",
+      "demo": "Alles samen",
+      "lighthouse": "Houtsnede-storm",
+      "fox": "Glas-in-lood",
+      "ferry": "Inktwas",
+      "neon": "Neonregen",
+      "opener": "3D-nachtopener"
+    },
+    "how": {
+      "heading": "Zo werkt het",
+      "brief": {
+        "title": "Je schrijft één idee",
+        "body": "Claude maakt er drie tot zes scènes van: per scène een beeld, een paar woorden en een object."
+      },
+      "paint": {
+        "title": "Claude schildert elke scène",
+        "body": "Met code, in een van 83 stijlen, laag voor laag: eerst de lucht, de details als laatste."
+      },
+      "move": {
+        "title": "De scènes bewegen",
+        "body": "Elk beeld schildert zichzelf, een inktlijn brengt de camera naar de volgende scène, woorden kantelen erin en 3D-objecten vallen op de lijn."
+      },
+      "render": {
+        "title": "Je krijgt een MP4",
+        "body": "Elk beeld wordt opgenomen, 30 per seconde, tot een video van 1080 x 1920, klaar voor een reel."
+      }
+    },
+    "inside": {
+      "heading": "Wat je krijgt",
+      "skill": "Het skill-bestand dat Claude stap voor stap volgt",
+      "stage": "Het podium: inktlijn, camera, woorden, 3D-objecten en het inschilderen",
+      "scripts": "Scripts die schilderijen in lagen knippen en de MP4 opnemen",
+      "painter": "De schilderbibliotheek met alle 83 stijlen",
+      "examples": "De voorbeeldscènes van deze pagina"
+    },
+    "needs": {
+      "heading": "Je hebt nodig",
+      "body": "Claude Code, Python 3.10 of nieuwer met numpy en Pillow, Node 18 of nieuwer, Google Chrome en ffmpeg. Windows, macOS of Linux."
+    },
+    "credits": {
+      "heading": "Gebouwd op",
+      "body": "Twee gratis skills met een MIT-licentie, met hun licenties in de download: <drawing>Claude Drawing</drawing> van cloveric voor het schilderen, en de bewegingsregels van <bang>Bang Motion</bang> van Bang Tutorial."
+    },
+    "buy": {
+      "heading": "Haal Ink Motion",
+      "sub": "Betaal met USDT of USDC en download het meteen hier, of stuur me een WhatsApp om anders te betalen."
+    },
+    "faq": {
+      "heading": "Vragen",
+      "q1": "Hoe krijg ik het bestand na het betalen?",
+      "a1": "Plak de transactiehash in het formulier hierboven. Zodra het netwerk de betaling bevestigt, verschijnt hier een downloadlink.",
+      "q2": "Ik ben mijn downloadlink kwijt.",
+      "a2": "Stuur me een WhatsApp met de transactiehash, dan stuur ik je een nieuwe.",
+      "q3": "Gebruikt het een beeld- of videomodel?",
+      "a3": "Nee. Claude schrijft de code die elk beeld schildert en beweegt. Niets komt uit een beeld- of videomodel."
     }
   }
 }

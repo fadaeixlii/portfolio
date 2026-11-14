@@ -18,6 +18,10 @@ services:
       db:
         condition: service_healthy
     networks: [default, edge]
+    # Paid skill files live on the VPS only (~/portfolio/shop), never in git:
+    # the repo is public. Mounted over the image's private/shop folder.
+    volumes:
+      - ./shop:/app/private/shop:ro
     # The box is 4 GB shared with career-ops and outreach; a runaway here must
     # not take the job bot down with it.
     mem_limit: 512m

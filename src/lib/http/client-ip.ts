@@ -7,7 +7,7 @@
  *  entry (the one Caddy's `trusted_proxies` appended) for any request that
  *  reaches us without going through Cloudflare. A fixed fallback covers
  *  local dev where neither proxy sets a header. Shared by every route that
- *  rate-limits on IP (`/api/book`, `/api/contact`). */
+ *  rate-limits on IP (`/api/book`, `/api/contact`, `/api/shop/*`). */
 export function clientIp(request: Request): string {
   const cfIp = request.headers.get("cf-connecting-ip")?.trim();
   if (cfIp) return cfIp;
