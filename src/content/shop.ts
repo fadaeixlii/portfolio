@@ -19,6 +19,12 @@ export const SHOP_PRODUCTS = {
     /** Served from `private/shop/<file>`, never from `public/`. */
     file: "ink-motion.zip",
   },
+  "paper-trail": {
+    name: "Paper Trail",
+    priceUsd: 6,
+    approxEur: 5,
+    file: "paper-trail.zip",
+  },
 } satisfies Record<string, { name: string; priceUsd: number; approxEur: number; file: string }>;
 
 export type ProductId = keyof typeof SHOP_PRODUCTS;

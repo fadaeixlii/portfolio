@@ -360,5 +360,71 @@
       "q3": "Gebruikt het een beeld- of videomodel?",
       "a3": "Nee. Claude schrijft de code die elk beeld schildert en beweegt. Niets komt uit een beeld- of videomodel."
     }
+  },
+  "paperTrail": {
+    "metaTitle": "Paper Trail: een Claude Code-skill voor uitlegvideo's in Vox-stijl",
+    "metaDescription": "Eén onderwerp erin, een ingesproken staande uitlegvideo eruit: echte archieffoto's, rode draad en een gratis stem, alles met code getekend. 5 EUR.",
+    "line1": "Paper Trail",
+    "line2": "Films met rode draad",
+    "sub": "Een Claude Code-skill. Geef hem één onderwerp en Claude controleert de feiten, schrijft het script, zoekt echte archieffoto's en bouwt met code een detectivemuur, spreekt het daarna in en voegt ondertitels toe. Je krijgt een staande MP4. Geen beeldmodel, geen videomodel, niets te betalen per video.",
+    "price": "5 EUR, eenmalig",
+    "buyCta": "Koop met crypto",
+    "whatsappCta": "Stuur me een WhatsApp",
+    "whatsappText": "Hoi Mohammad, ik wil de Paper Trail-skill kopen.",
+    "results": {
+      "heading": "Wat het maakte",
+      "sub": "Echte films uit de skill, inclusief stem en ondertitels. De Eiffeltoren-film is gemaakt door een verse Claude met alleen de download.",
+      "demo": "De vuile petrischaal die ons penicilline gaf",
+      "eiffel": "De Eiffeltoren zou worden afgebroken",
+      "titanic": "De verdwenen verrekijker van de Titanic",
+      "reel": "De reel over Paper Trail, gemaakt met Paper Trail"
+    },
+    "how": {
+      "heading": "Zo werkt het",
+      "facts": {
+        "title": "Claude controleert de feiten",
+        "body": "Het zoekt op het web en schrijft elke datum, naam en elk getal op met de bron. Niets ongecontroleerds komt op de muur."
+      },
+      "script": {
+        "title": "Jij keurt het script goed",
+        "body": "Vijf tot acht regels in de Vox-boog: een koude opening, de wending, het verhaal, de twist, een laatste regel die raakt. Je leest het voordat er iets getekend wordt."
+      },
+      "wall": {
+        "title": "De muur bouwt zichzelf",
+        "body": "Echte archieffoto's van Wikimedia Commons, elk opgeslagen met zijn licentie, worden opgeplakt; kaarten, labels en een markeerstift landen op de gesproken woorden; de camera volgt de rode draad naar het volgende aanknopingspunt."
+      },
+      "film": {
+        "title": "Je krijgt een staande MP4",
+        "body": "Een gratis stem (of je eigen ElevenLabs-stem), ondertitels getimed op elk woord, 1080 x 1920 met 30 beelden per seconde, plus de fotocredits."
+      }
+    },
+    "inside": {
+      "heading": "Wat je krijgt",
+      "skill": "Het skill-bestand dat Claude volgt, van de feiten tot de eindcontrole",
+      "wall": "De muur-engine: foto's, kaarten, labels, markeerstift, rode draad en camera",
+      "pipeline": "Eén script voor foto's, stem, ondertitels en het renderen",
+      "example": "De penicillinefilm van deze pagina, klaar om te renderen"
+    },
+    "needs": {
+      "heading": "Je hebt nodig",
+      "body": "Claude Code, uv en ffmpeg. Het script installeert de rest zelf (een headless Chromium om te tekenen). Windows, macOS of Linux. Optioneel: een ElevenLabs-sleutel voor premium stemmen."
+    },
+    "credits": {
+      "heading": "Gebouwd op",
+      "body": "Twee gratis skills met een MIT-licentie, met hun licenties in de download: de canvas-engine en het Vox-bureau van <huashu>Huashu Art Motion</huashu> van alchaincyf, en de scriptmethode van <vox>Vox Explainer</vox> van Kingsley. Niet verbonden aan Vox Media."
+    },
+    "buy": {
+      "heading": "Haal Paper Trail",
+      "sub": "Betaal met USDT of USDC en download het meteen hier, of stuur me een WhatsApp om anders te betalen."
+    },
+    "faq": {
+      "heading": "Vragen",
+      "q1": "Hoe krijg ik het bestand na het betalen?",
+      "a1": "Plak de transactiehash in het formulier hierboven. Zodra het netwerk de betaling bevestigt, verschijnt hier een downloadlink.",
+      "q2": "Ik ben mijn downloadlink kwijt.",
+      "a2": "Stuur me een WhatsApp met de transactiehash, dan stuur ik je een nieuwe.",
+      "q3": "Kost het iets per video?",
+      "a3": "Nee. De foto's zijn gratis archieffoto's, de muur wordt met code getekend en de standaardstem is gratis. Alleen een ElevenLabs-stem, als je die kiest, gebruikt je eigen ElevenLabs-abonnement."
+    }
   }
 }

@@ -360,5 +360,71 @@
       "q3": "Does it use an image or video model?",
       "a3": "No. Claude writes the code that paints each picture and moves it. Nothing comes from an image or video model."
     }
+  },
+  "paperTrail": {
+    "metaTitle": "Paper Trail: a Claude Code skill for Vox-style explainer videos",
+    "metaDescription": "One topic in, a narrated vertical explainer out: real archive photos, red string and a free voice, all drawn in code. 5 EUR.",
+    "line1": "Paper Trail",
+    "line2": "Red string films",
+    "sub": "A Claude Code skill. Give it one topic and Claude checks the facts, writes the script, finds real archive photos and builds a detective wall in code, then voices it and adds captions. You get a vertical MP4. No image model, no video model, nothing to pay per video.",
+    "price": "5 EUR, one payment",
+    "buyCta": "Buy with crypto",
+    "whatsappCta": "Message me on WhatsApp",
+    "whatsappText": "Hi Mohammad, I'd like to buy the Paper Trail skill.",
+    "results": {
+      "heading": "What it made",
+      "sub": "Real films from the skill, voice and captions included. The Eiffel Tower film was made by a fresh Claude with nothing but the download.",
+      "demo": "The dirty dish that gave us penicillin",
+      "eiffel": "The Eiffel Tower was meant to come down",
+      "titanic": "The Titanic's missing binoculars",
+      "reel": "The reel about Paper Trail, made with Paper Trail"
+    },
+    "how": {
+      "heading": "How it works",
+      "facts": {
+        "title": "Claude checks the facts",
+        "body": "It searches the web and writes down every date, name and number with its source. Nothing unchecked goes on the wall."
+      },
+      "script": {
+        "title": "You approve the script",
+        "body": "Five to eight lines in the Vox arc: a cold open, the turn, the story, the twist, a last line that lands. You read it before anything is drawn."
+      },
+      "wall": {
+        "title": "The wall builds itself",
+        "body": "Real archive photos from Wikimedia Commons, each saved with its licence, get taped up; cards, labels and a highlighter land on the spoken words; the camera rides the red string to the next clue."
+      },
+      "film": {
+        "title": "You get a vertical MP4",
+        "body": "A free voice (or your ElevenLabs voice), captions timed to every word, 1080 x 1920 at 30 frames a second, plus the photo credits."
+      }
+    },
+    "inside": {
+      "heading": "What you get",
+      "skill": "The skill file Claude follows, from the facts to the final check",
+      "wall": "The wall engine: photos, cards, labels, highlighter, red string and camera",
+      "pipeline": "One script for photos, voice, captions and the render",
+      "example": "The penicillin film from this page, ready to render"
+    },
+    "needs": {
+      "heading": "You need",
+      "body": "Claude Code, uv and ffmpeg. The script installs the rest itself (a headless Chromium for drawing). Windows, macOS or Linux. Optional: an ElevenLabs key for premium voices."
+    },
+    "credits": {
+      "heading": "Built on",
+      "body": "Two free, MIT-licensed skills, with their licences inside the download: the canvas engine and Vox desk of <huashu>Huashu Art Motion</huashu> by alchaincyf, and the script method of <vox>Vox Explainer</vox> by Kingsley. Not affiliated with Vox Media."
+    },
+    "buy": {
+      "heading": "Get Paper Trail",
+      "sub": "Pay with USDT or USDC and download it right here, or message me on WhatsApp to pay another way."
+    },
+    "faq": {
+      "heading": "Questions",
+      "q1": "How do I get the file after paying?",
+      "a1": "Paste the transaction hash in the form above. Once the network confirms the payment, a download link appears on this page.",
+      "q2": "I lost my download link.",
+      "a2": "Message me on WhatsApp with the transaction hash and I'll send a new one.",
+      "q3": "Does it cost anything per video?",
+      "a3": "No. The photos are free archive photos, the wall is drawn in code and the default voice is free. Only an ElevenLabs voice, if you choose one, uses your own ElevenLabs plan."
+    }
   }
 }
