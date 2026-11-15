@@ -11,11 +11,14 @@ import { cn } from "@/lib/cn";
  */
 export function ResultVideo({
   name,
+  product = "ink-motion",
   label,
   priority = false,
   className,
 }: {
   name: string;
+  /** Folder under public/shop/ that holds `<name>.mp4` and `<name>.jpg`. */
+  product?: string;
   label: string;
   priority?: boolean;
   className?: string;
@@ -43,8 +46,8 @@ export function ResultVideo({
         <video
           ref={ref}
           className="block aspect-[9/16] w-full object-cover"
-          src={`/shop/ink-motion/${name}.mp4`}
-          poster={`/shop/ink-motion/${name}.jpg`}
+          src={`/shop/${product}/${name}.mp4`}
+          poster={`/shop/${product}/${name}.jpg`}
           muted
           loop
           playsInline

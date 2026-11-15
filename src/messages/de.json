@@ -360,5 +360,71 @@
       "q3": "Nutzt es ein Bild- oder Videomodell?",
       "a3": "Nein. Claude schreibt den Code, der jedes Bild malt und bewegt. Nichts kommt aus einem Bild- oder Videomodell."
     }
+  },
+  "paperTrail": {
+    "metaTitle": "Paper Trail: ein Claude-Code-Skill für Erklärvideos im Vox-Stil",
+    "metaDescription": "Ein Thema rein, ein vertontes Hochformat-Erklärvideo raus: echte Archivfotos, roter Faden und eine kostenlose Stimme, alles mit Code gezeichnet. 5 EUR.",
+    "line1": "Paper Trail",
+    "line2": "Filme am roten Faden",
+    "sub": "Ein Claude-Code-Skill. Gib ihm ein Thema, und Claude prüft die Fakten, schreibt das Skript, findet echte Archivfotos und baut eine Detektivwand mit Code, dann vertont es und fügt Untertitel hinzu. Du bekommst ein MP4 im Hochformat. Kein Bildmodell, kein Videomodell, nichts zu zahlen pro Video.",
+    "price": "5 EUR, einmalige Zahlung",
+    "buyCta": "Mit Krypto kaufen",
+    "whatsappCta": "Schreib mir auf WhatsApp",
+    "whatsappText": "Hallo Mohammad, ich möchte den Skill Paper Trail kaufen.",
+    "results": {
+      "heading": "Was es gemacht hat",
+      "sub": "Echte Filme aus dem Skill, mit Stimme und Untertiteln. Der Eiffelturm-Film wurde von einem frischen Claude gemacht, nur mit dem Download.",
+      "demo": "Die schmutzige Schale, der wir Penicillin verdanken",
+      "eiffel": "Der Eiffelturm sollte abgerissen werden",
+      "titanic": "Das fehlende Fernglas der Titanic",
+      "reel": "Das Reel über Paper Trail, gemacht mit Paper Trail"
+    },
+    "how": {
+      "heading": "So funktioniert es",
+      "facts": {
+        "title": "Claude prüft die Fakten",
+        "body": "Es durchsucht das Web und schreibt jedes Datum, jeden Namen und jede Zahl mit Quelle auf. Nichts Ungeprüftes kommt an die Wand."
+      },
+      "script": {
+        "title": "Du gibst das Skript frei",
+        "body": "Fünf bis acht Zeilen im Vox-Bogen: ein kalter Einstieg, die Wendung, die Geschichte, der Twist, ein letzter Satz, der sitzt. Du liest es, bevor etwas gezeichnet wird."
+      },
+      "wall": {
+        "title": "Die Wand baut sich selbst",
+        "body": "Echte Archivfotos von Wikimedia Commons, jedes mit seiner Lizenz gespeichert, werden aufgeklebt; Karten, Beschriftungen und ein Textmarker landen auf den gesprochenen Wörtern; die Kamera folgt dem roten Faden zum nächsten Hinweis."
+      },
+      "film": {
+        "title": "Du bekommst ein MP4 im Hochformat",
+        "body": "Eine kostenlose Stimme (oder deine ElevenLabs-Stimme), Untertitel auf jedes Wort getimt, 1080 x 1920 mit 30 Bildern pro Sekunde, dazu die Fotonachweise."
+      }
+    },
+    "inside": {
+      "heading": "Was du bekommst",
+      "skill": "Die Skill-Datei, der Claude folgt, von den Fakten bis zur Endkontrolle",
+      "wall": "Die Wand-Engine: Fotos, Karten, Beschriftungen, Textmarker, roter Faden und Kamera",
+      "pipeline": "Ein Skript für Fotos, Stimme, Untertitel und das Rendern",
+      "example": "Der Penicillin-Film von dieser Seite, bereit zum Rendern"
+    },
+    "needs": {
+      "heading": "Du brauchst",
+      "body": "Claude Code, uv und ffmpeg. Das Skript installiert den Rest selbst (ein Headless-Chromium zum Zeichnen). Windows, macOS oder Linux. Optional: ein ElevenLabs-Schlüssel für Premium-Stimmen."
+    },
+    "credits": {
+      "heading": "Basiert auf",
+      "body": "Zwei freien Skills unter MIT-Lizenz, deren Lizenzen im Download liegen: die Canvas-Engine und der Vox-Schreibtisch von <huashu>Huashu Art Motion</huashu> von alchaincyf und die Skript-Methode von <vox>Vox Explainer</vox> von Kingsley. Nicht mit Vox Media verbunden."
+    },
+    "buy": {
+      "heading": "Paper Trail holen",
+      "sub": "Bezahle mit USDT oder USDC und lade es direkt hier herunter, oder schreib mir auf WhatsApp, um anders zu bezahlen."
+    },
+    "faq": {
+      "heading": "Fragen",
+      "q1": "Wie bekomme ich die Datei nach dem Bezahlen?",
+      "a1": "Füge den Transaktions-Hash oben ins Formular ein. Sobald das Netzwerk die Zahlung bestätigt, erscheint hier ein Download-Link.",
+      "q2": "Ich habe meinen Download-Link verloren.",
+      "a2": "Schreib mir auf WhatsApp mit dem Transaktions-Hash, dann schicke ich dir einen neuen.",
+      "q3": "Kostet es etwas pro Video?",
+      "a3": "Nein. Die Fotos sind kostenlose Archivfotos, die Wand wird mit Code gezeichnet und die Standardstimme ist kostenlos. Nur eine ElevenLabs-Stimme, falls du eine wählst, nutzt deinen eigenen ElevenLabs-Tarif."
+    }
   }
 }
