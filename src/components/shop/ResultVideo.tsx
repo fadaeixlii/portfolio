@@ -14,6 +14,7 @@ export function ResultVideo({
   product = "ink-motion",
   label,
   priority = false,
+  wide = false,
   className,
 }: {
   name: string;
@@ -21,6 +22,8 @@ export function ResultVideo({
   product?: string;
   label: string;
   priority?: boolean;
+  /** 16:9 instead of the tall 9:16 phone frame. */
+  wide?: boolean;
   className?: string;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
@@ -45,7 +48,7 @@ export function ResultVideo({
       <div className="overflow-hidden border border-hairline bg-surface">
         <video
           ref={ref}
-          className="block aspect-[9/16] w-full object-cover"
+          className={cn("block w-full object-cover", wide ? "aspect-video" : "aspect-[9/16]")}
           src={`/shop/${product}/${name}.mp4`}
           poster={`/shop/${product}/${name}.jpg`}
           muted

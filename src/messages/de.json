@@ -426,5 +426,120 @@
       "q3": "Kostet es etwas pro Video?",
       "a3": "Nein. Die Fotos sind kostenlose Archivfotos, die Wand wird mit Code gezeichnet und die Standardstimme ist kostenlos. Nur eine ElevenLabs-Stimme, falls du eine wählst, nutzt deinen eigenen ElevenLabs-Tarif."
     }
+  },
+  "lightsOn": {
+    "metaTitle": "Lights On: ein Claude-Code-Skill, der alte Websites kleiner Betriebe neu baut",
+    "metaDescription": "Den Link einer alten Website einfügen und einen Neubau fürs Handy bekommen, der jeden echten Fakt behält, dazu Lighthouse-Werte vorher und nachher und ein Vergleichsvideo für den Inhaber. 5 EUR.",
+    "line1": "Lights On",
+    "line2": "Alte Seiten, neu gebaut",
+    "sub": "Ein Claude-Code-Skill. Füge den Link der veralteten Website eines kleinen Betriebs ein. Claude erfasst sie, schreibt jeden echten Fakt auf (Angebot, Preise, Öffnungszeiten, Telefon, Adresse, Fotos) und baut darum eine moderne Seite, die zuerst fürs Handy gemacht ist. Dann prüft es, dass die neue Seite nichts hinzufügt, was nicht auf der alten stand, misst beide mit Google Lighthouse und filmt sie nebeneinander für den Inhaber.",
+    "price": "5 EUR, einmalige Zahlung",
+    "buyCta": "Mit Krypto kaufen",
+    "whatsappCta": "Schreib mir auf WhatsApp",
+    "whatsappText": "Hallo Mohammad, ich möchte den Skill Lights On kaufen.",
+    "compare": {
+      "before": "Alte Seite",
+      "after": "Neue Seite",
+      "slider": "Ziehen, um die alte und die neue Seite zu vergleichen",
+      "phoneCaption": "Rosie's Bakery auf dem Handy, vorher und nachher. Eine Demo-Seite, kein echter Betrieb.",
+      "phoneBeforeAlt": "Die alte Bäckerei-Seite auf dem Handy: die ganze Desktop-Seite auf winzige Schrift verkleinert",
+      "phoneAfterAlt": "Die neue Bäckerei-Seite auf dem Handy: eine große Überschrift, ein Anruf-Button, ein Button für die Wegbeschreibung und die Öffnungszeiten",
+      "desktopCaption": "Dieselben zwei Seiten am Computer. Zieh die Linie, um zu vergleichen.",
+      "desktopBeforeAlt": "Die alte Bäckerei-Seite am Computer: gestrichelte Kästen, ein Lauftext und ein Besucherzähler",
+      "desktopAfterAlt": "Die neue Bäckerei-Seite am Computer: eine große Überschrift, Buttons für Anruf und Wegbeschreibung und ein Foto eines Sauerteigbrots"
+    },
+    "results": {
+      "heading": "Ein echter Durchlauf mit einer Demo-Bäckerei",
+      "sub": "Rosie's Bakery ist eine Website im Stil von 2009, gemacht für diese Demo. Sie ist kein echter Betrieb. Alles in diesem Abschnitt hat der Skill wirklich daraus gemacht.",
+      "pitch": "Das Vorher-nachher-Video, das der Skill für den Inhaber gemacht hat"
+    },
+    "scores": {
+      "caption": "Google Lighthouse, Handy-Einstellung",
+      "metric": "Messwert",
+      "before": "Alte Seite",
+      "after": "Neue Seite",
+      "performance": "Leistung",
+      "accessibility": "Barrierefreiheit",
+      "bestPractices": "Best Practices",
+      "seo": "SEO",
+      "photo": "Hauptfoto erscheint nach",
+      "weight": "Seitengewicht",
+      "facts": "Fakten-Check: Alle 16 Zahlen, Preise, Zeiten und die E-Mail-Adresse auf der neuen Seite stammen von der alten."
+    },
+    "fixes": {
+      "heading": "Die drei Korrekturen, die es fand",
+      "sub": "Die drei Probleme, die den Inhaber Kunden kosten, jeweils gemessen und in einfachen Worten. Mit ihnen beginnt die Nachricht an den Inhaber.",
+      "phone": {
+        "title": "Kein Handy-Layout",
+        "body": "Ein Handy zeichnet die alte Seite in Desktop-Breite und verkleinert sie. Angebot und Öffnungszeiten sind dann etwa 5 px hoch, also muss man zoomen, um einen Preis zu lesen."
+      },
+      "weight": {
+        "title": "Schwere Fotos, blockierende Skripte",
+        "body": "1,8 MB Fotos, angezeigt mit 160 bis 300 px Breite, dazu alte Skripte, die die Seite blockieren, bevor sie sich aufbauen kann. Im Handy-Test von Lighthouse erschien das Hauptfoto nach 11,4 s."
+      },
+      "tap": {
+        "title": "Kein Anruf per Antippen",
+        "body": "Telefonnummer, E-Mail und Adresse waren reiner Text: kein Anruf und keine Mail per Antippen, kein Link zur Wegbeschreibung. Die neue Seite hat alle drei."
+      }
+    },
+    "how": {
+      "heading": "So funktioniert es",
+      "capture": {
+        "title": "Du fügst den Link ein",
+        "body": "Claude öffnet die alte Seite auf einem Handy und einem Computer und speichert Screenshots, jedes Wort und jedes Foto."
+      },
+      "facts": {
+        "title": "Es schreibt jeden Fakt auf",
+        "body": "Angebot, Preise, Öffnungszeiten, Telefon, Adresse und Fotos, jeweils mit der Stelle, an der es stand. Was die alte Seite nicht sagt, kommt auf eine Liste mit Fragen an den Inhaber, nie auf die Seite."
+      },
+      "build": {
+        "title": "Es baut die neue Seite",
+        "body": "Eine moderne Seite in einer HTML-Datei, zuerst fürs Handy gemacht und um diese Fakten gebaut, mit den eigenen Fotos des Inhabers. Ein Check bestätigt danach, dass sie keine Zahl, keinen Preis, keine Uhrzeit und keine E-Mail hinzufügt, die nicht auf der alten Seite stand."
+      },
+      "pitch": {
+        "title": "Es misst und filmt beide",
+        "body": "Google Lighthouse bewertet die alte und die neue Seite in der Handy-Einstellung. Dann filmt Claude die beiden Seiten nebeneinander und schreibt eine kurze Nachricht, die du schicken kannst."
+      }
+    },
+    "who": {
+      "heading": "Für wen es ist",
+      "freelancers": {
+        "title": "Freelancer und Webdesigner",
+        "body": "Du suchst Kunden? Schick einem Inhaber seine eigene Seite, repariert, statt einer kalten E-Mail."
+      },
+      "owners": {
+        "title": "Inhaber kleiner Betriebe",
+        "body": "Lass deine eigene Seite fürs Handy neu bauen, mit deinem echten Angebot, deinen Preisen, Öffnungszeiten und Fotos, und sieh die Werte vorher und nachher."
+      },
+      "rule": "Eine Regel: Schick den Neubau privat an den Inhaber. Veröffentliche nie das Redesign einer fremden Seite ohne das schriftliche OK des Inhabers. Es nutzt seine Texte und Fotos."
+    },
+    "inside": {
+      "heading": "Was du bekommst",
+      "skill": "Die Skill-Datei, der Claude folgt, von der ersten Erfassung bis zur Nachricht an den Inhaber",
+      "scripts": "Skripte für die Screenshots, die Lighthouse-Werte, den Fakten-Check, die Fotokomprimierung und das Vorher-nachher-Video",
+      "design": "Design-Notizen, damit der Neubau nicht wie jede andere KI-Vorlage aussieht, und die Vorlage für die Nachricht",
+      "example": "Der komplette Durchlauf mit Rosie's Bakery von dieser Seite: alte Seite, neue Seite, Fakten, Korrekturen, Werte und Video"
+    },
+    "needs": {
+      "heading": "Du brauchst",
+      "body": "Claude Code und Node 18 oder neuer. Ein Setup-Befehl installiert den Rest, und Lighthouse lädt sich beim ersten Mal selbst herunter. Es läuft mit dem Claude-Tarif, den du schon hast, ohne bezahlten Website-Baukasten."
+    },
+    "credits": {
+      "heading": "Gebaut mit",
+      "body": "Freien Open-Source-Werkzeugen, die das Setup installiert (ihr Code liegt nicht im Download): <playwright>Playwright</playwright> von Microsoft, <lighthouse>Lighthouse</lighthouse> von Google und FFmpeg über <ffmpeg>ffmpeg-static</ffmpeg>. Nicht mit Google oder Microsoft verbunden."
+    },
+    "buy": {
+      "heading": "Lights On holen",
+      "sub": "Bezahle mit USDT oder USDC und lade es direkt hier herunter, oder schreib mir auf WhatsApp, um anders zu bezahlen."
+    },
+    "faq": {
+      "heading": "Fragen",
+      "q1": "Wie bekomme ich die Datei nach dem Bezahlen?",
+      "a1": "Füge den Transaktions-Hash oben ins Formular ein. Sobald das Netzwerk die Zahlung bestätigt, erscheint hier ein Download-Link.",
+      "q2": "Ich habe meinen Download-Link verloren.",
+      "a2": "Schreib mir auf WhatsApp mit dem Transaktions-Hash, dann schicke ich dir einen neuen.",
+      "q3": "Kostet es etwas pro Website?",
+      "a3": "Nein. Es läuft mit dem Claude-Tarif, den du schon hast, und die Werkzeuge sind kostenlos. Die neue Seite ist eine HTML-Datei mit ihren Fotos, die der Inhaber überall hosten kann, also gibt es keinen Website-Baukasten zu bezahlen."
+    }
   }
 }

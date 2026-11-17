@@ -426,5 +426,120 @@
       "q3": "Does it cost anything per video?",
       "a3": "No. The photos are free archive photos, the wall is drawn in code and the default voice is free. Only an ElevenLabs voice, if you choose one, uses your own ElevenLabs plan."
     }
+  },
+  "lightsOn": {
+    "metaTitle": "Lights On: a Claude Code skill that rebuilds old small-business websites",
+    "metaDescription": "Paste an old website's link and get a phone-first rebuild that keeps every real fact, Lighthouse scores before and after, and a side-by-side video for the owner. 5 EUR.",
+    "line1": "Lights On",
+    "line2": "Old sites, rebuilt",
+    "sub": "A Claude Code skill. Paste the link of an outdated small-business website. Claude captures it, writes down every real fact (menu, prices, hours, phone, address, photos) and builds a modern, phone-first site around them. Then it checks the new site adds nothing that wasn't on the old one, measures both with Google Lighthouse and films them side by side for the owner.",
+    "price": "5 EUR, one payment",
+    "buyCta": "Buy with crypto",
+    "whatsappCta": "Message me on WhatsApp",
+    "whatsappText": "Hi Mohammad, I'd like to buy the Lights On skill.",
+    "compare": {
+      "before": "Old site",
+      "after": "New site",
+      "slider": "Drag to compare the old and new site",
+      "phoneCaption": "Rosie's Bakery on a phone, before and after. A demo site, not a real business.",
+      "phoneBeforeAlt": "The old bakery site on a phone: the whole desktop page shrunk to tiny text",
+      "phoneAfterAlt": "The new bakery site on a phone: a large headline, a call button, a directions button and the opening hours",
+      "desktopCaption": "The same two sites on a computer. Drag the line to compare.",
+      "desktopBeforeAlt": "The old bakery site on a computer: dashed boxes, a scrolling ticker and a visitor counter",
+      "desktopAfterAlt": "The new bakery site on a computer: a large headline, call and directions buttons and a photo of a sourdough loaf"
+    },
+    "results": {
+      "heading": "A real run on a demo bakery",
+      "sub": "Rosie's Bakery is a 2009-style website made for this demo. It is not a real business. Everything in this section is what the skill really made from it.",
+      "pitch": "The before/after video the skill made for the owner"
+    },
+    "scores": {
+      "caption": "Google Lighthouse, phone setting",
+      "metric": "Measure",
+      "before": "Old site",
+      "after": "New site",
+      "performance": "Performance",
+      "accessibility": "Accessibility",
+      "bestPractices": "Best practices",
+      "seo": "SEO",
+      "photo": "Main photo shows after",
+      "weight": "Page weight",
+      "facts": "Facts check: all 16 numbers, prices, times and the email on the new site came from the old one."
+    },
+    "fixes": {
+      "heading": "The three fixes it found",
+      "sub": "The three problems that cost the owner customers, each measured and in plain words. They lead the message to the owner.",
+      "phone": {
+        "title": "No phone layout",
+        "body": "A phone draws the old page at desktop width and shrinks it. The menu and opening hours end up about 5 px tall, so people pinch and zoom to read a price."
+      },
+      "weight": {
+        "title": "Heavy photos, blocking scripts",
+        "body": "1.8 MB of photos shown at 160 to 300 px wide, plus old scripts that block the page before it can draw. On Lighthouse's phone test the main photo showed after 11.4 s."
+      },
+      "tap": {
+        "title": "No tap to call",
+        "body": "The phone number, email and address were plain text: no tap-to-call, no tap-to-email, no directions link. The new site has all three."
+      }
+    },
+    "how": {
+      "heading": "How it works",
+      "capture": {
+        "title": "You paste the link",
+        "body": "Claude opens the old site on a phone and on a computer and saves screenshots, every word and every photo."
+      },
+      "facts": {
+        "title": "It writes down every fact",
+        "body": "Menu, prices, hours, phone, address and photos, each with where it was found. Anything the old site doesn't say goes on a list of questions for the owner, never on the page."
+      },
+      "build": {
+        "title": "It builds the new site",
+        "body": "A modern, phone-first site in one HTML file, built around those facts with the owner's own photos. A check then confirms it adds no number, price, time or email that wasn't on the old site."
+      },
+      "pitch": {
+        "title": "It measures and films both",
+        "body": "Google Lighthouse scores the old and new site on its phone setting. Claude then films the two pages side by side and writes a short message for you to send."
+      }
+    },
+    "who": {
+      "heading": "Who it's for",
+      "freelancers": {
+        "title": "Freelancers and web designers",
+        "body": "Looking for clients? Send a business owner their own site, fixed, instead of a cold email."
+      },
+      "owners": {
+        "title": "Small business owners",
+        "body": "Get your own site rebuilt for phones, with your real menu, prices, hours and photos, and see the scores before and after."
+      },
+      "rule": "One rule: send the rebuild privately to the owner. Never publish someone's redesign without their written OK. It uses their words and photos."
+    },
+    "inside": {
+      "heading": "What you get",
+      "skill": "The skill file Claude follows, from the first capture to the message for the owner",
+      "scripts": "Scripts for the screenshots, Lighthouse scores, facts check, photo compression and the before/after video",
+      "design": "Design notes that keep the rebuild from looking like every other AI template, and the message template",
+      "example": "The full Rosie's Bakery run from this page: old site, new site, facts, fixes, scores and video"
+    },
+    "needs": {
+      "heading": "You need",
+      "body": "Claude Code and Node 18 or newer. One setup command installs the rest, and Lighthouse downloads itself the first time. It runs on the Claude plan you already have, with no paid website builder."
+    },
+    "credits": {
+      "heading": "Built with",
+      "body": "Free, open-source tools that the setup installs (their code is not in the download): <playwright>Playwright</playwright> by Microsoft, <lighthouse>Lighthouse</lighthouse> by Google, and FFmpeg through <ffmpeg>ffmpeg-static</ffmpeg>. Not affiliated with Google or Microsoft."
+    },
+    "buy": {
+      "heading": "Get Lights On",
+      "sub": "Pay with USDT or USDC and download it right here, or message me on WhatsApp to pay another way."
+    },
+    "faq": {
+      "heading": "Questions",
+      "q1": "How do I get the file after paying?",
+      "a1": "Paste the transaction hash in the form above. Once the network confirms the payment, a download link appears on this page.",
+      "q2": "I lost my download link.",
+      "a2": "Message me on WhatsApp with the transaction hash and I'll send a new one.",
+      "q3": "Does it cost anything per site?",
+      "a3": "No. It runs on the Claude plan you already have, and the tools it uses are free. The new site is one HTML file plus its photos, which the owner can host anywhere, so there is no website builder to pay for."
+    }
   }
 }
