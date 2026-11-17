@@ -426,5 +426,120 @@
       "q3": "Kost het iets per video?",
       "a3": "Nee. De foto's zijn gratis archieffoto's, de muur wordt met code getekend en de standaardstem is gratis. Alleen een ElevenLabs-stem, als je die kiest, gebruikt je eigen ElevenLabs-abonnement."
     }
+  },
+  "lightsOn": {
+    "metaTitle": "Lights On: een Claude Code-skill die oude websites van kleine bedrijven opnieuw bouwt",
+    "metaDescription": "Plak de link van een oude website en krijg een nieuwe versie voor de telefoon die elk echt feit bewaart, Lighthouse-scores voor en na, en een video naast elkaar voor de eigenaar. 5 EUR.",
+    "line1": "Lights On",
+    "line2": "Oude sites, opnieuw gebouwd",
+    "sub": "Een Claude Code-skill. Plak de link van een verouderde website van een klein bedrijf. Claude legt hem vast, schrijft elk echt feit op (menu, prijzen, openingstijden, telefoon, adres, foto's) en bouwt daar een moderne site omheen, eerst gemaakt voor de telefoon. Daarna controleert het dat de nieuwe site niets toevoegt wat niet op de oude stond, meet beide met Google Lighthouse en filmt ze naast elkaar voor de eigenaar.",
+    "price": "5 EUR, eenmalig",
+    "buyCta": "Koop met crypto",
+    "whatsappCta": "Stuur me een WhatsApp",
+    "whatsappText": "Hoi Mohammad, ik wil de Lights On-skill kopen.",
+    "compare": {
+      "before": "Oude site",
+      "after": "Nieuwe site",
+      "slider": "Sleep om de oude en nieuwe site te vergelijken",
+      "phoneCaption": "Rosie's Bakery op een telefoon, voor en na. Een demosite, geen echt bedrijf.",
+      "phoneBeforeAlt": "De oude bakkerijsite op een telefoon: de hele desktoppagina verkleind tot piepkleine tekst",
+      "phoneAfterAlt": "De nieuwe bakkerijsite op een telefoon: een grote kop, een belknop, een routeknop en de openingstijden",
+      "desktopCaption": "Dezelfde twee sites op een computer. Sleep de lijn om te vergelijken.",
+      "desktopBeforeAlt": "De oude bakkerijsite op een computer: gestippelde kaders, een lichtkrant en een bezoekersteller",
+      "desktopAfterAlt": "De nieuwe bakkerijsite op een computer: een grote kop, knoppen om te bellen en voor de route, en een foto van een zuurdesembrood"
+    },
+    "results": {
+      "heading": "Een echte run op een demobakkerij",
+      "sub": "Rosie's Bakery is een website in 2009-stijl, gemaakt voor deze demo. Het is geen echt bedrijf. Alles in dit deel heeft de skill er echt van gemaakt.",
+      "pitch": "De voor-en-na-video die de skill voor de eigenaar maakte"
+    },
+    "scores": {
+      "caption": "Google Lighthouse, telefooninstelling",
+      "metric": "Meting",
+      "before": "Oude site",
+      "after": "Nieuwe site",
+      "performance": "Prestaties",
+      "accessibility": "Toegankelijkheid",
+      "bestPractices": "Praktische tips",
+      "seo": "SEO",
+      "photo": "Hoofdfoto verschijnt na",
+      "weight": "Paginagewicht",
+      "facts": "Feitencheck: alle 16 getallen, prijzen, tijden en het e-mailadres op de nieuwe site kwamen van de oude."
+    },
+    "fixes": {
+      "heading": "De drie verbeteringen die het vond",
+      "sub": "De drie problemen die de eigenaar klanten kosten, elk gemeten en in gewone woorden. Het bericht aan de eigenaar begint ermee.",
+      "phone": {
+        "title": "Geen telefoonweergave",
+        "body": "Een telefoon tekent de oude pagina op desktopbreedte en verkleint hem. Het menu en de openingstijden worden zo'n 5 px hoog, dus mensen moeten inzoomen om een prijs te lezen."
+      },
+      "weight": {
+        "title": "Zware foto's, blokkerende scripts",
+        "body": "1,8 MB aan foto's, getoond op 160 tot 300 px breed, plus oude scripts die de pagina blokkeren voordat die kan tekenen. In de telefoontest van Lighthouse verscheen de hoofdfoto na 11,4 s."
+      },
+      "tap": {
+        "title": "Niet tikken om te bellen",
+        "body": "Het telefoonnummer, het e-mailadres en het adres waren gewone tekst: niet tikken om te bellen of te mailen, geen routelink. De nieuwe site heeft alle drie."
+      }
+    },
+    "how": {
+      "heading": "Zo werkt het",
+      "capture": {
+        "title": "Jij plakt de link",
+        "body": "Claude opent de oude site op een telefoon en op een computer en bewaart screenshots, elk woord en elke foto."
+      },
+      "facts": {
+        "title": "Het schrijft elk feit op",
+        "body": "Menu, prijzen, openingstijden, telefoon, adres en foto's, elk met waar het stond. Wat de oude site niet zegt, komt op een lijst met vragen voor de eigenaar, nooit op de pagina."
+      },
+      "build": {
+        "title": "Het bouwt de nieuwe site",
+        "body": "Een moderne site in één HTML-bestand, eerst gemaakt voor de telefoon en gebouwd rond die feiten, met de eigen foto's van de eigenaar. Daarna bevestigt een check dat er geen getal, prijs, tijd of e-mailadres bij komt dat niet op de oude site stond."
+      },
+      "pitch": {
+        "title": "Het meet en filmt beide",
+        "body": "Google Lighthouse scoort de oude en nieuwe site op de telefooninstelling. Daarna filmt Claude de twee pagina's naast elkaar en schrijft een kort bericht dat jij kunt sturen."
+      }
+    },
+    "who": {
+      "heading": "Voor wie het is",
+      "freelancers": {
+        "title": "Freelancers en webdesigners",
+        "body": "Op zoek naar klanten? Stuur een ondernemer zijn eigen site, verbeterd, in plaats van een koude e-mail."
+      },
+      "owners": {
+        "title": "Eigenaren van kleine bedrijven",
+        "body": "Laat je eigen site opnieuw bouwen voor de telefoon, met je echte menu, prijzen, openingstijden en foto's, en zie de scores voor en na."
+      },
+      "rule": "Eén regel: stuur de nieuwe versie privé naar de eigenaar. Publiceer nooit het redesign van iemand anders zonder diens schriftelijke OK. Het gebruikt hun woorden en foto's."
+    },
+    "inside": {
+      "heading": "Wat je krijgt",
+      "skill": "Het skill-bestand dat Claude volgt, van de eerste opname tot het bericht aan de eigenaar",
+      "scripts": "Scripts voor de screenshots, Lighthouse-scores, feitencheck, fotocompressie en de voor-en-na-video",
+      "design": "Ontwerpnotities die voorkomen dat de nieuwe site eruitziet als elk ander AI-sjabloon, en het berichtsjabloon",
+      "example": "De volledige run met Rosie's Bakery van deze pagina: oude site, nieuwe site, feiten, verbeteringen, scores en video"
+    },
+    "needs": {
+      "heading": "Je hebt nodig",
+      "body": "Claude Code en Node 18 of nieuwer. Eén setup-opdracht installeert de rest, en Lighthouse downloadt zichzelf de eerste keer. Het draait op het Claude-abonnement dat je al hebt, zonder betaalde websitebouwer."
+    },
+    "credits": {
+      "heading": "Gebouwd met",
+      "body": "Gratis open-sourcetools die de setup installeert (hun code zit niet in de download): <playwright>Playwright</playwright> van Microsoft, <lighthouse>Lighthouse</lighthouse> van Google, en FFmpeg via <ffmpeg>ffmpeg-static</ffmpeg>. Niet verbonden aan Google of Microsoft."
+    },
+    "buy": {
+      "heading": "Haal Lights On",
+      "sub": "Betaal met USDT of USDC en download het meteen hier, of stuur me een WhatsApp om anders te betalen."
+    },
+    "faq": {
+      "heading": "Vragen",
+      "q1": "Hoe krijg ik het bestand na het betalen?",
+      "a1": "Plak de transactiehash in het formulier hierboven. Zodra het netwerk de betaling bevestigt, verschijnt hier een downloadlink.",
+      "q2": "Ik ben mijn downloadlink kwijt.",
+      "a2": "Stuur me een WhatsApp met de transactiehash, dan stuur ik je een nieuwe.",
+      "q3": "Kost het iets per site?",
+      "a3": "Nee. Het draait op het Claude-abonnement dat je al hebt, en de tools zijn gratis. De nieuwe site is één HTML-bestand met zijn foto's, dat de eigenaar overal kan hosten, dus er is geen websitebouwer om te betalen."
+    }
   }
 }

@@ -25,6 +25,12 @@ export const SHOP_PRODUCTS = {
     approxEur: 5,
     file: "paper-trail.zip",
   },
+  "lights-on": {
+    name: "Lights On",
+    priceUsd: 6,
+    approxEur: 5,
+    file: "lights-on.zip",
+  },
 } satisfies Record<string, { name: string; priceUsd: number; approxEur: number; file: string }>;
 
 export type ProductId = keyof typeof SHOP_PRODUCTS;
