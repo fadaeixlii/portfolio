@@ -541,5 +541,113 @@
       "q3": "Does it cost anything per site?",
       "a3": "No. It runs on the Claude plan you already have, and the tools it uses are free. The new site is one HTML file plus its photos, which the owner can host anywhere, so there is no website builder to pay for."
     }
+  },
+  "trailReel": {
+    "metaTitle": "Trail Reel: a Claude Code skill that turns a trip into a 3D route video",
+    "metaDescription": "Tell Claude your trip in one sentence and get a 1080 x 1920 3D route video for reels: a globe for flights, real mountains for road trips, real buildings for city walks. Made on your own computer. 5 EUR.",
+    "line1": "Trail Reel",
+    "line2": "Trips in 3D",
+    "sub": "Your trip as a 3D map video, from one sentence. A Claude Code skill: tell Claude where you went, or give it a GPX file, and it renders a 1080 x 1920 route video for reels on your own computer. A globe for flights, real mountains for road trips, a city's real buildings for walks.",
+    "price": "5 EUR, one payment",
+    "buyCta": "Buy with crypto",
+    "whatsappCta": "Message me on WhatsApp",
+    "whatsappText": "Hi Mohammad, I'd like to buy the Trail Reel skill.",
+    "looks": {
+      "legend": "Look",
+      "atlas": "Atlas",
+      "ink": "Ink",
+      "note": "Same three trips, two looks. Atlas: relief colours and a sky. Ink: paper, a black line and contour lines."
+    },
+    "hero": {
+      "world": "Lisbon, Dubai, Bali",
+      "dolomites": "A Dolomites road trip",
+      "rome": "Rome on foot"
+    },
+    "runs": {
+      "heading": "Three real runs",
+      "sub": "Each video was one sentence, typed into a clean Claude Code with only Trail Reel installed. The skill picks the world from the trip. The numbers below are from those runs.",
+      "world": {
+        "title": "Globe, for flights",
+        "body": "A relief globe. Each flight's arc lifts off and lands, and a small plane rides the line.",
+        "prompt": "“Make a map video of my trip: I flew from Lisbon to Dubai and then on to Bali, in the ink look.”"
+      },
+      "dolomites": {
+        "title": "Mountains, for road trips, rides and hikes",
+        "body": "Real elevation. The route runs on the real roads over the passes.",
+        "prompt": "“Make a map video of my Dolomites road trip from Ortisei over Passo Sella, Passo Pordoi and Passo Giau to Cortina d'Ampezzo, in the ink look.”",
+        "extra": "It also corrected Cortina's map pin to the town centre by itself."
+      },
+      "rome": {
+        "title": "City, for walks",
+        "body": "The city's real buildings. The route runs on the real streets.",
+        "prompt": "“Make a map video of my walk in Rome from the Colosseum to the Pantheon, the Trevi Fountain and the Spanish Steps, in the ink look.”"
+      },
+      "distance": "Distance",
+      "buildings": "Real buildings",
+      "time": "Time to make",
+      "about": "about <n>{value}</n>",
+      "why": "Travel map apps charge a subscription (TravelAnimator Pro is {price} a month on its own site), and free exports carry the app's watermark. Trail Reel is one payment. It runs on your computer: no app, no watermark, no credits per video."
+    },
+    "how": {
+      "heading": "How it works",
+      "say": {
+        "title": "You describe the trip",
+        "body": "One sentence with the places, in order. Or give it a GPX file. Ask for the atlas or the ink look."
+      },
+      "world": {
+        "title": "It picks the world",
+        "body": "A flight gets the relief globe. A road trip, ride or hike gets real mountains. A walk gets the city's real buildings."
+      },
+      "route": {
+        "title": "It finds the route",
+        "body": "It downloads the open map data once: elevation tiles and OpenStreetMap roads and buildings. Then it finds the way on the real roads like a sat nav does, with its own shortest-path search. No routing server, no API keys, no account."
+      },
+      "render": {
+        "title": "It renders the video",
+        "body": "A 1080 x 1920 video for reels, made on your own computer. Pins drop on every stop, names appear and a counter shows the real distance."
+      }
+    },
+    "who": {
+      "heading": "Who it's for",
+      "creators": {
+        "title": "Travel creators",
+        "body": "Open a reel with the whole trip on a real 3D map, then cut to your own footage."
+      },
+      "agencies": {
+        "title": "Travel agencies",
+        "body": "Turn an itinerary into a short video for a client or a post. Client work and paid work are allowed."
+      },
+      "guides": {
+        "title": "Guides",
+        "body": "Show a hike, a ride or a city walk before people book: the real roads, the real mountains, the real distance."
+      },
+      "bloggers": {
+        "title": "Travel bloggers",
+        "body": "Put the route at the top of a trip post, with the real distance on the counter."
+      },
+      "rule": "One rule for city and mountain videos: they use OpenStreetMap data, so the caption needs the OpenStreetMap credit. The skill gives you the exact line to paste."
+    },
+    "needs": {
+      "heading": "You need",
+      "body": "Claude Code, Node 22 or newer, Google Chrome and ffmpeg. The map data is free and open, so there is no API key or account to set up. It runs on the Claude plan you already have."
+    },
+    "credits": {
+      "heading": "Built on",
+      "body": "<maproute>map-route</maproute> from claude-animation-skills by Artem Novitckii (MIT licence). Map data © <osm>OpenStreetMap contributors</osm>. Elevation from <terrain>Terrain Tiles</terrain> (USGS, SRTM, GMTED2010 and others). Globe relief and land from <earth>Natural Earth</earth> (public domain). 3D drawing with three.js (MIT). Not affiliated with OpenStreetMap or TravelAnimator."
+    },
+    "buy": {
+      "heading": "Get Trail Reel",
+      "sub": "Pay with USDT or USDC and download it right here, or message me on WhatsApp to pay another way.",
+      "licence": "Use it, and the videos you make, for yourself and for clients, including paid work. Don't resell or share the skill files."
+    },
+    "faq": {
+      "heading": "Questions",
+      "q1": "How do I get the file after paying?",
+      "a1": "Paste the transaction hash in the form above. Once the network confirms the payment, a download link appears on this page.",
+      "q2": "I lost my download link.",
+      "a2": "Message me on WhatsApp with the transaction hash and I'll send a new one.",
+      "q3": "Does it cost anything per video?",
+      "a3": "No. It runs on your own computer with the Claude plan you already have. The map data is free and open, and there is no routing server, API key or account behind it."
+    }
   }
 }

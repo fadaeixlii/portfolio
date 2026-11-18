@@ -541,5 +541,113 @@
       "q3": "Kostet es etwas pro Website?",
       "a3": "Nein. Es läuft mit dem Claude-Tarif, den du schon hast, und die Werkzeuge sind kostenlos. Die neue Seite ist eine HTML-Datei mit ihren Fotos, die der Inhaber überall hosten kann, also gibt es keinen Website-Baukasten zu bezahlen."
     }
+  },
+  "trailReel": {
+    "metaTitle": "Trail Reel: ein Claude-Code-Skill, der aus einer Reise ein 3D-Routenvideo macht",
+    "metaDescription": "Beschreib Claude deine Reise in einem Satz und bekomm ein 3D-Routenvideo in 1080 x 1920 für Reels: ein Globus für Flüge, echte Berge für Roadtrips, echte Gebäude für Stadtspaziergänge. Gemacht auf deinem eigenen Computer. 5 EUR.",
+    "line1": "Trail Reel",
+    "line2": "Reisen in 3D",
+    "sub": "Deine Reise als 3D-Kartenvideo, aus einem Satz. Ein Claude-Code-Skill: Sag Claude, wo du warst, oder gib ihm eine GPX-Datei, und es rendert auf deinem eigenen Computer ein Routenvideo in 1080 x 1920 für Reels. Ein Globus für Flüge, echte Berge für Roadtrips, die echten Gebäude einer Stadt für Spaziergänge.",
+    "price": "5 EUR, einmalige Zahlung",
+    "buyCta": "Mit Krypto kaufen",
+    "whatsappCta": "Schreib mir auf WhatsApp",
+    "whatsappText": "Hallo Mohammad, ich möchte den Skill Trail Reel kaufen.",
+    "looks": {
+      "legend": "Stil",
+      "atlas": "Atlas",
+      "ink": "Tinte",
+      "note": "Dieselben drei Reisen, zwei Stile. Atlas: Relieffarben und ein Himmel. Tinte: Papier, eine schwarze Linie und Höhenlinien."
+    },
+    "hero": {
+      "world": "Lissabon, Dubai, Bali",
+      "dolomites": "Roadtrip durch die Dolomiten",
+      "rome": "Rom zu Fuß"
+    },
+    "runs": {
+      "heading": "Drei echte Durchläufe",
+      "sub": "Jedes Video war ein Satz, eingegeben in ein frisches Claude Code, in dem nur Trail Reel installiert war. Die Sätze stehen hier so, wie sie eingegeben wurden, auf Englisch. Der Skill wählt die Welt passend zur Reise. Die Zahlen unten stammen aus diesen Durchläufen.",
+      "world": {
+        "title": "Globus, für Flüge",
+        "body": "Ein Reliefglobus. Der Bogen jedes Flugs hebt ab und landet, und ein kleines Flugzeug fliegt die Linie entlang.",
+        "prompt": "“Make a map video of my trip: I flew from Lisbon to Dubai and then on to Bali, in the ink look.”"
+      },
+      "dolomites": {
+        "title": "Berge, für Roadtrips, Radtouren und Wanderungen",
+        "body": "Echte Höhen. Die Route läuft auf den echten Straßen über die Pässe.",
+        "prompt": "“Make a map video of my Dolomites road trip from Ortisei over Passo Sella, Passo Pordoi and Passo Giau to Cortina d'Ampezzo, in the ink look.”",
+        "extra": "Dabei hat es den Kartenpin von Cortina von selbst auf die Ortsmitte korrigiert."
+      },
+      "rome": {
+        "title": "Stadt, für Spaziergänge",
+        "body": "Die echten Gebäude der Stadt. Die Route läuft durch die echten Straßen.",
+        "prompt": "“Make a map video of my walk in Rome from the Colosseum to the Pantheon, the Trevi Fountain and the Spanish Steps, in the ink look.”"
+      },
+      "distance": "Strecke",
+      "buildings": "Echte Gebäude",
+      "time": "Dauer",
+      "about": "etwa <n>{value}</n>",
+      "why": "Apps für Reisekarten-Animationen kosten ein Abo (TravelAnimator Pro kostet auf der eigenen Website {price} im Monat), und kostenlose Exporte tragen das Wasserzeichen der App. Trail Reel ist eine einmalige Zahlung. Es läuft auf deinem Computer: keine App, kein Wasserzeichen, keine Credits pro Video."
+    },
+    "how": {
+      "heading": "So funktioniert es",
+      "say": {
+        "title": "Du beschreibst die Reise",
+        "body": "Ein Satz mit den Orten in ihrer Reihenfolge. Oder gib ihm eine GPX-Datei. Wünsch dir den Stil Atlas oder Tinte."
+      },
+      "world": {
+        "title": "Es wählt die Welt",
+        "body": "Ein Flug bekommt den Reliefglobus. Ein Roadtrip, eine Radtour oder eine Wanderung bekommt echte Berge. Ein Spaziergang bekommt die echten Gebäude der Stadt."
+      },
+      "route": {
+        "title": "Es findet die Route",
+        "body": "Es lädt die offenen Kartendaten einmal herunter: Höhenkacheln sowie Straßen und Gebäude von OpenStreetMap. Dann findet es den Weg auf den echten Straßen wie ein Navi, mit seiner eigenen Suche nach dem kürzesten Weg. Kein Routing-Server, keine API-Schlüssel, kein Konto."
+      },
+      "render": {
+        "title": "Es rendert das Video",
+        "body": "Ein Video in 1080 x 1920 für Reels, gemacht auf deinem eigenen Computer. Auf jeden Halt fällt ein Pin, Namen erscheinen und ein Zähler zeigt die echte Strecke."
+      }
+    },
+    "who": {
+      "heading": "Für wen es ist",
+      "creators": {
+        "title": "Reise-Creator",
+        "body": "Eröffne ein Reel mit der ganzen Reise auf einer echten 3D-Karte und schneide dann auf deine eigenen Aufnahmen."
+      },
+      "agencies": {
+        "title": "Reisebüros",
+        "body": "Mach aus einem Reiseplan ein kurzes Video für einen Kunden oder einen Post. Kundenarbeit und bezahlte Arbeit sind erlaubt."
+      },
+      "guides": {
+        "title": "Guides",
+        "body": "Zeig eine Wanderung, eine Radtour oder einen Stadtspaziergang, bevor jemand bucht: die echten Straßen, die echten Berge, die echte Strecke."
+      },
+      "bloggers": {
+        "title": "Reiseblogger",
+        "body": "Setz die Route an den Anfang eines Reiseberichts, mit der echten Strecke auf dem Zähler."
+      },
+      "rule": "Eine Regel für Stadt- und Bergvideos: Sie nutzen Daten von OpenStreetMap, also braucht der Text zum Post den Hinweis auf OpenStreetMap. Der Skill gibt dir die genaue Zeile zum Einfügen."
+    },
+    "needs": {
+      "heading": "Du brauchst",
+      "body": "Claude Code, Node 22 oder neuer, Google Chrome und ffmpeg. Die Kartendaten sind frei und offen, du richtest also keinen API-Schlüssel und kein Konto ein. Es läuft mit dem Claude-Tarif, den du schon hast."
+    },
+    "credits": {
+      "heading": "Gebaut auf",
+      "body": "<maproute>map-route</maproute> aus claude-animation-skills von Artem Novitckii (MIT-Lizenz). Kartendaten © <osm>OpenStreetMap-Mitwirkende</osm>. Höhen aus <terrain>Terrain Tiles</terrain> (USGS, SRTM, GMTED2010 und weitere). Relief und Landflächen des Globus aus <earth>Natural Earth</earth> (gemeinfrei). 3D-Zeichnung mit three.js (MIT). Nicht mit OpenStreetMap oder TravelAnimator verbunden."
+    },
+    "buy": {
+      "heading": "Trail Reel holen",
+      "sub": "Bezahle mit USDT oder USDC und lade es direkt hier herunter, oder schreib mir auf WhatsApp, um anders zu bezahlen.",
+      "licence": "Nutze ihn und die Videos, die du machst, für dich und für Kunden, auch für bezahlte Arbeit. Verkauf oder teile die Skill-Dateien nicht weiter."
+    },
+    "faq": {
+      "heading": "Fragen",
+      "q1": "Wie bekomme ich die Datei nach dem Bezahlen?",
+      "a1": "Füge den Transaktions-Hash oben ins Formular ein. Sobald das Netzwerk die Zahlung bestätigt, erscheint hier ein Download-Link.",
+      "q2": "Ich habe meinen Download-Link verloren.",
+      "a2": "Schreib mir auf WhatsApp mit dem Transaktions-Hash, dann schicke ich dir einen neuen.",
+      "q3": "Kostet es etwas pro Video?",
+      "a3": "Nein. Es läuft auf deinem eigenen Computer mit dem Claude-Tarif, den du schon hast. Die Kartendaten sind frei und offen, und dahinter stehen kein Routing-Server, kein API-Schlüssel und kein Konto."
+    }
   }
 }

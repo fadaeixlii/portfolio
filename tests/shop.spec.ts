@@ -24,3 +24,29 @@ for (const [locale, [old, fresh]] of Object.entries(LABELS)) {
     expect((await knob.boundingBox())!.x).toBeGreaterThan(start + 10);
   });
 }
+
+// /skills/trail-reel: three phone videos per look, and the look switch (two
+// native radios, CSS :has()) swaps the whole row. The hidden row is
+// display:none, so only one look's videos are ever visible.
+const TRAIL = {
+  en: { ink: "Ink", checkout: "Show payment details" },
+  fa: { ink: "جوهر", checkout: "نمایش جزئیات پرداخت" },
+} as const;
+
+for (const [locale, { ink, checkout }] of Object.entries(TRAIL)) {
+  test(`${locale}: trail reel shows one look's three videos, the switch swaps them`, async ({ page }) => {
+    await page.goto(`/${locale}/skills/trail-reel`);
+    const videos = page.locator("main video:visible");
+
+    await expect(videos).toHaveCount(3);
+    for (const video of await videos.all()) await expect(video).toHaveAttribute("src", /-atlas\.mp4$/);
+
+    // The radio itself is sr-only; a reader clicks its label.
+    await page.locator("label", { hasText: ink }).click();
+    await expect(page.getByRole("radio", { name: ink })).toBeChecked();
+    await expect(videos).toHaveCount(3);
+    for (const video of await videos.all()) await expect(video).toHaveAttribute("src", /-ink\.mp4$/);
+
+    await expect(page.locator("#buy").getByRole("button", { name: checkout })).toBeVisible();
+  });
+}
