@@ -31,6 +31,7 @@ const ROUTES = [
   "/privacy",
   "/styleguide",
   "/skills/lights-on",
+  "/skills/trail-reel",
 ] as const;
 
 for (const locale of ["en", "fa"] as const) {

@@ -541,5 +541,113 @@
       "q3": "Kost het iets per site?",
       "a3": "Nee. Het draait op het Claude-abonnement dat je al hebt, en de tools zijn gratis. De nieuwe site is één HTML-bestand met zijn foto's, dat de eigenaar overal kan hosten, dus er is geen websitebouwer om te betalen."
     }
+  },
+  "trailReel": {
+    "metaTitle": "Trail Reel: een Claude Code-skill die van een reis een 3D-routevideo maakt",
+    "metaDescription": "Vertel Claude je reis in één zin en krijg een 3D-routevideo van 1080 x 1920 voor reels: een wereldbol voor vluchten, echte bergen voor roadtrips, echte gebouwen voor stadswandelingen. Gemaakt op je eigen computer. 5 EUR.",
+    "line1": "Trail Reel",
+    "line2": "Reizen in 3D",
+    "sub": "Je reis als 3D-kaartvideo, uit één zin. Een Claude Code-skill: vertel Claude waar je was, of geef het een GPX-bestand, en het rendert op je eigen computer een routevideo van 1080 x 1920 voor reels. Een wereldbol voor vluchten, echte bergen voor roadtrips, de echte gebouwen van een stad voor wandelingen.",
+    "price": "5 EUR, eenmalig",
+    "buyCta": "Koop met crypto",
+    "whatsappCta": "Stuur me een WhatsApp",
+    "whatsappText": "Hoi Mohammad, ik wil de Trail Reel-skill kopen.",
+    "looks": {
+      "legend": "Stijl",
+      "atlas": "Atlas",
+      "ink": "Inkt",
+      "note": "Dezelfde drie reizen, twee stijlen. Atlas: reliëfkleuren en een lucht. Inkt: papier, een zwarte lijn en hoogtelijnen."
+    },
+    "hero": {
+      "world": "Lissabon, Dubai, Bali",
+      "dolomites": "Roadtrip door de Dolomieten",
+      "rome": "Rome te voet"
+    },
+    "runs": {
+      "heading": "Drie echte runs",
+      "sub": "Elke video was één zin, getypt in een schone Claude Code met alleen Trail Reel geïnstalleerd. De zinnen staan hier zoals ze getypt zijn, in het Engels. De skill kiest de wereld bij de reis. De getallen hieronder komen uit die runs.",
+      "world": {
+        "title": "Wereldbol, voor vluchten",
+        "body": "Een wereldbol met reliëf. De boog van elke vlucht stijgt op en landt, en een klein vliegtuig volgt de lijn.",
+        "prompt": "“Make a map video of my trip: I flew from Lisbon to Dubai and then on to Bali, in the ink look.”"
+      },
+      "dolomites": {
+        "title": "Bergen, voor roadtrips, fietstochten en wandeltochten",
+        "body": "Echte hoogtes. De route loopt over de echte wegen over de passen.",
+        "prompt": "“Make a map video of my Dolomites road trip from Ortisei over Passo Sella, Passo Pordoi and Passo Giau to Cortina d'Ampezzo, in the ink look.”",
+        "extra": "Het zette onderweg ook zelf de kaartpin van Cortina goed, op het centrum van het stadje."
+      },
+      "rome": {
+        "title": "Stad, voor wandelingen",
+        "body": "De echte gebouwen van de stad. De route loopt door de echte straten.",
+        "prompt": "“Make a map video of my walk in Rome from the Colosseum to the Pantheon, the Trevi Fountain and the Spanish Steps, in the ink look.”"
+      },
+      "distance": "Afstand",
+      "buildings": "Echte gebouwen",
+      "time": "Tijd om te maken",
+      "about": "ongeveer <n>{value}</n>",
+      "why": "Apps voor reiskaartanimaties werken met een abonnement (TravelAnimator Pro kost op de eigen site {price} per maand), en gratis exports dragen het watermerk van de app. Trail Reel is één betaling. Het draait op je computer: geen app, geen watermerk, geen credits per video."
+    },
+    "how": {
+      "heading": "Zo werkt het",
+      "say": {
+        "title": "Jij beschrijft de reis",
+        "body": "Eén zin met de plaatsen, op volgorde. Of geef het een GPX-bestand. Vraag om de stijl atlas of inkt."
+      },
+      "world": {
+        "title": "Het kiest de wereld",
+        "body": "Een vlucht krijgt de wereldbol met reliëf. Een roadtrip, fietstocht of wandeltocht krijgt echte bergen. Een wandeling krijgt de echte gebouwen van de stad."
+      },
+      "route": {
+        "title": "Het vindt de route",
+        "body": "Het downloadt de open kaartdata één keer: hoogtetegels en wegen en gebouwen van OpenStreetMap. Daarna vindt het de weg over de echte wegen zoals een navigatiesysteem, met een eigen zoektocht naar de kortste weg. Geen routeserver, geen API-sleutels, geen account."
+      },
+      "render": {
+        "title": "Het rendert de video",
+        "body": "Een video van 1080 x 1920 voor reels, gemaakt op je eigen computer. Op elke stop valt een pin, namen verschijnen en een teller toont de echte afstand."
+      }
+    },
+    "who": {
+      "heading": "Voor wie het is",
+      "creators": {
+        "title": "Reiscreators",
+        "body": "Open een reel met de hele reis op een echte 3D-kaart en knip dan naar je eigen beelden."
+      },
+      "agencies": {
+        "title": "Reisbureaus",
+        "body": "Maak van een reisschema een korte video voor een klant of een post. Klantwerk en betaald werk mogen."
+      },
+      "guides": {
+        "title": "Gidsen",
+        "body": "Laat een wandeltocht, fietstocht of stadswandeling zien voordat mensen boeken: de echte wegen, de echte bergen, de echte afstand."
+      },
+      "bloggers": {
+        "title": "Reisbloggers",
+        "body": "Zet de route bovenaan een reisverhaal, met de echte afstand op de teller."
+      },
+      "rule": "Eén regel voor stads- en bergvideo's: ze gebruiken data van OpenStreetMap, dus het bijschrift heeft de OpenStreetMap-vermelding nodig. De skill geeft je de precieze regel om te plakken."
+    },
+    "needs": {
+      "heading": "Je hebt nodig",
+      "body": "Claude Code, Node 22 of nieuwer, Google Chrome en ffmpeg. De kaartdata is gratis en open, dus je stelt geen API-sleutel of account in. Het draait op het Claude-abonnement dat je al hebt."
+    },
+    "credits": {
+      "heading": "Gebouwd op",
+      "body": "<maproute>map-route</maproute> uit claude-animation-skills van Artem Novitckii (MIT-licentie). Kaartdata © <osm>OpenStreetMap-bijdragers</osm>. Hoogtes uit <terrain>Terrain Tiles</terrain> (USGS, SRTM, GMTED2010 en andere). Reliëf en land van de wereldbol uit <earth>Natural Earth</earth> (publiek domein). 3D-tekenwerk met three.js (MIT). Niet verbonden aan OpenStreetMap of TravelAnimator."
+    },
+    "buy": {
+      "heading": "Haal Trail Reel",
+      "sub": "Betaal met USDT of USDC en download het meteen hier, of stuur me een WhatsApp om anders te betalen.",
+      "licence": "Gebruik het, en de video's die je maakt, voor jezelf en voor klanten, ook voor betaald werk. Verkoop of deel de skillbestanden niet door."
+    },
+    "faq": {
+      "heading": "Vragen",
+      "q1": "Hoe krijg ik het bestand na het betalen?",
+      "a1": "Plak de transactiehash in het formulier hierboven. Zodra het netwerk de betaling bevestigt, verschijnt hier een downloadlink.",
+      "q2": "Ik ben mijn downloadlink kwijt.",
+      "a2": "Stuur me een WhatsApp met de transactiehash, dan stuur ik je een nieuwe.",
+      "q3": "Kost het iets per video?",
+      "a3": "Nee. Het draait op je eigen computer met het Claude-abonnement dat je al hebt. De kaartdata is gratis en open, en er zit geen routeserver, API-sleutel of account achter."
+    }
   }
 }
