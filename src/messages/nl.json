@@ -649,5 +649,134 @@
       "q3": "Kost het iets per video?",
       "a3": "Nee. Het draait op je eigen computer met het Claude-abonnement dat je al hebt. De kaartdata is gratis en open, en er zit geen routeserver, API-sleutel of account achter."
     }
+  },
+  "oneFolderStudio": {
+    "metaTitle": "One Folder Studio: een Claude Code-map die kant-en-klare korte video's maakt",
+    "metaDescription": "Geef Claude Code één idee en krijg een kant-en-klare, gecontroleerde reel van 1080 x 1920: feiten gecheckt bij de echte bron, script, montage, stem, covers, bijschrift en DM-tekst. Bij elke stap wacht het op jouw ja. 10 EUR.",
+    "line1": "One Folder Studio",
+    "line2": "Idee erin, reel eruit",
+    "sub": "De map achter elke video op @fadaeixlii, opgeschoond voor jouw pagina. Open hem in Claude Code, geef hem één idee, en hij checkt de feiten, schrijft het script, monteert de video, neemt de stem op en controleert alles voordat jij het ziet. Je beantwoordt onderweg een paar vragen en post het resultaat.",
+    "price": "10 EUR, eenmalig",
+    "buyCta": "Koop met crypto",
+    "whatsappCta": "Stuur me een WhatsApp",
+    "whatsappText": "Hoi Mohammad, ik wil One Folder Studio kopen.",
+    "hero": {
+      "coffee": "Gemaakt door een verse kopie voor een test-koffiepagina",
+      "reel": "Gemaakt in de map achter @fadaeixlii"
+    },
+    "run": {
+      "heading": "De testrun",
+      "sub": "Een verse kopie van de map, een voor de test verzonnen koffiepagina en één idee. Claude koos bij elke vraag de aanbevolen optie, dus niemand raakte iets aan van de prompt tot de kant-en-klare reel. De cijfers komen uit die run.",
+      "prompt": "“Set up this studio for my new page, then make my first video: why your coffee tastes bitter.”",
+      "what": "Het schreef het merkbestand van de pagina, vond tien koffiekanalen om te volgen, checkte elk feit bij de zetgidsen van de National Coffee Association, schreef een script dat het antwoord bewaart voor de laatste zin, bouwde de montage met zeven echte foto's, nam de stem op en leverde drie covers, het bijschrift en de DM-tekst.",
+      "time": "Van prompt tot kant-en-klare reel",
+      "length": "Lengte van de reel",
+      "gates": "Geslaagde kwaliteitschecks",
+      "gatesValue": "{n} van {n}",
+      "photos": "Echte foto's (CC0)",
+      "facts": "Bron van de feiten",
+      "factsValue": "National Coffee Association"
+    },
+    "inside": {
+      "heading": "Wat er in de map zit",
+      "sub": "Acht skills die als één team werken, plus de setup van de montage-engine en de scripts erachter. Jouw pagina leeft in één merkbestand dat de setup voor je schrijft.",
+      "setup": {
+        "name": "/setup",
+        "body": "Een kort interview over je pagina: naam, niche, kijker, doel, stem. Het schrijft je merkbestanden en checkt elk hulpmiddel."
+      },
+      "trends": {
+        "name": "/find-trends",
+        "body": "Meet welke video's in jouw niche deze maand 3x de gebruikelijke weergaven van hun maker kregen, en maakt er vijf video-ideeën van."
+      },
+      "idea": {
+        "name": "/find-idea",
+        "body": "Scoort ideeën uit je eigen lijst, echte vragen van mensen en de trends, en laat jou kiezen."
+      },
+      "analyze": {
+        "name": "/analyze-video",
+        "body": "Ontleedt elke short die je stuurt: de eerste drie seconden, het tempo, het verhaal en de oproep, met framebladen."
+      },
+      "script": {
+        "name": "short-video-script",
+        "body": "Drie hooks en een script dat eerst de vraag stelt en als laatste antwoordt, elk feit met zijn bron."
+      },
+      "voice": {
+        "name": "voice-match",
+        "body": "Leert hoe je beste video's klinken, zodat nieuwe scripts als jij klinken en niet als generieke AI."
+      },
+      "video": {
+        "name": "/new-video",
+        "body": "Van één idee naar een kant-en-klare MP4: de montage, ondertitels, geluid, de stem één keer aan het eind, drie covers, het bijschrift en de DM-tekst."
+      },
+      "check": {
+        "name": "/post-check",
+        "body": "De laatste check voor je post: beweringen zonder bron, een link in beeld, de hook, het reactiewoord, het eerste beeld."
+      },
+      "plus": "Ook inbegrepen: de setup van de montage-engine (ondertitels, kaarten, covers en een pagina-opnemer voor 3D), elf montagestijlen met recepten en een kwaliteitspoort die lengte, tempo, stilstaande beelden en luidheid meet voordat jij kijkt."
+    },
+    "how": {
+      "heading": "Zo werkt het",
+      "setup": {
+        "title": "Eén keer instellen",
+        "body": "Open de map in Claude Code en start /setup. Een paar vragen over je pagina, en het checkt Node, ffmpeg, Kinetograph en Python voor je."
+      },
+      "pick": {
+        "title": "Kies het idee",
+        "body": "Neem je eigen idee mee, of laat /find-trends en /find-idea vinden wat deze week weergaven krijgt in jouw niche."
+      },
+      "make": {
+        "title": "Goedkeuren, niet monteren",
+        "body": "/new-video stopt voor jouw ja bij het script, de eerste drie seconden en de stille versie. De stem wordt pas opgenomen na jouw goedkeuring, dus er wordt niets dubbel betaald."
+      },
+      "post": {
+        "title": "Post het",
+        "body": "Je krijgt de MP4, drie covers, het bijschrift en de DM-tekst voor je reactiewoord. Post hetzelfde bestand op Instagram, TikTok en Shorts."
+      }
+    },
+    "who": {
+      "heading": "Voor wie het is",
+      "creators": {
+        "title": "Creators",
+        "body": "Post vaker zonder elke video met de hand te monteren, en behoud je eigen stem en look."
+      },
+      "business": {
+        "title": "Kleine bedrijven",
+        "body": "Een koffiezaak, een studio, een kliniek: leg in korte video's uit wat je weet, met elk feit gecheckt."
+      },
+      "freelancers": {
+        "title": "Freelancers en bureaus",
+        "body": "Maak video's voor klanten. Klantwerk en betaald werk mogen."
+      },
+      "camera": {
+        "title": "Mensen die liever niet in beeld komen",
+        "body": "Echte foto's, schermopnamen en kaarten dragen de video. Gebruik een AI-stem of lees het script zelf in één take in."
+      }
+    },
+    "needs": {
+      "heading": "Je hebt nodig",
+      "body": "Claude Code, Node 22 of nieuwer, ffmpeg, Google Chrome en Python 3.10 of nieuwer. De montage-engine, Kinetograph, is gratis voor particulieren en kleine bedrijven. /setup checkt dit allemaal.",
+      "voice": "Voor de stem: een ElevenLabs-account (commercieel posten vraagt hun betaalde abonnement, vanaf 6 USD per maand), of je eigen opname, die de map gratis in regels knipt en voor de ondertitels van tijden voorziet."
+    },
+    "credits": {
+      "heading": "Gebouwd op",
+      "body": "De montage-engine <kinetograph>Kinetograph</kinetograph> (door jou geïnstalleerd). De schrijfrondes <humanizer>humanizer</humanizer> van Siqi Chen en <stopslop>stop-slop</stopslop> van Hardik Pandya, allebei MIT en meegeleverd met hun licenties. Personages van <doodles>Open Doodles</doodles> (CC0). De lettertypes Inter Tight en JetBrains Mono (SIL Open Font License).",
+      "ink": "De inktlijn- en 3D-look van de nieuwste @fadaeixlii-reels is een aparte skill: <ink>Ink Motion</ink>."
+    },
+    "buy": {
+      "heading": "Haal One Folder Studio",
+      "sub": "Betaal met USDT of USDC en download het meteen hier, of stuur me een WhatsApp om anders te betalen.",
+      "licence": "Gebruik het, en de video's die je maakt, voor jezelf en voor klanten, ook voor betaald werk. Verkoop of deel de bestanden van de map niet door."
+    },
+    "faq": {
+      "heading": "Vragen",
+      "q1": "Hoe krijg ik het bestand na het betalen?",
+      "a1": "Plak de transactiehash in het formulier hierboven. Zodra het netwerk de betaling bevestigt, verschijnt hier een downloadlink.",
+      "q2": "Ik ben mijn downloadlink kwijt.",
+      "a2": "Stuur me een WhatsApp met de transactiehash, dan stuur ik je een nieuwe.",
+      "q3": "Post het voor me?",
+      "a3": "Nee. Het post, reageert of verstuurt nooit berichten vanaf je accounts. Je krijgt de bestanden en de teksten, en je post ze zelf.",
+      "q4": "Wat is het verschil met de gratis Instagram-skillpakketten?",
+      "a4": "Die schrijven tekst: hooks, bijschriften, plannen. Deze map maakt de video zelf, controleert hem en geeft je het bestand. Je kunt beide gebruiken."
+    }
   }
 }

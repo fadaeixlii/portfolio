@@ -50,3 +50,14 @@ for (const [locale, { ink, checkout }] of Object.entries(TRAIL)) {
     await expect(page.locator("#buy").getByRole("button", { name: checkout })).toBeVisible();
   });
 }
+
+// /skills/one-folder-studio: the test run's reel and the promo reel, and the checkout.
+for (const [locale, { checkout }] of Object.entries(TRAIL)) {
+  test(`${locale}: one folder studio shows its two reels and the checkout`, async ({ page }) => {
+    await page.goto(`/${locale}/skills/one-folder-studio`);
+    const videos = page.locator("main video:visible");
+    await expect(videos).toHaveCount(2);
+    await expect(videos.first()).toHaveAttribute("src", /\/one-folder-studio\/coffee\.mp4$/);
+    await expect(page.locator("#buy").getByRole("button", { name: checkout })).toBeVisible();
+  });
+}
