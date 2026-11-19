@@ -649,5 +649,134 @@
       "q3": "Does it cost anything per video?",
       "a3": "No. It runs on your own computer with the Claude plan you already have. The map data is free and open, and there is no routing server, API key or account behind it."
     }
+  },
+  "oneFolderStudio": {
+    "metaTitle": "One Folder Studio: a Claude Code folder that makes finished short videos",
+    "metaDescription": "Give Claude Code one idea and get a finished, checked 1080 x 1920 reel: facts checked on the real source, script, edit, voice, covers, caption and DM text. It stops for your yes at every step. 10 EUR.",
+    "line1": "One Folder Studio",
+    "line2": "Idea in, reel out",
+    "sub": "The folder behind every video on @fadaeixlii, cleaned up for your page. Open it in Claude Code, give it one idea, and it checks the facts, writes the script, edits the video, records the voice and checks it before you see it. You answer a few questions on the way and post the result.",
+    "price": "10 EUR, one payment",
+    "buyCta": "Buy with crypto",
+    "whatsappCta": "Message me on WhatsApp",
+    "whatsappText": "Hi Mohammad, I'd like to buy One Folder Studio.",
+    "hero": {
+      "coffee": "Made by a fresh copy for a test coffee page",
+      "reel": "Made in the folder behind @fadaeixlii"
+    },
+    "run": {
+      "heading": "The test run",
+      "sub": "A fresh copy of the folder, a coffee page made up for the test, and one idea. Claude took the recommended option at every question, so nobody touched it from the prompt to the finished reel. The numbers are from that run.",
+      "prompt": "“Set up this studio for my new page, then make my first video: why your coffee tastes bitter.”",
+      "what": "It wrote the page's brand file, found ten coffee channels to watch, checked every fact against the National Coffee Association's brewing guides, wrote a script that saves the answer for the last line, built the edit with seven real photos, recorded the voice, and handed over three covers, the caption and the DM text.",
+      "time": "Prompt to finished reel",
+      "length": "Reel length",
+      "gates": "Quality checks passed",
+      "gatesValue": "{n} of {n}",
+      "photos": "Real photos (CC0)",
+      "facts": "Fact source",
+      "factsValue": "National Coffee Association"
+    },
+    "inside": {
+      "heading": "What's in the folder",
+      "sub": "Eight skills that work as one crew, plus the edit engine setup and the scripts behind them. Your page lives in one brand file the setup writes for you.",
+      "setup": {
+        "name": "/setup",
+        "body": "A short interview about your page: name, niche, viewer, goal, voice. It writes your brand files and checks every tool."
+      },
+      "trends": {
+        "name": "/find-trends",
+        "body": "Measures which videos in your niche got 3x their creator's usual views this month, and turns them into five video ideas."
+      },
+      "idea": {
+        "name": "/find-idea",
+        "body": "Scores ideas from your own list, real questions people ask and the trends, and lets you pick."
+      },
+      "analyze": {
+        "name": "/analyze-video",
+        "body": "Breaks down any short you send: the first three seconds, the pace, the story and the ask, with frame sheets."
+      },
+      "script": {
+        "name": "short-video-script",
+        "body": "Three hooks and a script that asks the question first and answers it last, every fact with its source."
+      },
+      "voice": {
+        "name": "voice-match",
+        "body": "Learns how your best videos sound, so new scripts sound like you and not like generic AI."
+      },
+      "video": {
+        "name": "/new-video",
+        "body": "One idea to a finished MP4: the edit, captions, sound, the voice once at the end, three covers, the caption and the DM text."
+      },
+      "check": {
+        "name": "/post-check",
+        "body": "The last check before you post: claims without a source, a link on screen, the hook, the comment keyword, the first frame."
+      },
+      "plus": "Also inside: the edit engine setup (captions, cards, covers and a page recorder for 3D), eleven edit looks with recipes, and a quality gate that measures length, pace, still frames and loudness before you watch."
+    },
+    "how": {
+      "heading": "How it works",
+      "setup": {
+        "title": "Set up once",
+        "body": "Open the folder in Claude Code and run /setup. A few questions about your page, and it checks Node, ffmpeg, Kinetograph and Python for you."
+      },
+      "pick": {
+        "title": "Pick the idea",
+        "body": "Bring your own, or let /find-trends and /find-idea find what's getting views in your niche this week."
+      },
+      "make": {
+        "title": "Approve, don't edit",
+        "body": "/new-video stops for your yes at the script, the first three seconds and the silent draft. The voice is recorded only after you approve, so nothing is paid twice."
+      },
+      "post": {
+        "title": "Post it",
+        "body": "You get the MP4, three covers, the caption and the DM text for your comment keyword. Post the same file on Instagram, TikTok and Shorts."
+      }
+    },
+    "who": {
+      "heading": "Who it's for",
+      "creators": {
+        "title": "Creators",
+        "body": "Post more often without editing every video by hand, and keep your own voice and look."
+      },
+      "business": {
+        "title": "Small businesses",
+        "body": "A coffee shop, a studio, a clinic: explain what you know in short videos, with every fact checked."
+      },
+      "freelancers": {
+        "title": "Freelancers and agencies",
+        "body": "Make videos for clients. Client work and paid work are allowed."
+      },
+      "camera": {
+        "title": "People who'd rather not be on camera",
+        "body": "Real photos, screen recordings and cards carry the video. Use an AI voice or read the script yourself in one take."
+      }
+    },
+    "needs": {
+      "heading": "You need",
+      "body": "Claude Code, Node 22 or newer, ffmpeg, Google Chrome and Python 3.10 or newer. The edit engine, Kinetograph, is free for individuals and small businesses. /setup checks all of it.",
+      "voice": "For the voice: an ElevenLabs account (posting commercially needs their paid plan, from 6 USD a month), or your own recording, which the folder cuts into lines and times for the captions for free."
+    },
+    "credits": {
+      "heading": "Built on",
+      "body": "The edit engine <kinetograph>Kinetograph</kinetograph> (installed by you). The writing passes <humanizer>humanizer</humanizer> by Siqi Chen and <stopslop>stop-slop</stopslop> by Hardik Pandya, both MIT and included with their licences. Characters from <doodles>Open Doodles</doodles> (CC0). Fonts Inter Tight and JetBrains Mono (SIL Open Font License).",
+      "ink": "The ink line and 3D look of the newest @fadaeixlii reels is a separate skill: <ink>Ink Motion</ink>."
+    },
+    "buy": {
+      "heading": "Get One Folder Studio",
+      "sub": "Pay with USDT or USDC and download it right here, or message me on WhatsApp to pay another way.",
+      "licence": "Use it, and the videos you make, for yourself and for clients, including paid work. Don't resell or share the folder's files."
+    },
+    "faq": {
+      "heading": "Questions",
+      "q1": "How do I get the file after paying?",
+      "a1": "Paste the transaction hash in the form above. Once the network confirms the payment, a download link appears on this page.",
+      "q2": "I lost my download link.",
+      "a2": "Message me on WhatsApp with the transaction hash and I'll send a new one.",
+      "q3": "Does it post for me?",
+      "a3": "No. It never posts, comments or sends messages from your accounts. You get the files and the texts, and you post them.",
+      "q4": "How is this different from the free Instagram skill packs?",
+      "a4": "They write text: hooks, captions, plans. This folder makes the video itself, checks it, and hands you the file. You can use both."
+    }
   }
 }

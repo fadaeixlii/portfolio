@@ -649,5 +649,134 @@
       "q3": "Kostet es etwas pro Video?",
       "a3": "Nein. Es läuft auf deinem eigenen Computer mit dem Claude-Tarif, den du schon hast. Die Kartendaten sind frei und offen, und dahinter stehen kein Routing-Server, kein API-Schlüssel und kein Konto."
     }
+  },
+  "oneFolderStudio": {
+    "metaTitle": "One Folder Studio: ein Claude-Code-Ordner, der fertige Kurzvideos macht",
+    "metaDescription": "Gib Claude Code eine Idee und bekomme ein fertiges, geprüftes Reel in 1080 x 1920: Fakten an der echten Quelle geprüft, Skript, Schnitt, Stimme, Cover, Bildtext und DM-Text. Bei jedem Schritt wartet es auf dein Ja. 10 EUR.",
+    "line1": "One Folder Studio",
+    "line2": "Idee rein, Reel raus",
+    "sub": "Der Ordner hinter jedem Video auf @fadaeixlii, aufgeräumt für deine Seite. Öffne ihn in Claude Code, gib ihm eine Idee, und er prüft die Fakten, schreibt das Skript, schneidet das Video, nimmt die Stimme auf und prüft alles, bevor du es siehst. Du beantwortest unterwegs ein paar Fragen und postest das Ergebnis.",
+    "price": "10 EUR, einmalige Zahlung",
+    "buyCta": "Mit Krypto kaufen",
+    "whatsappCta": "Schreib mir auf WhatsApp",
+    "whatsappText": "Hallo Mohammad, ich möchte One Folder Studio kaufen.",
+    "hero": {
+      "coffee": "Gemacht von einer frischen Kopie für eine Test-Kaffeeseite",
+      "reel": "Gemacht im Ordner hinter @fadaeixlii"
+    },
+    "run": {
+      "heading": "Der Testlauf",
+      "sub": "Eine frische Kopie des Ordners, eine für den Test erfundene Kaffeeseite und eine Idee. Claude nahm bei jeder Frage die empfohlene Option, also hat niemand etwas angefasst, vom Prompt bis zum fertigen Reel. Die Zahlen stammen aus diesem Lauf.",
+      "prompt": "“Set up this studio for my new page, then make my first video: why your coffee tastes bitter.”",
+      "what": "Es schrieb die Markendatei der Seite, fand zehn Kaffeekanäle zum Beobachten, prüfte jeden Fakt an den Brühanleitungen der National Coffee Association, schrieb ein Skript, das die Antwort für den letzten Satz aufhebt, baute den Schnitt mit sieben echten Fotos, nahm die Stimme auf und lieferte drei Cover, den Bildtext und den DM-Text.",
+      "time": "Vom Prompt zum fertigen Reel",
+      "length": "Länge des Reels",
+      "gates": "Bestandene Qualitätsprüfungen",
+      "gatesValue": "{n} von {n}",
+      "photos": "Echte Fotos (CC0)",
+      "facts": "Faktenquelle",
+      "factsValue": "National Coffee Association"
+    },
+    "inside": {
+      "heading": "Was im Ordner steckt",
+      "sub": "Acht Skills, die wie ein Team arbeiten, dazu das Setup der Schnitt-Engine und die Skripte dahinter. Deine Seite lebt in einer Markendatei, die das Setup für dich schreibt.",
+      "setup": {
+        "name": "/setup",
+        "body": "Ein kurzes Interview über deine Seite: Name, Nische, Zuschauer, Ziel, Stimme. Es schreibt deine Markendateien und prüft jedes Werkzeug."
+      },
+      "trends": {
+        "name": "/find-trends",
+        "body": "Misst, welche Videos in deiner Nische diesen Monat das 3x der üblichen Aufrufe ihres Creators bekamen, und macht daraus fünf Videoideen."
+      },
+      "idea": {
+        "name": "/find-idea",
+        "body": "Bewertet Ideen aus deiner eigenen Liste, echten Fragen von Leuten und den Trends, und lässt dich wählen."
+      },
+      "analyze": {
+        "name": "/analyze-video",
+        "body": "Zerlegt jeden Short, den du schickst: die ersten drei Sekunden, das Tempo, die Geschichte und die Aufforderung, mit Frame-Übersichten."
+      },
+      "script": {
+        "name": "short-video-script",
+        "body": "Drei Hooks und ein Skript, das die Frage zuerst stellt und zuletzt beantwortet, jeder Fakt mit seiner Quelle."
+      },
+      "voice": {
+        "name": "voice-match",
+        "body": "Lernt, wie deine besten Videos klingen, damit neue Skripte nach dir klingen und nicht nach generischer KI."
+      },
+      "video": {
+        "name": "/new-video",
+        "body": "Von einer Idee zu einem fertigen MP4: Schnitt, Untertitel, Ton, die Stimme einmal am Ende, drei Cover, der Bildtext und der DM-Text."
+      },
+      "check": {
+        "name": "/post-check",
+        "body": "Die letzte Prüfung vor dem Posten: Behauptungen ohne Quelle, ein Link im Bild, der Hook, das Kommentar-Stichwort, das erste Bild."
+      },
+      "plus": "Außerdem drin: das Setup der Schnitt-Engine (Untertitel, Karten, Cover und ein Seitenrekorder für 3D), elf Schnitt-Looks mit Rezepten und ein Qualitätstor, das Länge, Tempo, Standbilder und Lautstärke misst, bevor du schaust."
+    },
+    "how": {
+      "heading": "So funktioniert es",
+      "setup": {
+        "title": "Einmal einrichten",
+        "body": "Öffne den Ordner in Claude Code und starte /setup. Ein paar Fragen zu deiner Seite, und es prüft Node, ffmpeg, Kinetograph und Python für dich."
+      },
+      "pick": {
+        "title": "Idee wählen",
+        "body": "Bring deine eigene mit, oder lass /find-trends und /find-idea finden, was in deiner Nische diese Woche Aufrufe bekommt."
+      },
+      "make": {
+        "title": "Freigeben, nicht schneiden",
+        "body": "/new-video hält für dein Ja beim Skript, bei den ersten drei Sekunden und beim stummen Entwurf an. Die Stimme wird erst nach deiner Freigabe aufgenommen, nichts wird doppelt bezahlt."
+      },
+      "post": {
+        "title": "Posten",
+        "body": "Du bekommst das MP4, drei Cover, den Bildtext und den DM-Text für dein Kommentar-Stichwort. Poste dieselbe Datei auf Instagram, TikTok und Shorts."
+      }
+    },
+    "who": {
+      "heading": "Für wen es ist",
+      "creators": {
+        "title": "Creator",
+        "body": "Poste öfter, ohne jedes Video von Hand zu schneiden, und behalte deine eigene Stimme und deinen Look."
+      },
+      "business": {
+        "title": "Kleine Unternehmen",
+        "body": "Ein Café, ein Studio, eine Praxis: erkläre in kurzen Videos, was du weißt, mit geprüften Fakten."
+      },
+      "freelancers": {
+        "title": "Freelancer und Agenturen",
+        "body": "Mach Videos für Kunden. Kundenarbeit und bezahlte Arbeit sind erlaubt."
+      },
+      "camera": {
+        "title": "Menschen, die lieber nicht vor der Kamera stehen",
+        "body": "Echte Fotos, Bildschirmaufnahmen und Karten tragen das Video. Nimm eine KI-Stimme oder sprich das Skript selbst in einem Take."
+      }
+    },
+    "needs": {
+      "heading": "Du brauchst",
+      "body": "Claude Code, Node 22 oder neuer, ffmpeg, Google Chrome und Python 3.10 oder neuer. Die Schnitt-Engine Kinetograph ist für Einzelpersonen und kleine Unternehmen kostenlos. /setup prüft das alles.",
+      "voice": "Für die Stimme: ein ElevenLabs-Konto (kommerzielles Posten braucht den Bezahltarif, ab 6 USD im Monat) oder deine eigene Aufnahme, die der Ordner kostenlos in Zeilen schneidet und für die Untertitel zeitlich abstimmt."
+    },
+    "credits": {
+      "heading": "Gebaut auf",
+      "body": "Die Schnitt-Engine <kinetograph>Kinetograph</kinetograph> (von dir installiert). Die Schreibdurchgänge <humanizer>humanizer</humanizer> von Siqi Chen und <stopslop>stop-slop</stopslop> von Hardik Pandya, beide MIT und mit ihren Lizenzen enthalten. Figuren aus <doodles>Open Doodles</doodles> (CC0). Die Schriften Inter Tight und JetBrains Mono (SIL Open Font License).",
+      "ink": "Der Tintenlinien- und 3D-Look der neuesten @fadaeixlii-Reels ist ein eigener Skill: <ink>Ink Motion</ink>."
+    },
+    "buy": {
+      "heading": "One Folder Studio holen",
+      "sub": "Bezahle mit USDT oder USDC und lade es direkt hier herunter, oder schreib mir auf WhatsApp, um anders zu bezahlen.",
+      "licence": "Nutze ihn und die Videos, die du machst, für dich und für Kunden, auch für bezahlte Arbeit. Verkauf oder teile die Dateien des Ordners nicht weiter."
+    },
+    "faq": {
+      "heading": "Fragen",
+      "q1": "Wie bekomme ich die Datei nach dem Bezahlen?",
+      "a1": "Füge den Transaktions-Hash oben ins Formular ein. Sobald das Netzwerk die Zahlung bestätigt, erscheint hier ein Download-Link.",
+      "q2": "Ich habe meinen Download-Link verloren.",
+      "a2": "Schreib mir auf WhatsApp mit dem Transaktions-Hash, dann schicke ich dir einen neuen.",
+      "q3": "Postet er für mich?",
+      "a3": "Nein. Er postet, kommentiert und verschickt nie etwas von deinen Konten. Du bekommst die Dateien und die Texte und postest sie selbst.",
+      "q4": "Wie unterscheidet sich das von den kostenlosen Instagram-Skill-Paketen?",
+      "a4": "Die schreiben Text: Hooks, Bildtexte, Pläne. Dieser Ordner macht das Video selbst, prüft es und gibt dir die Datei. Du kannst beides nutzen."
+    }
   }
 }

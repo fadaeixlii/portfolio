@@ -37,6 +37,12 @@ export const SHOP_PRODUCTS = {
     approxEur: 5,
     file: "trail-reel.zip",
   },
+  "one-folder-studio": {
+    name: "One Folder Studio",
+    priceUsd: 12,
+    approxEur: 10,
+    file: "one-folder-studio.zip",
+  },
 } satisfies Record<string, { name: string; priceUsd: number; approxEur: number; file: string }>;
 
 export type ProductId = keyof typeof SHOP_PRODUCTS;
