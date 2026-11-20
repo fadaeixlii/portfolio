@@ -43,6 +43,12 @@ export const SHOP_PRODUCTS = {
     approxEur: 10,
     file: "one-folder-studio.zip",
   },
+  "first-skim": {
+    name: "First Skim",
+    priceUsd: 6,
+    approxEur: 5,
+    file: "first-skim.zip",
+  },
 } satisfies Record<string, { name: string; priceUsd: number; approxEur: number; file: string }>;
 
 export type ProductId = keyof typeof SHOP_PRODUCTS;

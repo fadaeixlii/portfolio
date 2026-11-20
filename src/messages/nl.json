@@ -778,5 +778,140 @@
       "q4": "Wat is het verschil met de gratis Instagram-skillpakketten?",
       "a4": "Die schrijven tekst: hooks, bijschriften, plannen. Deze map maakt de video zelf, controleert hem en geeft je het bestand. Je kunt beide gebruiken."
     }
+  },
+  "firstSkim": {
+    "metaTitle": "First Skim: pas je cv aan voor één baan zonder iets te verzinnen",
+    "metaDescription": "Een Claude Code-skill: geef hem je cv en één vacature. Hij markeert elke zwakke regel, telt de must-haves van de baan die de eerste blik van een recruiter opvangt, en herschrijft het cv voor die baan. Elke nieuwe regel wijst naar de regel waar hij vandaan komt. 5 EUR.",
+    "line1": "First Skim",
+    "line2": "Fix het. Verzin niets.",
+    "sub": "Geef Claude Code je cv en één vacature. Hij markeert elke zwakke regel en zegt waarom, en herschrijft dan het cv zodat de must-haves van de baan landen waar de eerste blik van een recruiter landt. Elke nieuwe regel wijst terug naar de regel waar hij vandaan komt. Ontbreekt er een feit, dan vraagt hij het aan jou in plaats van het te verzinnen.",
+    "price": "5 EUR, eenmalig",
+    "buyCta": "Koop met crypto",
+    "whatsappCta": "Stuur me een WhatsApp",
+    "whatsappText": "Hoi Mohammad, ik wil First Skim kopen.",
+    "hero": {
+      "reel": "De reel, gemaakt van de testrun"
+    },
+    "compare": {
+      "before": "Voor",
+      "after": "Na",
+      "slider": "Sleep om het cv voor en na te vergelijken",
+      "caption": "Het test-cv voor en na. Het vervaagde deel slaat een eerste blik over: alles onder het bovenste derde, na de eerste drie woorden van elke regel.",
+      "beforeAlt": "Het originele cv van Sam Rivera met 14 zwakke regels oranje onderstreept of omcirkeld, en het grootste deel van de pagina vervaagd onder het bovenste derde",
+      "afterAlt": "Het herschreven cv: planning, leveranciersbestellingen en kasrapporten staan nu in het bovenste derde, de rest is op dezelfde manier vervaagd"
+    },
+    "plain": {
+      "heading": "Wat gewone AI deed met hetzelfde cv",
+      "sub": "Zelfde cv, zelfde vacature, gevraagd zoals de meeste mensen het vragen: pas het aan zodat het langs het ATS komt. Er kwamen vijf dingen uit die Sam nooit heeft geschreven, elk in de woorden van de vacature.",
+      "caption": "De toevoegingen van gewone AI, naast de regel uit de vacature die ze nabootsen. Geen enkele staat in Sams cv.",
+      "ai": "Gewone AI schreef",
+      "post": "De vacature zegt",
+      "instead": "First Skim schreef op hetzelfde cv en dezelfde vacature niets hiervan. Het stelde in plaats daarvan {n} vragen."
+    },
+    "run": {
+      "heading": "De testrun",
+      "sub": "Een verse kopie van de skill, een cv dat voor de test is verzonnen (Sam Rivera, een ploegleider in de retail) en een echte, openbare vacature voor kantoorcoördinator uit New York. Niemand beantwoordde zijn vragen, dus hield hij elke regel bij wat het cv zegt.",
+      "what": "Hij haalde 13 must-haves uit de vacature, elk met de eigen woorden van de vacature, markeerde elke zwakke regel met een reden, herschreef het cv voor die baan en controleerde elk getal en elke naam in de nieuwe versie tegen de regel waar ze vandaan komen. Daarna printte hij een pdf van één pagina, las de tekst eruit terug en draaide hetzelfde cv nog een keer voor een tweede baan.",
+      "look": "Must-haves in de eerste blik",
+      "lookValue": "{before} → {after} van {total}",
+      "marked": "Gemarkeerde regels",
+      "invented": "Verzonnen feiten",
+      "questions": "Gestelde vragen",
+      "readback": "PDF leest terug",
+      "time": "Beide banen, van begin tot eind",
+      "timeValue": "{m} min {s} s"
+    },
+    "inside": {
+      "heading": "Wat hij doet",
+      "sub": "Eén skill, een paar scripts en de regels die ze volgen. Claude leest en schrijft; de scripts tellen, controleren en printen, zodat de getallen bij elke run hetzelfde zijn.",
+      "count": {
+        "title": "Telt de eerste blik",
+        "body": "Zet de must-haves van de baan uit de vacature op een rij en telt hoeveel er staan waar een eerste blik landt: het bovenste derde van pagina één en de eerste drie woorden van elke regel. Dezelfde telling draait voor en na."
+      },
+      "marks": {
+        "title": "Markeert elke zwakke regel",
+        "body": "Taken in plaats van resultaten, vage woorden, verstopte must-haves, jargon van je oude baan, regels die niets zeggen. Elke markering komt met een reden in een paar woorden."
+      },
+      "rewrite": {
+        "title": "Herschrijft voor één baan",
+        "body": "Begint elke regel met het woord van de baan ervoor en verplaatst je sterkste echte ervaring naar het bovenste derde. Jouw feiten, de woorden van de baan."
+      },
+      "check": {
+        "title": "Controleert dat hij niets verzon",
+        "body": "Elke nieuwe regel noemt de regel waar hij vandaan komt. Een script controleert elk getal en elke naam tegen die regel en lijst alles op wat niet klopt."
+      },
+      "questions": {
+        "title": "Vraagt in plaats van te gokken",
+        "body": "Maximaal vijf vragen over dingen die de baan wil en je cv niet laat zien. Je antwoorden worden bronnen; een nee blijft eruit."
+      },
+      "pdf": {
+        "title": "Een schone pdf en een rapport",
+        "body": "Eén kolom, standaardkoppen, echte tekst, geprint door Chrome en teruggelezen om te bewijzen dat het schoon is. Plus een rapportpagina met de markeringen, de telling en de bron van elke regel."
+      }
+    },
+    "how": {
+      "heading": "Zo werkt het",
+      "give": {
+        "title": "Geef hem twee dingen",
+        "body": "Je cv als pdf (of geplakte tekst) en één vacature, geplakt of als link."
+      },
+      "marks": {
+        "title": "Bekijk de markeringen",
+        "body": "Elke zwakke regel gemarkeerd met een reden, en het aantal must-haves in de eerste blik."
+      },
+      "answer": {
+        "title": "Beantwoord een paar vragen",
+        "body": "Maximaal vijf, alleen over dingen waar de baan om vraagt. Sla elke over die je niet met ja kunt beantwoorden."
+      },
+      "get": {
+        "title": "Krijg de pdf",
+        "body": "Een pdf van één pagina voor die baan en een rapport om doorheen te klikken. Nog een baan? Draai hem opnieuw."
+      }
+    },
+    "who": {
+      "heading": "Voor wie het is",
+      "changers": {
+        "title": "Carrièrewisselaars",
+        "body": "Retail naar kantoor, onderwijs naar training, service naar sales: hij vindt je echte ervaring in de woorden van de nieuwe baan."
+      },
+      "applying": {
+        "title": "Mensen die veel solliciteren",
+        "body": "Een aangepaste versie per baan in minuten, zonder gokwerk en zonder verzonnen regels."
+      },
+      "writers": {
+        "title": "Cv-schrijvers en coaches",
+        "body": "Gebruik het met je klanten. Betaald werk mag."
+      },
+      "first": {
+        "title": "Eerste banen",
+        "body": "Een dun cv haalt het meest uit de vragen: ze brengen boven wat je deed maar nooit opschreef."
+      }
+    },
+    "needs": {
+      "heading": "Dit heb je nodig",
+      "body": "Claude Code, Python 3.10 of nieuwer met één gratis pakket (pdfplumber), en Google Chrome om de pdf te printen.",
+      "privacy": "Het draait op je computer. Je cv gaat alleen naar waar Claude Code alles wat je erin stopt al naartoe stuurt; de skill plakt het nooit op andere sites."
+    },
+    "credits": {
+      "heading": "Gebouwd op",
+      "body": "Pdf lezen met <pdfplumber>pdfplumber</pdfplumber> (MIT), door jou geïnstalleerd. De regels voor markeringen en herschrijvingen zijn onze eigen.",
+      "study": "De zeven seconden: een eyetrackingonderzoek van The Ladders (2018) mat de eerste blik van een recruiter op ongeveer 7.4 seconden. <study>Lees de samenvatting</study>."
+    },
+    "buy": {
+      "heading": "Haal First Skim",
+      "sub": "Betaal met USDT of USDC en download het meteen hier, of stuur me een WhatsApp om anders te betalen.",
+      "licence": "Gebruik het, en de cv's die je ermee maakt, voor jezelf en voor klanten, ook voor betaald werk. Verkoop of deel de bestanden van de skill niet door."
+    },
+    "faq": {
+      "heading": "Vragen",
+      "q1": "Hoe krijg ik het bestand na het betalen?",
+      "a1": "Plak de transactiehash in het formulier hierboven. Zodra het netwerk de betaling bevestigt, verschijnt hier een downloadlink.",
+      "q2": "Krijg ik hiermee langs het ATS?",
+      "a2": "Geen enkele tool kan dat beloven, en deze doet dat ook niet. Het populaire getal \"75% van de cv's wordt door een robot afgewezen\" heeft geen onderzoek achter zich. Wat hij wel doet: de must-haves van de baan zetten waar een eerste blik landt, en bewijzen dat elke regel van jou is.",
+      "q3": "Wat als mijn cv een Word-bestand is of twee kolommen heeft?",
+      "a3": "Sla het eerst op als pdf. Indelingen met twee kolommen worden misschien in de verkeerde volgorde gelezen; de herschrijving is altijd één kolom, en die leest elk sollicitatiesysteem.",
+      "q4": "Ik ben mijn downloadlink kwijt.",
+      "a4": "Stuur me een WhatsApp met de transactiehash, dan stuur ik je een nieuwe."
+    }
   }
 }
