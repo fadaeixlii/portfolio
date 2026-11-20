@@ -778,5 +778,140 @@
       "q4": "Wie unterscheidet sich das von den kostenlosen Instagram-Skill-Paketen?",
       "a4": "Die schreiben Text: Hooks, Bildtexte, Pläne. Dieser Ordner macht das Video selbst, prüft es und gibt dir die Datei. Du kannst beides nutzen."
     }
+  },
+  "firstSkim": {
+    "metaTitle": "First Skim: Lebenslauf für eine Stelle verbessern, ohne etwas zu erfinden",
+    "metaDescription": "Ein Claude-Code-Skill: Gib ihm deinen Lebenslauf und eine Stellenanzeige. Er markiert jede schwache Zeile, zählt die Muss-Anforderungen der Stelle, die der erste Blick eines Recruiters erfasst, und schreibt den Lebenslauf für diese Stelle um. Jede neue Zeile verweist auf die Zeile, aus der sie stammt. 5 EUR.",
+    "line1": "First Skim",
+    "line2": "Verbessern. Nichts erfinden.",
+    "sub": "Gib Claude Code deinen Lebenslauf und eine Stellenanzeige. Er markiert jede schwache Zeile und sagt warum, dann schreibt er den Lebenslauf so um, dass die Muss-Anforderungen der Stelle dort landen, wo der erste Blick eines Recruiters landet. Jede neue Zeile verweist auf die Zeile, aus der sie stammt. Fehlt ein Fakt, fragt er dich, statt ihn zu erfinden.",
+    "price": "5 EUR, einmalige Zahlung",
+    "buyCta": "Mit Krypto kaufen",
+    "whatsappCta": "Schreib mir auf WhatsApp",
+    "whatsappText": "Hallo Mohammad, ich möchte First Skim kaufen.",
+    "hero": {
+      "reel": "Der Reel, gemacht aus dem Testlauf"
+    },
+    "compare": {
+      "before": "Vorher",
+      "after": "Nachher",
+      "slider": "Ziehen, um den Lebenslauf vorher und nachher zu vergleichen",
+      "caption": "Der Test-Lebenslauf vorher und nachher. Der ausgeblendete Teil wird beim ersten Blick übersprungen: alles unter dem oberen Drittel und alles nach den ersten drei Wörtern jeder Zeile.",
+      "beforeAlt": "Der ursprüngliche Lebenslauf von Sam Rivera mit 14 schwachen Zeilen, orange unterstrichen oder eingekreist, und dem größten Teil der Seite unter dem oberen Drittel ausgeblendet",
+      "afterAlt": "Der umgeschriebene Lebenslauf: Terminplanung, Lieferantenbestellungen und Kassenberichte stehen jetzt im oberen Drittel, der Rest ist genauso ausgeblendet"
+    },
+    "plain": {
+      "heading": "Was einfache KI mit demselben Lebenslauf gemacht hat",
+      "sub": "Derselbe Lebenslauf, dieselbe Stellenanzeige, so gefragt, wie die meisten fragen: Passe ihn an, damit er durch das ATS kommt. Heraus kamen fünf Dinge, die Sam nie geschrieben hat, jedes im Wortlaut der Stellenanzeige.",
+      "caption": "Die Ergänzungen der einfachen KI, neben der Zeile der Stellenanzeige, die sie spiegeln. Keine davon steht in Sams Lebenslauf.",
+      "ai": "Einfache KI schrieb",
+      "post": "Die Stellenanzeige sagt",
+      "instead": "First Skim hat auf demselben Lebenslauf und derselben Anzeige nichts davon geschrieben. Stattdessen hat es {n} Fragen gestellt."
+    },
+    "run": {
+      "heading": "Der Testlauf",
+      "sub": "Eine frische Kopie des Skills, ein für den Test erfundener Lebenslauf (Sam Rivera, Schichtleiter im Einzelhandel) und eine echte, öffentliche Stellenanzeige für eine Büro-Koordination in New York. Niemand hat seine Fragen beantwortet, also blieb jede Zeile bei dem, was im Lebenslauf steht.",
+      "what": "Er zog 13 Muss-Anforderungen aus der Anzeige, jeweils mit den eigenen Worten der Anzeige, markierte jede schwache Zeile mit einem Grund, schrieb den Lebenslauf für diese Stelle um und prüfte jede Zahl und jeden Namen der neuen Version gegen die Zeile, aus der sie stammt. Dann druckte er ein einseitiges PDF, las den Text daraus zurück und ließ denselben Lebenslauf noch einmal für eine zweite Stelle laufen.",
+      "look": "Muss-Anforderungen im ersten Blick",
+      "lookValue": "{before} → {after} von {total}",
+      "marked": "Markierte Zeilen",
+      "invented": "Erfundene Fakten",
+      "questions": "Gestellte Fragen",
+      "readback": "PDF wird zurückgelesen",
+      "time": "Beide Stellen, von Anfang bis Ende",
+      "timeValue": "{m} Min. {s} Sek."
+    },
+    "inside": {
+      "heading": "Was er macht",
+      "sub": "Ein Skill, ein paar Skripte und die Regeln, denen sie folgen. Claude liest und schreibt; die Skripte zählen, prüfen und drucken, damit die Zahlen bei jedem Lauf gleich sind.",
+      "count": {
+        "title": "Zählt den ersten Blick",
+        "body": "Listet die Muss-Anforderungen der Stelle aus der Anzeige auf und zählt, wie viele dort stehen, wo der erste Blick landet: im oberen Drittel von Seite eins und in den ersten drei Wörtern jeder Zeile. Dieselbe Zählung läuft vorher und nachher."
+      },
+      "marks": {
+        "title": "Markiert jede schwache Zeile",
+        "body": "Aufgaben statt Ergebnisse, vage Wörter, vergrabene Muss-Anforderungen, Jargon der alten Stelle, Zeilen, die nichts sagen. Jede Markierung kommt mit einem Grund in wenigen Wörtern."
+      },
+      "rewrite": {
+        "title": "Schreibt für eine Stelle um",
+        "body": "Beginnt jede Zeile mit dem Wort der Stelle dafür und rückt deine stärkste echte Erfahrung ins obere Drittel. Deine Fakten, die Worte der Stelle."
+      },
+      "check": {
+        "title": "Prüft, dass nichts erfunden wurde",
+        "body": "Jede neue Zeile nennt die Zeile, aus der sie stammt. Ein Skript prüft jede Zahl und jeden Namen gegen diese Zeile und listet alles auf, was nicht passt."
+      },
+      "questions": {
+        "title": "Fragt, statt zu raten",
+        "body": "Bis zu fünf Fragen zu Dingen, die die Stelle will und dein Lebenslauf nicht zeigt. Deine Antworten werden zu Quellen; ein Nein bleibt draußen."
+      },
+      "pdf": {
+        "title": "Ein sauberes PDF und ein Bericht",
+        "body": "Eine Spalte, Standardüberschriften, echter Text, von Chrome gedruckt und zurückgelesen, um zu beweisen, dass es sauber ist. Dazu eine Berichtsseite mit den Markierungen, der Zählung und der Quelle jeder Zeile."
+      }
+    },
+    "how": {
+      "heading": "So funktioniert es",
+      "give": {
+        "title": "Gib ihm zwei Dinge",
+        "body": "Dein Lebenslauf als PDF (oder eingefügter Text) und eine Stellenanzeige, eingefügt oder als Link."
+      },
+      "marks": {
+        "title": "Sieh dir die Markierungen an",
+        "body": "Jede schwache Zeile mit Grund markiert, dazu die Zahl der Muss-Anforderungen im ersten Blick."
+      },
+      "answer": {
+        "title": "Beantworte ein paar Fragen",
+        "body": "Bis zu fünf, nur zu Dingen, die die Stelle verlangt. Überspring jede, die du nicht mit Ja beantworten kannst."
+      },
+      "get": {
+        "title": "Hol dir das PDF",
+        "body": "Ein einseitiges PDF für diese Stelle und ein Bericht zum Durchklicken. Noch eine Stelle? Lass es noch einmal laufen."
+      }
+    },
+    "who": {
+      "heading": "Für wen es ist",
+      "changers": {
+        "title": "Quereinsteiger",
+        "body": "Einzelhandel ins Büro, Lehre ins Training, Service in den Vertrieb: Er findet deine echte Erfahrung in den Worten der neuen Stelle."
+      },
+      "applying": {
+        "title": "Viele Bewerber",
+        "body": "Eine angepasste Version pro Stelle in Minuten, ohne Rätselraten und ohne erfundene Zeilen."
+      },
+      "writers": {
+        "title": "Lebenslauf-Schreiber und Coaches",
+        "body": "Nutze ihn mit deinen Kunden. Bezahlte Arbeit ist erlaubt."
+      },
+      "first": {
+        "title": "Erste Jobs",
+        "body": "Ein dünner Lebenslauf profitiert am meisten von den Fragen: Sie bringen ans Licht, was du getan, aber nie aufgeschrieben hast."
+      }
+    },
+    "needs": {
+      "heading": "Du brauchst",
+      "body": "Claude Code, Python 3.10 oder neuer mit einem kostenlosen Paket (pdfplumber) und Google Chrome, um das PDF zu drucken.",
+      "privacy": "Er läuft auf deinem Computer. Dein Lebenslauf geht nur dorthin, wohin Claude Code ohnehin schickt, was du ihm gibst; der Skill fügt ihn nie in andere Seiten ein."
+    },
+    "credits": {
+      "heading": "Gebaut auf",
+      "body": "PDF-Lesen mit <pdfplumber>pdfplumber</pdfplumber> (MIT), von dir installiert. Die Regeln für Markierungen und Umschreibungen sind unsere eigenen.",
+      "study": "Die sieben Sekunden: Eine Eye-Tracking-Studie von The Ladders (2018) maß den ersten Blick eines Recruiters mit etwa 7.4 Sekunden. <study>Zur Zusammenfassung</study>."
+    },
+    "buy": {
+      "heading": "First Skim holen",
+      "sub": "Bezahle mit USDT oder USDC und lade es direkt hier herunter, oder schreib mir auf WhatsApp, um anders zu bezahlen.",
+      "licence": "Nutze ihn und die Lebensläufe, die du damit machst, für dich und für Kunden, auch für bezahlte Arbeit. Verkauf oder teile die Dateien des Skills nicht weiter."
+    },
+    "faq": {
+      "heading": "Fragen",
+      "q1": "Wie bekomme ich die Datei nach dem Bezahlen?",
+      "a1": "Füge den Transaktions-Hash oben ins Formular ein. Sobald das Netzwerk die Zahlung bestätigt, erscheint hier ein Download-Link.",
+      "q2": "Bringt mich das durchs ATS?",
+      "a2": "Das kann kein Tool versprechen, und dieses tut es nicht. Die beliebte Zahl \"75 % der Lebensläufe werden von einem Roboter abgelehnt\" hat keine Studie dahinter. Was er tut: Er setzt die Muss-Anforderungen der Stelle dorthin, wo der erste Blick landet, und belegt, dass jede Zeile von dir ist.",
+      "q3": "Was ist, wenn mein Lebenslauf eine Word-Datei ist oder zwei Spalten hat?",
+      "a3": "Speichere ihn zuerst als PDF. Zweispaltige Layouts werden womöglich in falscher Reihenfolge gelesen; die Neufassung ist immer einspaltig, und das liest jedes Bewerbungssystem.",
+      "q4": "Ich habe meinen Download-Link verloren.",
+      "a4": "Schreib mir auf WhatsApp mit dem Transaktions-Hash, dann schicke ich dir einen neuen."
+    }
   }
 }

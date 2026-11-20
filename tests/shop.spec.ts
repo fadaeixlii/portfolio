@@ -61,3 +61,14 @@ for (const [locale, { checkout }] of Object.entries(TRAIL)) {
     await expect(page.locator("#buy").getByRole("button", { name: checkout })).toBeVisible();
   });
 }
+
+// /skills/first-skim: the reel, the before/after slider over the real run's pages, plain AI's five lines, the checkout.
+for (const [locale, { checkout }] of Object.entries(TRAIL)) {
+  test(`${locale}: first skim shows its reel, the before/after and the checkout`, async ({ page }) => {
+    await page.goto(`/${locale}/skills/first-skim`);
+    await expect(page.locator("main video:visible")).toHaveAttribute("src", /\/first-skim\/reel\.mp4$/);
+    await expect(page.locator("main").getByRole("slider")).toBeVisible();
+    await expect(page.locator("#plain tbody tr")).toHaveCount(5);
+    await expect(page.locator("#buy").getByRole("button", { name: checkout })).toBeVisible();
+  });
+}

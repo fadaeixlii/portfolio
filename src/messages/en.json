@@ -778,5 +778,140 @@
       "q4": "How is this different from the free Instagram skill packs?",
       "a4": "They write text: hooks, captions, plans. This folder makes the video itself, checks it, and hands you the file. You can use both."
     }
+  },
+  "firstSkim": {
+    "metaTitle": "First Skim: fix your resume for one job without inventing anything",
+    "metaDescription": "A Claude Code skill: give it your resume and one job post. It marks every weak line, counts the job's must-haves a recruiter's first look catches, and rewrites it for that job. Every new line points to the line it came from. 5 EUR.",
+    "line1": "First Skim",
+    "line2": "Fix it. Invent nothing.",
+    "sub": "Give Claude Code your resume and one job post. It marks every weak line and says why, then rewrites the resume so the job's must-haves land where a recruiter's first look lands. Every new line points back to the line it came from. When a fact is missing, it asks you instead of making it up.",
+    "price": "5 EUR, one payment",
+    "buyCta": "Buy with crypto",
+    "whatsappCta": "Message me on WhatsApp",
+    "whatsappText": "Hi Mohammad, I'd like to buy First Skim.",
+    "hero": {
+      "reel": "The reel, made from the test run"
+    },
+    "compare": {
+      "before": "Before",
+      "after": "After",
+      "slider": "Drag to compare the resume before and after",
+      "caption": "The test resume before and after. The faded part is what a first look skips: everything below the top third, after the first three words of each line.",
+      "beforeAlt": "Sam Rivera's original resume with 14 weak lines underlined or circled in orange, and most of the page faded below the top third",
+      "afterAlt": "The rewritten resume: scheduling, supplier orders and cash reports now lead the top third, the rest faded the same way"
+    },
+    "plain": {
+      "heading": "What plain AI did with the same resume",
+      "sub": "Same resume, same job post, asked the way most people ask: tailor it so it gets past the ATS. It came back with five things Sam never wrote, each one worded like the job post.",
+      "caption": "Plain AI's additions, next to the job post's line they mirror. None of them are in Sam's resume.",
+      "ai": "Plain AI wrote",
+      "post": "The job post says",
+      "instead": "First Skim, on the same resume and post, wrote none of these. It asked {n} questions instead."
+    },
+    "run": {
+      "heading": "The test run",
+      "sub": "A fresh copy of the skill, a resume made up for the test (Sam Rivera, a retail shift lead) and a real, public office coordinator post from New York. Nobody answered its questions, so it kept every line to what the resume says.",
+      "what": "It pulled 13 must-haves from the post, each with the post's own words, marked every weak line with a reason, rewrote the resume for that job and checked every number and name in the new version against the line it came from. Then it printed a one-page PDF, read the text back out of it, and ran the same resume again for a second job.",
+      "look": "Must-haves in the first look",
+      "lookValue": "{before} → {after} of {total}",
+      "marked": "Lines marked",
+      "invented": "Facts invented",
+      "questions": "Questions asked",
+      "readback": "PDF reads back",
+      "time": "Both jobs, start to finish",
+      "timeValue": "{m} min {s} s"
+    },
+    "inside": {
+      "heading": "What it does",
+      "sub": "One skill, a few scripts and the rules they follow. Claude does the reading and writing; the scripts count, check and print, so the numbers are the same every time you run them.",
+      "count": {
+        "title": "Counts the first look",
+        "body": "Lists the job's must-haves from the post, then counts how many sit where a first look lands: the top third of page one and the first three words of every line. The same count runs before and after."
+      },
+      "marks": {
+        "title": "Marks every weak line",
+        "body": "Duties instead of results, vague words, buried must-haves, old-job jargon, lines that say nothing. Each mark comes with a reason in a few words."
+      },
+      "rewrite": {
+        "title": "Rewrites for one job",
+        "body": "Leads each line with the job's word for it and moves your strongest real experience into the top third. Your facts, the job's words."
+      },
+      "check": {
+        "title": "Checks it invented nothing",
+        "body": "Every new line names the line it came from. A script checks every number and name against that line and lists anything that doesn't match."
+      },
+      "questions": {
+        "title": "Asks instead of guessing",
+        "body": "Up to five questions about things the job wants that your resume doesn't show. Your answers become sources; a no stays out."
+      },
+      "pdf": {
+        "title": "A clean PDF and a report",
+        "body": "One column, standard headings, real text, printed by Chrome and read back to prove it's clean. Plus a report page with the marks, the count and the source of every line."
+      }
+    },
+    "how": {
+      "heading": "How it works",
+      "give": {
+        "title": "Give it two things",
+        "body": "Your resume as a PDF (or pasted text) and one job post, pasted or as a link."
+      },
+      "marks": {
+        "title": "See the marks",
+        "body": "Every weak line marked with a reason, and the count of must-haves in the first look."
+      },
+      "answer": {
+        "title": "Answer a few questions",
+        "body": "Up to five, only about things the job asks for. Skip any you can't answer with a yes."
+      },
+      "get": {
+        "title": "Get the PDF",
+        "body": "A one-page PDF for that job and a report you can click through. Another job? Run it again."
+      }
+    },
+    "who": {
+      "heading": "Who it's for",
+      "changers": {
+        "title": "Career changers",
+        "body": "Retail to office, teaching to training, service to sales: it finds your real experience in the new job's words."
+      },
+      "applying": {
+        "title": "People applying a lot",
+        "body": "A tailored version per job in minutes, without the guesswork or the made-up lines."
+      },
+      "writers": {
+        "title": "Resume writers and coaches",
+        "body": "Use it with your clients. Paid work is allowed."
+      },
+      "first": {
+        "title": "First jobs",
+        "body": "A thin resume gets the most from the questions: they surface what you did but never wrote down."
+      }
+    },
+    "needs": {
+      "heading": "You need",
+      "body": "Claude Code, Python 3.10 or newer with one free package (pdfplumber), and Google Chrome to print the PDF.",
+      "privacy": "It runs on your computer. Your resume goes only where Claude Code already sends what you give it; the skill never pastes it into other sites."
+    },
+    "credits": {
+      "heading": "Built on",
+      "body": "PDF reading by <pdfplumber>pdfplumber</pdfplumber> (MIT), installed by you. The rules for marks and rewrites are our own.",
+      "study": "The seven seconds: an eye-tracking study by The Ladders (2018) measured a recruiter's first look at about 7.4 seconds. <study>Read the summary</study>."
+    },
+    "buy": {
+      "heading": "Get First Skim",
+      "sub": "Pay with USDT or USDC and download it right here, or message me on WhatsApp to pay another way.",
+      "licence": "Use it, and the resumes you make, for yourself and for clients, including paid work. Don't resell or share the skill's files."
+    },
+    "faq": {
+      "heading": "Questions",
+      "q1": "How do I get the file after paying?",
+      "a1": "Paste the transaction hash in the form above. Once the network confirms the payment, a download link appears on this page.",
+      "q2": "Will it get me past the ATS?",
+      "a2": "No tool can promise that, and this one doesn't. The popular \"75% of resumes are rejected by a robot\" number has no study behind it. What it does: puts the job's must-haves where a first look lands, and proves every line is yours.",
+      "q3": "What if my resume is a Word file or two columns?",
+      "a3": "Save it as PDF first. Two-column layouts may read out of order; the rewrite is always one column, which every hiring system reads.",
+      "q4": "I lost my download link.",
+      "a4": "Message me on WhatsApp with the transaction hash and I'll send a new one."
+    }
   }
 }
