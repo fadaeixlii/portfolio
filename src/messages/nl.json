@@ -241,7 +241,7 @@
     "shop": {
       "title": "Als je een skill koopt",
       "stored": "Een gestarte aankoop slaat een bestelling op in dezelfde database: het product, het gekozen netwerk en de token, het bedrag, het ontvangstadres, het tijdstip en je IP-adres. Het IP-adres beperkt bestellingen en betalingscontroles per dag. Als je een transactiehash plakt, wordt die bij de bestelling opgeslagen, samen met een versleutelde (gehashte) kopie van je downloadlink.",
-      "visits": "Een skill-pagina openen telt één bezoek in dezelfde database: een versleutelde (gehashte) bezoekerscode op basis van je IP-adres die elke dag verandert (het IP-adres zelf wordt voor een bezoek niet opgeslagen), de naam van de site waar je vandaan komt, zoals instagram.com, de taal van de pagina en het tijdstip. Een tik op de WhatsApp-knop wordt op dezelfde manier geteld. Mohammad krijgt via Resend een e-mail als iemand de pagina opent, op WhatsApp tikt of een bestelling start, met deze aantallen en niets dat jou noemt.",
+      "visits": "Een skill-pagina openen telt één bezoek in dezelfde database: een versleutelde (gehashte) bezoekerscode op basis van je IP-adres die elke dag verandert (het IP-adres zelf wordt voor een bezoek niet opgeslagen), de naam van de site waar je vandaan komt, zoals instagram.com, de taal van de pagina en het tijdstip. Een tik op de WhatsApp-knop of op de downloadknop van een gratis pdf wordt op dezelfde manier geteld. Mohammad krijgt via Resend een e-mail als iemand de pagina opent, op WhatsApp tikt, een gratis pdf downloadt of een bestelling start, met deze aantallen en niets dat jou noemt.",
       "chain": "Om de betaling te controleren zoekt de server de transactie op bij een openbare Ethereum-node (PublicNode) of Tron-node (TronGrid). De overboeking zelf, inclusief de wallet waarmee je betaalde, is toch al openbaar op de blockchain. Mohammad krijgt de bestelling en de transactiehash per e-mail via Resend.",
       "whatsapp": "Als je in plaats daarvan via WhatsApp een bericht stuurt, verwerkt WhatsApp dat gesprek onder zijn eigen voorwaarden."
     },
@@ -912,6 +912,51 @@
       "a3": "Sla het eerst op als pdf. Indelingen met twee kolommen worden misschien in de verkeerde volgorde gelezen; de herschrijving is altijd één kolom, en die leest elk sollicitatiesysteem.",
       "q4": "Ik ben mijn downloadlink kwijt.",
       "a4": "Stuur me een WhatsApp met de transactiehash, dan stuur ik je een nieuwe."
+    }
+  },
+  "motionTips": {
+    "metaTitle": "4 Motion Tips voor Claude-video's: een gratis pdf",
+    "metaDescription": "Vier technieken waardoor video's die je met Claude maakt er professioneel uitzien. Een gratis pdf van drie pagina's met per tip een prompt om te kopiëren en plakken.",
+    "line1": "4 Motion Tips",
+    "line2": "Voor Claude-video's",
+    "sub": "Vier technieken waardoor video's die je met Claude maakt er professioneel uitzien, prompts inbegrepen.",
+    "download": "Download de gratis pdf",
+    "fileNote": "Gratis. 3 pagina's in het Engels, zonder aanmelding.",
+    "pages": {
+      "caption1": "Pagina 1: de vier tips in één oogopslag",
+      "caption2": "Pagina 2: elke tip uitgelegd",
+      "caption3": "Pagina 3: een prompt per tip",
+      "alt1": "Voorpagina van de pdf: 4 motion tips for Claude videos, met de tips A reference, Beats before code, One box en Watch the frames",
+      "alt2": "Pagina 2 van de pdf: de vier tips, elk met een korte alinea over wat je doet en waarom",
+      "alt3": "Pagina 3 van de pdf: vier prompts om te kopiëren, één per tip, met de delen die je aanpast tussen vierkante haken"
+    },
+    "inside": {
+      "heading": "Wat erin staat",
+      "sub": "Vier tips, hier elk in één zin. De pdf legt elke tip uit en geeft je een prompt voor Claude.",
+      "reference": {
+        "title": "Een referentie",
+        "body": "Geef Claude een reel waar je van houdt: het neemt de grammatica over, nooit de inhoud."
+      },
+      "beats": {
+        "title": "Beats vóór code",
+        "body": "Vraag om een tabel per beat voordat er code komt, zodat je het tempo aanpast voordat er iets rendert."
+      },
+      "box": {
+        "title": "Eén box",
+        "body": "Eén container die nooit knipt: hij verandert van grootte, hoekradius en kleur met spring-animaties."
+      },
+      "frames": {
+        "title": "Bekijk de frames",
+        "body": "Claude kan zien, dus laat het een contactvel van zijn eigen frames controleren en herstellen wat niet klopt."
+      }
+    },
+    "credits": {
+      "heading": "Bronnen",
+      "body": "Gebouwd op openbaar werk: Movez (@0xMovez) <movez>“How to build motion design studio with Opus 5.5”</movez> en de video van Lukas Margerie <lukas>“How to Make Insane Motion Graphics With Opus 5.5”</lukas>."
+    },
+    "get": {
+      "heading": "De gratis pdf",
+      "sub": "Drie pagina's in het Engels: de voorpagina, de vier tips uitgelegd en een prompt per tip. Gratis, zonder aanmelding."
     }
   }
 }

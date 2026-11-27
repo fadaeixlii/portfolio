@@ -3,7 +3,7 @@ import { z } from "zod";
 import { sql } from "@/lib/db";
 import { clientIp } from "@/lib/http/client-ip";
 import { sendShopAlertEmail } from "@/lib/email/shop";
-import { SHOP_CHAINS, SHOP_PRODUCTS, SHOP_RULES, type ProductId } from "@/content/shop";
+import { SHOP_CHAINS, SHOP_PRODUCTS, SHOP_RULES, isFree, type ProductId } from "@/content/shop";
 
 export const dynamic = "force-dynamic";
 
@@ -20,6 +20,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "invalid" }, { status: 400 });
   }
   const input = parsed.data;
+  const product = SHOP_PRODUCTS[input.productId];
+  if (isFree(product)) {
+    // A free PDF has no price and no order.
+    return NextResponse.json({ error: "invalid" }, { status: 400 });
+  }
   const chain = SHOP_CHAINS[input.chain];
   const token = chain.tokens[input.token];
   if (!token) {
@@ -44,8 +49,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "server" }, { status: 503 });
   }
 
-  const priceUsd = SHOP_PRODUCTS[input.productId].priceUsd;
-  const amount = Math.round(priceUsd * 10 ** token.decimals);
+  const amount = Math.round(product.priceUsd * 10 ** token.decimals);
 
   let row: { id: string };
   try {

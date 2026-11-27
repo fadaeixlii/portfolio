@@ -10,7 +10,7 @@ import { SHOP_PRODUCTS, SHOP_RULES, type ProductId } from "@/content/shop";
 export const dynamic = "force-dynamic";
 
 const eventSchema = z.object({
-  kind: z.enum(["visit", "whatsapp"]),
+  kind: z.enum(["visit", "whatsapp", "download"]),
   productId: z.enum(Object.keys(SHOP_PRODUCTS) as [ProductId, ...ProductId[]]),
   referrer: z
     .string()
@@ -24,8 +24,8 @@ const eventSchema = z.object({
 });
 
 /**
- * Counts a visit to a shop page or a tap on its WhatsApp button (a
- * sendBeacon from the page) and emails the owner on the first of each kind
+ * Counts a visit to a shop page or a tap on its WhatsApp or free download
+ * button (a sendBeacon from the page) and emails the owner on the first of each kind
  * per visitor per day, up to a daily cap that keeps Resend's free quota for
  * sale emails. Always answers 204: the beacon never reads the response.
  */
@@ -81,7 +81,7 @@ export async function POST(request: Request) {
       await sendShopAlertEmail(
         input.kind === "visit"
           ? { kind: "visit", productId: input.productId, referrer: input.referrer || null, locale: input.locale ?? null }
-          : { kind: "whatsapp", productId: input.productId },
+          : { kind: input.kind, productId: input.productId },
       );
     } catch (error) {
       console.error("shop event failed", input.kind, error);

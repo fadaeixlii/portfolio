@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/primitives/Button";
 import { Field } from "@/components/primitives/Field";
 import { cn } from "@/lib/cn";
-import { SHOP_CHAINS, SHOP_PRODUCTS, SHOP_RULES, type Chain, type ProductId, type Token } from "@/content/shop";
+import { SHOP_CHAINS, SHOP_PRODUCTS, SHOP_RULES, type Chain, type PaidProductId, type Token } from "@/content/shop";
 
 type Order = { orderId: string; address: string; amount: string; token: Token; chain: Chain };
 
@@ -48,7 +48,7 @@ async function post(url: string, body: unknown): Promise<Record<string, unknown>
  * address and exact amount, paste the transaction hash, get the download.
  * Unstyled beyond the primitives on purpose — the page around it comes later.
  */
-export function Checkout({ productId }: { productId: ProductId }) {
+export function Checkout({ productId }: { productId: PaidProductId }) {
   const t = useTranslations("shop");
   const product = SHOP_PRODUCTS[productId];
   const [chain, setChain] = useState<Chain>("eth");

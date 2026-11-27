@@ -241,7 +241,7 @@
     "shop": {
       "title": "Wenn du einen Skill kaufst",
       "stored": "Ein begonnener Kauf speichert eine Bestellung in derselben Datenbank: das Produkt, das gewählte Netzwerk und den Token, den Betrag, die Empfangsadresse, die Uhrzeit und deine IP-Adresse. Die IP-Adresse begrenzt Bestellungen und Zahlungsprüfungen pro Tag. Wenn du einen Transaktions-Hash einfügst, wird er mit der Bestellung gespeichert, zusammen mit einer verschlüsselten (gehashten) Kopie deines Download-Links.",
-      "visits": "Das Öffnen einer Skill-Seite zählt einen Besuch in derselben Datenbank: ein verschlüsselter (gehashter) Besucher-Code aus deiner IP-Adresse, der sich jeden Tag ändert (die IP-Adresse selbst wird für einen Besuch nicht gespeichert), der Name der Website, von der du kommst, etwa instagram.com, die Sprache der Seite und die Uhrzeit. Ein Tipp auf den WhatsApp-Button wird genauso gezählt. Mohammad bekommt über Resend eine E-Mail, wenn jemand die Seite öffnet, auf WhatsApp tippt oder eine Bestellung beginnt, mit diesen Zahlen und nichts, das dich benennt.",
+      "visits": "Das Öffnen einer Skill-Seite zählt einen Besuch in derselben Datenbank: ein verschlüsselter (gehashter) Besucher-Code aus deiner IP-Adresse, der sich jeden Tag ändert (die IP-Adresse selbst wird für einen Besuch nicht gespeichert), der Name der Website, von der du kommst, etwa instagram.com, die Sprache der Seite und die Uhrzeit. Ein Tipp auf den WhatsApp-Button oder auf den Download-Button eines kostenlosen PDFs wird genauso gezählt. Mohammad bekommt über Resend eine E-Mail, wenn jemand die Seite öffnet, auf WhatsApp tippt, ein kostenloses PDF herunterlädt oder eine Bestellung beginnt, mit diesen Zahlen und nichts, das dich benennt.",
       "chain": "Um die Zahlung zu prüfen, sucht der Server die Transaktion auf einem öffentlichen Ethereum-Knoten (PublicNode) oder Tron-Knoten (TronGrid). Die Überweisung selbst, samt der Wallet, von der du bezahlt hast, ist auf der Blockchain ohnehin öffentlich. Mohammad bekommt die Bestellung und den Transaktions-Hash per E-Mail über Resend.",
       "whatsapp": "Wenn du stattdessen über WhatsApp schreibst, verarbeitet WhatsApp dieses Gespräch nach eigenen Bedingungen."
     },
@@ -912,6 +912,51 @@
       "a3": "Speichere ihn zuerst als PDF. Zweispaltige Layouts werden womöglich in falscher Reihenfolge gelesen; die Neufassung ist immer einspaltig, und das liest jedes Bewerbungssystem.",
       "q4": "Ich habe meinen Download-Link verloren.",
       "a4": "Schreib mir auf WhatsApp mit dem Transaktions-Hash, dann schicke ich dir einen neuen."
+    }
+  },
+  "motionTips": {
+    "metaTitle": "4 Motion Tips für Claude-Videos: ein kostenloses PDF",
+    "metaDescription": "Vier Techniken, mit denen Videos aus Claude professionell aussehen. Ein kostenloses PDF mit drei Seiten und einem Prompt pro Tipp zum Kopieren und Einfügen.",
+    "line1": "4 Motion Tips",
+    "line2": "Für Claude-Videos",
+    "sub": "Vier Techniken, mit denen Videos aus Claude professionell aussehen, Prompts inklusive.",
+    "download": "Kostenloses PDF herunterladen",
+    "fileNote": "Kostenlos. 3 Seiten auf Englisch, ohne Anmeldung.",
+    "pages": {
+      "caption1": "Seite 1: die vier Tipps auf einen Blick",
+      "caption2": "Seite 2: jeder Tipp erklärt",
+      "caption3": "Seite 3: ein Prompt pro Tipp",
+      "alt1": "Titelseite des PDFs: 4 motion tips for Claude videos, mit den Tipps A reference, Beats before code, One box und Watch the frames",
+      "alt2": "Seite 2 des PDFs: die vier Tipps, jeder mit einem kurzen Absatz dazu, was zu tun ist und warum",
+      "alt3": "Seite 3 des PDFs: vier Prompts zum Kopieren, einer pro Tipp, die anzupassenden Stellen in eckigen Klammern"
+    },
+    "inside": {
+      "heading": "Was drin ist",
+      "sub": "Vier Tipps, hier je in einem Satz. Das PDF erklärt jeden Tipp und gibt dir einen Prompt für Claude.",
+      "reference": {
+        "title": "Eine Referenz",
+        "body": "Gib Claude ein Reel, das dir gefällt: Es übernimmt die Grammatik, nie den Inhalt."
+      },
+      "beats": {
+        "title": "Beats vor dem Code",
+        "body": "Lass dir vor jedem Code eine Tabelle Beat für Beat geben, damit du das Timing korrigierst, bevor etwas gerendert wird."
+      },
+      "box": {
+        "title": "Eine Box",
+        "body": "Ein Container ohne Schnitt: Er ändert Größe, Eckenradius und Farbe mit Spring-Animationen."
+      },
+      "frames": {
+        "title": "Schau auf die Frames",
+        "body": "Claude kann sehen, also lass es einen Kontaktbogen seiner eigenen Frames prüfen und korrigieren, was nicht stimmt."
+      }
+    },
+    "credits": {
+      "heading": "Quellen",
+      "body": "Aufgebaut auf öffentlicher Arbeit: Movez (@0xMovez) <movez>„How to build motion design studio with Opus 5.5“</movez> und das Video von Lukas Margerie <lukas>„How to Make Insane Motion Graphics With Opus 5.5“</lukas>."
+    },
+    "get": {
+      "heading": "Hol dir das PDF",
+      "sub": "Drei Seiten auf Englisch: das Titelblatt, die vier Tipps erklärt und ein Prompt pro Tipp. Kostenlos, ohne Anmeldung."
     }
   }
 }

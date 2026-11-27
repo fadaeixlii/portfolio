@@ -16,6 +16,7 @@ export type ShopSaleEmailInput = {
 export type ShopAlert =
   | { kind: "visit"; productId: ProductId; referrer: string | null; locale: string | null }
   | { kind: "whatsapp"; productId: ProductId }
+  | { kind: "download"; productId: ProductId }
   | { kind: "order"; productId: ProductId; chain: "eth" | "tron"; token: string; amount: string };
 
 const EXPLORER = {
@@ -41,7 +42,7 @@ function productName(productId: string): string {
 /** The last 24 hours on one product, for the footer of every shop email. */
 async function last24h(productId: string): Promise<string> {
   try {
-    const [row] = await sql<{ visitors: number; whatsapp: number; orders: number; paid: number }[]>`
+    const [row] = await sql<{ visitors: number; whatsapp: number; downloads: number; orders: number; paid: number }[]>`
       select
         (select count(distinct visitor)::int from shop_events
           where kind = 'visit' and product_id = ${productId}
@@ -49,6 +50,9 @@ async function last24h(productId: string): Promise<string> {
         (select count(*)::int from shop_events
           where kind = 'whatsapp' and product_id = ${productId}
             and created_at > now() - interval '24 hours') as whatsapp,
+        (select count(*)::int from shop_events
+          where kind = 'download' and product_id = ${productId}
+            and created_at > now() - interval '24 hours') as downloads,
         (select count(*)::int from shop_orders
           where product_id = ${productId}
             and created_at > now() - interval '24 hours') as orders,
@@ -60,6 +64,7 @@ async function last24h(productId: string): Promise<string> {
       `<p>Last 24 hours on ${escapeHtml(productName(productId))}:</p><ul>` +
       `<li>Visitors: ${row.visitors}</li>` +
       `<li>WhatsApp taps: ${row.whatsapp}</li>` +
+      `<li>Free downloads: ${row.downloads}</li>` +
       `<li>Crypto orders started: ${row.orders}</li>` +
       `<li>Paid: ${row.paid}</li></ul>`
     );
@@ -70,9 +75,9 @@ async function last24h(productId: string): Promise<string> {
 }
 
 /**
- * Tells the owner someone opened a shop page, tapped WhatsApp or started a
- * crypto order. Never throws: it runs after the response, and a lost alert
- * must not break the page or the checkout.
+ * Tells the owner someone opened a shop page, tapped WhatsApp, downloaded a
+ * free PDF or started a crypto order. Never throws: it runs after the
+ * response, and a lost alert must not break the page or the checkout.
  */
 export async function sendShopAlertEmail(alert: ShopAlert): Promise<void> {
   try {
@@ -90,6 +95,9 @@ export async function sendShopAlertEmail(alert: ShopAlert): Promise<void> {
     } else if (alert.kind === "whatsapp") {
       subject = `${name}: someone tapped WhatsApp`;
       body = "<p>They may message you on WhatsApp in a moment.</p>";
+    } else if (alert.kind === "download") {
+      subject = `${name}: someone downloaded the free PDF`;
+      body = "";
     } else {
       subject = `${name}: crypto order started (${alert.amount} ${alert.token} on ${CHAIN_NAME[alert.chain]})`;
       body = "<p>They have the wallet address now. Another email comes if the payment is verified.</p>";
