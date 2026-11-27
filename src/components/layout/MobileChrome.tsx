@@ -11,13 +11,14 @@ import { cn } from "@/lib/cn";
 
 /**
  * Tab icons, drawn as single stroked paths at 24x24 so they inherit
- * `currentColor` and need no icon dependency for five glyphs.
+ * `currentColor` and need no icon dependency for six glyphs.
  */
 const TABS = [
   { href: "/", key: "home", d: "M3 10.6 12 3.4l9 7.2V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z" },
   { href: "/work", key: "work", d: "M3.5 3.5h7v7h-7zM13.5 3.5h7v7h-7zM3.5 13.5h7v7h-7zM13.5 13.5h7v7h-7z" },
   { href: "/experience", key: "experience", d: "M6 3v18M6 7h14M6 13h10M6 19h12" },
   { href: "/stack", key: "stack", d: "M12 3.2 3 8l9 4.8L21 8ZM3 14l9 4.8L21 14" },
+  { href: "/skills", key: "skills", d: "M13 2.5 4.5 13.5H11l-1 8 8.5-11H12Z" },
   { href: "/schedule", key: "schedule", d: "M3.5 5h17v14h-17zM3.5 6.2 12 13l8.5-6.8" },
 ] as const;
 
@@ -30,7 +31,7 @@ const LANG_NAMES: Record<string, string> = {
 };
 
 /**
- * The mobile shell: a 56px header, a fixed five-tab bar on the bottom edge,
+ * The mobile shell: a 56px header, a fixed six-tab bar on the bottom edge,
  * and a bottom sheet for language.
  *
  * It replaces the desktop nav below `lg` rather than restyling it. The nav
@@ -136,7 +137,7 @@ export function MobileChrome() {
 
       <nav
         aria-label={t("sections")}
-        className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-5 border-t-2 border-hairline bg-paper pb-[env(safe-area-inset-bottom)]"
+        className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-6 border-t-2 border-hairline bg-paper pb-[env(safe-area-inset-bottom)]"
       >
         {TABS.map(({ href, key, d }) => {
           const active = href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -162,7 +163,7 @@ export function MobileChrome() {
               >
                 <path d={d} />
               </svg>
-              <span className="text-center text-[length:9px] font-bold uppercase leading-none tracking-wide">
+              <span className="max-w-full text-center text-[length:9px] font-bold uppercase leading-none tracking-wide [overflow-wrap:anywhere]">
                 {t(key)}
               </span>
             </Link>

@@ -82,6 +82,24 @@ test.describe("chrome stays on screen", () => {
     });
   }
 
+  // Six tabs at 320px: a long label (Greek "Technologies") must wrap inside
+  // its own tab, not run into the next one.
+  test("el: every tab label stays inside its tab at 320px", async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 800 });
+    await page.goto("/el");
+    const links = await page.getByRole("navigation", { name: "Ενότητες" }).getByRole("link").all();
+    expect(links).toHaveLength(6);
+    for (const link of links) {
+      const fits = await link.evaluate((a) => {
+        const range = document.createRange();
+        range.selectNodeContents(a.querySelector("span")!);
+        const text = range.getBoundingClientRect(), cell = a.getBoundingClientRect();
+        return text.left >= cell.left - 0.5 && text.right <= cell.right + 0.5;
+      });
+      expect(fits, await link.innerText()).toBe(true);
+    }
+  });
+
   test("the desktop pill fits at lg", async ({ page }) => {
     await page.setViewportSize({ width: 1024, height: 800 });
     await page.goto("/en");

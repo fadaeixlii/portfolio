@@ -8,6 +8,7 @@
     "work": "Arbeiten",
     "experience": "Erfahrung",
     "stack": "Stack",
+    "skills": "Skills",
     "schedule": "Termin buchen",
     "primary": "Hauptnavigation",
     "sections": "Bereiche"
@@ -958,5 +959,17 @@
       "heading": "Hol dir das PDF",
       "sub": "Drei Seiten auf Englisch: das Titelblatt, die vier Tipps erklärt und ein Prompt pro Tipp. Kostenlos, ohne Anmeldung."
     }
+  },
+  "skills": {
+    "metaTitle": "Claude-Code-Skills und kostenlose Guides",
+    "metaDescription": "Claude-Code-Skills aus den fadaeixlii-Videos: gemalte Videos, Erklärfilme, Website-Relaunches, 3D-Reisekarten und mehr. Kostenlose PDFs zum Download, bezahlte Skills für eine einmalige Zahlung.",
+    "line1": "Skills",
+    "line2": "Gratis und bezahlt",
+    "sub": "Claude-Code-Skills und Guides aus den Videos. Kostenlose als sofortiger Download, bezahlte für eine einmalige Zahlung.",
+    "free": "Gratis",
+    "pagination": "Seiten",
+    "previous": "Zurück",
+    "next": "Weiter",
+    "page": "Seite {n}"
   }
 }

@@ -8,6 +8,7 @@
     "work": "Werk",
     "experience": "Ervaring",
     "stack": "Stack",
+    "skills": "Skills",
     "schedule": "Gesprek plannen",
     "primary": "Hoofdnavigatie",
     "sections": "Secties"
@@ -958,5 +959,17 @@
       "heading": "De gratis pdf",
       "sub": "Drie pagina's in het Engels: de voorpagina, de vier tips uitgelegd en een prompt per tip. Gratis, zonder aanmelding."
     }
+  },
+  "skills": {
+    "metaTitle": "Claude Code-skills en gratis gidsen",
+    "metaDescription": "Claude Code-skills uit de fadaeixlii-video's: geschilderde video's, uitlegfilms, nieuwe websites, 3D-reiskaarten en meer. Gratis pdf's om te downloaden, betaalde skills voor één betaling.",
+    "line1": "Skills",
+    "line2": "Gratis en betaald",
+    "sub": "Claude Code-skills en gidsen uit de video's. Gratis als directe download, betaald voor één betaling.",
+    "free": "Gratis",
+    "pagination": "Pagina's",
+    "previous": "Vorige",
+    "next": "Volgende",
+    "page": "Pagina {n}"
   }
 }
