@@ -241,7 +241,7 @@
     "shop": {
       "title": "If you buy a skill",
       "stored": "Starting a purchase stores an order in the same database: the product, the network and token you picked, the amount, the receiving address, the time and your IP address. The IP address limits orders and payment checks per day. When you paste a transaction hash it is stored with the order, together with a scrambled (hashed) copy of your download link.",
-      "visits": "Opening a skill page counts one visit in the same database: a scrambled (hashed) visitor code made from your IP address that changes every day (the IP address itself is not stored for a visit), the name of the site that sent you, like instagram.com, the page language and the time. A tap on the WhatsApp button is counted the same way. Mohammad gets an email through Resend when someone opens the page, taps WhatsApp or starts an order, with these counts and nothing that names you.",
+      "visits": "Opening a skill page counts one visit in the same database: a scrambled (hashed) visitor code made from your IP address that changes every day (the IP address itself is not stored for a visit), the name of the site that sent you, like instagram.com, the page language and the time. A tap on the WhatsApp button or on a free PDF's download button is counted the same way. Mohammad gets an email through Resend when someone opens the page, taps WhatsApp, downloads a free PDF or starts an order, with these counts and nothing that names you.",
       "chain": "To check the payment, the server looks the transaction up on a public Ethereum node (PublicNode) or Tron node (TronGrid). The transfer itself, including the wallet you paid from, is public on the blockchain anyway. Mohammad is emailed the order and the transaction hash through Resend.",
       "whatsapp": "If you message on WhatsApp instead, WhatsApp handles that conversation under its own terms."
     },
@@ -912,6 +912,51 @@
       "a3": "Save it as PDF first. Two-column layouts may read out of order; the rewrite is always one column, which every hiring system reads.",
       "q4": "I lost my download link.",
       "a4": "Message me on WhatsApp with the transaction hash and I'll send a new one."
+    }
+  },
+  "motionTips": {
+    "metaTitle": "4 Motion Tips for Claude Videos: a free PDF",
+    "metaDescription": "Four techniques that make videos made with Claude look professional. A free three-page PDF with a prompt for each tip that you can copy and paste.",
+    "line1": "4 Motion Tips",
+    "line2": "For Claude videos",
+    "sub": "Four techniques that make videos made with Claude look professional, prompts included.",
+    "download": "Download the free PDF",
+    "fileNote": "Free. 3 pages, no sign-up.",
+    "pages": {
+      "caption1": "Page 1: the four tips at a glance",
+      "caption2": "Page 2: each tip explained",
+      "caption3": "Page 3: a prompt for each tip",
+      "alt1": "Cover page of the PDF: 4 motion tips for Claude videos, listing A reference, Beats before code, One box and Watch the frames",
+      "alt2": "Page 2 of the PDF: the four tips, each with a short paragraph on what to do and why",
+      "alt3": "Page 3 of the PDF: four prompts to copy and paste, one per tip, with the parts to change in square brackets"
+    },
+    "inside": {
+      "heading": "What's inside",
+      "sub": "Four tips, one sentence each. The PDF explains each one and gives you a prompt to paste into Claude.",
+      "reference": {
+        "title": "A reference",
+        "body": "Give Claude a reel you love: it copies the grammar, never the content."
+      },
+      "beats": {
+        "title": "Beats before code",
+        "body": "Ask for a beat-by-beat table before any code, so you fix the pacing before anything renders."
+      },
+      "box": {
+        "title": "One box",
+        "body": "One container that never cuts: it changes size, radius and colour on springs."
+      },
+      "frames": {
+        "title": "Watch the frames",
+        "body": "Claude can see, so make it check a contact sheet of its own frames and fix what is off."
+      }
+    },
+    "credits": {
+      "heading": "Credits",
+      "body": "Built on public work: Movez (@0xMovez) <movez>“How to build motion design studio with Opus 5.5”</movez> and Lukas Margerie's video <lukas>“How to Make Insane Motion Graphics With Opus 5.5”</lukas>."
+    },
+    "get": {
+      "heading": "Get the PDF",
+      "sub": "Three pages: the cover, the four tips explained, and a prompt for each one. Free, no sign-up."
     }
   }
 }

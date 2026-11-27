@@ -72,3 +72,30 @@ for (const [locale, { checkout }] of Object.entries(TRAIL)) {
     await expect(page.locator("#buy").getByRole("button", { name: checkout })).toBeVisible();
   });
 }
+
+// /skills/motion-tips: the first free product. A download link to the public
+// PDF at the top and the bottom, the PDF itself answers, and no checkout.
+const FREE = {
+  en: "Download the free PDF",
+  fa: "دانلود PDF رایگان",
+} as const;
+
+for (const [locale, download] of Object.entries(FREE)) {
+  test(`${locale}: motion tips offers the free PDF and no checkout`, async ({ page, request }) => {
+    await page.goto(`/${locale}/skills/motion-tips`);
+    const links = page.getByRole("link", { name: download });
+    await expect(links).toHaveCount(2);
+    for (const link of await links.all()) {
+      await expect(link).toHaveAttribute("href", "/shop/motion-tips/4-motion-tips.pdf");
+      await expect(link).toHaveAttribute("download", "");
+    }
+    await expect(page.locator("main img")).toHaveCount(3);
+    // No checkout: its network and token pickers are radio inputs, its action a button.
+    await expect(page.locator("#buy")).toHaveCount(0);
+    await expect(page.locator("main").locator("input, button")).toHaveCount(0);
+
+    const pdf = await request.get("/shop/motion-tips/4-motion-tips.pdf");
+    expect(pdf.status()).toBe(200);
+    expect(pdf.headers()["content-type"]).toBe("application/pdf");
+  });
+}

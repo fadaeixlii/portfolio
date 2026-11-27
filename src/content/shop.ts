@@ -2,21 +2,40 @@
  * Everything the shop sells and where it gets paid. Pure data, safe to
  * import from the client (the wallets and token contracts are public).
  *
- * Adding a product is one entry in SHOP_PRODUCTS plus its zip in
- * `private/shop/`.
+ * One structure for every skill video's product, free or paid: a paid entry
+ * has a price and a zip in `private/shop/`, sold through the crypto checkout;
+ * a free entry has `free: true` and a PDF in `public/shop/<slug>/` that anyone
+ * can download. Adding a product is one entry in SHOP_PRODUCTS plus its page
+ * under `src/app/[locale]/skills/<slug>/`.
  */
 
 export type Chain = "eth" | "tron";
 export type Token = "USDT" | "USDC";
 
+type PaidProduct = {
+  name: string;
+  /** In stablecoin units (1 USDT = 1 USDC = 1 USD). */
+  priceUsd: number;
+  /** Shown beside the price only — never used for maths. */
+  approxEur: number;
+  /** Served from `private/shop/<file>`, never from `public/`. */
+  file: string;
+};
+
+type FreeProduct = {
+  name: string;
+  free: true;
+  /** Public URL path of the PDF (a file under `public/`). */
+  pdf: string;
+};
+
+export const isFree = (product: PaidProduct | FreeProduct): product is FreeProduct => "free" in product;
+
 export const SHOP_PRODUCTS = {
   "ink-motion": {
     name: "Ink Motion",
-    /** In stablecoin units (1 USDT = 1 USDC = 1 USD). */
     priceUsd: 6,
-    /** Shown beside the price only — never used for maths. */
     approxEur: 5,
-    /** Served from `private/shop/<file>`, never from `public/`. */
     file: "ink-motion.zip",
   },
   "paper-trail": {
@@ -49,9 +68,18 @@ export const SHOP_PRODUCTS = {
     approxEur: 5,
     file: "first-skim.zip",
   },
-} satisfies Record<string, { name: string; priceUsd: number; approxEur: number; file: string }>;
+  "motion-tips": {
+    name: "4 Motion Tips for Claude Videos",
+    free: true,
+    pdf: "/shop/motion-tips/4-motion-tips.pdf",
+  },
+} satisfies Record<string, PaidProduct | FreeProduct>;
 
 export type ProductId = keyof typeof SHOP_PRODUCTS;
+/** What the crypto checkout sells: passing it a free product does not compile. */
+export type PaidProductId = {
+  [K in ProductId]: (typeof SHOP_PRODUCTS)[K] extends FreeProduct ? never : K;
+}[ProductId];
 
 type ChainConfig = {
   /** Receiving wallet. Tron in base58, Ethereum in 0x hex. */

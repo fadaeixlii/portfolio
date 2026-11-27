@@ -5,7 +5,7 @@ import { stat } from "node:fs/promises";
 import { join } from "node:path";
 import { Readable } from "node:stream";
 import { sql } from "@/lib/db";
-import { SHOP_PRODUCTS, SHOP_RULES, type ProductId } from "@/content/shop";
+import { SHOP_PRODUCTS, SHOP_RULES, isFree, type ProductId } from "@/content/shop";
 
 export const dynamic = "force-dynamic";
 
@@ -35,7 +35,7 @@ export async function GET(
     return NextResponse.json({ error: "server" }, { status: 503 });
   }
   const product = row && SHOP_PRODUCTS[row.product_id as ProductId];
-  if (!product) {
+  if (!product || isFree(product)) {
     return NextResponse.json({ error: "not_found" }, { status: 404 });
   }
 
