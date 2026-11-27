@@ -1,7 +1,8 @@
 import { test, expect } from "@playwright/test";
 
-// The favicon, Apple icon and header mark all come from public/logo.jpg.
-test("favicon, app icons and the header mark are served", async ({ page, request }) => {
+// The favicon, Apple icon and phone header mark all come from public/logo.jpg.
+// The desktop nav carries no mark (removed 2026-11-27): words only.
+test("favicon and app icons are served, the desktop nav has no mark", async ({ page, request }) => {
   const ico = await request.get("/favicon.ico");
   expect(ico.status()).toBe(200);
   expect(ico.headers()["content-type"]).toContain("image/");
@@ -15,9 +16,9 @@ test("favicon, app icons and the header mark are served", async ({ page, request
     expect((await request.get(href!)).status()).toBe(200);
   }
 
-  // Desktop nav pill carries the mark as its first cell.
-  const mark = page.locator('nav img[src*="brand%2Fmark.png"], nav img[src*="brand/mark.png"]');
-  await expect(mark.first()).toBeVisible();
+  const nav = page.getByRole("navigation", { name: "Primary" });
+  await expect(nav).toBeVisible();
+  await expect(nav.locator("img")).toHaveCount(0);
 });
 
 test.describe("on a phone", () => {

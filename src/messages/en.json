@@ -8,6 +8,7 @@
     "work": "Work",
     "experience": "Experience",
     "stack": "Stack",
+    "skills": "Skills",
     "schedule": "Book a call",
     "primary": "Primary",
     "sections": "Sections"
@@ -958,5 +959,17 @@
       "heading": "Get the PDF",
       "sub": "Three pages: the cover, the four tips explained, and a prompt for each one. Free, no sign-up."
     }
+  },
+  "skills": {
+    "metaTitle": "Claude Code skills and free guides",
+    "metaDescription": "Claude Code skills from the fadaeixlii videos: painted videos, explainer films, website rebuilds, 3D trip maps and more. Free PDFs to download, paid skills for one payment.",
+    "line1": "Skills",
+    "line2": "Free and paid",
+    "sub": "Claude Code skills and guides from the videos. Free ones download right away. Paid ones are one payment, yours to keep.",
+    "free": "Free",
+    "pagination": "Pages",
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page {n}"
   }
 }

@@ -6,7 +6,8 @@
  * has a price and a zip in `private/shop/`, sold through the crypto checkout;
  * a free entry has `free: true` and a PDF in `public/shop/<slug>/` that anyone
  * can download. Adding a product is one entry in SHOP_PRODUCTS plus its page
- * under `src/app/[locale]/skills/<slug>/`.
+ * under `src/app/[locale]/skills/<slug>/`; the /skills list picks it up from
+ * here (newest last in this object, first on the list).
  */
 
 export type Chain = "eth" | "tron";
@@ -20,6 +21,8 @@ type PaidProduct = {
   approxEur: number;
   /** Served from `private/shop/<file>`, never from `public/`. */
   file: string;
+  /** Card image on /skills, a file under `public/`. */
+  poster: string;
 };
 
 type FreeProduct = {
@@ -27,6 +30,8 @@ type FreeProduct = {
   free: true;
   /** Public URL path of the PDF (a file under `public/`). */
   pdf: string;
+  /** Card image on /skills, a file under `public/`. */
+  poster: string;
 };
 
 export const isFree = (product: PaidProduct | FreeProduct): product is FreeProduct => "free" in product;
@@ -37,41 +42,48 @@ export const SHOP_PRODUCTS = {
     priceUsd: 6,
     approxEur: 5,
     file: "ink-motion.zip",
+    poster: "/shop/ink-motion/ferry.jpg",
   },
   "paper-trail": {
     name: "Paper Trail",
     priceUsd: 6,
     approxEur: 5,
     file: "paper-trail.zip",
+    poster: "/shop/paper-trail/reel.jpg",
   },
   "lights-on": {
     name: "Lights On",
     priceUsd: 6,
     approxEur: 5,
     file: "lights-on.zip",
+    poster: "/shop/lights-on/after-phone.webp",
   },
   "trail-reel": {
     name: "Trail Reel",
     priceUsd: 6,
     approxEur: 5,
     file: "trail-reel.zip",
+    poster: "/shop/trail-reel/dolomites-atlas.jpg",
   },
   "one-folder-studio": {
     name: "One Folder Studio",
     priceUsd: 12,
     approxEur: 10,
     file: "one-folder-studio.zip",
+    poster: "/shop/one-folder-studio/reel.jpg",
   },
   "first-skim": {
     name: "First Skim",
     priceUsd: 6,
     approxEur: 5,
     file: "first-skim.zip",
+    poster: "/shop/first-skim/reel.jpg",
   },
   "motion-tips": {
     name: "4 Motion Tips for Claude Videos",
     free: true,
     pdf: "/shop/motion-tips/4-motion-tips.pdf",
+    poster: "/shop/motion-tips/page-1.webp",
   },
 } satisfies Record<string, PaidProduct | FreeProduct>;
 

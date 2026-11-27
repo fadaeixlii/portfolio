@@ -99,3 +99,29 @@ for (const [locale, download] of Object.entries(FREE)) {
     expect(pdf.headers()["content-type"]).toBe("application/pdf");
   });
 }
+
+// /skills: every product, paid and free, newest first, six a page. The nav
+// links to it and stays marked on page 2.
+test("skills list pages through every product, paid and free", async ({ page, request }) => {
+  await page.goto("/en/skills");
+  const cards = page.locator("main a").filter({ has: page.locator("h2") });
+  await expect(cards).toHaveCount(6);
+  await expect(cards.first()).toHaveAttribute("href", "/en/skills/motion-tips");
+  await expect(cards.first()).toContainText("Free");
+  await expect(cards.nth(1)).toHaveAttribute("href", "/en/skills/first-skim");
+  await expect(cards.nth(1)).toContainText("€5");
+
+  const pager = page.getByRole("navigation", { name: "Pages" });
+  await expect(pager.getByRole("link", { name: "Page 1" })).toHaveAttribute("aria-current", "page");
+  await pager.getByRole("link", { name: "Next" }).click();
+  await expect(page).toHaveURL(/\/en\/skills\/page\/2$/);
+  await expect(cards).toHaveCount(1);
+  await expect(cards.first()).toHaveAttribute("href", "/en/skills/ink-motion");
+  await expect(pager.getByRole("link", { name: "Previous" })).toHaveAttribute("href", "/en/skills");
+
+  const navLink = page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: "Skills" });
+  await expect(navLink).toHaveAttribute("aria-current", "page");
+
+  expect((await request.get("/en/skills/page/1")).status()).toBe(404);
+  expect((await request.get("/en/skills/page/3")).status()).toBe(404);
+});

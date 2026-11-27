@@ -30,6 +30,8 @@ const ROUTES = [
   "/contact",
   "/privacy",
   "/styleguide",
+  "/skills",
+  "/skills/page/2",
   "/skills/lights-on",
   "/skills/trail-reel",
   "/skills/one-folder-studio",
@@ -117,7 +119,7 @@ test("keyboard walk reaches skip link, nav, and CTA with a visible focus ring", 
     });
   expect(await outlineWidth()).not.toBe("0px");
 
-  const expectedLabels = ["home", "work", "experience", "stack", "schedule"];
+  const expectedLabels = ["home", "work", "experience", "stack", "skills", "schedule"];
   for (const key of expectedLabels) {
     await page.keyboard.press("Tab");
     const focused = page.locator(":focus");
