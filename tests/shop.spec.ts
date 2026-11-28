@@ -73,32 +73,81 @@ for (const [locale, { checkout }] of Object.entries(TRAIL)) {
   });
 }
 
-// /skills/motion-tips: the first free product. A download link to the public
-// PDF at the top and the bottom, the PDF itself answers, and no checkout.
+// /skills/motion-tips: the first free product. The PDF comes by email only: an
+// email form at the top and the bottom, the notice beside each button links the
+// privacy page, no download link, no public copy of the file, no checkout.
 const FREE = {
-  en: "Download the free PDF",
-  fa: "دانلود PDF رایگان",
+  en: { email: "Your email", send: "Email me the PDF", privacy: "privacy policy" },
+  fa: { email: "ایمیل شما", send: "PDF را برایم ایمیل کن", privacy: "سیاست حریم خصوصی" },
 } as const;
 
-for (const [locale, download] of Object.entries(FREE)) {
-  test(`${locale}: motion tips offers the free PDF and no checkout`, async ({ page, request }) => {
+for (const [locale, { email, send, privacy }] of Object.entries(FREE)) {
+  test(`${locale}: motion tips asks for an email, with no download link and no checkout`, async ({ page, request }) => {
     await page.goto(`/${locale}/skills/motion-tips`);
-    const links = page.getByRole("link", { name: download });
-    await expect(links).toHaveCount(2);
-    for (const link of await links.all()) {
-      await expect(link).toHaveAttribute("href", "/shop/motion-tips/4-motion-tips.pdf");
-      await expect(link).toHaveAttribute("download", "");
+    const forms = page.locator("main form");
+    await expect(forms).toHaveCount(2);
+    for (const form of await forms.all()) {
+      await expect(form.getByRole("textbox", { name: email })).toHaveAttribute("type", "email");
+      // The notice is the button's description, so a screen reader hears it on the button.
+      await expect(form.getByRole("button", { name: send })).toHaveAccessibleDescription(new RegExp(privacy));
+      await expect(form.getByRole("link", { name: privacy })).toHaveAttribute("href", `/${locale}/privacy`);
     }
+    await expect(page.locator('main a[download], main a[href$=".pdf"]')).toHaveCount(0);
     await expect(page.locator("main img")).toHaveCount(3);
-    // No checkout: its network and token pickers are radio inputs, its action a button.
+    // No checkout: its network and token pickers are radio inputs.
     await expect(page.locator("#buy")).toHaveCount(0);
-    await expect(page.locator("main").locator("input, button")).toHaveCount(0);
+    await expect(page.locator("main input[type=radio]")).toHaveCount(0);
 
-    const pdf = await request.get("/shop/motion-tips/4-motion-tips.pdf");
-    expect(pdf.status()).toBe(200);
-    expect(pdf.headers()["content-type"]).toBe("application/pdf");
+    expect((await request.get("/shop/motion-tips/4-motion-tips.pdf")).status()).toBe(404);
   });
 }
+
+// The form's states, on a mocked route (no database, no email): a bad address
+// never leaves the page, a server error keeps the address for a retry, and a
+// sent request replaces the form with a confirmation that takes focus.
+test("motion tips form: invalid, error and sent, by keyboard, with reduced motion", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  const bodies: unknown[] = [];
+  const answers = [{ status: 503, body: { error: "server" } }, { status: 200, body: { ok: true } }];
+  await page.route("**/api/shop/lead", async (route) => {
+    bodies.push(route.request().postDataJSON());
+    const answer = answers.shift()!;
+    await route.fulfill({ status: answer.status, json: answer.body });
+  });
+  await page.goto("/en/skills/motion-tips");
+  const form = page.locator("main form").first();
+  const input = form.getByRole("textbox", { name: "Your email" });
+
+  await input.fill("not-an-email");
+  await input.press("Enter");
+  await expect(input).toHaveAttribute("aria-invalid", "true");
+  await expect(form.getByRole("alert")).toHaveText("Enter a valid email address, like name@example.com.");
+  expect(bodies).toHaveLength(0);
+
+  // (A type=email input already drops surrounding spaces itself; the route's
+  // trim is covered in tests/unit/shop-lead.test.ts.)
+  await input.fill("Ada@Example.COM");
+  await input.press("Enter");
+  await expect(form.getByRole("alert")).toHaveText("Something went wrong and the email did not go out. Try again in a minute.");
+  await expect(input).not.toHaveAttribute("aria-invalid");
+  await expect(input).toHaveValue("Ada@Example.COM");
+  // Sent as typed; the route lowercases (tests/unit/shop-lead.test.ts).
+  expect(bodies).toEqual([{ productId: "motion-tips", email: "Ada@Example.COM", locale: "en" }]);
+
+  await form.getByRole("button", { name: "Email me the PDF" }).press("Enter");
+  const sent = page.getByRole("status").filter({ hasText: "The PDF is on its way to your inbox." });
+  await expect(sent).toBeVisible();
+  await expect(sent).toBeFocused();
+  await expect(page.locator("main form")).toHaveCount(1);
+  expect(bodies).toHaveLength(2);
+});
+
+// Where the unsubscribe link lands: a plain confirmation, kept out of search.
+test("unsubscribed page confirms in the visitor's language and is not indexed", async ({ page }) => {
+  await page.goto("/de/unsubscribed");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Abgemeldet");
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
+});
 
 // /skills: every product, paid and free, newest first, six a page. The nav
 // links to it and stays marked on page 2.

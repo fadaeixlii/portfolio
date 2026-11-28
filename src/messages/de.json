@@ -212,7 +212,7 @@
     "line1": "Datenschutz",
     "line2": "Erklärung",
     "subheading": "Was diese Website erfasst, wozu, und wer es sonst noch sieht.",
-    "updated": "Zuletzt aktualisiert: <date>14. November 2026</date>",
+    "updated": "Zuletzt aktualisiert: <date>28. November 2026</date>",
     "who": {
       "title": "Wer diese Website betreibt",
       "body": "Mohammad M. Khani mit Sitz in Athen, Griechenland, betreibt diese Website und ist für die hier beschriebenen Daten verantwortlich. Bei Fragen zu Ihren Daten schreiben Sie an <link>{email}</link>."
@@ -242,9 +242,16 @@
     "shop": {
       "title": "Wenn du einen Skill kaufst",
       "stored": "Ein begonnener Kauf speichert eine Bestellung in derselben Datenbank: das Produkt, das gewählte Netzwerk und den Token, den Betrag, die Empfangsadresse, die Uhrzeit und deine IP-Adresse. Die IP-Adresse begrenzt Bestellungen und Zahlungsprüfungen pro Tag. Wenn du einen Transaktions-Hash einfügst, wird er mit der Bestellung gespeichert, zusammen mit einer verschlüsselten (gehashten) Kopie deines Download-Links.",
-      "visits": "Das Öffnen einer Skill-Seite zählt einen Besuch in derselben Datenbank: ein verschlüsselter (gehashter) Besucher-Code aus deiner IP-Adresse, der sich jeden Tag ändert (die IP-Adresse selbst wird für einen Besuch nicht gespeichert), der Name der Website, von der du kommst, etwa instagram.com, die Sprache der Seite und die Uhrzeit. Ein Tipp auf den WhatsApp-Button oder auf den Download-Button eines kostenlosen PDFs wird genauso gezählt. Mohammad bekommt über Resend eine E-Mail, wenn jemand die Seite öffnet, auf WhatsApp tippt, ein kostenloses PDF herunterlädt oder eine Bestellung beginnt, mit diesen Zahlen und nichts, das dich benennt.",
+      "visits": "Das Öffnen einer Skill-Seite zählt einen Besuch in derselben Datenbank: ein verschlüsselter (gehashter) Besucher-Code aus deiner IP-Adresse, der sich jeden Tag ändert (die IP-Adresse selbst wird für einen Besuch nicht gespeichert), der Name der Website, von der du kommst, etwa instagram.com, die Sprache der Seite und die Uhrzeit. Ein Tipp auf den WhatsApp-Button wird genauso gezählt. Mohammad bekommt über Resend eine E-Mail, wenn jemand die Seite öffnet, auf WhatsApp tippt, ein kostenloses PDF anfordert oder eine Bestellung beginnt, mit diesen Zahlen und nichts, das dich benennt.",
       "chain": "Um die Zahlung zu prüfen, sucht der Server die Transaktion auf einem öffentlichen Ethereum-Knoten (PublicNode) oder Tron-Knoten (TronGrid). Die Überweisung selbst, samt der Wallet, von der du bezahlt hast, ist auf der Blockchain ohnehin öffentlich. Mohammad bekommt die Bestellung und den Transaktions-Hash per E-Mail über Resend.",
       "whatsapp": "Wenn du stattdessen über WhatsApp schreibst, verarbeitet WhatsApp dieses Gespräch nach eigenen Bedingungen."
+    },
+    "freePdf": {
+      "title": "Wenn du ein kostenloses PDF anforderst",
+      "stored": "Das Formular auf der Seite eines kostenlosen PDFs speichert deine E-Mail-Adresse, das Produkt, die Sprache der Seite und die Uhrzeit in derselben Datenbank. Die Anfrage wird außerdem mit demselben täglichen Besucher-Code wie ein Besuch gezählt, um jeden Besucher auf fünf Anfragen am Tag zu begrenzen; die IP-Adresse selbst wird nicht gespeichert.",
+      "use": "Deine E-Mail-Adresse wird für zwei Dinge genutzt: um dir das PDF über Resend zu schicken und um dir ab und zu von einem neuen kostenlosen Skill zu erzählen. Wer das PDF anfordert, kommt auf diese Liste, wie das Formular sagt. Mohammad bekommt eine E-Mail, wenn jemand Neues anfragt, mit Zahlen und nichts, das dich benennt.",
+      "unsubscribe": "Jede E-Mail hat einen Abmeldelink. Er nimmt deine Adresse sofort von der Liste, für jedes PDF, das du angefordert hast. Du kannst auch an <link>{email}</link> schreiben. Wer wieder ein kostenloses PDF anfordert, ist wieder auf der Liste.",
+      "kept": "Deine Adresse bleibt auf der Liste, bis du dich abmeldest. Danach bleibt sie als abgemeldet gespeichert, damit du keine E-Mails mehr bekommst. Soll sie ganz gelöscht werden, genügt eine E-Mail."
     },
     "retention": {
       "title": "Wie lange Daten gespeichert werden",
@@ -921,8 +928,7 @@
     "line1": "4 Motion Tips",
     "line2": "Für Claude-Videos",
     "sub": "Vier Techniken, mit denen Videos aus Claude professionell aussehen, Prompts inklusive.",
-    "download": "Kostenloses PDF herunterladen",
-    "fileNote": "Kostenlos. 3 Seiten auf Englisch, ohne Anmeldung.",
+    "fileNote": "Kostenlos. 3 Seiten auf Englisch, direkt in dein Postfach.",
     "pages": {
       "caption1": "Seite 1: die vier Tipps auf einen Blick",
       "caption2": "Seite 2: jeder Tipp erklärt",
@@ -957,7 +963,7 @@
     },
     "get": {
       "heading": "Hol dir das PDF",
-      "sub": "Drei Seiten auf Englisch: das Titelblatt, die vier Tipps erklärt und ein Prompt pro Tipp. Kostenlos, ohne Anmeldung."
+      "sub": "Drei Seiten auf Englisch: das Titelblatt, die vier Tipps erklärt und ein Prompt pro Tipp. Kostenlos, direkt in dein Postfach."
     }
   },
   "skills": {
@@ -971,5 +977,31 @@
     "previous": "Zurück",
     "next": "Weiter",
     "page": "Seite {n}"
+  },
+  "freePdf": {
+    "label": "Deine E-Mail-Adresse",
+    "submit": "PDF per E-Mail senden",
+    "notice": "Du bekommst das PDF per E-Mail und ab und zu eine E-Mail, wenn ein neuer kostenloser Skill erscheint. Abmelden geht jederzeit (<privacy>Datenschutzerklärung</privacy>).",
+    "sent": "Gesendet. Das PDF ist auf dem Weg in dein Postfach. Nach ein paar Minuten noch nichts da? Schau im Spam-Ordner nach.",
+    "errors": {
+      "invalid": "Gib eine gültige E-Mail-Adresse ein, etwa name@example.com.",
+      "rate_limited": "Zu viele Anfragen heute. Versuch es morgen noch einmal oder schreib mir direkt eine E-Mail.",
+      "server": "Etwas ist schiefgelaufen, die E-Mail wurde nicht gesendet. Versuch es in einer Minute noch einmal.",
+      "network": "Die Anfrage ist fehlgeschlagen. Prüf deine Verbindung und versuch es noch einmal."
+    },
+    "email": {
+      "subject": "Dein kostenloses PDF: {name}",
+      "body": "Hier ist {name}. Das PDF hängt an dieser E-Mail.",
+      "list": "Ab und zu schreibe ich dir, wenn ein neuer kostenloser Skill erscheint. Nichts für dich?",
+      "unsubscribe": "Abmelden",
+      "signoff": "Mohammad, fadaeixlii.dev"
+    }
+  },
+  "unsubscribed": {
+    "metaTitle": "Abgemeldet",
+    "metaDescription": "Diese Adresse bekommt keine E-Mails mehr zu neuen kostenlosen Skills.",
+    "line1": "Abgemeldet",
+    "line2": "Keine E-Mails mehr",
+    "sub": "Diese Adresse bekommt keine E-Mails mehr zu neuen kostenlosen Skills. Das PDF, das du schon hast, bleibt deins. Doch anders entschieden? Fordere wieder ein kostenloses PDF an, dann bist du wieder auf der Liste."
   }
 }

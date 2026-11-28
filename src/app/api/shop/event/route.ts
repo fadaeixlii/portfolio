@@ -1,16 +1,15 @@
 import { after } from "next/server";
-import { createHash } from "node:crypto";
 import { z } from "zod";
 import { sql } from "@/lib/db";
-import { clientIp } from "@/lib/http/client-ip";
 import { sendShopAlertEmail } from "@/lib/email/shop";
 import { isBot } from "@/lib/shop/bot";
+import { dailyVisitor } from "@/lib/shop/visitor";
 import { SHOP_PRODUCTS, SHOP_RULES, type ProductId } from "@/content/shop";
 
 export const dynamic = "force-dynamic";
 
 const eventSchema = z.object({
-  kind: z.enum(["visit", "whatsapp", "download"]),
+  kind: z.enum(["visit", "whatsapp"]),
   productId: z.enum(Object.keys(SHOP_PRODUCTS) as [ProductId, ...ProductId[]]),
   referrer: z
     .string()
@@ -24,8 +23,8 @@ const eventSchema = z.object({
 });
 
 /**
- * Counts a visit to a shop page or a tap on its WhatsApp or free download
- * button (a sendBeacon from the page) and emails the owner on the first of each kind
+ * Counts a visit to a shop page or a tap on its WhatsApp button (a
+ * sendBeacon from the page) and emails the owner on the first of each kind
  * per visitor per day, up to a daily cap that keeps Resend's free quota for
  * sale emails. Always answers 204: the beacon never reads the response.
  */
@@ -44,11 +43,7 @@ export async function POST(request: Request) {
   if (!parsed.success) return ok;
   const input = parsed.data;
 
-  const day = new Date().toISOString().slice(0, 10);
-  const visitor = createHash("sha256")
-    .update(`${process.env.SESSION_SECRET ?? ""}|${clientIp(request)}|${day}`)
-    .digest("hex")
-    .slice(0, 16);
+  const visitor = dailyVisitor(request);
 
   after(async () => {
     try {

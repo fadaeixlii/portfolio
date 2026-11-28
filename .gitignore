@@ -92,3 +92,5 @@ public/images/projects/**/admin-aichat.png
 
 # paid skill files: on the VPS only (~/portfolio/shop, mounted by docker-compose.prod.yml); the repo is public
 private/shop/*.zip
+# free PDFs: sent by email only (src/app/api/shop/lead), never by URL; same VPS folder as the zips
+private/shop/*.pdf

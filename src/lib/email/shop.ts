@@ -1,7 +1,17 @@
 import "server-only";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
+import { createTranslator } from "next-intl";
 import { sql } from "@/lib/db";
 import { sendResendEmail, escapeHtml } from "@/lib/email/resend";
-import { SHOP_PRODUCTS, type ProductId } from "@/content/shop";
+import { isRtl, type Locale } from "@/lib/i18n/routing";
+import { SITE_URL } from "@/lib/seo/metadata";
+import { SHOP_PRODUCTS, type FreeProductId, type ProductId } from "@/content/shop";
+import en from "@/messages/en.json";
+import de from "@/messages/de.json";
+import nl from "@/messages/nl.json";
+import fa from "@/messages/fa.json";
+import el from "@/messages/el.json";
 
 export type ShopSaleEmailInput = {
   orderId: string;
@@ -16,7 +26,7 @@ export type ShopSaleEmailInput = {
 export type ShopAlert =
   | { kind: "visit"; productId: ProductId; referrer: string | null; locale: string | null }
   | { kind: "whatsapp"; productId: ProductId }
-  | { kind: "download"; productId: ProductId }
+  | { kind: "signup"; productId: ProductId }
   | { kind: "order"; productId: ProductId; chain: "eth" | "tron"; token: string; amount: string };
 
 const EXPLORER = {
@@ -42,7 +52,7 @@ function productName(productId: string): string {
 /** The last 24 hours on one product, for the footer of every shop email. */
 async function last24h(productId: string): Promise<string> {
   try {
-    const [row] = await sql<{ visitors: number; whatsapp: number; downloads: number; orders: number; paid: number }[]>`
+    const [row] = await sql<{ visitors: number; whatsapp: number; leads: number; orders: number; paid: number }[]>`
       select
         (select count(distinct visitor)::int from shop_events
           where kind = 'visit' and product_id = ${productId}
@@ -50,9 +60,9 @@ async function last24h(productId: string): Promise<string> {
         (select count(*)::int from shop_events
           where kind = 'whatsapp' and product_id = ${productId}
             and created_at > now() - interval '24 hours') as whatsapp,
-        (select count(*)::int from shop_events
-          where kind = 'download' and product_id = ${productId}
-            and created_at > now() - interval '24 hours') as downloads,
+        (select count(*)::int from shop_leads
+          where product_id = ${productId}
+            and created_at > now() - interval '24 hours') as leads,
         (select count(*)::int from shop_orders
           where product_id = ${productId}
             and created_at > now() - interval '24 hours') as orders,
@@ -64,7 +74,7 @@ async function last24h(productId: string): Promise<string> {
       `<p>Last 24 hours on ${escapeHtml(productName(productId))}:</p><ul>` +
       `<li>Visitors: ${row.visitors}</li>` +
       `<li>WhatsApp taps: ${row.whatsapp}</li>` +
-      `<li>Free downloads: ${row.downloads}</li>` +
+      `<li>New emails for the free PDF: ${row.leads}</li>` +
       `<li>Crypto orders started: ${row.orders}</li>` +
       `<li>Paid: ${row.paid}</li></ul>`
     );
@@ -75,7 +85,7 @@ async function last24h(productId: string): Promise<string> {
 }
 
 /**
- * Tells the owner someone opened a shop page, tapped WhatsApp, downloaded a
+ * Tells the owner someone opened a shop page, tapped WhatsApp, asked for a
  * free PDF or started a crypto order. Never throws: it runs after the
  * response, and a lost alert must not break the page or the checkout.
  */
@@ -95,9 +105,10 @@ export async function sendShopAlertEmail(alert: ShopAlert): Promise<void> {
     } else if (alert.kind === "whatsapp") {
       subject = `${name}: someone tapped WhatsApp`;
       body = "<p>They may message you on WhatsApp in a moment.</p>";
-    } else if (alert.kind === "download") {
-      subject = `${name}: someone downloaded the free PDF`;
-      body = "";
+    } else if (alert.kind === "signup") {
+      // No address here, like every other alert: the list is in /admin.
+      subject = `${name}: someone asked for the free PDF`;
+      body = "<p>A new address is on the list. The full list is a CSV in /admin.</p>";
     } else {
       subject = `${name}: crypto order started (${alert.amount} ${alert.token} on ${CHAIN_NAME[alert.chain]})`;
       body = "<p>They have the wallet address now. Another email comes if the payment is verified.</p>";
@@ -145,4 +156,48 @@ export async function sendShopSaleEmail(input: ShopSaleEmailInput): Promise<void
   } catch (error) {
     console.error("shop sale email failed", input.orderId, error);
   }
+}
+
+const MESSAGES = { en, de, nl, fa, el };
+
+/** The link in every email to the list. Also in the owner's CSV, for later
+ *  emails to the list, which need one per address. */
+export function unsubscribeUrl(token: string): string {
+  return `${SITE_URL}/api/shop/unsubscribe/${token}`;
+}
+
+/**
+ * A free product's PDF, attached, to the address the form gave, in the
+ * visitor's language. Throws (missing file, Resend failure): the route then
+ * answers an error so the visitor can try again. The address only goes in
+ * `to`; nothing the visitor typed reaches the body.
+ */
+export async function sendFreePdfEmail(input: {
+  to: string;
+  productId: FreeProductId;
+  locale: Locale;
+  unsubscribeToken: string;
+}): Promise<void> {
+  const product = SHOP_PRODUCTS[input.productId];
+  // Outside public/ on purpose: this email is the only way to the file.
+  const pdf = await readFile(join(process.cwd(), "private", "shop", product.pdf));
+  const t = createTranslator({ locale: input.locale, messages: MESSAGES[input.locale], namespace: "freePdf.email" });
+  const url = unsubscribeUrl(input.unsubscribeToken);
+  const name = product.name;
+  const p = (text: string) => `<p>${escapeHtml(text)}</p>`;
+
+  await sendResendEmail({
+    from: fromEmail(),
+    to: input.to,
+    subject: t("subject", { name }),
+    text: [t("body", { name }), `${t("list")} ${t("unsubscribe")}: ${url}`, t("signoff")].join("\n\n"),
+    html:
+      `<div dir="${isRtl(input.locale) ? "rtl" : "ltr"}">` +
+      p(t("body", { name })) +
+      `<p>${escapeHtml(t("list"))} <a href="${escapeHtml(url)}">${escapeHtml(t("unsubscribe"))}</a></p>` +
+      p(t("signoff")) +
+      "</div>",
+    attachments: [{ filename: product.pdf, content: pdf.toString("base64") }],
+    headers: { "List-Unsubscribe": `<${url}>` },
+  });
 }

@@ -56,11 +56,13 @@ Nothing else — every app secret lives on the VPS.
 | `SESSION_SECRET` | signs the admin cookie |
 | `ADMIN_EMAILS` / `ADMIN_PASSWORD_HASH` | the one admin login (`pnpm admin:hash`) |
 | `BOOKING_TOKEN_SECRET` | HMAC for cancel links. Changing it breaks every link already emailed |
-| `RESEND_API_KEY` / `CONTACT_TO_EMAIL` / `CONTACT_FROM_EMAIL` | contact and booking email |
+| `RESEND_API_KEY` / `CONTACT_TO_EMAIL` / `CONTACT_FROM_EMAIL` | contact, booking and free-PDF email. `CONTACT_FROM_EMAIL` must be on a domain verified in Resend (an `@fadaeixlii.dev` address): the `onboarding@resend.dev` fallback only delivers to the Resend account owner |
 | `SHOP_NOTIFY_EMAIL` | optional inbox for shop alerts; falls back to `CONTACT_TO_EMAIL` |
 | `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` / `GOOGLE_REFRESH_TOKEN` / `GOOGLE_CALENDAR_ID` | booking calendar |
 
 `DATABASE_URL` is not in the file; `compose.yaml` builds it from the `POSTGRES_*` values.
+
+Shop files live in `~/portfolio/shop/` on the VPS, never in git, mounted read-only over the image's `private/shop`: each paid `<product>.zip` and each free product's PDF (its `pdf` in `src/content/shop.ts`). Copy a free PDF there before its page ships, or the email form answers an error.
 
 Only `NEXT_PUBLIC_SITE_URL` is a build `ARG`. Everything else is read at runtime, so changing
 a value needs `docker compose up -d` in `~/portfolio`, not a rebuild.
