@@ -54,15 +54,15 @@ export function FreePdfForm({ productId }: { productId: FreeProductId }) {
 
   if (status === "sent") {
     return (
-      <p
-        ref={(node) => node?.focus()}
-        tabIndex={-1}
-        role="status"
-        dir="auto"
-        className="max-w-[var(--measure)] text-[length:var(--text-lg)] text-text outline-none"
-      >
-        {t("sent")}
-      </p>
+      // One focused status holds both lines, so a screen reader reads the hint with it.
+      <div ref={(node) => node?.focus()} tabIndex={-1} role="status" className="max-w-[var(--measure)] outline-none">
+        <p dir="auto" className="text-[length:var(--text-lg)] text-text">
+          {t("sent")}
+        </p>
+        <p dir="auto" className="mt-[var(--space-2)] text-[length:var(--text-base)] text-dim">
+          {t("sentHint")}
+        </p>
+      </div>
     );
   }
 

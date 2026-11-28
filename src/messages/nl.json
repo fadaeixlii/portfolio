@@ -1026,7 +1026,8 @@
     "label": "Je e-mailadres",
     "submit": "Mail me de pdf",
     "notice": "Je krijgt de pdf per e-mail, en af en toe een e-mail als er een nieuwe gratis skill uit is. Afmelden kan altijd (<privacy>privacybeleid</privacy>).",
-    "sent": "Verstuurd. De pdf is onderweg naar je inbox. Na een paar minuten nog niets? Kijk in je spammap.",
+    "sent": "Verstuurd. De pdf is onderweg naar je inbox.",
+    "sentHint": "Niet in je inbox? Kijk bij Reclame of Spam.",
     "errors": {
       "invalid": "Vul een geldig e-mailadres in, zoals naam@example.com.",
       "rate_limited": "Te veel aanvragen vandaag. Probeer het morgen opnieuw of mail me direct.",
@@ -1034,7 +1035,7 @@
       "network": "De aanvraag is mislukt. Controleer je verbinding en probeer het opnieuw."
     },
     "email": {
-      "subject": "Je gratis pdf: {name}",
+      "subject": "Zoals gevraagd: {name}",
       "body": "Hier is {name}. De pdf zit als bijlage bij deze e-mail.",
       "list": "Af en toe mail ik je als er een nieuwe gratis skill uit is. Niets voor jou?",
       "unsubscribe": "Afmelden",
