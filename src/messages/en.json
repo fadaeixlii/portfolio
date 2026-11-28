@@ -1026,7 +1026,8 @@
     "label": "Your email",
     "submit": "Email me the PDF",
     "notice": "You get the PDF by email, plus an occasional email when a new free skill is out. Unsubscribe any time (<privacy>privacy policy</privacy>).",
-    "sent": "Sent. The PDF is on its way to your inbox. Nothing after a few minutes? Check your spam folder.",
+    "sent": "Sent. The PDF is on its way to your inbox.",
+    "sentHint": "Not in your inbox? Check Promotions or Spam.",
     "errors": {
       "invalid": "Enter a valid email address, like name@example.com.",
       "rate_limited": "Too many requests today. Try again tomorrow, or email me directly.",
@@ -1034,7 +1035,7 @@
       "network": "The request failed. Check your connection and try again."
     },
     "email": {
-      "subject": "Your free PDF: {name}",
+      "subject": "Here's the {name} you asked for",
       "body": "Here is {name}. The PDF is attached to this email.",
       "list": "Now and then I will email you when a new free skill is out. Not for you?",
       "unsubscribe": "Unsubscribe",

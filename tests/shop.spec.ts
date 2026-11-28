@@ -138,6 +138,8 @@ test("motion tips form: invalid, error and sent, by keyboard, with reduced motio
   const sent = page.getByRole("status").filter({ hasText: "The PDF is on its way to your inbox." });
   await expect(sent).toBeVisible();
   await expect(sent).toBeFocused();
+  // The hint is inside the focused status, so a screen reader hears it with the confirmation.
+  await expect(sent).toContainText("Not in your inbox? Check Promotions or Spam.");
   await expect(page.locator("main form")).toHaveCount(1);
   expect(bodies).toHaveLength(2);
 });

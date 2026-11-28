@@ -45,6 +45,14 @@ function fromEmail(): string {
   return process.env.CONTACT_FROM_EMAIL ?? "Portfolio <onboarding@resend.dev>";
 }
 
+/** The free-PDF email comes from a person, on the same address: "Name
+ *  <addr>" in CONTACT_FROM_EMAIL gives its addr, a bare value is the addr. */
+function freePdfFrom(): string {
+  const value = fromEmail();
+  const address = value.match(/<([^>]+)>/)?.[1] ?? value;
+  return `Mohammad from Fadaei XLII <${address.trim()}>`;
+}
+
 function productName(productId: string): string {
   return SHOP_PRODUCTS[productId as ProductId]?.name ?? productId;
 }
@@ -171,6 +179,11 @@ export function unsubscribeUrl(token: string): string {
  * visitor's language. Throws (missing file, Resend failure): the route then
  * answers an error so the visitor can try again. The address only goes in
  * `to`; nothing the visitor typed reaches the body.
+ *
+ * Kept like a one-to-one email so Gmail files it in Primary: a person as the
+ * sender, no "free" in the subject, short and plain (no images, buttons or
+ * extra links), no List-Unsubscribe header (that header marks bulk mail).
+ * The unsubscribe link stays in the body, where the privacy page promises it.
  */
 export async function sendFreePdfEmail(input: {
   to: string;
@@ -187,7 +200,7 @@ export async function sendFreePdfEmail(input: {
   const p = (text: string) => `<p>${escapeHtml(text)}</p>`;
 
   await sendResendEmail({
-    from: fromEmail(),
+    from: freePdfFrom(),
     to: input.to,
     subject: t("subject", { name }),
     text: [t("body", { name }), `${t("list")} ${t("unsubscribe")}: ${url}`, t("signoff")].join("\n\n"),
@@ -198,6 +211,5 @@ export async function sendFreePdfEmail(input: {
       p(t("signoff")) +
       "</div>",
     attachments: [{ filename: product.pdf, content: pdf.toString("base64") }],
-    headers: { "List-Unsubscribe": `<${url}>` },
   });
 }

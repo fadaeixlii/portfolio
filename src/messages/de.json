@@ -1026,7 +1026,8 @@
     "label": "Deine E-Mail-Adresse",
     "submit": "PDF per E-Mail senden",
     "notice": "Du bekommst das PDF per E-Mail und ab und zu eine E-Mail, wenn ein neuer kostenloser Skill erscheint. Abmelden geht jederzeit (<privacy>Datenschutzerklärung</privacy>).",
-    "sent": "Gesendet. Das PDF ist auf dem Weg in dein Postfach. Nach ein paar Minuten noch nichts da? Schau im Spam-Ordner nach.",
+    "sent": "Gesendet. Das PDF ist auf dem Weg in dein Postfach.",
+    "sentHint": "Nicht im Posteingang? Schau unter Werbung oder Spam nach.",
     "errors": {
       "invalid": "Gib eine gültige E-Mail-Adresse ein, etwa name@example.com.",
       "rate_limited": "Zu viele Anfragen heute. Versuch es morgen noch einmal oder schreib mir direkt eine E-Mail.",
@@ -1034,7 +1035,7 @@
       "network": "Die Anfrage ist fehlgeschlagen. Prüf deine Verbindung und versuch es noch einmal."
     },
     "email": {
-      "subject": "Dein kostenloses PDF: {name}",
+      "subject": "Wie gewünscht: {name}",
       "body": "Hier ist {name}. Das PDF hängt an dieser E-Mail.",
       "list": "Ab und zu schreibe ich dir, wenn ein neuer kostenloser Skill erscheint. Nichts für dich?",
       "unsubscribe": "Abmelden",

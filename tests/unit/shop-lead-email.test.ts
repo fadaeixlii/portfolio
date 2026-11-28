@@ -26,41 +26,65 @@ beforeEach(() => {
   sent.length = 0;
   readFile.mockReset();
   readFile.mockResolvedValue(PDF);
-  process.env.CONTACT_FROM_EMAIL = "Mohammad <hello@fadaeixlii.dev>";
+  // The production value since 2026-11-28.
+  process.env.CONTACT_FROM_EMAIL = "Fadaei XLII <hello@fadaeixlii.dev>";
   process.env.SHOP_NOTIFY_EMAIL = "owner@example.com";
 });
 
-describe("sendFreePdfEmail", () => {
-  it("attaches the private PDF and links the unsubscribe page, in the visitor's language", async () => {
-    const { sendFreePdfEmail } = await import("@/lib/email/shop");
-    await sendFreePdfEmail({ to: "ada@example.com", productId: "motion-tips", locale: "de", unsubscribeToken: TOKEN });
+const UNSUBSCRIBE = `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://fadaeixlii.dev"}/api/shop/unsubscribe/${TOKEN}`;
 
+describe("sendFreePdfEmail", () => {
+  const send = async (locale: "en" | "de" | "nl" | "fa" | "el" = "en", productId: "motion-tips" | "ai-video-editor" = "motion-tips") => {
+    const { sendFreePdfEmail } = await import("@/lib/email/shop");
+    await sendFreePdfEmail({ to: "ada@example.com", productId, locale, unsubscribeToken: TOKEN });
+    return sent[sent.length - 1];
+  };
+
+  it("attaches the private PDF, in the visitor's language", async () => {
+    const mail = await send("de");
     const path = String(readFile.mock.calls[0][0]).replace(/\\/g, "/");
     expect(path).toMatch(/\/private\/shop\/4-motion-tips\.pdf$/);
-
-    const [mail] = sent;
-    const url = `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://fadaeixlii.dev"}/api/shop/unsubscribe/${TOKEN}`;
     expect(mail).toMatchObject({
-      from: "Mohammad <hello@fadaeixlii.dev>",
       to: "ada@example.com",
       attachments: [{ filename: "4-motion-tips.pdf", content: PDF.toString("base64") }],
-      headers: { "List-Unsubscribe": `<${url}>` },
     });
-    expect(mail.subject).toContain("4 Motion Tips for Claude Videos");
-    expect(mail.subject).not.toBe("Your free PDF: 4 Motion Tips for Claude Videos");
-    expect(mail.html).toContain(`href="${url}"`);
-    expect(mail.text).toContain(url);
     expect(mail.html).toContain('dir="ltr"');
   });
 
-  it("sends the AI video editor PDF from private/shop under its own name", async () => {
-    const { sendFreePdfEmail } = await import("@/lib/email/shop");
-    await sendFreePdfEmail({ to: "ada@example.com", productId: "ai-video-editor", locale: "en", unsubscribeToken: TOKEN });
+  it("keeps the unsubscribe link in the text and the HTML body", async () => {
+    const mail = await send();
+    expect(mail.html).toContain(`href="${UNSUBSCRIBE}"`);
+    expect(mail.text).toContain(UNSUBSCRIBE);
+  });
 
+  it("sends no List-Unsubscribe header, so it reads as one person's email, not a list", async () => {
+    const mail = await send();
+    expect(JSON.stringify(mail)).not.toMatch(/list-unsubscribe/i);
+  });
+
+  it("sends as Mohammad from Fadaei XLII, on the address in CONTACT_FROM_EMAIL", async () => {
+    expect((await send()).from).toBe("Mohammad from Fadaei XLII <hello@fadaeixlii.dev>");
+  });
+
+  it("takes a bare CONTACT_FROM_EMAIL as the address", async () => {
+    process.env.CONTACT_FROM_EMAIL = " hello@fadaeixlii.dev ";
+    expect((await send()).from).toBe("Mohammad from Fadaei XLII <hello@fadaeixlii.dev>");
+  });
+
+  it("names the product in the subject and never says free, in every language", async () => {
+    expect((await send("en", "ai-video-editor")).subject).toBe("Here's the AI Video Editor Setup you asked for");
+    for (const locale of ["en", "de", "nl", "fa", "el"] as const) {
+      const { subject } = await send(locale);
+      expect(subject, locale).toContain("4 Motion Tips for Claude Videos");
+      expect(subject, locale).not.toMatch(/free|kostenlos|gratis|رایگان|δωρεάν/i);
+    }
+  });
+
+  it("sends the AI video editor PDF from private/shop under its own name", async () => {
+    const mail = await send("en", "ai-video-editor");
     const path = String(readFile.mock.calls[0][0]).replace(/\\/g, "/");
     expect(path).toMatch(/\/private\/shop\/3-ai-video-editor\.pdf$/);
-    expect(sent[0]).toMatchObject({
-      subject: "Your free PDF: AI Video Editor Setup",
+    expect(mail).toMatchObject({
       attachments: [{ filename: "3-ai-video-editor.pdf", content: PDF.toString("base64") }],
     });
   });
@@ -87,6 +111,9 @@ describe("sendShopAlertEmail signup", () => {
     await sendShopAlertEmail({ kind: "signup", productId: "motion-tips" });
     const [mail] = sent;
     expect(mail.to).toBe("owner@example.com");
+    // Owner alerts keep CONTACT_FROM_EMAIL as it is, and never had the header.
+    expect(mail.from).toBe("Fadaei XLII <hello@fadaeixlii.dev>");
+    expect(JSON.stringify(mail)).not.toMatch(/list-unsubscribe/i);
     expect(mail.subject).toBe("4 Motion Tips for Claude Videos: someone asked for the free PDF");
     expect(mail.html).toContain("New emails for the free PDF: 1");
   });
