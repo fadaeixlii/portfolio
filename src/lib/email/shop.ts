@@ -181,9 +181,9 @@ export function unsubscribeUrl(token: string): string {
  * `to`; nothing the visitor typed reaches the body.
  *
  * Kept like a one-to-one email so Gmail files it in Primary: a person as the
- * sender, no "free" in the subject, plain text, no List-Unsubscribe header
- * (that header marks bulk mail). The unsubscribe link stays in the body,
- * where the privacy page promises it.
+ * sender, no "free" in the subject, short and plain (no images, buttons or
+ * extra links), no List-Unsubscribe header (that header marks bulk mail).
+ * The unsubscribe link stays in the body, where the privacy page promises it.
  */
 export async function sendFreePdfEmail(input: {
   to: string;
