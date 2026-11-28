@@ -36,8 +36,3 @@ export function WhatsAppLink({ productId, onClick, ...props }: ComponentProps<"a
     />
   );
 }
-
-/** A free product's download link, which also counts the tap. */
-export function DownloadLink({ productId, ...props }: ComponentProps<"a"> & { productId: string }) {
-  return <a {...props} download onClick={() => beacon({ kind: "download", productId })} />;
-}

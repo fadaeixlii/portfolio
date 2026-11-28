@@ -37,6 +37,8 @@ const ROUTES = [
   "/skills/one-folder-studio",
   "/skills/first-skim",
   "/skills/motion-tips",
+  "/skills/ai-video-editor",
+  "/unsubscribed",
 ] as const;
 
 for (const locale of ["en", "fa"] as const) {

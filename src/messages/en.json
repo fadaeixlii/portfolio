@@ -212,7 +212,7 @@
     "line1": "Privacy",
     "line2": "Policy",
     "subheading": "What this site collects, why, and who else sees it.",
-    "updated": "Last updated: <date>14 November 2026</date>",
+    "updated": "Last updated: <date>28 November 2026</date>",
     "who": {
       "title": "Who runs this site",
       "body": "Mohammad M. Khani, based in Athens, Greece, runs this site and is responsible for the data described here. For anything about your data, email <link>{email}</link>."
@@ -242,9 +242,16 @@
     "shop": {
       "title": "If you buy a skill",
       "stored": "Starting a purchase stores an order in the same database: the product, the network and token you picked, the amount, the receiving address, the time and your IP address. The IP address limits orders and payment checks per day. When you paste a transaction hash it is stored with the order, together with a scrambled (hashed) copy of your download link.",
-      "visits": "Opening a skill page counts one visit in the same database: a scrambled (hashed) visitor code made from your IP address that changes every day (the IP address itself is not stored for a visit), the name of the site that sent you, like instagram.com, the page language and the time. A tap on the WhatsApp button or on a free PDF's download button is counted the same way. Mohammad gets an email through Resend when someone opens the page, taps WhatsApp, downloads a free PDF or starts an order, with these counts and nothing that names you.",
+      "visits": "Opening a skill page counts one visit in the same database: a scrambled (hashed) visitor code made from your IP address that changes every day (the IP address itself is not stored for a visit), the name of the site that sent you, like instagram.com, the page language and the time. A tap on the WhatsApp button is counted the same way. Mohammad gets an email through Resend when someone opens the page, taps WhatsApp, asks for a free PDF or starts an order, with these counts and nothing that names you.",
       "chain": "To check the payment, the server looks the transaction up on a public Ethereum node (PublicNode) or Tron node (TronGrid). The transfer itself, including the wallet you paid from, is public on the blockchain anyway. Mohammad is emailed the order and the transaction hash through Resend.",
       "whatsapp": "If you message on WhatsApp instead, WhatsApp handles that conversation under its own terms."
+    },
+    "freePdf": {
+      "title": "If you ask for a free PDF",
+      "stored": "The form on a free PDF's page stores your email address, the product, the page language and the time in the same database. The request is also counted with the same daily visitor code as a visit, to limit each visitor to five requests a day; the IP address itself is not stored.",
+      "use": "Your email address is used for two things: to send you the PDF through Resend, and now and then to tell you about a new free skill. Asking for the PDF puts you on that list, as the form says. Mohammad is emailed when someone new asks, with counts and nothing that names you.",
+      "unsubscribe": "Every email has an unsubscribe link. It takes your address off the list at once, for every PDF you asked for. You can also email <link>{email}</link>. Asking for a free PDF again puts you back on the list.",
+      "kept": "Your address stays on the list until you unsubscribe. After that it is kept, marked as unsubscribed, so you are not emailed again. To have it deleted completely, ask by email."
     },
     "retention": {
       "title": "How long it is kept",
@@ -921,8 +928,7 @@
     "line1": "4 Motion Tips",
     "line2": "For Claude videos",
     "sub": "Four techniques that make videos made with Claude look professional, prompts included.",
-    "download": "Download the free PDF",
-    "fileNote": "Free. 3 pages, no sign-up.",
+    "fileNote": "Free. 3 pages, sent to your inbox.",
     "pages": {
       "caption1": "Page 1: the four tips at a glance",
       "caption2": "Page 2: each tip explained",
@@ -957,7 +963,51 @@
     },
     "get": {
       "heading": "Get the PDF",
-      "sub": "Three pages: the cover, the four tips explained, and a prompt for each one. Free, no sign-up."
+      "sub": "Three pages: the cover, the four tips explained, and a prompt for each one. Free, sent to your inbox."
+    }
+  },
+  "aiVideoEditor": {
+    "metaTitle": "AI Video Editor Setup: a free PDF",
+    "metaDescription": "Set up Claude Code in the Claude desktop app to edit your videos: one folder, five tools and three prompts to copy. A free three-page PDF, sent by email.",
+    "line1": "AI Video Editor",
+    "line2": "The setup",
+    "sub": "Claude Code in the Claude desktop app, one folder, five tools and three prompts: install, learn your taste, edit your clip.",
+    "fileNote": "Free. 3 pages in English, sent to your inbox.",
+    "coverAlt": "The reel's cover: Claude edits my videos, the free setup, above a halftone portrait in a circle",
+    "workspace": {
+      "title": "The workspace",
+      "body": "Open the Code tab in the Claude desktop app, not the browser. Make a folder called AI Video Editor with three folders inside: raw-footage, references and exports. Start a new session, pick Local and choose that folder, so Claude can see your files."
+    },
+    "tools": {
+      "title": "The five tools",
+      "sub": "Prompt 01 installs them for you. Each licence is the one its project publishes.",
+      "licence": "Licence: {licence}",
+      "licenceSmallBusiness": "Licence: {licence}, free for individuals and small businesses",
+      "kinetograph": "Builds the video and the motion graphics from code.",
+      "ffmpeg": "Cuts, joins and exports.",
+      "whisper": "Writes the captions word by word, on your own computer.",
+      "autoEditor": "Finds and removes the silent parts.",
+      "ytDlp": "Downloads the reference videos you want to study."
+    },
+    "prompts": {
+      "title": "The three prompts",
+      "sub": "Paste them in order and change the parts in square brackets.",
+      "install": {
+        "title": "Install everything",
+        "body": "Installs FFmpeg, Python 3.11 with faster-whisper, Auto-Editor and yt-dlp, and Node with Kinetograph, and asks first if anything needs admin rights. Then it tests each tool on a 5-second sample and tells you what works."
+      },
+      "taste": {
+        "title": "Learn my taste",
+        "body": "You give it 3 to 5 reels you like. It downloads them to study only, measures pacing, captions, colours, fonts, motion and sound, and writes a style guide that takes ideas from them without copying their footage, words or logos."
+      },
+      "edit": {
+        "title": "Edit my clip",
+        "body": "Turns your newest raw clip into a 1080x1920 reel that follows the style guide: cuts the dead air, adds captions 1 to 3 words at a time, puts music under the voice and builds titles and motion. It exports a draft, then waits for your notes in plain words."
+      }
+    },
+    "get": {
+      "heading": "Get the PDF",
+      "sub": "Three pages: the workspace, the five tools and the three prompts. Free, sent to your inbox."
     }
   },
   "skills": {
@@ -971,5 +1021,31 @@
     "previous": "Previous",
     "next": "Next",
     "page": "Page {n}"
+  },
+  "freePdf": {
+    "label": "Your email",
+    "submit": "Email me the PDF",
+    "notice": "You get the PDF by email, plus an occasional email when a new free skill is out. Unsubscribe any time (<privacy>privacy policy</privacy>).",
+    "sent": "Sent. The PDF is on its way to your inbox. Nothing after a few minutes? Check your spam folder.",
+    "errors": {
+      "invalid": "Enter a valid email address, like name@example.com.",
+      "rate_limited": "Too many requests today. Try again tomorrow, or email me directly.",
+      "server": "Something went wrong and the email did not go out. Try again in a minute.",
+      "network": "The request failed. Check your connection and try again."
+    },
+    "email": {
+      "subject": "Your free PDF: {name}",
+      "body": "Here is {name}. The PDF is attached to this email.",
+      "list": "Now and then I will email you when a new free skill is out. Not for you?",
+      "unsubscribe": "Unsubscribe",
+      "signoff": "Mohammad, fadaeixlii.dev"
+    }
+  },
+  "unsubscribed": {
+    "metaTitle": "Unsubscribed",
+    "metaDescription": "This address will get no more emails about new free skills.",
+    "line1": "Unsubscribed",
+    "line2": "No more emails",
+    "sub": "This address will get no more emails about new free skills. The PDF you already have stays yours. Changed your mind? Ask for any free PDF again and you are back on the list."
   }
 }

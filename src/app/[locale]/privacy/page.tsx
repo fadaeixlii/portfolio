@@ -48,6 +48,7 @@ export default function PrivacyPage({
 
   // Every claim in the `privacy` messages describes code: src/app/api/{contact,
   // book,booking,shop}, src/lib/email, src/lib/calendar, src/lib/shop, db/migrations, proxy.ts.
+  // The free-PDF section: src/app/api/shop/{lead,unsubscribe}, db/migrations/005.
   // Change what that code collects or who it sends to, change this copy.
   return (
     <main
@@ -58,7 +59,7 @@ export default function PrivacyPage({
 
       <p dir="auto" className="mt-[var(--space-6)] text-[length:var(--text-sm)] text-dim">
         {t.rich("updated", {
-          date: (chunks) => <time dateTime="2026-10-06">{chunks}</time>,
+          date: (chunks) => <time dateTime="2026-11-28">{chunks}</time>,
         })}
       </p>
 
@@ -102,6 +103,14 @@ export default function PrivacyPage({
           <p dir="auto" className={P}>{t("shop.visits")}</p>
           <p dir="auto" className={P}>{t("shop.chain")}</p>
           <p dir="auto" className={P}>{t("shop.whatsapp")}</p>
+        </section>
+
+        <section>
+          <h2 dir="auto" className={H2}>{t("freePdf.title")}</h2>
+          <p dir="auto" className={P}>{t("freePdf.stored")}</p>
+          <p dir="auto" className={P}>{t("freePdf.use")}</p>
+          <p dir="auto" className={P}>{t.rich("freePdf.unsubscribe", mail)}</p>
+          <p dir="auto" className={P}>{t("freePdf.kept")}</p>
         </section>
 
         <section>

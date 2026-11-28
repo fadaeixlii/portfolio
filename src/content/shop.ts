@@ -4,10 +4,12 @@
  *
  * One structure for every skill video's product, free or paid: a paid entry
  * has a price and a zip in `private/shop/`, sold through the crypto checkout;
- * a free entry has `free: true` and a PDF in `public/shop/<slug>/` that anyone
- * can download. Adding a product is one entry in SHOP_PRODUCTS plus its page
- * under `src/app/[locale]/skills/<slug>/`; the /skills list picks it up from
- * here (newest last in this object, first on the list).
+ * a free entry has `free: true` and a PDF in `private/shop/` that is only ever
+ * sent by email, to whoever asks through the form on its page (which also puts
+ * them on the list). Adding a product is one entry in SHOP_PRODUCTS, its page
+ * under `src/app/[locale]/skills/<slug>/` and its file in `private/shop/`; the
+ * /skills list and the email form pick it up from here (newest last in this
+ * object, first on the list).
  */
 
 export type Chain = "eth" | "tron";
@@ -28,7 +30,8 @@ type PaidProduct = {
 type FreeProduct = {
   name: string;
   free: true;
-  /** Public URL path of the PDF (a file under `public/`). */
+  /** Served from `private/shop/<pdf>`, never from `public/`: the only way to
+   *  it is the email the form sends. Also the attachment's file name. */
   pdf: string;
   /** Card image on /skills, a file under `public/`. */
   poster: string;
@@ -82,8 +85,14 @@ export const SHOP_PRODUCTS = {
   "motion-tips": {
     name: "4 Motion Tips for Claude Videos",
     free: true,
-    pdf: "/shop/motion-tips/4-motion-tips.pdf",
+    pdf: "4-motion-tips.pdf",
     poster: "/shop/motion-tips/page-1.webp",
+  },
+  "ai-video-editor": {
+    name: "AI Video Editor Setup",
+    free: true,
+    pdf: "3-ai-video-editor.pdf",
+    poster: "/shop/ai-video-editor/cover.webp",
   },
 } satisfies Record<string, PaidProduct | FreeProduct>;
 
@@ -92,6 +101,11 @@ export type ProductId = keyof typeof SHOP_PRODUCTS;
 export type PaidProductId = {
   [K in ProductId]: (typeof SHOP_PRODUCTS)[K] extends FreeProduct ? never : K;
 }[ProductId];
+/** What the email form gives away. */
+export type FreeProductId = Exclude<ProductId, PaidProductId>;
+export const FREE_PRODUCT_IDS = (Object.keys(SHOP_PRODUCTS) as ProductId[]).filter((id) =>
+  isFree(SHOP_PRODUCTS[id]),
+) as FreeProductId[];
 
 type ChainConfig = {
   /** Receiving wallet. Tron in base58, Ethereum in 0x hex. */
@@ -125,9 +139,14 @@ export const SHOP_RULES = {
   maxVerifiesPerIpPerDay: 30,
   /** Visits + WhatsApp taps one visitor can log per day; reloads past it are ignored. */
   maxEventsPerVisitorPerDay: 20,
-  /** Visit and WhatsApp alert emails per day. Resend's free plan sends 100 a
-   *  day, and sale emails must still get through. */
+  /** Visit, WhatsApp and free-PDF signup alert emails per day. Resend's free
+   *  plan sends 100 a day, and sale and PDF emails must still get through. */
   maxAlertEmailsPerDay: 50,
+  /** Free-PDF requests one visitor can make per day, across every product. */
+  maxLeadsPerVisitorPerDay: 5,
+  /** The same address and product get the PDF at most once per this many
+   *  minutes, so the form cannot be used to flood someone's inbox. */
+  leadResendMinutes: 10,
   maxDownloads: 5,
   downloadDays: 14,
   /** A payment may predate its order by this much (clock skew, or the buyer

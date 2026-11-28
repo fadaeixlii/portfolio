@@ -5,8 +5,8 @@ import { useTranslations } from "next-intl";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { PageHead } from "@/components/layout/PageHead";
 import { Reveal } from "@/components/primitives/Reveal";
-import { DownloadLink, TrackVisit } from "@/components/shop/Track";
-import { SHOP_PRODUCTS } from "@/content/shop";
+import { FreePdfForm } from "@/components/shop/FreePdfForm";
+import { TrackVisit } from "@/components/shop/Track";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { cn } from "@/lib/cn";
 import type { Locale } from "@/lib/i18n/routing";
@@ -14,10 +14,8 @@ import type { Locale } from "@/lib/i18n/routing";
 const H2 = "font-display text-[length:var(--text-3xl)] font-extrabold leading-[var(--leading-tight)] text-text";
 const H3 = "font-display text-[length:var(--text-xl)] font-bold text-text";
 const SUB = "mt-[var(--space-3)] max-w-[var(--measure)] text-[length:var(--text-base)] text-dim";
-const BTN = "inline-flex h-11 items-center justify-center rounded-[var(--radius-full)] px-6 text-[length:var(--text-base)] font-medium";
 const LINK = "text-signal-text underline underline-offset-2";
 
-const PDF = SHOP_PRODUCTS["motion-tips"].pdf;
 const PAGES = [1, 2, 3] as const;
 const TIPS = ["reference", "beats", "box", "frames"] as const;
 
@@ -36,7 +34,7 @@ export async function generateMetadata({
   });
 }
 
-/** The first free product: a PDF, no price, no checkout. */
+/** The first free product: a PDF by email, no price, no checkout. */
 export default function MotionTipsPage({
   params,
 }: {
@@ -46,16 +44,6 @@ export default function MotionTipsPage({
   setRequestLocale(locale);
 
   const t = useTranslations("motionTips");
-  const download = (
-    <DownloadLink
-      productId="motion-tips"
-      href={PDF}
-      type="application/pdf"
-      className={cn(BTN, "bg-signal-fill text-signal-ink hover:brightness-110")}
-    >
-      {t("download")}
-    </DownloadLink>
-  );
 
   return (
     <main
@@ -65,13 +53,13 @@ export default function MotionTipsPage({
       <TrackVisit productId="motion-tips" />
       <div className="min-w-0">
         <PageHead line1={t("line1")} line2={t("line2")} sub={t("sub")} />
-        <Reveal className="mt-[var(--space-8)] flex flex-wrap items-center gap-[var(--space-4)]">
-          {download}
+        <Reveal className="mt-[var(--space-8)] flex flex-col gap-[var(--space-4)]">
           <p dir="auto" className="text-[length:var(--text-base)] text-dim">{t("fileNote")}</p>
+          <FreePdfForm productId="motion-tips" />
         </Reveal>
       </div>
 
-      {/* The PDF's own pages, so the reader sees what they get before they tap. */}
+      {/* The PDF's own pages, so the reader sees what they get before they ask. */}
       <ul className="mt-[var(--space-12)] grid max-w-[60rem] gap-[var(--space-6)] sm:grid-cols-3">
         {PAGES.map((n) => (
           <li key={n}>
@@ -118,7 +106,9 @@ export default function MotionTipsPage({
       <section aria-labelledby="get" className="mt-[var(--space-22)] border-t border-hairline pt-[var(--space-12)]">
         <h2 id="get" className={H2}>{t("get.heading")}</h2>
         <p dir="auto" className={SUB}>{t("get.sub")}</p>
-        <div className="mt-[var(--space-6)]">{download}</div>
+        <div className="mt-[var(--space-6)]">
+          <FreePdfForm productId="motion-tips" />
+        </div>
       </section>
     </main>
   );

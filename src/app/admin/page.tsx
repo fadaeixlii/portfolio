@@ -30,9 +30,15 @@ export default async function AdminMessagesPage() {
     <div className="flex flex-col gap-[var(--space-8)]">
       <div className="flex items-center justify-between">
         <h1 className="font-display text-[length:var(--text-2xl)]">Messages</h1>
-        <Link href="/admin/bookings" className="text-[length:var(--text-sm)] text-signal-text hover:underline">
-          Bookings
-        </Link>
+        <div className="flex gap-[var(--space-4)]">
+          <Link href="/admin/bookings" className="text-[length:var(--text-sm)] text-signal-text hover:underline">
+            Bookings
+          </Link>
+          {/* A route handler, not a page: a plain link, so nothing prefetches it. */}
+          <a href="/admin/leads.csv" download className="text-[length:var(--text-sm)] text-signal-text hover:underline">
+            Free-PDF list (CSV)
+          </a>
+        </div>
       </div>
 
       {messages.length === 0 ? (
