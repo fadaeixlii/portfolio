@@ -53,6 +53,18 @@ describe("sendFreePdfEmail", () => {
     expect(mail.html).toContain('dir="ltr"');
   });
 
+  it("sends the AI video editor PDF from private/shop under its own name", async () => {
+    const { sendFreePdfEmail } = await import("@/lib/email/shop");
+    await sendFreePdfEmail({ to: "ada@example.com", productId: "ai-video-editor", locale: "en", unsubscribeToken: TOKEN });
+
+    const path = String(readFile.mock.calls[0][0]).replace(/\\/g, "/");
+    expect(path).toMatch(/\/private\/shop\/3-ai-video-editor\.pdf$/);
+    expect(sent[0]).toMatchObject({
+      subject: "Your free PDF: AI Video Editor Setup",
+      attachments: [{ filename: "3-ai-video-editor.pdf", content: PDF.toString("base64") }],
+    });
+  });
+
   it("writes Farsi right to left", async () => {
     const { sendFreePdfEmail } = await import("@/lib/email/shop");
     await sendFreePdfEmail({ to: "ada@example.com", productId: "motion-tips", locale: "fa", unsubscribeToken: TOKEN });

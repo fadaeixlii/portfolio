@@ -88,6 +88,12 @@ export const SHOP_PRODUCTS = {
     pdf: "4-motion-tips.pdf",
     poster: "/shop/motion-tips/page-1.webp",
   },
+  "ai-video-editor": {
+    name: "AI Video Editor Setup",
+    free: true,
+    pdf: "3-ai-video-editor.pdf",
+    poster: "/shop/ai-video-editor/cover.webp",
+  },
 } satisfies Record<string, PaidProduct | FreeProduct>;
 
 export type ProductId = keyof typeof SHOP_PRODUCTS;

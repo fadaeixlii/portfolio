@@ -113,6 +113,17 @@ describe("POST /api/shop/lead", () => {
     expect(sendShopAlertEmail).toHaveBeenCalledWith({ kind: "signup", productId: "motion-tips" });
   });
 
+  it("accepts the second free product, ai-video-editor, and sends its PDF", async () => {
+    const { POST } = await import("@/app/api/shop/lead/route");
+    results = [[{ mine: 0, emailed: 0 }], [], [{ id: "lead-2", unsubscribe_token: TOKEN, send: true, fresh: true }], []];
+    const res = await POST(lead({ productId: "ai-video-editor" }));
+
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual({ ok: true });
+    expect(find("insert into shop_leads")!.values).toContain("ai-video-editor");
+    expect(sendFreePdfEmail).toHaveBeenCalledWith(expect.objectContaining({ productId: "ai-video-editor" }));
+  });
+
   it("answers an address already on the list the same way, with no second email inside the window", async () => {
     const { POST } = await import("@/app/api/shop/lead/route");
     results = [[{ mine: 1, emailed: 0 }], [], [{ id: "lead-1", unsubscribe_token: TOKEN, send: false, fresh: false }], []];

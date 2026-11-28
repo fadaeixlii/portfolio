@@ -966,6 +966,50 @@
       "sub": "Drie pagina's in het Engels: de voorpagina, de vier tips uitgelegd en een prompt per tip. Gratis, direct in je inbox."
     }
   },
+  "aiVideoEditor": {
+    "metaTitle": "AI Video Editor Setup: een gratis pdf",
+    "metaDescription": "Zet Claude Code in de Claude-desktopapp op om je video's te monteren: één map, vijf tools en drie prompts om te kopiëren. Een gratis pdf van drie pagina's, per e-mail.",
+    "line1": "AI Video Editor",
+    "line2": "De setup",
+    "sub": "Claude Code in de Claude-desktopapp, één map, vijf tools en drie prompts: installeren, je smaak leren, je clip monteren.",
+    "fileNote": "Gratis. 3 pagina's in het Engels, direct in je inbox.",
+    "coverAlt": "De cover van de reel: Claude edits my videos, the free setup, boven een rasterportret in een cirkel",
+    "workspace": {
+      "title": "De werkplek",
+      "body": "Open het Code-tabblad in de Claude-desktopapp, niet in de browser. Maak een map AI Video Editor met drie mappen erin: raw-footage, references en exports. Start een nieuwe sessie, kies Local en dan die map, zodat Claude je bestanden kan zien."
+    },
+    "tools": {
+      "title": "De vijf tools",
+      "sub": "Prompt 01 installeert ze voor je. Elke licentie is die van het project zelf.",
+      "licence": "Licentie: {licence}",
+      "licenceSmallBusiness": "Licentie: {licence}, gratis voor particulieren en kleine bedrijven",
+      "kinetograph": "Bouwt de video en de motion graphics uit code.",
+      "ffmpeg": "Knipt, voegt samen en exporteert.",
+      "whisper": "Schrijft de ondertitels woord voor woord, op je eigen computer.",
+      "autoEditor": "Vindt en verwijdert de stille stukken.",
+      "ytDlp": "Downloadt de referentievideo's die je wilt bestuderen."
+    },
+    "prompts": {
+      "title": "De drie prompts",
+      "sub": "Plak ze op volgorde en pas de delen tussen vierkante haken aan.",
+      "install": {
+        "title": "Alles installeren",
+        "body": "Installeert FFmpeg, Python 3.11 met faster-whisper, Auto-Editor en yt-dlp, en Node met Kinetograph, en vraagt het eerst als iets beheerdersrechten nodig heeft. Daarna wordt elke tool getest op een voorbeeld van 5 seconden en hoor je wat werkt."
+      },
+      "taste": {
+        "title": "Mijn smaak leren",
+        "body": "Je geeft 3 tot 5 reels die je mooi vindt. Ze worden alleen gedownload om te bestuderen: tempo, ondertitels, kleuren, lettertypen, beweging en geluid worden gemeten, en er komt een stijlgids die er ideeën uit haalt zonder hun beelden, woorden of logo's te kopiëren."
+      },
+      "edit": {
+        "title": "Mijn clip monteren",
+        "body": "Maakt van je nieuwste ruwe clip een reel van 1080x1920 volgens de stijlgids: knipt de stiltes weg, zet ondertitels van 1 tot 3 woorden, legt muziek onder de stem en bouwt titels en beweging. Daarna wordt een concept geëxporteerd en wacht het op je opmerkingen in gewone woorden."
+      }
+    },
+    "get": {
+      "heading": "De gratis pdf",
+      "sub": "Drie pagina's: de werkplek, de vijf tools en de drie prompts. Gratis, direct in je inbox."
+    }
+  },
   "skills": {
     "metaTitle": "Claude Code-skills en gratis gidsen",
     "metaDescription": "Claude Code-skills uit de fadaeixlii-video's: geschilderde video's, uitlegfilms, nieuwe websites, 3D-reiskaarten en meer. Gratis pdf's om te downloaden, betaalde skills voor één betaling.",

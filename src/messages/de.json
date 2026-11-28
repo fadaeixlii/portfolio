@@ -966,6 +966,50 @@
       "sub": "Drei Seiten auf Englisch: das Titelblatt, die vier Tipps erklärt und ein Prompt pro Tipp. Kostenlos, direkt in dein Postfach."
     }
   },
+  "aiVideoEditor": {
+    "metaTitle": "AI Video Editor Setup: ein kostenloses PDF",
+    "metaDescription": "Richte Claude Code in der Claude-Desktop-App zum Schneiden deiner Videos ein: ein Ordner, fünf Tools und drei Prompts zum Kopieren. Ein kostenloses PDF mit drei Seiten, per E-Mail.",
+    "line1": "AI Video Editor",
+    "line2": "Das Setup",
+    "sub": "Claude Code in der Claude-Desktop-App, ein Ordner, fünf Tools und drei Prompts: installieren, deinen Geschmack lernen, deinen Clip schneiden.",
+    "fileNote": "Kostenlos. 3 Seiten auf Englisch, direkt in dein Postfach.",
+    "coverAlt": "Das Cover des Reels: Claude edits my videos, the free setup, über einem Rasterporträt in einem Kreis",
+    "workspace": {
+      "title": "Der Arbeitsplatz",
+      "body": "Öffne den Code-Tab in der Claude-Desktop-App, nicht im Browser. Leg einen Ordner namens AI Video Editor mit drei Ordnern darin an: raw-footage, references und exports. Starte eine neue Sitzung, wähle Local und dann diesen Ordner, damit Claude deine Dateien sieht."
+    },
+    "tools": {
+      "title": "Die fünf Tools",
+      "sub": "Prompt 01 installiert sie für dich. Jede Lizenz ist die, die das jeweilige Projekt angibt.",
+      "licence": "Lizenz: {licence}",
+      "licenceSmallBusiness": "Lizenz: {licence}, kostenlos für Einzelpersonen und kleine Unternehmen",
+      "kinetograph": "Baut das Video und die Motion Graphics aus Code.",
+      "ffmpeg": "Schneidet, fügt zusammen und exportiert.",
+      "whisper": "Schreibt die Untertitel Wort für Wort, auf deinem eigenen Computer.",
+      "autoEditor": "Findet und entfernt die stillen Stellen.",
+      "ytDlp": "Lädt die Referenzvideos herunter, die du studieren willst."
+    },
+    "prompts": {
+      "title": "Die drei Prompts",
+      "sub": "Füge sie der Reihe nach ein und ändere die Teile in eckigen Klammern.",
+      "install": {
+        "title": "Alles installieren",
+        "body": "Installiert FFmpeg, Python 3.11 mit faster-whisper, Auto-Editor und yt-dlp sowie Node mit Kinetograph und fragt vorher, wenn etwas Administratorrechte braucht. Danach wird jedes Tool an einem 5-Sekunden-Beispiel getestet, und du erfährst, was funktioniert."
+      },
+      "taste": {
+        "title": "Meinen Geschmack lernen",
+        "body": "Du gibst 3 bis 5 Reels an, die dir gefallen. Sie werden nur zum Studieren heruntergeladen, Tempo, Untertitel, Farben, Schriften, Bewegung und Ton werden gemessen, und es entsteht ein Style Guide, der sich von ihnen anregen lässt, ohne ihr Material, ihre Worte oder Logos zu kopieren."
+      },
+      "edit": {
+        "title": "Meinen Clip schneiden",
+        "body": "Macht aus deinem neuesten Rohclip ein Reel in 1080x1920 nach dem Style Guide: schneidet Pausen heraus, setzt Untertitel mit 1 bis 3 Wörtern, legt Musik unter die Stimme und baut Titel und Bewegung. Danach wird ein Entwurf exportiert, und es wartet auf deine Notizen in einfachen Worten."
+      }
+    },
+    "get": {
+      "heading": "Hol dir das PDF",
+      "sub": "Drei Seiten: der Arbeitsplatz, die fünf Tools und die drei Prompts. Kostenlos, direkt in dein Postfach."
+    }
+  },
   "skills": {
     "metaTitle": "Claude-Code-Skills und kostenlose Guides",
     "metaDescription": "Claude-Code-Skills aus den fadaeixlii-Videos: gemalte Videos, Erklärfilme, Website-Relaunches, 3D-Reisekarten und mehr. Kostenlose PDFs zum Download, bezahlte Skills für eine einmalige Zahlung.",

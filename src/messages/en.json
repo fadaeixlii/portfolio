@@ -966,6 +966,50 @@
       "sub": "Three pages: the cover, the four tips explained, and a prompt for each one. Free, sent to your inbox."
     }
   },
+  "aiVideoEditor": {
+    "metaTitle": "AI Video Editor Setup: a free PDF",
+    "metaDescription": "Set up Claude Code in the Claude desktop app to edit your videos: one folder, five tools and three prompts to copy. A free three-page PDF, sent by email.",
+    "line1": "AI Video Editor",
+    "line2": "The setup",
+    "sub": "Claude Code in the Claude desktop app, one folder, five tools and three prompts: install, learn your taste, edit your clip.",
+    "fileNote": "Free. 3 pages in English, sent to your inbox.",
+    "coverAlt": "The reel's cover: Claude edits my videos, the free setup, above a halftone portrait in a circle",
+    "workspace": {
+      "title": "The workspace",
+      "body": "Open the Code tab in the Claude desktop app, not the browser. Make a folder called AI Video Editor with three folders inside: raw-footage, references and exports. Start a new session, pick Local and choose that folder, so Claude can see your files."
+    },
+    "tools": {
+      "title": "The five tools",
+      "sub": "Prompt 01 installs them for you. Each licence is the one its project publishes.",
+      "licence": "Licence: {licence}",
+      "licenceSmallBusiness": "Licence: {licence}, free for individuals and small businesses",
+      "kinetograph": "Builds the video and the motion graphics from code.",
+      "ffmpeg": "Cuts, joins and exports.",
+      "whisper": "Writes the captions word by word, on your own computer.",
+      "autoEditor": "Finds and removes the silent parts.",
+      "ytDlp": "Downloads the reference videos you want to study."
+    },
+    "prompts": {
+      "title": "The three prompts",
+      "sub": "Paste them in order and change the parts in square brackets.",
+      "install": {
+        "title": "Install everything",
+        "body": "Installs FFmpeg, Python 3.11 with faster-whisper, Auto-Editor and yt-dlp, and Node with Kinetograph, and asks first if anything needs admin rights. Then it tests each tool on a 5-second sample and tells you what works."
+      },
+      "taste": {
+        "title": "Learn my taste",
+        "body": "You give it 3 to 5 reels you like. It downloads them to study only, measures pacing, captions, colours, fonts, motion and sound, and writes a style guide that takes ideas from them without copying their footage, words or logos."
+      },
+      "edit": {
+        "title": "Edit my clip",
+        "body": "Turns your newest raw clip into a 1080x1920 reel that follows the style guide: cuts the dead air, adds captions 1 to 3 words at a time, puts music under the voice and builds titles and motion. It exports a draft, then waits for your notes in plain words."
+      }
+    },
+    "get": {
+      "heading": "Get the PDF",
+      "sub": "Three pages: the workspace, the five tools and the three prompts. Free, sent to your inbox."
+    }
+  },
   "skills": {
     "metaTitle": "Claude Code skills and free guides",
     "metaDescription": "Claude Code skills from the fadaeixlii videos: painted videos, explainer films, website rebuilds, 3D trip maps and more. Free PDFs to download, paid skills for one payment.",
